@@ -1,0 +1,363 @@
+grammar org.xtext.example.mydsl.MyDsl with org.eclipse.xtext.common.Terminals
+
+generate myDsl "http://www.xtext.org/example/mydsl/MyDsl"
+    
+Model:
+	(elements+=expression)*;
+	
+expression: 
+	unaryexpr expressionaux+=expressionaux
+;
+
+expressionaux:
+	// verificar como é vazio
+	BINARY_OP expression expressionaux+=expressionaux |
+	// pq precisa definir tipo?
+	{experssionaux} ANY_OTHER
+;
+
+unaryexpr:
+	primaryexpr=primaryexpr | UNARY_OP unaryexpr
+;
+
+primaryexpr:
+	operand primaryexpraux=primaryexpraux | 
+	conversion primaryexpraux=primaryexpraux |
+	methodexpr primaryexpraux 
+;
+
+primaryexpraux:
+	// TODO: pq precisa desse = e como é vazio???
+	selector primaryexpraux | 
+	index primaryexpraux=primaryexpraux | 
+	slice primaryexpraux=primaryexpraux | 
+	typeassertion primaryexpraux | 
+	arguments primaryexpraux=primaryexpraux |
+	// pq precisa definir tipo?
+	{primaryexpraux} ANY_OTHER
+;
+
+index:
+	"[" expression "]"
+;
+
+slice:
+	{slice} "[" expression+=expression? ":" expression+=expression? "]" |
+	"[" expression? ":" expression+=expression ":" expression+=expression "]"
+;
+
+methodexpr:
+	receivertype "." methodname
+;
+
+receivertype:
+	type
+;
+
+conversion:
+	type "(" expression ","? ")"
+;
+
+operand:
+	{operand} literal | {operand} operandname | "(" expression ")"
+;
+
+compositelit:
+	literaltype literalvalue
+;
+
+literaltype:
+	//TODO: adicionar arraytype
+	structtype | "[" "..." "]" elementtype | slicetype | maptype | typename
+;
+
+literalvalue:
+	{literalvalue} "{" (elementlist=elementlist ","?)? "}"
+;
+
+elementlist:
+	keyedelement ("," keyedelement+=keyedelement)*
+;
+
+keyedelement:
+	(key ":")? element=element
+;
+
+key:
+	{key} fieldname | expression | literalvalue
+;
+
+element:
+	expression | literalvalue
+;
+	
+functionlit:
+	"func" signature functionbody
+;
+
+statement:
+	// TODO:
+	"FRANKLIN"
+;
+
+block:
+	"{" statementlist "}"
+;
+
+statementlist:
+	(statement ";")*
+;
+
+functionbody:
+	block
+;	
+
+typeassertion:
+	"." "(" type ")"
+;
+
+arguments:
+	{arguments} "(" ((expressionlist=expressionlist | type ("," expressionlist=expressionlist)?) "..."? ","?)? ")"
+;
+
+expressionlist:
+	expression ("," expression+=expression)*
+;
+
+selector:
+	"." IDENTIFIER
+;
+
+fieldname:
+	IDENTIFIER
+;
+
+literal:
+	basiclit
+;
+
+basiclit:
+	int_lit | float_lit | imaginary_lit | rune_lit | string_lit
+;
+
+operandname:
+	IDENTIFIER | qualified_ident
+;
+	
+slicetype: 
+	"[" "]" elementtype
+;
+
+pointertype:
+	"*" basetype
+;
+
+basetype:
+	type
+;
+
+channeltype:
+	( "chan" | "chan" "<-" | "<-" "chan" ) elementtype
+;
+
+maptype:
+	"map" "[" keytype "]" elementtype
+;
+	
+keytype:
+	type
+;
+
+elementtype:
+	type
+;
+
+interfacetype:
+	"interface" "{" (methodspec ";")* "}"
+;
+
+methodspec:
+	methodname signature | interfacetypename
+;
+
+methodname:
+	IDENTIFIER
+;
+
+interfacetypename:
+	typename
+;
+
+functiontype:
+	"func" signature
+;
+
+signature:
+	parameters result?
+;
+
+result:
+	parameters | type
+;
+
+parameters:
+	"(" (parameterlist ","?)? ")"
+;
+
+parameterlist:
+	parameterdecl ("," parameterdecl)*
+;
+
+parameterdecl:
+	identifierlist? "..."? type
+;
+
+structtype:
+	"struct" "{" (fielddecl ";")* "}"
+;
+
+fielddecl:
+	(identifierlist type | embeddedfield) tag?
+;
+
+embeddedfield:
+	"*"? typename
+;
+
+type:
+	// TODO: completar
+	typename
+;
+
+identifierlist:
+	IDENTIFIER ( "," IDENTIFIER)*
+;
+
+tag:
+	string_lit
+;
+
+typename:
+	IDENTIFIER | qualified_ident
+;
+
+qualified_ident:
+	packagename "." IDENTIFIER
+;
+
+packagename:
+	IDENTIFIER
+;
+
+string_lit:
+	raw_string_lit | interpreted_string_lit
+;
+
+raw_string_lit:
+	"`" (LETTER | DECIMAL_DIGIT | "\\n")* "`"
+;
+
+interpreted_string_lit:
+	"\"" (unicode_value | byte_value)* "\""
+;
+
+rune_lit:
+	"'" (unicode_value | byte_value) "'"
+;
+
+int_lit:
+	(DECIMAL_DIGIT | hex_lit)*
+;
+
+
+hex_lit:
+	"0" ("x" | "X") HEX_DIGIT+
+;
+
+
+imaginary_lit:
+	(decimals | float_lit) "i"
+;
+
+float_lit:
+	(decimals "." decimals? exponent?) | (decimals exponent) | "." decimals exponent?
+;
+
+exponent:
+	("e" | "E") ("+" | "-")? decimals
+;
+
+decimals:
+	DECIMAL_DIGIT+
+;
+
+byte_value:
+	octal_byte_value | hex_byte_value	
+;
+
+hex_byte_value: 
+	'\\' "x" HEX_DIGIT HEX_DIGIT
+;
+
+octal_byte_value:
+	'\\' OCTAL_DIGIT OCTAL_DIGIT OCTAL_DIGIT
+;
+
+unicode_value:
+	(LETTER | DECIMAL_DIGIT) | little_u_value | big_u_value | ESCAPED_CHAR
+;
+
+big_u_value: 
+	"\\" "U" HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
+;
+
+little_u_value: 
+	"\\" "u" HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT 
+;
+
+terminal IDENTIFIER: 
+	LETTER (LETTER | DECIMAL_DIGIT)*
+;
+
+terminal A_F: 
+	"A" .. "F" | "a" .. "f" 
+;
+
+terminal LETTER:
+	A_F | 'g' .. 'z' | 'G' .. 'Z' | "_"
+;
+
+terminal HEX_DIGIT:
+	DECIMAL_DIGIT | A_F
+;
+
+terminal OCTAL_DIGIT:
+	('0'..'7')
+;
+
+terminal ESCAPED_CHAR:
+	"\\" ( "a" | "b" | "f" | "n" | "r" | "t" | "v" | "\\" | "\'" | "\"" )
+;
+
+terminal DECIMAL_DIGIT:
+	OCTAL_DIGIT | '8' | '9';
+
+terminal BINARY_OP:
+	"||" | "&&" | REL_OP | ADD_OP | MUL_OP
+;
+
+terminal REL_OP:
+	"==" | "!=" | "<" | "<=" | ">" | ">="
+;
+
+terminal ADD_OP:
+	"+" | "-" | "|" | "^"
+;
+
+terminal MUL_OP:
+	"*" | "/" | "%" | "<<" | ">>" | "&" | "&^"
+;
+
+terminal UNARY_OP:
+	"+" | "-" | "!" | "^" | "*" | "&" | "<-"
+;	

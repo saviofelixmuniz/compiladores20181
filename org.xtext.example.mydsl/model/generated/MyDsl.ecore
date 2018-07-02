@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="myDsl" nsURI="http://www.xtext.org/example/mydsl/MyDsl" nsPrefix="myDsl">
+  <eClassifiers xsi:type="ecore:EClass" name="Model">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
+        eType="#//expression" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="expression" eSuperTypes="#//expressionaux #//index #//slice #//conversion #//operand #//key #//element #//expressionlist">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expressionaux" upperBound="-1"
+        eType="#//expressionaux" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="expressionaux"/>
+  <eClassifiers xsi:type="ecore:EClass" name="unaryexpr" eSuperTypes="#//expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="primaryexpr" eType="#//primaryexpr"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="primaryexpr">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="primaryexpraux" eType="#//primaryexpraux"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="primaryexpraux" eSuperTypes="#//primaryexpr"/>
+  <eClassifiers xsi:type="ecore:EClass" name="index" eSuperTypes="#//primaryexpraux"/>
+  <eClassifiers xsi:type="ecore:EClass" name="slice" eSuperTypes="#//primaryexpraux">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" upperBound="-1"
+        eType="#//expression" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="conversion" eSuperTypes="#//primaryexpr"/>
+  <eClassifiers xsi:type="ecore:EClass" name="operand" eSuperTypes="#//primaryexpr"/>
+  <eClassifiers xsi:type="ecore:EClass" name="compositelit"/>
+  <eClassifiers xsi:type="ecore:EClass" name="literalvalue" eSuperTypes="#//compositelit #//key #//element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elementlist" eType="#//elementlist"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="elementlist"/>
+  <eClassifiers xsi:type="ecore:EClass" name="keyedelement" eSuperTypes="#//elementlist">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="keyedelement" upperBound="-1"
+        eType="#//keyedelement" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="element" eType="#//element"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="key" eSuperTypes="#//keyedelement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="element"/>
+  <eClassifiers xsi:type="ecore:EClass" name="arguments" eSuperTypes="#//primaryexpraux">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expressionlist" eType="#//expressionlist"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="expressionlist"/>
+  <eClassifiers xsi:type="ecore:EClass" name="experssionaux" eSuperTypes="#//expressionaux"/>
+</ecore:EPackage>
