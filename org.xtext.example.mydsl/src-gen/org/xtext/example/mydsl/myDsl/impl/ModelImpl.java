@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.xtext.example.mydsl.myDsl.Model;
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
-import org.xtext.example.mydsl.myDsl.expression;
+import org.xtext.example.mydsl.myDsl.result;
 
 /**
  * <!-- begin-user-doc -->
@@ -44,7 +44,7 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * @generated
    * @ordered
    */
-  protected EList<expression> elements;
+  protected EList<result> elements;
 
   /**
    * <!-- begin-user-doc -->
@@ -72,11 +72,11 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<expression> getElements()
+  public EList<result> getElements()
   {
     if (elements == null)
     {
-      elements = new EObjectContainmentEList<expression>(expression.class, this, MyDslPackage.MODEL__ELEMENTS);
+      elements = new EObjectContainmentEList<result>(result.class, this, MyDslPackage.MODEL__ELEMENTS);
     }
     return elements;
   }
@@ -126,7 +126,7 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
     {
       case MyDslPackage.MODEL__ELEMENTS:
         getElements().clear();
-        getElements().addAll((Collection<? extends expression>)newValue);
+        getElements().addAll((Collection<? extends result>)newValue);
         return;
     }
     super.eSet(featureID, newValue);

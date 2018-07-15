@@ -10,6 +10,13 @@ import org.eclipse.emf.ecore.EObject;
  * A representation of the model object '<em><b>compositelit</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.compositelit#getLiteraltype <em>Literaltype</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.compositelit#getLiteralvalue <em>Literalvalue</em>}</li>
+ * </ul>
  *
  * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getcompositelit()
  * @model
@@ -17,4 +24,56 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface compositelit extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Literaltype</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Literaltype</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Literaltype</em>' containment reference.
+   * @see #setLiteraltype(literaltype)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getcompositelit_Literaltype()
+   * @model containment="true"
+   * @generated
+   */
+  literaltype getLiteraltype();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.compositelit#getLiteraltype <em>Literaltype</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Literaltype</em>' containment reference.
+   * @see #getLiteraltype()
+   * @generated
+   */
+  void setLiteraltype(literaltype value);
+
+  /**
+   * Returns the value of the '<em><b>Literalvalue</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Literalvalue</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Literalvalue</em>' containment reference.
+   * @see #setLiteralvalue(literalvalue)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getcompositelit_Literalvalue()
+   * @model containment="true"
+   * @generated
+   */
+  literalvalue getLiteralvalue();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.compositelit#getLiteralvalue <em>Literalvalue</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Literalvalue</em>' containment reference.
+   * @see #getLiteralvalue()
+   * @generated
+   */
+  void setLiteralvalue(literalvalue value);
+
 } // compositelit

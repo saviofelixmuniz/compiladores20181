@@ -13,6 +13,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
+import org.xtext.example.mydsl.myDsl.conversion;
+import org.xtext.example.mydsl.myDsl.methodexpr;
+import org.xtext.example.mydsl.myDsl.operand;
 import org.xtext.example.mydsl.myDsl.primaryexpr;
 import org.xtext.example.mydsl.myDsl.primaryexpraux;
 
@@ -24,13 +27,26 @@ import org.xtext.example.mydsl.myDsl.primaryexpraux;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.primaryexprImpl#getOperand <em>Operand</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.primaryexprImpl#getPrimaryexpraux <em>Primaryexpraux</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.primaryexprImpl#getConversion <em>Conversion</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.primaryexprImpl#getMethodexpr <em>Methodexpr</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class primaryexprImpl extends MinimalEObjectImpl.Container implements primaryexpr
 {
+  /**
+   * The cached value of the '{@link #getOperand() <em>Operand</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getOperand()
+   * @generated
+   * @ordered
+   */
+  protected operand operand;
+
   /**
    * The cached value of the '{@link #getPrimaryexpraux() <em>Primaryexpraux</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -40,6 +56,26 @@ public class primaryexprImpl extends MinimalEObjectImpl.Container implements pri
    * @ordered
    */
   protected primaryexpraux primaryexpraux;
+
+  /**
+   * The cached value of the '{@link #getConversion() <em>Conversion</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getConversion()
+   * @generated
+   * @ordered
+   */
+  protected conversion conversion;
+
+  /**
+   * The cached value of the '{@link #getMethodexpr() <em>Methodexpr</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMethodexpr()
+   * @generated
+   * @ordered
+   */
+  protected methodexpr methodexpr;
 
   /**
    * <!-- begin-user-doc -->
@@ -60,6 +96,54 @@ public class primaryexprImpl extends MinimalEObjectImpl.Container implements pri
   protected EClass eStaticClass()
   {
     return MyDslPackage.Literals.PRIMARYEXPR;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public operand getOperand()
+  {
+    return operand;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetOperand(operand newOperand, NotificationChain msgs)
+  {
+    operand oldOperand = operand;
+    operand = newOperand;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.PRIMARYEXPR__OPERAND, oldOperand, newOperand);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setOperand(operand newOperand)
+  {
+    if (newOperand != operand)
+    {
+      NotificationChain msgs = null;
+      if (operand != null)
+        msgs = ((InternalEObject)operand).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.PRIMARYEXPR__OPERAND, null, msgs);
+      if (newOperand != null)
+        msgs = ((InternalEObject)newOperand).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.PRIMARYEXPR__OPERAND, null, msgs);
+      msgs = basicSetOperand(newOperand, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.PRIMARYEXPR__OPERAND, newOperand, newOperand));
   }
 
   /**
@@ -115,13 +199,115 @@ public class primaryexprImpl extends MinimalEObjectImpl.Container implements pri
    * <!-- end-user-doc -->
    * @generated
    */
+  public conversion getConversion()
+  {
+    return conversion;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetConversion(conversion newConversion, NotificationChain msgs)
+  {
+    conversion oldConversion = conversion;
+    conversion = newConversion;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.PRIMARYEXPR__CONVERSION, oldConversion, newConversion);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setConversion(conversion newConversion)
+  {
+    if (newConversion != conversion)
+    {
+      NotificationChain msgs = null;
+      if (conversion != null)
+        msgs = ((InternalEObject)conversion).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.PRIMARYEXPR__CONVERSION, null, msgs);
+      if (newConversion != null)
+        msgs = ((InternalEObject)newConversion).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.PRIMARYEXPR__CONVERSION, null, msgs);
+      msgs = basicSetConversion(newConversion, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.PRIMARYEXPR__CONVERSION, newConversion, newConversion));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public methodexpr getMethodexpr()
+  {
+    return methodexpr;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetMethodexpr(methodexpr newMethodexpr, NotificationChain msgs)
+  {
+    methodexpr oldMethodexpr = methodexpr;
+    methodexpr = newMethodexpr;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.PRIMARYEXPR__METHODEXPR, oldMethodexpr, newMethodexpr);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setMethodexpr(methodexpr newMethodexpr)
+  {
+    if (newMethodexpr != methodexpr)
+    {
+      NotificationChain msgs = null;
+      if (methodexpr != null)
+        msgs = ((InternalEObject)methodexpr).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.PRIMARYEXPR__METHODEXPR, null, msgs);
+      if (newMethodexpr != null)
+        msgs = ((InternalEObject)newMethodexpr).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.PRIMARYEXPR__METHODEXPR, null, msgs);
+      msgs = basicSetMethodexpr(newMethodexpr, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.PRIMARYEXPR__METHODEXPR, newMethodexpr, newMethodexpr));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
     switch (featureID)
     {
+      case MyDslPackage.PRIMARYEXPR__OPERAND:
+        return basicSetOperand(null, msgs);
       case MyDslPackage.PRIMARYEXPR__PRIMARYEXPRAUX:
         return basicSetPrimaryexpraux(null, msgs);
+      case MyDslPackage.PRIMARYEXPR__CONVERSION:
+        return basicSetConversion(null, msgs);
+      case MyDslPackage.PRIMARYEXPR__METHODEXPR:
+        return basicSetMethodexpr(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -136,8 +322,14 @@ public class primaryexprImpl extends MinimalEObjectImpl.Container implements pri
   {
     switch (featureID)
     {
+      case MyDslPackage.PRIMARYEXPR__OPERAND:
+        return getOperand();
       case MyDslPackage.PRIMARYEXPR__PRIMARYEXPRAUX:
         return getPrimaryexpraux();
+      case MyDslPackage.PRIMARYEXPR__CONVERSION:
+        return getConversion();
+      case MyDslPackage.PRIMARYEXPR__METHODEXPR:
+        return getMethodexpr();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -152,8 +344,17 @@ public class primaryexprImpl extends MinimalEObjectImpl.Container implements pri
   {
     switch (featureID)
     {
+      case MyDslPackage.PRIMARYEXPR__OPERAND:
+        setOperand((operand)newValue);
+        return;
       case MyDslPackage.PRIMARYEXPR__PRIMARYEXPRAUX:
         setPrimaryexpraux((primaryexpraux)newValue);
+        return;
+      case MyDslPackage.PRIMARYEXPR__CONVERSION:
+        setConversion((conversion)newValue);
+        return;
+      case MyDslPackage.PRIMARYEXPR__METHODEXPR:
+        setMethodexpr((methodexpr)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -169,8 +370,17 @@ public class primaryexprImpl extends MinimalEObjectImpl.Container implements pri
   {
     switch (featureID)
     {
+      case MyDslPackage.PRIMARYEXPR__OPERAND:
+        setOperand((operand)null);
+        return;
       case MyDslPackage.PRIMARYEXPR__PRIMARYEXPRAUX:
         setPrimaryexpraux((primaryexpraux)null);
+        return;
+      case MyDslPackage.PRIMARYEXPR__CONVERSION:
+        setConversion((conversion)null);
+        return;
+      case MyDslPackage.PRIMARYEXPR__METHODEXPR:
+        setMethodexpr((methodexpr)null);
         return;
     }
     super.eUnset(featureID);
@@ -186,8 +396,14 @@ public class primaryexprImpl extends MinimalEObjectImpl.Container implements pri
   {
     switch (featureID)
     {
+      case MyDslPackage.PRIMARYEXPR__OPERAND:
+        return operand != null;
       case MyDslPackage.PRIMARYEXPR__PRIMARYEXPRAUX:
         return primaryexpraux != null;
+      case MyDslPackage.PRIMARYEXPR__CONVERSION:
+        return conversion != null;
+      case MyDslPackage.PRIMARYEXPR__METHODEXPR:
+        return methodexpr != null;
     }
     return super.eIsSet(featureID);
   }

@@ -3,22 +3,72 @@
  */
 package org.xtext.example.mydsl.myDsl.impl;
 
-import org.eclipse.emf.ecore.EClass;
+import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
+import org.xtext.example.mydsl.myDsl.expression;
 import org.xtext.example.mydsl.myDsl.expressionaux;
 
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>expressionaux</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * </p>
+ * <ul>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.expressionauxImpl#getExpression <em>Expression</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.expressionauxImpl#getBINARY_OP <em>BINARY OP</em>}</li>
+ * </ul>
  *
  * @generated
  */
 public class expressionauxImpl extends MinimalEObjectImpl.Container implements expressionaux
 {
+  /**
+   * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getExpression()
+   * @generated
+   * @ordered
+   */
+  protected EList<expression> expression;
+
+  /**
+   * The default value of the '{@link #getBINARY_OP() <em>BINARY OP</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getBINARY_OP()
+   * @generated
+   * @ordered
+   */
+  protected static final String BINARY_OP_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getBINARY_OP() <em>BINARY OP</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getBINARY_OP()
+   * @generated
+   * @ordered
+   */
+  protected String binarY_OP = BINARY_OP_EDEFAULT;
+
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -38,6 +88,154 @@ public class expressionauxImpl extends MinimalEObjectImpl.Container implements e
   protected EClass eStaticClass()
   {
     return MyDslPackage.Literals.EXPRESSIONAUX;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<expression> getExpression()
+  {
+    if (expression == null)
+    {
+      expression = new EObjectContainmentEList<expression>(expression.class, this, MyDslPackage.EXPRESSIONAUX__EXPRESSION);
+    }
+    return expression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getBINARY_OP()
+  {
+    return binarY_OP;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setBINARY_OP(String newBINARY_OP)
+  {
+    String oldBINARY_OP = binarY_OP;
+    binarY_OP = newBINARY_OP;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.EXPRESSIONAUX__BINARY_OP, oldBINARY_OP, binarY_OP));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case MyDslPackage.EXPRESSIONAUX__EXPRESSION:
+        return ((InternalEList<?>)getExpression()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object eGet(int featureID, boolean resolve, boolean coreType)
+  {
+    switch (featureID)
+    {
+      case MyDslPackage.EXPRESSIONAUX__EXPRESSION:
+        return getExpression();
+      case MyDslPackage.EXPRESSIONAUX__BINARY_OP:
+        return getBINARY_OP();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @SuppressWarnings("unchecked")
+  @Override
+  public void eSet(int featureID, Object newValue)
+  {
+    switch (featureID)
+    {
+      case MyDslPackage.EXPRESSIONAUX__EXPRESSION:
+        getExpression().clear();
+        getExpression().addAll((Collection<? extends expression>)newValue);
+        return;
+      case MyDslPackage.EXPRESSIONAUX__BINARY_OP:
+        setBINARY_OP((String)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eUnset(int featureID)
+  {
+    switch (featureID)
+    {
+      case MyDslPackage.EXPRESSIONAUX__EXPRESSION:
+        getExpression().clear();
+        return;
+      case MyDslPackage.EXPRESSIONAUX__BINARY_OP:
+        setBINARY_OP(BINARY_OP_EDEFAULT);
+        return;
+    }
+    super.eUnset(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean eIsSet(int featureID)
+  {
+    switch (featureID)
+    {
+      case MyDslPackage.EXPRESSIONAUX__EXPRESSION:
+        return expression != null && !expression.isEmpty();
+      case MyDslPackage.EXPRESSIONAUX__BINARY_OP:
+        return BINARY_OP_EDEFAULT == null ? binarY_OP != null : !BINARY_OP_EDEFAULT.equals(binarY_OP);
+    }
+    return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (BINARY_OP: ");
+    result.append(binarY_OP);
+    result.append(')');
+    return result.toString();
   }
 
 } //expressionauxImpl

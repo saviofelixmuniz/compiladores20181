@@ -3,6 +3,7 @@
  */
 package org.xtext.example.mydsl.myDsl;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,7 +14,10 @@ package org.xtext.example.mydsl.myDsl;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.unaryexpr#getExpressionaux <em>Expressionaux</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.unaryexpr#getPrimaryexpr <em>Primaryexpr</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.unaryexpr#getUNARY_OP <em>UNARY OP</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.unaryexpr#getUnaryexpr <em>Unaryexpr</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getunaryexpr()
@@ -22,6 +26,22 @@ package org.xtext.example.mydsl.myDsl;
  */
 public interface unaryexpr extends expression
 {
+  /**
+   * Returns the value of the '<em><b>Expressionaux</b></em>' containment reference list.
+   * The list contents are of type {@link org.xtext.example.mydsl.myDsl.expressionaux}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Expressionaux</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Expressionaux</em>' containment reference list.
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getunaryexpr_Expressionaux()
+   * @model containment="true"
+   * @generated
+   */
+  EList<expressionaux> getExpressionaux();
+
   /**
    * Returns the value of the '<em><b>Primaryexpr</b></em>' containment reference.
    * <!-- begin-user-doc -->
@@ -47,5 +67,57 @@ public interface unaryexpr extends expression
    * @generated
    */
   void setPrimaryexpr(primaryexpr value);
+
+  /**
+   * Returns the value of the '<em><b>UNARY OP</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>UNARY OP</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>UNARY OP</em>' attribute.
+   * @see #setUNARY_OP(String)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getunaryexpr_UNARY_OP()
+   * @model
+   * @generated
+   */
+  String getUNARY_OP();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.unaryexpr#getUNARY_OP <em>UNARY OP</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>UNARY OP</em>' attribute.
+   * @see #getUNARY_OP()
+   * @generated
+   */
+  void setUNARY_OP(String value);
+
+  /**
+   * Returns the value of the '<em><b>Unaryexpr</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Unaryexpr</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Unaryexpr</em>' containment reference.
+   * @see #setUnaryexpr(unaryexpr)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getunaryexpr_Unaryexpr()
+   * @model containment="true"
+   * @generated
+   */
+  unaryexpr getUnaryexpr();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.unaryexpr#getUnaryexpr <em>Unaryexpr</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Unaryexpr</em>' containment reference.
+   * @see #getUnaryexpr()
+   * @generated
+   */
+  void setUnaryexpr(unaryexpr value);
 
 } // unaryexpr

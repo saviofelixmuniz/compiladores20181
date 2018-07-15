@@ -3,22 +3,56 @@
  */
 package org.xtext.example.mydsl.myDsl.impl;
 
-import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
 import org.xtext.example.mydsl.myDsl.compositelit;
+import org.xtext.example.mydsl.myDsl.literaltype;
+import org.xtext.example.mydsl.myDsl.literalvalue;
 
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>compositelit</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * </p>
+ * <ul>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.compositelitImpl#getLiteraltype <em>Literaltype</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.compositelitImpl#getLiteralvalue <em>Literalvalue</em>}</li>
+ * </ul>
  *
  * @generated
  */
 public class compositelitImpl extends MinimalEObjectImpl.Container implements compositelit
 {
+  /**
+   * The cached value of the '{@link #getLiteraltype() <em>Literaltype</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLiteraltype()
+   * @generated
+   * @ordered
+   */
+  protected literaltype literaltype;
+
+  /**
+   * The cached value of the '{@link #getLiteralvalue() <em>Literalvalue</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLiteralvalue()
+   * @generated
+   * @ordered
+   */
+  protected literalvalue literalvalue;
+
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -38,6 +72,196 @@ public class compositelitImpl extends MinimalEObjectImpl.Container implements co
   protected EClass eStaticClass()
   {
     return MyDslPackage.Literals.COMPOSITELIT;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public literaltype getLiteraltype()
+  {
+    return literaltype;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetLiteraltype(literaltype newLiteraltype, NotificationChain msgs)
+  {
+    literaltype oldLiteraltype = literaltype;
+    literaltype = newLiteraltype;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.COMPOSITELIT__LITERALTYPE, oldLiteraltype, newLiteraltype);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setLiteraltype(literaltype newLiteraltype)
+  {
+    if (newLiteraltype != literaltype)
+    {
+      NotificationChain msgs = null;
+      if (literaltype != null)
+        msgs = ((InternalEObject)literaltype).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.COMPOSITELIT__LITERALTYPE, null, msgs);
+      if (newLiteraltype != null)
+        msgs = ((InternalEObject)newLiteraltype).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.COMPOSITELIT__LITERALTYPE, null, msgs);
+      msgs = basicSetLiteraltype(newLiteraltype, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.COMPOSITELIT__LITERALTYPE, newLiteraltype, newLiteraltype));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public literalvalue getLiteralvalue()
+  {
+    return literalvalue;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetLiteralvalue(literalvalue newLiteralvalue, NotificationChain msgs)
+  {
+    literalvalue oldLiteralvalue = literalvalue;
+    literalvalue = newLiteralvalue;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.COMPOSITELIT__LITERALVALUE, oldLiteralvalue, newLiteralvalue);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setLiteralvalue(literalvalue newLiteralvalue)
+  {
+    if (newLiteralvalue != literalvalue)
+    {
+      NotificationChain msgs = null;
+      if (literalvalue != null)
+        msgs = ((InternalEObject)literalvalue).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.COMPOSITELIT__LITERALVALUE, null, msgs);
+      if (newLiteralvalue != null)
+        msgs = ((InternalEObject)newLiteralvalue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.COMPOSITELIT__LITERALVALUE, null, msgs);
+      msgs = basicSetLiteralvalue(newLiteralvalue, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.COMPOSITELIT__LITERALVALUE, newLiteralvalue, newLiteralvalue));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case MyDslPackage.COMPOSITELIT__LITERALTYPE:
+        return basicSetLiteraltype(null, msgs);
+      case MyDslPackage.COMPOSITELIT__LITERALVALUE:
+        return basicSetLiteralvalue(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object eGet(int featureID, boolean resolve, boolean coreType)
+  {
+    switch (featureID)
+    {
+      case MyDslPackage.COMPOSITELIT__LITERALTYPE:
+        return getLiteraltype();
+      case MyDslPackage.COMPOSITELIT__LITERALVALUE:
+        return getLiteralvalue();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eSet(int featureID, Object newValue)
+  {
+    switch (featureID)
+    {
+      case MyDslPackage.COMPOSITELIT__LITERALTYPE:
+        setLiteraltype((literaltype)newValue);
+        return;
+      case MyDslPackage.COMPOSITELIT__LITERALVALUE:
+        setLiteralvalue((literalvalue)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eUnset(int featureID)
+  {
+    switch (featureID)
+    {
+      case MyDslPackage.COMPOSITELIT__LITERALTYPE:
+        setLiteraltype((literaltype)null);
+        return;
+      case MyDslPackage.COMPOSITELIT__LITERALVALUE:
+        setLiteralvalue((literalvalue)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean eIsSet(int featureID)
+  {
+    switch (featureID)
+    {
+      case MyDslPackage.COMPOSITELIT__LITERALTYPE:
+        return literaltype != null;
+      case MyDslPackage.COMPOSITELIT__LITERALVALUE:
+        return literalvalue != null;
+    }
+    return super.eIsSet(featureID);
   }
 
 } //compositelitImpl

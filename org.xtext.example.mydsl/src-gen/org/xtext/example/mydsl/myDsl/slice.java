@@ -5,6 +5,8 @@ package org.xtext.example.mydsl.myDsl;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EObject;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>slice</b></em>'.
@@ -21,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface slice extends primaryexpraux
+public interface slice extends EObject
 {
   /**
    * Returns the value of the '<em><b>Expression</b></em>' containment reference list.

@@ -3,26 +3,16 @@
  */
 package org.xtext.example.mydsl.myDsl.impl;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
-import org.xtext.example.mydsl.myDsl.element;
 import org.xtext.example.mydsl.myDsl.elementlist;
-import org.xtext.example.mydsl.myDsl.key;
-import org.xtext.example.mydsl.myDsl.keyedelement;
 import org.xtext.example.mydsl.myDsl.literalvalue;
 
 /**
@@ -33,35 +23,13 @@ import org.xtext.example.mydsl.myDsl.literalvalue;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.literalvalueImpl#getKeyedelement <em>Keyedelement</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.literalvalueImpl#getElement <em>Element</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.literalvalueImpl#getElementlist <em>Elementlist</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class literalvalueImpl extends compositelitImpl implements literalvalue
+public class literalvalueImpl extends elementImpl implements literalvalue
 {
-  /**
-   * The cached value of the '{@link #getKeyedelement() <em>Keyedelement</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getKeyedelement()
-   * @generated
-   * @ordered
-   */
-  protected EList<keyedelement> keyedelement;
-
-  /**
-   * The cached value of the '{@link #getElement() <em>Element</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getElement()
-   * @generated
-   * @ordered
-   */
-  protected element element;
-
   /**
    * The cached value of the '{@link #getElementlist() <em>Elementlist</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -91,68 +59,6 @@ public class literalvalueImpl extends compositelitImpl implements literalvalue
   protected EClass eStaticClass()
   {
     return MyDslPackage.Literals.LITERALVALUE;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<keyedelement> getKeyedelement()
-  {
-    if (keyedelement == null)
-    {
-      keyedelement = new EObjectContainmentEList<keyedelement>(keyedelement.class, this, MyDslPackage.LITERALVALUE__KEYEDELEMENT);
-    }
-    return keyedelement;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public element getElement()
-  {
-    return element;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetElement(element newElement, NotificationChain msgs)
-  {
-    element oldElement = element;
-    element = newElement;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.LITERALVALUE__ELEMENT, oldElement, newElement);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setElement(element newElement)
-  {
-    if (newElement != element)
-    {
-      NotificationChain msgs = null;
-      if (element != null)
-        msgs = ((InternalEObject)element).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.LITERALVALUE__ELEMENT, null, msgs);
-      if (newElement != null)
-        msgs = ((InternalEObject)newElement).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.LITERALVALUE__ELEMENT, null, msgs);
-      msgs = basicSetElement(newElement, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.LITERALVALUE__ELEMENT, newElement, newElement));
   }
 
   /**
@@ -213,10 +119,6 @@ public class literalvalueImpl extends compositelitImpl implements literalvalue
   {
     switch (featureID)
     {
-      case MyDslPackage.LITERALVALUE__KEYEDELEMENT:
-        return ((InternalEList<?>)getKeyedelement()).basicRemove(otherEnd, msgs);
-      case MyDslPackage.LITERALVALUE__ELEMENT:
-        return basicSetElement(null, msgs);
       case MyDslPackage.LITERALVALUE__ELEMENTLIST:
         return basicSetElementlist(null, msgs);
     }
@@ -233,10 +135,6 @@ public class literalvalueImpl extends compositelitImpl implements literalvalue
   {
     switch (featureID)
     {
-      case MyDslPackage.LITERALVALUE__KEYEDELEMENT:
-        return getKeyedelement();
-      case MyDslPackage.LITERALVALUE__ELEMENT:
-        return getElement();
       case MyDslPackage.LITERALVALUE__ELEMENTLIST:
         return getElementlist();
     }
@@ -248,19 +146,11 @@ public class literalvalueImpl extends compositelitImpl implements literalvalue
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case MyDslPackage.LITERALVALUE__KEYEDELEMENT:
-        getKeyedelement().clear();
-        getKeyedelement().addAll((Collection<? extends keyedelement>)newValue);
-        return;
-      case MyDslPackage.LITERALVALUE__ELEMENT:
-        setElement((element)newValue);
-        return;
       case MyDslPackage.LITERALVALUE__ELEMENTLIST:
         setElementlist((elementlist)newValue);
         return;
@@ -278,12 +168,6 @@ public class literalvalueImpl extends compositelitImpl implements literalvalue
   {
     switch (featureID)
     {
-      case MyDslPackage.LITERALVALUE__KEYEDELEMENT:
-        getKeyedelement().clear();
-        return;
-      case MyDslPackage.LITERALVALUE__ELEMENT:
-        setElement((element)null);
-        return;
       case MyDslPackage.LITERALVALUE__ELEMENTLIST:
         setElementlist((elementlist)null);
         return;
@@ -301,96 +185,10 @@ public class literalvalueImpl extends compositelitImpl implements literalvalue
   {
     switch (featureID)
     {
-      case MyDslPackage.LITERALVALUE__KEYEDELEMENT:
-        return keyedelement != null && !keyedelement.isEmpty();
-      case MyDslPackage.LITERALVALUE__ELEMENT:
-        return element != null;
       case MyDslPackage.LITERALVALUE__ELEMENTLIST:
         return elementlist != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
-  {
-    if (baseClass == elementlist.class)
-    {
-      switch (derivedFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == keyedelement.class)
-    {
-      switch (derivedFeatureID)
-      {
-        case MyDslPackage.LITERALVALUE__KEYEDELEMENT: return MyDslPackage.KEYEDELEMENT__KEYEDELEMENT;
-        case MyDslPackage.LITERALVALUE__ELEMENT: return MyDslPackage.KEYEDELEMENT__ELEMENT;
-        default: return -1;
-      }
-    }
-    if (baseClass == key.class)
-    {
-      switch (derivedFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == element.class)
-    {
-      switch (derivedFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
-  {
-    if (baseClass == elementlist.class)
-    {
-      switch (baseFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == keyedelement.class)
-    {
-      switch (baseFeatureID)
-      {
-        case MyDslPackage.KEYEDELEMENT__KEYEDELEMENT: return MyDslPackage.LITERALVALUE__KEYEDELEMENT;
-        case MyDslPackage.KEYEDELEMENT__ELEMENT: return MyDslPackage.LITERALVALUE__ELEMENT;
-        default: return -1;
-      }
-    }
-    if (baseClass == key.class)
-    {
-      switch (baseFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == element.class)
-    {
-      switch (baseFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
   }
 
 } //literalvalueImpl

@@ -3,6 +3,7 @@
  */
 package org.xtext.example.mydsl.myDsl;
 
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,13 +15,14 @@ package org.xtext.example.mydsl.myDsl;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.myDsl.arguments#getExpressionlist <em>Expressionlist</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.arguments#getType <em>Type</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getarguments()
  * @model
  * @generated
  */
-public interface arguments extends primaryexpraux
+public interface arguments extends EObject
 {
   /**
    * Returns the value of the '<em><b>Expressionlist</b></em>' containment reference.
@@ -47,5 +49,31 @@ public interface arguments extends primaryexpraux
    * @generated
    */
   void setExpressionlist(expressionlist value);
+
+  /**
+   * Returns the value of the '<em><b>Type</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Type</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Type</em>' containment reference.
+   * @see #setType(type)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getarguments_Type()
+   * @model containment="true"
+   * @generated
+   */
+  type getType();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.arguments#getType <em>Type</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Type</em>' containment reference.
+   * @see #getType()
+   * @generated
+   */
+  void setType(type value);
 
 } // arguments

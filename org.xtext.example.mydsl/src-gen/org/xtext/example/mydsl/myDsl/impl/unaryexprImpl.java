@@ -3,15 +3,23 @@
  */
 package org.xtext.example.mydsl.myDsl.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
+import org.xtext.example.mydsl.myDsl.expressionaux;
 import org.xtext.example.mydsl.myDsl.primaryexpr;
 import org.xtext.example.mydsl.myDsl.unaryexpr;
 
@@ -23,13 +31,26 @@ import org.xtext.example.mydsl.myDsl.unaryexpr;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.unaryexprImpl#getExpressionaux <em>Expressionaux</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.unaryexprImpl#getPrimaryexpr <em>Primaryexpr</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.unaryexprImpl#getUNARY_OP <em>UNARY OP</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.unaryexprImpl#getUnaryexpr <em>Unaryexpr</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class unaryexprImpl extends expressionImpl implements unaryexpr
 {
+  /**
+   * The cached value of the '{@link #getExpressionaux() <em>Expressionaux</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getExpressionaux()
+   * @generated
+   * @ordered
+   */
+  protected EList<expressionaux> expressionaux;
+
   /**
    * The cached value of the '{@link #getPrimaryexpr() <em>Primaryexpr</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -39,6 +60,36 @@ public class unaryexprImpl extends expressionImpl implements unaryexpr
    * @ordered
    */
   protected primaryexpr primaryexpr;
+
+  /**
+   * The default value of the '{@link #getUNARY_OP() <em>UNARY OP</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getUNARY_OP()
+   * @generated
+   * @ordered
+   */
+  protected static final String UNARY_OP_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getUNARY_OP() <em>UNARY OP</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getUNARY_OP()
+   * @generated
+   * @ordered
+   */
+  protected String unarY_OP = UNARY_OP_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getUnaryexpr() <em>Unaryexpr</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getUnaryexpr()
+   * @generated
+   * @ordered
+   */
+  protected unaryexpr unaryexpr;
 
   /**
    * <!-- begin-user-doc -->
@@ -59,6 +110,20 @@ public class unaryexprImpl extends expressionImpl implements unaryexpr
   protected EClass eStaticClass()
   {
     return MyDslPackage.Literals.UNARYEXPR;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<expressionaux> getExpressionaux()
+  {
+    if (expressionaux == null)
+    {
+      expressionaux = new EObjectContainmentEList<expressionaux>(expressionaux.class, this, MyDslPackage.UNARYEXPR__EXPRESSIONAUX);
+    }
+    return expressionaux;
   }
 
   /**
@@ -114,13 +179,88 @@ public class unaryexprImpl extends expressionImpl implements unaryexpr
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getUNARY_OP()
+  {
+    return unarY_OP;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setUNARY_OP(String newUNARY_OP)
+  {
+    String oldUNARY_OP = unarY_OP;
+    unarY_OP = newUNARY_OP;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.UNARYEXPR__UNARY_OP, oldUNARY_OP, unarY_OP));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public unaryexpr getUnaryexpr()
+  {
+    return unaryexpr;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetUnaryexpr(unaryexpr newUnaryexpr, NotificationChain msgs)
+  {
+    unaryexpr oldUnaryexpr = unaryexpr;
+    unaryexpr = newUnaryexpr;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.UNARYEXPR__UNARYEXPR, oldUnaryexpr, newUnaryexpr);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setUnaryexpr(unaryexpr newUnaryexpr)
+  {
+    if (newUnaryexpr != unaryexpr)
+    {
+      NotificationChain msgs = null;
+      if (unaryexpr != null)
+        msgs = ((InternalEObject)unaryexpr).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.UNARYEXPR__UNARYEXPR, null, msgs);
+      if (newUnaryexpr != null)
+        msgs = ((InternalEObject)newUnaryexpr).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.UNARYEXPR__UNARYEXPR, null, msgs);
+      msgs = basicSetUnaryexpr(newUnaryexpr, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.UNARYEXPR__UNARYEXPR, newUnaryexpr, newUnaryexpr));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
     switch (featureID)
     {
+      case MyDslPackage.UNARYEXPR__EXPRESSIONAUX:
+        return ((InternalEList<?>)getExpressionaux()).basicRemove(otherEnd, msgs);
       case MyDslPackage.UNARYEXPR__PRIMARYEXPR:
         return basicSetPrimaryexpr(null, msgs);
+      case MyDslPackage.UNARYEXPR__UNARYEXPR:
+        return basicSetUnaryexpr(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -135,8 +275,14 @@ public class unaryexprImpl extends expressionImpl implements unaryexpr
   {
     switch (featureID)
     {
+      case MyDslPackage.UNARYEXPR__EXPRESSIONAUX:
+        return getExpressionaux();
       case MyDslPackage.UNARYEXPR__PRIMARYEXPR:
         return getPrimaryexpr();
+      case MyDslPackage.UNARYEXPR__UNARY_OP:
+        return getUNARY_OP();
+      case MyDslPackage.UNARYEXPR__UNARYEXPR:
+        return getUnaryexpr();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -146,13 +292,24 @@ public class unaryexprImpl extends expressionImpl implements unaryexpr
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
+      case MyDslPackage.UNARYEXPR__EXPRESSIONAUX:
+        getExpressionaux().clear();
+        getExpressionaux().addAll((Collection<? extends expressionaux>)newValue);
+        return;
       case MyDslPackage.UNARYEXPR__PRIMARYEXPR:
         setPrimaryexpr((primaryexpr)newValue);
+        return;
+      case MyDslPackage.UNARYEXPR__UNARY_OP:
+        setUNARY_OP((String)newValue);
+        return;
+      case MyDslPackage.UNARYEXPR__UNARYEXPR:
+        setUnaryexpr((unaryexpr)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -168,8 +325,17 @@ public class unaryexprImpl extends expressionImpl implements unaryexpr
   {
     switch (featureID)
     {
+      case MyDslPackage.UNARYEXPR__EXPRESSIONAUX:
+        getExpressionaux().clear();
+        return;
       case MyDslPackage.UNARYEXPR__PRIMARYEXPR:
         setPrimaryexpr((primaryexpr)null);
+        return;
+      case MyDslPackage.UNARYEXPR__UNARY_OP:
+        setUNARY_OP(UNARY_OP_EDEFAULT);
+        return;
+      case MyDslPackage.UNARYEXPR__UNARYEXPR:
+        setUnaryexpr((unaryexpr)null);
         return;
     }
     super.eUnset(featureID);
@@ -185,10 +351,33 @@ public class unaryexprImpl extends expressionImpl implements unaryexpr
   {
     switch (featureID)
     {
+      case MyDslPackage.UNARYEXPR__EXPRESSIONAUX:
+        return expressionaux != null && !expressionaux.isEmpty();
       case MyDslPackage.UNARYEXPR__PRIMARYEXPR:
         return primaryexpr != null;
+      case MyDslPackage.UNARYEXPR__UNARY_OP:
+        return UNARY_OP_EDEFAULT == null ? unarY_OP != null : !UNARY_OP_EDEFAULT.equals(unarY_OP);
+      case MyDslPackage.UNARYEXPR__UNARYEXPR:
+        return unaryexpr != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (UNARY_OP: ");
+    result.append(unarY_OP);
+    result.append(')');
+    return result.toString();
   }
 
 } //unaryexprImpl

@@ -19,19 +19,19 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
-import org.xtext.example.mydsl.myDsl.conversion;
+import org.xtext.example.mydsl.myDsl.block;
+import org.xtext.example.mydsl.myDsl.channel;
+import org.xtext.example.mydsl.myDsl.condition;
+import org.xtext.example.mydsl.myDsl.deferstmt;
 import org.xtext.example.mydsl.myDsl.element;
-import org.xtext.example.mydsl.myDsl.elementlist;
 import org.xtext.example.mydsl.myDsl.expression;
-import org.xtext.example.mydsl.myDsl.expressionaux;
 import org.xtext.example.mydsl.myDsl.expressionlist;
-import org.xtext.example.mydsl.myDsl.index;
-import org.xtext.example.mydsl.myDsl.key;
-import org.xtext.example.mydsl.myDsl.keyedelement;
-import org.xtext.example.mydsl.myDsl.operand;
-import org.xtext.example.mydsl.myDsl.primaryexpr;
-import org.xtext.example.mydsl.myDsl.primaryexpraux;
-import org.xtext.example.mydsl.myDsl.slice;
+import org.xtext.example.mydsl.myDsl.expressionstmt;
+import org.xtext.example.mydsl.myDsl.forstmt;
+import org.xtext.example.mydsl.myDsl.gotstmt;
+import org.xtext.example.mydsl.myDsl.incdecstmt;
+import org.xtext.example.mydsl.myDsl.recvexpr;
+import org.xtext.example.mydsl.myDsl.recvstmt;
 
 /**
  * <!-- begin-user-doc -->
@@ -41,26 +41,55 @@ import org.xtext.example.mydsl.myDsl.slice;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.expressionImpl#getPrimaryexpraux <em>Primaryexpraux</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.expressionImpl#getBlock <em>Block</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.expressionImpl#getIdentifierlist <em>Identifierlist</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.expressionImpl#getRecvexpr <em>Recvexpr</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.expressionImpl#getExpression <em>Expression</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.expressionImpl#getKeyedelement <em>Keyedelement</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.expressionImpl#getElement <em>Element</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.expressionImpl#getExpressionaux <em>Expressionaux</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class expressionImpl extends expressionauxImpl implements expression
+public class expressionImpl extends indexImpl implements expression
 {
   /**
-   * The cached value of the '{@link #getPrimaryexpraux() <em>Primaryexpraux</em>}' containment reference.
+   * The cached value of the '{@link #getBlock() <em>Block</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getPrimaryexpraux()
+   * @see #getBlock()
    * @generated
    * @ordered
    */
-  protected primaryexpraux primaryexpraux;
+  protected block block;
+
+  /**
+   * The default value of the '{@link #getIdentifierlist() <em>Identifierlist</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getIdentifierlist()
+   * @generated
+   * @ordered
+   */
+  protected static final String IDENTIFIERLIST_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getIdentifierlist() <em>Identifierlist</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getIdentifierlist()
+   * @generated
+   * @ordered
+   */
+  protected String identifierlist = IDENTIFIERLIST_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getRecvexpr() <em>Recvexpr</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRecvexpr()
+   * @generated
+   * @ordered
+   */
+  protected recvexpr recvexpr;
 
   /**
    * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference list.
@@ -71,36 +100,6 @@ public class expressionImpl extends expressionauxImpl implements expression
    * @ordered
    */
   protected EList<expression> expression;
-
-  /**
-   * The cached value of the '{@link #getKeyedelement() <em>Keyedelement</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getKeyedelement()
-   * @generated
-   * @ordered
-   */
-  protected EList<keyedelement> keyedelement;
-
-  /**
-   * The cached value of the '{@link #getElement() <em>Element</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getElement()
-   * @generated
-   * @ordered
-   */
-  protected element element;
-
-  /**
-   * The cached value of the '{@link #getExpressionaux() <em>Expressionaux</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getExpressionaux()
-   * @generated
-   * @ordered
-   */
-  protected EList<expressionaux> expressionaux;
 
   /**
    * <!-- begin-user-doc -->
@@ -128,9 +127,9 @@ public class expressionImpl extends expressionauxImpl implements expression
    * <!-- end-user-doc -->
    * @generated
    */
-  public primaryexpraux getPrimaryexpraux()
+  public block getBlock()
   {
-    return primaryexpraux;
+    return block;
   }
 
   /**
@@ -138,13 +137,13 @@ public class expressionImpl extends expressionauxImpl implements expression
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetPrimaryexpraux(primaryexpraux newPrimaryexpraux, NotificationChain msgs)
+  public NotificationChain basicSetBlock(block newBlock, NotificationChain msgs)
   {
-    primaryexpraux oldPrimaryexpraux = primaryexpraux;
-    primaryexpraux = newPrimaryexpraux;
+    block oldBlock = block;
+    block = newBlock;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.EXPRESSION__PRIMARYEXPRAUX, oldPrimaryexpraux, newPrimaryexpraux);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.EXPRESSION__BLOCK, oldBlock, newBlock);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -155,20 +154,91 @@ public class expressionImpl extends expressionauxImpl implements expression
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setPrimaryexpraux(primaryexpraux newPrimaryexpraux)
+  public void setBlock(block newBlock)
   {
-    if (newPrimaryexpraux != primaryexpraux)
+    if (newBlock != block)
     {
       NotificationChain msgs = null;
-      if (primaryexpraux != null)
-        msgs = ((InternalEObject)primaryexpraux).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.EXPRESSION__PRIMARYEXPRAUX, null, msgs);
-      if (newPrimaryexpraux != null)
-        msgs = ((InternalEObject)newPrimaryexpraux).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.EXPRESSION__PRIMARYEXPRAUX, null, msgs);
-      msgs = basicSetPrimaryexpraux(newPrimaryexpraux, msgs);
+      if (block != null)
+        msgs = ((InternalEObject)block).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.EXPRESSION__BLOCK, null, msgs);
+      if (newBlock != null)
+        msgs = ((InternalEObject)newBlock).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.EXPRESSION__BLOCK, null, msgs);
+      msgs = basicSetBlock(newBlock, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.EXPRESSION__PRIMARYEXPRAUX, newPrimaryexpraux, newPrimaryexpraux));
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.EXPRESSION__BLOCK, newBlock, newBlock));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getIdentifierlist()
+  {
+    return identifierlist;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setIdentifierlist(String newIdentifierlist)
+  {
+    String oldIdentifierlist = identifierlist;
+    identifierlist = newIdentifierlist;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.EXPRESSION__IDENTIFIERLIST, oldIdentifierlist, identifierlist));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public recvexpr getRecvexpr()
+  {
+    return recvexpr;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetRecvexpr(recvexpr newRecvexpr, NotificationChain msgs)
+  {
+    recvexpr oldRecvexpr = recvexpr;
+    recvexpr = newRecvexpr;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.EXPRESSION__RECVEXPR, oldRecvexpr, newRecvexpr);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setRecvexpr(recvexpr newRecvexpr)
+  {
+    if (newRecvexpr != recvexpr)
+    {
+      NotificationChain msgs = null;
+      if (recvexpr != null)
+        msgs = ((InternalEObject)recvexpr).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.EXPRESSION__RECVEXPR, null, msgs);
+      if (newRecvexpr != null)
+        msgs = ((InternalEObject)newRecvexpr).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.EXPRESSION__RECVEXPR, null, msgs);
+      msgs = basicSetRecvexpr(newRecvexpr, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.EXPRESSION__RECVEXPR, newRecvexpr, newRecvexpr));
   }
 
   /**
@@ -190,97 +260,17 @@ public class expressionImpl extends expressionauxImpl implements expression
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<keyedelement> getKeyedelement()
-  {
-    if (keyedelement == null)
-    {
-      keyedelement = new EObjectContainmentEList<keyedelement>(keyedelement.class, this, MyDslPackage.EXPRESSION__KEYEDELEMENT);
-    }
-    return keyedelement;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public element getElement()
-  {
-    return element;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetElement(element newElement, NotificationChain msgs)
-  {
-    element oldElement = element;
-    element = newElement;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.EXPRESSION__ELEMENT, oldElement, newElement);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setElement(element newElement)
-  {
-    if (newElement != element)
-    {
-      NotificationChain msgs = null;
-      if (element != null)
-        msgs = ((InternalEObject)element).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.EXPRESSION__ELEMENT, null, msgs);
-      if (newElement != null)
-        msgs = ((InternalEObject)newElement).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.EXPRESSION__ELEMENT, null, msgs);
-      msgs = basicSetElement(newElement, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.EXPRESSION__ELEMENT, newElement, newElement));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<expressionaux> getExpressionaux()
-  {
-    if (expressionaux == null)
-    {
-      expressionaux = new EObjectContainmentEList<expressionaux>(expressionaux.class, this, MyDslPackage.EXPRESSION__EXPRESSIONAUX);
-    }
-    return expressionaux;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
     switch (featureID)
     {
-      case MyDslPackage.EXPRESSION__PRIMARYEXPRAUX:
-        return basicSetPrimaryexpraux(null, msgs);
+      case MyDslPackage.EXPRESSION__BLOCK:
+        return basicSetBlock(null, msgs);
+      case MyDslPackage.EXPRESSION__RECVEXPR:
+        return basicSetRecvexpr(null, msgs);
       case MyDslPackage.EXPRESSION__EXPRESSION:
         return ((InternalEList<?>)getExpression()).basicRemove(otherEnd, msgs);
-      case MyDslPackage.EXPRESSION__KEYEDELEMENT:
-        return ((InternalEList<?>)getKeyedelement()).basicRemove(otherEnd, msgs);
-      case MyDslPackage.EXPRESSION__ELEMENT:
-        return basicSetElement(null, msgs);
-      case MyDslPackage.EXPRESSION__EXPRESSIONAUX:
-        return ((InternalEList<?>)getExpressionaux()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -295,16 +285,14 @@ public class expressionImpl extends expressionauxImpl implements expression
   {
     switch (featureID)
     {
-      case MyDslPackage.EXPRESSION__PRIMARYEXPRAUX:
-        return getPrimaryexpraux();
+      case MyDslPackage.EXPRESSION__BLOCK:
+        return getBlock();
+      case MyDslPackage.EXPRESSION__IDENTIFIERLIST:
+        return getIdentifierlist();
+      case MyDslPackage.EXPRESSION__RECVEXPR:
+        return getRecvexpr();
       case MyDslPackage.EXPRESSION__EXPRESSION:
         return getExpression();
-      case MyDslPackage.EXPRESSION__KEYEDELEMENT:
-        return getKeyedelement();
-      case MyDslPackage.EXPRESSION__ELEMENT:
-        return getElement();
-      case MyDslPackage.EXPRESSION__EXPRESSIONAUX:
-        return getExpressionaux();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -320,23 +308,18 @@ public class expressionImpl extends expressionauxImpl implements expression
   {
     switch (featureID)
     {
-      case MyDslPackage.EXPRESSION__PRIMARYEXPRAUX:
-        setPrimaryexpraux((primaryexpraux)newValue);
+      case MyDslPackage.EXPRESSION__BLOCK:
+        setBlock((block)newValue);
+        return;
+      case MyDslPackage.EXPRESSION__IDENTIFIERLIST:
+        setIdentifierlist((String)newValue);
+        return;
+      case MyDslPackage.EXPRESSION__RECVEXPR:
+        setRecvexpr((recvexpr)newValue);
         return;
       case MyDslPackage.EXPRESSION__EXPRESSION:
         getExpression().clear();
         getExpression().addAll((Collection<? extends expression>)newValue);
-        return;
-      case MyDslPackage.EXPRESSION__KEYEDELEMENT:
-        getKeyedelement().clear();
-        getKeyedelement().addAll((Collection<? extends keyedelement>)newValue);
-        return;
-      case MyDslPackage.EXPRESSION__ELEMENT:
-        setElement((element)newValue);
-        return;
-      case MyDslPackage.EXPRESSION__EXPRESSIONAUX:
-        getExpressionaux().clear();
-        getExpressionaux().addAll((Collection<? extends expressionaux>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -352,20 +335,17 @@ public class expressionImpl extends expressionauxImpl implements expression
   {
     switch (featureID)
     {
-      case MyDslPackage.EXPRESSION__PRIMARYEXPRAUX:
-        setPrimaryexpraux((primaryexpraux)null);
+      case MyDslPackage.EXPRESSION__BLOCK:
+        setBlock((block)null);
+        return;
+      case MyDslPackage.EXPRESSION__IDENTIFIERLIST:
+        setIdentifierlist(IDENTIFIERLIST_EDEFAULT);
+        return;
+      case MyDslPackage.EXPRESSION__RECVEXPR:
+        setRecvexpr((recvexpr)null);
         return;
       case MyDslPackage.EXPRESSION__EXPRESSION:
         getExpression().clear();
-        return;
-      case MyDslPackage.EXPRESSION__KEYEDELEMENT:
-        getKeyedelement().clear();
-        return;
-      case MyDslPackage.EXPRESSION__ELEMENT:
-        setElement((element)null);
-        return;
-      case MyDslPackage.EXPRESSION__EXPRESSIONAUX:
-        getExpressionaux().clear();
         return;
     }
     super.eUnset(featureID);
@@ -381,16 +361,14 @@ public class expressionImpl extends expressionauxImpl implements expression
   {
     switch (featureID)
     {
-      case MyDslPackage.EXPRESSION__PRIMARYEXPRAUX:
-        return primaryexpraux != null;
+      case MyDslPackage.EXPRESSION__BLOCK:
+        return block != null;
+      case MyDslPackage.EXPRESSION__IDENTIFIERLIST:
+        return IDENTIFIERLIST_EDEFAULT == null ? identifierlist != null : !IDENTIFIERLIST_EDEFAULT.equals(identifierlist);
+      case MyDslPackage.EXPRESSION__RECVEXPR:
+        return recvexpr != null;
       case MyDslPackage.EXPRESSION__EXPRESSION:
         return expression != null && !expression.isEmpty();
-      case MyDslPackage.EXPRESSION__KEYEDELEMENT:
-        return keyedelement != null && !keyedelement.isEmpty();
-      case MyDslPackage.EXPRESSION__ELEMENT:
-        return element != null;
-      case MyDslPackage.EXPRESSION__EXPRESSIONAUX:
-        return expressionaux != null && !expressionaux.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -403,77 +381,76 @@ public class expressionImpl extends expressionauxImpl implements expression
   @Override
   public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
   {
-    if (baseClass == primaryexpr.class)
-    {
-      switch (derivedFeatureID)
-      {
-        case MyDslPackage.EXPRESSION__PRIMARYEXPRAUX: return MyDslPackage.PRIMARYEXPR__PRIMARYEXPRAUX;
-        default: return -1;
-      }
-    }
-    if (baseClass == primaryexpraux.class)
-    {
-      switch (derivedFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == index.class)
-    {
-      switch (derivedFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == slice.class)
-    {
-      switch (derivedFeatureID)
-      {
-        case MyDslPackage.EXPRESSION__EXPRESSION: return MyDslPackage.SLICE__EXPRESSION;
-        default: return -1;
-      }
-    }
-    if (baseClass == conversion.class)
-    {
-      switch (derivedFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == operand.class)
-    {
-      switch (derivedFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == elementlist.class)
-    {
-      switch (derivedFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == keyedelement.class)
-    {
-      switch (derivedFeatureID)
-      {
-        case MyDslPackage.EXPRESSION__KEYEDELEMENT: return MyDslPackage.KEYEDELEMENT__KEYEDELEMENT;
-        case MyDslPackage.EXPRESSION__ELEMENT: return MyDslPackage.KEYEDELEMENT__ELEMENT;
-        default: return -1;
-      }
-    }
-    if (baseClass == key.class)
-    {
-      switch (derivedFeatureID)
-      {
-        default: return -1;
-      }
-    }
     if (baseClass == element.class)
     {
       switch (derivedFeatureID)
       {
+        default: return -1;
+      }
+    }
+    if (baseClass == deferstmt.class)
+    {
+      switch (derivedFeatureID)
+      {
+        default: return -1;
+      }
+    }
+    if (baseClass == recvexpr.class)
+    {
+      switch (derivedFeatureID)
+      {
+        default: return -1;
+      }
+    }
+    if (baseClass == gotstmt.class)
+    {
+      switch (derivedFeatureID)
+      {
+        default: return -1;
+      }
+    }
+    if (baseClass == forstmt.class)
+    {
+      switch (derivedFeatureID)
+      {
+        case MyDslPackage.EXPRESSION__BLOCK: return MyDslPackage.FORSTMT__BLOCK;
+        default: return -1;
+      }
+    }
+    if (baseClass == condition.class)
+    {
+      switch (derivedFeatureID)
+      {
+        default: return -1;
+      }
+    }
+    if (baseClass == incdecstmt.class)
+    {
+      switch (derivedFeatureID)
+      {
+        default: return -1;
+      }
+    }
+    if (baseClass == channel.class)
+    {
+      switch (derivedFeatureID)
+      {
+        default: return -1;
+      }
+    }
+    if (baseClass == expressionstmt.class)
+    {
+      switch (derivedFeatureID)
+      {
+        default: return -1;
+      }
+    }
+    if (baseClass == recvstmt.class)
+    {
+      switch (derivedFeatureID)
+      {
+        case MyDslPackage.EXPRESSION__IDENTIFIERLIST: return MyDslPackage.RECVSTMT__IDENTIFIERLIST;
+        case MyDslPackage.EXPRESSION__RECVEXPR: return MyDslPackage.RECVSTMT__RECVEXPR;
         default: return -1;
       }
     }
@@ -495,77 +472,76 @@ public class expressionImpl extends expressionauxImpl implements expression
   @Override
   public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
   {
-    if (baseClass == primaryexpr.class)
-    {
-      switch (baseFeatureID)
-      {
-        case MyDslPackage.PRIMARYEXPR__PRIMARYEXPRAUX: return MyDslPackage.EXPRESSION__PRIMARYEXPRAUX;
-        default: return -1;
-      }
-    }
-    if (baseClass == primaryexpraux.class)
-    {
-      switch (baseFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == index.class)
-    {
-      switch (baseFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == slice.class)
-    {
-      switch (baseFeatureID)
-      {
-        case MyDslPackage.SLICE__EXPRESSION: return MyDslPackage.EXPRESSION__EXPRESSION;
-        default: return -1;
-      }
-    }
-    if (baseClass == conversion.class)
-    {
-      switch (baseFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == operand.class)
-    {
-      switch (baseFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == elementlist.class)
-    {
-      switch (baseFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == keyedelement.class)
-    {
-      switch (baseFeatureID)
-      {
-        case MyDslPackage.KEYEDELEMENT__KEYEDELEMENT: return MyDslPackage.EXPRESSION__KEYEDELEMENT;
-        case MyDslPackage.KEYEDELEMENT__ELEMENT: return MyDslPackage.EXPRESSION__ELEMENT;
-        default: return -1;
-      }
-    }
-    if (baseClass == key.class)
-    {
-      switch (baseFeatureID)
-      {
-        default: return -1;
-      }
-    }
     if (baseClass == element.class)
     {
       switch (baseFeatureID)
       {
+        default: return -1;
+      }
+    }
+    if (baseClass == deferstmt.class)
+    {
+      switch (baseFeatureID)
+      {
+        default: return -1;
+      }
+    }
+    if (baseClass == recvexpr.class)
+    {
+      switch (baseFeatureID)
+      {
+        default: return -1;
+      }
+    }
+    if (baseClass == gotstmt.class)
+    {
+      switch (baseFeatureID)
+      {
+        default: return -1;
+      }
+    }
+    if (baseClass == forstmt.class)
+    {
+      switch (baseFeatureID)
+      {
+        case MyDslPackage.FORSTMT__BLOCK: return MyDslPackage.EXPRESSION__BLOCK;
+        default: return -1;
+      }
+    }
+    if (baseClass == condition.class)
+    {
+      switch (baseFeatureID)
+      {
+        default: return -1;
+      }
+    }
+    if (baseClass == incdecstmt.class)
+    {
+      switch (baseFeatureID)
+      {
+        default: return -1;
+      }
+    }
+    if (baseClass == channel.class)
+    {
+      switch (baseFeatureID)
+      {
+        default: return -1;
+      }
+    }
+    if (baseClass == expressionstmt.class)
+    {
+      switch (baseFeatureID)
+      {
+        default: return -1;
+      }
+    }
+    if (baseClass == recvstmt.class)
+    {
+      switch (baseFeatureID)
+      {
+        case MyDslPackage.RECVSTMT__IDENTIFIERLIST: return MyDslPackage.EXPRESSION__IDENTIFIERLIST;
+        case MyDslPackage.RECVSTMT__RECVEXPR: return MyDslPackage.EXPRESSION__RECVEXPR;
         default: return -1;
       }
     }
@@ -577,6 +553,23 @@ public class expressionImpl extends expressionauxImpl implements expression
       }
     }
     return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (identifierlist: ");
+    result.append(identifierlist);
+    result.append(')');
+    return result.toString();
   }
 
 } //expressionImpl

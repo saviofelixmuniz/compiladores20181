@@ -14,29 +14,29 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.expression#getExpressionaux <em>Expressionaux</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.expression#getExpression <em>Expression</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getexpression()
  * @model
  * @generated
  */
-public interface expression extends expressionaux, index, slice, conversion, operand, key, element, expressionlist
+public interface expression extends index, element, deferstmt, recvexpr, gotstmt, condition, incdecstmt, channel, expressionstmt, expressionlist
 {
   /**
-   * Returns the value of the '<em><b>Expressionaux</b></em>' containment reference list.
-   * The list contents are of type {@link org.xtext.example.mydsl.myDsl.expressionaux}.
+   * Returns the value of the '<em><b>Expression</b></em>' containment reference list.
+   * The list contents are of type {@link org.xtext.example.mydsl.myDsl.expression}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Expressionaux</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Expression</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Expressionaux</em>' containment reference list.
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getexpression_Expressionaux()
+   * @return the value of the '<em>Expression</em>' containment reference list.
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getexpression_Expression()
    * @model containment="true"
    * @generated
    */
-  EList<expressionaux> getExpressionaux();
+  EList<expression> getExpression();
 
 } // expression

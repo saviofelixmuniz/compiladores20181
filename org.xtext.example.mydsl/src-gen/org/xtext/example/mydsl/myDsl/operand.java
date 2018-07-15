@@ -3,17 +3,104 @@
  */
 package org.xtext.example.mydsl.myDsl;
 
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>operand</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.operand#getExpression <em>Expression</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.operand#getLiteral <em>Literal</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.operand#getOperandname <em>Operandname</em>}</li>
+ * </ul>
  *
  * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getoperand()
  * @model
  * @generated
  */
-public interface operand extends primaryexpr
+public interface operand extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Expression</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Expression</em>' containment reference.
+   * @see #setExpression(expression)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getoperand_Expression()
+   * @model containment="true"
+   * @generated
+   */
+  expression getExpression();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.operand#getExpression <em>Expression</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Expression</em>' containment reference.
+   * @see #getExpression()
+   * @generated
+   */
+  void setExpression(expression value);
+
+  /**
+   * Returns the value of the '<em><b>Literal</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Literal</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Literal</em>' containment reference.
+   * @see #setLiteral(literal)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getoperand_Literal()
+   * @model containment="true"
+   * @generated
+   */
+  literal getLiteral();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.operand#getLiteral <em>Literal</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Literal</em>' containment reference.
+   * @see #getLiteral()
+   * @generated
+   */
+  void setLiteral(literal value);
+
+  /**
+   * Returns the value of the '<em><b>Operandname</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Operandname</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Operandname</em>' attribute.
+   * @see #setOperandname(String)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getoperand_Operandname()
+   * @model
+   * @generated
+   */
+  String getOperandname();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.operand#getOperandname <em>Operandname</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Operandname</em>' attribute.
+   * @see #getOperandname()
+   * @generated
+   */
+  void setOperandname(String value);
+
 } // operand

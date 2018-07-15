@@ -12,6 +12,8 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -32,7 +34,7 @@ import org.xtext.example.mydsl.myDsl.slice;
  *
  * @generated
  */
-public class sliceImpl extends primaryexprauxImpl implements slice
+public class sliceImpl extends MinimalEObjectImpl.Container implements slice
 {
   /**
    * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference list.

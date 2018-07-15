@@ -20,7 +20,7 @@ package org.xtext.example.mydsl.myDsl;
  * @model
  * @generated
  */
-public interface literalvalue extends compositelit, key, element
+public interface literalvalue extends element
 {
   /**
    * Returns the value of the '<em><b>Elementlist</b></em>' containment reference.

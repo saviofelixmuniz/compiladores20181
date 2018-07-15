@@ -14,7 +14,10 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.primaryexpr#getOperand <em>Operand</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.primaryexpr#getPrimaryexpraux <em>Primaryexpraux</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.primaryexpr#getConversion <em>Conversion</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.primaryexpr#getMethodexpr <em>Methodexpr</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getprimaryexpr()
@@ -23,6 +26,32 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface primaryexpr extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Operand</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Operand</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Operand</em>' containment reference.
+   * @see #setOperand(operand)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getprimaryexpr_Operand()
+   * @model containment="true"
+   * @generated
+   */
+  operand getOperand();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.primaryexpr#getOperand <em>Operand</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Operand</em>' containment reference.
+   * @see #getOperand()
+   * @generated
+   */
+  void setOperand(operand value);
+
   /**
    * Returns the value of the '<em><b>Primaryexpraux</b></em>' containment reference.
    * <!-- begin-user-doc -->
@@ -48,5 +77,57 @@ public interface primaryexpr extends EObject
    * @generated
    */
   void setPrimaryexpraux(primaryexpraux value);
+
+  /**
+   * Returns the value of the '<em><b>Conversion</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Conversion</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Conversion</em>' containment reference.
+   * @see #setConversion(conversion)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getprimaryexpr_Conversion()
+   * @model containment="true"
+   * @generated
+   */
+  conversion getConversion();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.primaryexpr#getConversion <em>Conversion</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Conversion</em>' containment reference.
+   * @see #getConversion()
+   * @generated
+   */
+  void setConversion(conversion value);
+
+  /**
+   * Returns the value of the '<em><b>Methodexpr</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Methodexpr</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Methodexpr</em>' containment reference.
+   * @see #setMethodexpr(methodexpr)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getprimaryexpr_Methodexpr()
+   * @model containment="true"
+   * @generated
+   */
+  methodexpr getMethodexpr();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.primaryexpr#getMethodexpr <em>Methodexpr</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Methodexpr</em>' containment reference.
+   * @see #getMethodexpr()
+   * @generated
+   */
+  void setMethodexpr(methodexpr value);
 
 } // primaryexpr

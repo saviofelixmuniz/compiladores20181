@@ -24,175 +24,31 @@ public class MyDslSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected MyDslGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_arguments_CommaKeyword_2_2_q;
 	protected AbstractElementAlias match_arguments_FullStopFullStopFullStopKeyword_2_1_q;
-	protected AbstractElementAlias match_arguments___TypeParserRuleCall_2_0_1_0_FullStopFullStopFullStopKeyword_2_1_q_CommaKeyword_2_2_q__q;
+	protected AbstractElementAlias match_channeltype_ChanKeyword_0_0_or___ChanKeyword_0_1_0_LessThanSignHyphenMinusKeyword_0_1_1___or___LessThanSignHyphenMinusKeyword_0_2_0_ChanKeyword_0_2_1__;
 	protected AbstractElementAlias match_conversion_CommaKeyword_3_q;
-	protected AbstractElementAlias match_conversion_index_operand_primaryexpr_primaryexpraux_slice_LeftParenthesisKeyword_2_0_or___MethodexprParserRuleCall_2_0___SelectorParserRuleCall_0_0_or_TypeassertionParserRuleCall_3_0__a___LeftSquareBracketKeyword_0_or_LeftSquareBracketKeyword_1_0_____or___TypeParserRuleCall_0_LeftParenthesisKeyword_1__;
-	protected AbstractElementAlias match_index_slice_LeftSquareBracketKeyword_0_or_LeftSquareBracketKeyword_1_0;
+	protected AbstractElementAlias match_incdecstmt_HyphenMinusHyphenMinusKeyword_1_1_or_PlusSignPlusSignKeyword_1_0;
 	protected AbstractElementAlias match_literalvalue_CommaKeyword_2_1_q;
-	protected AbstractElementAlias match_operand_LiteralParserRuleCall_0_1_or_OperandnameParserRuleCall_1_1;
-	protected AbstractElementAlias match_primaryexpraux___SelectorParserRuleCall_0_0_or_TypeassertionParserRuleCall_3_0__a;
-	protected AbstractElementAlias match_unaryexpr_UNARY_OPTerminalRuleCall_1_0_a;
+	protected AbstractElementAlias match_parameterdecl_FullStopFullStopFullStopKeyword_1_q;
+	protected AbstractElementAlias match_parameters_CommaKeyword_2_1_q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (MyDslGrammarAccess) access;
 		match_arguments_CommaKeyword_2_2_q = new TokenAlias(false, true, grammarAccess.getArgumentsAccess().getCommaKeyword_2_2());
 		match_arguments_FullStopFullStopFullStopKeyword_2_1_q = new TokenAlias(false, true, grammarAccess.getArgumentsAccess().getFullStopFullStopFullStopKeyword_2_1());
-		match_arguments___TypeParserRuleCall_2_0_1_0_FullStopFullStopFullStopKeyword_2_1_q_CommaKeyword_2_2_q__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getArgumentsAccess().getTypeParserRuleCall_2_0_1_0()), new TokenAlias(false, true, grammarAccess.getArgumentsAccess().getFullStopFullStopFullStopKeyword_2_1()), new TokenAlias(false, true, grammarAccess.getArgumentsAccess().getCommaKeyword_2_2()));
+		match_channeltype_ChanKeyword_0_0_or___ChanKeyword_0_1_0_LessThanSignHyphenMinusKeyword_0_1_1___or___LessThanSignHyphenMinusKeyword_0_2_0_ChanKeyword_0_2_1__ = new AlternativeAlias(false, false, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getChanneltypeAccess().getChanKeyword_0_1_0()), new TokenAlias(false, false, grammarAccess.getChanneltypeAccess().getLessThanSignHyphenMinusKeyword_0_1_1())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getChanneltypeAccess().getLessThanSignHyphenMinusKeyword_0_2_0()), new TokenAlias(false, false, grammarAccess.getChanneltypeAccess().getChanKeyword_0_2_1())), new TokenAlias(false, false, grammarAccess.getChanneltypeAccess().getChanKeyword_0_0()));
 		match_conversion_CommaKeyword_3_q = new TokenAlias(false, true, grammarAccess.getConversionAccess().getCommaKeyword_3());
-		match_conversion_index_operand_primaryexpr_primaryexpraux_slice_LeftParenthesisKeyword_2_0_or___MethodexprParserRuleCall_2_0___SelectorParserRuleCall_0_0_or_TypeassertionParserRuleCall_3_0__a___LeftSquareBracketKeyword_0_or_LeftSquareBracketKeyword_1_0_____or___TypeParserRuleCall_0_LeftParenthesisKeyword_1__ = new AlternativeAlias(false, false, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getConversionAccess().getTypeParserRuleCall_0()), new TokenAlias(false, false, grammarAccess.getConversionAccess().getLeftParenthesisKeyword_1())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getPrimaryexprAccess().getMethodexprParserRuleCall_2_0()), new AlternativeAlias(true, true, new TokenAlias(false, false, grammarAccess.getPrimaryexprauxAccess().getSelectorParserRuleCall_0_0()), new TokenAlias(false, false, grammarAccess.getPrimaryexprauxAccess().getTypeassertionParserRuleCall_3_0())), new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getIndexAccess().getLeftSquareBracketKeyword_0()), new TokenAlias(false, false, grammarAccess.getSliceAccess().getLeftSquareBracketKeyword_1_0()))), new TokenAlias(false, false, grammarAccess.getOperandAccess().getLeftParenthesisKeyword_2_0()));
-		match_index_slice_LeftSquareBracketKeyword_0_or_LeftSquareBracketKeyword_1_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getIndexAccess().getLeftSquareBracketKeyword_0()), new TokenAlias(false, false, grammarAccess.getSliceAccess().getLeftSquareBracketKeyword_1_0()));
+		match_incdecstmt_HyphenMinusHyphenMinusKeyword_1_1_or_PlusSignPlusSignKeyword_1_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getIncdecstmtAccess().getHyphenMinusHyphenMinusKeyword_1_1()), new TokenAlias(false, false, grammarAccess.getIncdecstmtAccess().getPlusSignPlusSignKeyword_1_0()));
 		match_literalvalue_CommaKeyword_2_1_q = new TokenAlias(false, true, grammarAccess.getLiteralvalueAccess().getCommaKeyword_2_1());
-		match_operand_LiteralParserRuleCall_0_1_or_OperandnameParserRuleCall_1_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getOperandAccess().getLiteralParserRuleCall_0_1()), new TokenAlias(false, false, grammarAccess.getOperandAccess().getOperandnameParserRuleCall_1_1()));
-		match_primaryexpraux___SelectorParserRuleCall_0_0_or_TypeassertionParserRuleCall_3_0__a = new AlternativeAlias(true, true, new TokenAlias(false, false, grammarAccess.getPrimaryexprauxAccess().getSelectorParserRuleCall_0_0()), new TokenAlias(false, false, grammarAccess.getPrimaryexprauxAccess().getTypeassertionParserRuleCall_3_0()));
-		match_unaryexpr_UNARY_OPTerminalRuleCall_1_0_a = new TokenAlias(true, true, grammarAccess.getUnaryexprAccess().getUNARY_OPTerminalRuleCall_1_0());
+		match_parameterdecl_FullStopFullStopFullStopKeyword_1_q = new TokenAlias(false, true, grammarAccess.getParameterdeclAccess().getFullStopFullStopFullStopKeyword_1());
+		match_parameters_CommaKeyword_2_1_q = new TokenAlias(false, true, grammarAccess.getParametersAccess().getCommaKeyword_2_1());
 	}
 	
 	@Override
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (ruleCall.getRule() == grammarAccess.getANY_OTHERRule())
-			return getANY_OTHERToken(semanticObject, ruleCall, node);
-		else if (ruleCall.getRule() == grammarAccess.getBINARY_OPRule())
-			return getBINARY_OPToken(semanticObject, ruleCall, node);
-		else if (ruleCall.getRule() == grammarAccess.getUNARY_OPRule())
-			return getUNARY_OPToken(semanticObject, ruleCall, node);
-		else if (ruleCall.getRule() == grammarAccess.getFieldnameRule())
-			return getfieldnameToken(semanticObject, ruleCall, node);
-		else if (ruleCall.getRule() == grammarAccess.getLiteralRule())
-			return getliteralToken(semanticObject, ruleCall, node);
-		else if (ruleCall.getRule() == grammarAccess.getLiteraltypeRule())
-			return getliteraltypeToken(semanticObject, ruleCall, node);
-		else if (ruleCall.getRule() == grammarAccess.getMethodexprRule())
-			return getmethodexprToken(semanticObject, ruleCall, node);
-		else if (ruleCall.getRule() == grammarAccess.getOperandnameRule())
-			return getoperandnameToken(semanticObject, ruleCall, node);
-		else if (ruleCall.getRule() == grammarAccess.getSelectorRule())
-			return getselectorToken(semanticObject, ruleCall, node);
-		else if (ruleCall.getRule() == grammarAccess.getTypeRule())
-			return gettypeToken(semanticObject, ruleCall, node);
-		else if (ruleCall.getRule() == grammarAccess.getTypeassertionRule())
-			return gettypeassertionToken(semanticObject, ruleCall, node);
 		return "";
 	}
 	
-	/**
-	 * terminal ANY_OTHER: .;
-	 */
-	protected String getANY_OTHERToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "";
-	}
-	
-	/**
-	 * terminal BINARY_OP:
-	 * 	"||" | "&&" | REL_OP | ADD_OP | MUL_OP
-	 * ;
-	 */
-	protected String getBINARY_OPToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "||";
-	}
-	
-	/**
-	 * terminal UNARY_OP:
-	 * 	"+" | "-" | "!" | "^" | "*" | "&" | "<-"
-	 * ;
-	 */
-	protected String getUNARY_OPToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "+";
-	}
-	
-	/**
-	 * fieldname:
-	 * 	IDENTIFIER
-	 * ;
-	 */
-	protected String getfieldnameToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "";
-	}
-	
-	/**
-	 * literal:
-	 * 	basiclit
-	 * ;
-	 */
-	protected String getliteralToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "";
-	}
-	
-	/**
-	 * literaltype:
-	 * 		structtype | "[" "..." "]" elementtype | slicetype | maptype | typename
-	 * ;
-	 */
-	protected String getliteraltypeToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "struct{}";
-	}
-	
-	/**
-	 * methodexpr:
-	 * 	receivertype "." methodname
-	 * ;
-	 */
-	protected String getmethodexprToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return ".";
-	}
-	
-	/**
-	 * operandname:
-	 * 	IDENTIFIER | qualified_ident
-	 * ;
-	 */
-	protected String getoperandnameToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "";
-	}
-	
-	/**
-	 * selector:
-	 * 	"." IDENTIFIER
-	 * ;
-	 */
-	protected String getselectorToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return ".";
-	}
-	
-	/**
-	 * type:
-	 * 		typename
-	 * ;
-	 */
-	protected String gettypeToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "";
-	}
-	
-	/**
-	 * typeassertion:
-	 * 	"." "(" type ")"
-	 * ;
-	 */
-	protected String gettypeassertionToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return ".()";
-	}
 	
 	@Override
 	protected void emitUnassignedTokens(EObject semanticObject, ISynTransition transition, INode fromNode, INode toNode) {
@@ -204,22 +60,18 @@ public class MyDslSyntacticSequencer extends AbstractSyntacticSequencer {
 				emit_arguments_CommaKeyword_2_2_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_arguments_FullStopFullStopFullStopKeyword_2_1_q.equals(syntax))
 				emit_arguments_FullStopFullStopFullStopKeyword_2_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_arguments___TypeParserRuleCall_2_0_1_0_FullStopFullStopFullStopKeyword_2_1_q_CommaKeyword_2_2_q__q.equals(syntax))
-				emit_arguments___TypeParserRuleCall_2_0_1_0_FullStopFullStopFullStopKeyword_2_1_q_CommaKeyword_2_2_q__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_channeltype_ChanKeyword_0_0_or___ChanKeyword_0_1_0_LessThanSignHyphenMinusKeyword_0_1_1___or___LessThanSignHyphenMinusKeyword_0_2_0_ChanKeyword_0_2_1__.equals(syntax))
+				emit_channeltype_ChanKeyword_0_0_or___ChanKeyword_0_1_0_LessThanSignHyphenMinusKeyword_0_1_1___or___LessThanSignHyphenMinusKeyword_0_2_0_ChanKeyword_0_2_1__(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_conversion_CommaKeyword_3_q.equals(syntax))
 				emit_conversion_CommaKeyword_3_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_conversion_index_operand_primaryexpr_primaryexpraux_slice_LeftParenthesisKeyword_2_0_or___MethodexprParserRuleCall_2_0___SelectorParserRuleCall_0_0_or_TypeassertionParserRuleCall_3_0__a___LeftSquareBracketKeyword_0_or_LeftSquareBracketKeyword_1_0_____or___TypeParserRuleCall_0_LeftParenthesisKeyword_1__.equals(syntax))
-				emit_conversion_index_operand_primaryexpr_primaryexpraux_slice_LeftParenthesisKeyword_2_0_or___MethodexprParserRuleCall_2_0___SelectorParserRuleCall_0_0_or_TypeassertionParserRuleCall_3_0__a___LeftSquareBracketKeyword_0_or_LeftSquareBracketKeyword_1_0_____or___TypeParserRuleCall_0_LeftParenthesisKeyword_1__(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_index_slice_LeftSquareBracketKeyword_0_or_LeftSquareBracketKeyword_1_0.equals(syntax))
-				emit_index_slice_LeftSquareBracketKeyword_0_or_LeftSquareBracketKeyword_1_0(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_incdecstmt_HyphenMinusHyphenMinusKeyword_1_1_or_PlusSignPlusSignKeyword_1_0.equals(syntax))
+				emit_incdecstmt_HyphenMinusHyphenMinusKeyword_1_1_or_PlusSignPlusSignKeyword_1_0(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_literalvalue_CommaKeyword_2_1_q.equals(syntax))
 				emit_literalvalue_CommaKeyword_2_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_operand_LiteralParserRuleCall_0_1_or_OperandnameParserRuleCall_1_1.equals(syntax))
-				emit_operand_LiteralParserRuleCall_0_1_or_OperandnameParserRuleCall_1_1(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_primaryexpraux___SelectorParserRuleCall_0_0_or_TypeassertionParserRuleCall_3_0__a.equals(syntax))
-				emit_primaryexpraux___SelectorParserRuleCall_0_0_or_TypeassertionParserRuleCall_3_0__a(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_unaryexpr_UNARY_OPTerminalRuleCall_1_0_a.equals(syntax))
-				emit_unaryexpr_UNARY_OPTerminalRuleCall_1_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_parameterdecl_FullStopFullStopFullStopKeyword_1_q.equals(syntax))
+				emit_parameterdecl_FullStopFullStopFullStopKeyword_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_parameters_CommaKeyword_2_1_q.equals(syntax))
+				emit_parameters_CommaKeyword_2_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
@@ -230,7 +82,7 @@ public class MyDslSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     expressionlist=expressionlist '...'? (ambiguity) ')' (rule end)
-	 *     expressionlist=expressionlist '...'? (ambiguity) ')' primaryexpraux=primaryexpraux
+	 *     type=type '...'? (ambiguity) ')' (rule end)
 	 */
 	protected void emit_arguments_CommaKeyword_2_2_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -242,7 +94,7 @@ public class MyDslSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     expressionlist=expressionlist (ambiguity) ','? ')' (rule end)
-	 *     expressionlist=expressionlist (ambiguity) ','? ')' primaryexpraux=primaryexpraux
+	 *     type=type (ambiguity) ','? ')' (rule end)
 	 */
 	protected void emit_arguments_FullStopFullStopFullStopKeyword_2_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -250,14 +102,14 @@ public class MyDslSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Ambiguous syntax:
-	 *     (type '...'? ','?)?
+	 *     'chan' | ('chan' '<-') | ('<-' 'chan')
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) '(' (ambiguity) ')' (rule start)
-	 *     (rule start) (selector | typeassertion)* '(' (ambiguity) ')' primaryexpraux=primaryexpraux
-	 *     (rule start) methodexpr (selector | typeassertion)* '(' (ambiguity) ')' primaryexpraux=primaryexpraux
+	 *     (rule start) (ambiguity) '(' type=type
+	 *     (rule start) (ambiguity) typelit=typelit
+	 *     (rule start) (ambiguity) typename=typename
 	 */
-	protected void emit_arguments___TypeParserRuleCall_2_0_1_0_FullStopFullStopFullStopKeyword_2_1_q_CommaKeyword_2_2_q__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_channeltype_ChanKeyword_0_0_or___ChanKeyword_0_1_0_LessThanSignHyphenMinusKeyword_0_1_1___or___LessThanSignHyphenMinusKeyword_0_2_0_ChanKeyword_0_2_1__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -266,8 +118,7 @@ public class MyDslSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     ','?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     expressionaux+=expressionaux (ambiguity) ')' (rule end)
-	 *     expressionaux+=expressionaux (ambiguity) ')' primaryexpraux=primaryexpraux
+	 *     expression=expression (ambiguity) ')' (rule end)
 	 */
 	protected void emit_conversion_CommaKeyword_3_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -275,23 +126,12 @@ public class MyDslSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Ambiguous syntax:
-	 *     (methodexpr (selector | typeassertion)* ('[' | '[')) | (type '(') | '('
+	 *     '++' | '--'
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) UNARY_OP* primaryexpr=primaryexpr
+	 *     expressionaux+=expressionaux (ambiguity) (rule end)
 	 */
-	protected void emit_conversion_index_operand_primaryexpr_primaryexpraux_slice_LeftParenthesisKeyword_2_0_or___MethodexprParserRuleCall_2_0___SelectorParserRuleCall_0_0_or_TypeassertionParserRuleCall_3_0__a___LeftSquareBracketKeyword_0_or_LeftSquareBracketKeyword_1_0_____or___TypeParserRuleCall_0_LeftParenthesisKeyword_1__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     '[' | '['
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     (rule start) (selector | typeassertion)* (ambiguity) UNARY_OP* primaryexpr=primaryexpr
-	 */
-	protected void emit_index_slice_LeftSquareBracketKeyword_0_or_LeftSquareBracketKeyword_1_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_incdecstmt_HyphenMinusHyphenMinusKeyword_1_1_or_PlusSignPlusSignKeyword_1_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -300,7 +140,6 @@ public class MyDslSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     ','?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     elementlist=elementlist (ambiguity) '}' ':' element=element
 	 *     elementlist=elementlist (ambiguity) '}' (rule end)
 	 */
 	protected void emit_literalvalue_CommaKeyword_2_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
@@ -309,55 +148,24 @@ public class MyDslSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Ambiguous syntax:
-	 *     literal | operandname
+	 *     '...'?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) (rule start)
-	 *     (rule start) (ambiguity) primaryexpraux=primaryexpraux
+	 *     (rule start) (ambiguity) type=type
+	 *     identifierlist=identifierlist (ambiguity) type=type
 	 */
-	protected void emit_operand_LiteralParserRuleCall_0_1_or_OperandnameParserRuleCall_1_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_parameterdecl_FullStopFullStopFullStopKeyword_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
 	/**
 	 * Ambiguous syntax:
-	 *     (selector | typeassertion)*
+	 *     ','?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) '(' (type '...'? ','?)? ')' primaryexpraux=primaryexpraux
-	 *     (rule start) (ambiguity) '(' expressionlist=expressionlist
-	 *     (rule start) (ambiguity) '(' type ',' expressionlist=expressionlist
-	 *     (rule start) (ambiguity) '[' ':' ']' primaryexpraux=primaryexpraux
-	 *     (rule start) (ambiguity) '[' ':' expression+=expression
-	 *     (rule start) (ambiguity) '[' expression+=expression
-	 *     (rule start) (ambiguity) ('[' | '[') UNARY_OP* primaryexpr=primaryexpr
-	 *     (rule start) (ambiguity) ANY_OTHER (rule start)
-	 *     (rule start) methodexpr (ambiguity) '(' (type '...'? ','?)? ')' primaryexpraux=primaryexpraux
-	 *     (rule start) methodexpr (ambiguity) '(' expressionlist=expressionlist
-	 *     (rule start) methodexpr (ambiguity) '(' type ',' expressionlist=expressionlist
-	 *     (rule start) methodexpr (ambiguity) '[' ':' ']' primaryexpraux=primaryexpraux
-	 *     (rule start) methodexpr (ambiguity) '[' ':' expression+=expression
-	 *     (rule start) methodexpr (ambiguity) '[' expression+=expression
-	 *     (rule start) methodexpr (ambiguity) ANY_OTHER (rule start)
+	 *     parameterlist=parameterlist (ambiguity) ')' (rule end)
 	 */
-	protected void emit_primaryexpraux___SelectorParserRuleCall_0_0_or_TypeassertionParserRuleCall_3_0__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     UNARY_OP*
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     (rule start) '(' (ambiguity) primaryexpr=primaryexpr
-	 *     (rule start) '[' (ambiguity) primaryexpr=primaryexpr
-	 *     (rule start) ((methodexpr (selector | typeassertion)* ('[' | '[')) | (type '(') | '(') (ambiguity) primaryexpr=primaryexpr
-	 *     (rule start) (ambiguity) primaryexpr=primaryexpr
-	 *     (rule start) (selector | typeassertion)* ('[' | '[') (ambiguity) primaryexpr=primaryexpr
-	 *     (rule start) BINARY_OP (ambiguity) primaryexpr=primaryexpr
-	 *     (rule start) type '(' (ambiguity) primaryexpr=primaryexpr
-	 */
-	protected void emit_unaryexpr_UNARY_OPTerminalRuleCall_1_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_parameters_CommaKeyword_2_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

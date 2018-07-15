@@ -5,6 +5,8 @@ package org.xtext.example.mydsl.myDsl.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
 import org.xtext.example.mydsl.myDsl.index;
 
@@ -15,7 +17,7 @@ import org.xtext.example.mydsl.myDsl.index;
  *
  * @generated
  */
-public class indexImpl extends primaryexprauxImpl implements index
+public class indexImpl extends MinimalEObjectImpl.Container implements index
 {
   /**
    * <!-- begin-user-doc -->

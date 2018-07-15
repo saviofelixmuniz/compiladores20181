@@ -10,10 +10,12 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
 import org.xtext.example.mydsl.myDsl.arguments;
 import org.xtext.example.mydsl.myDsl.expressionlist;
+import org.xtext.example.mydsl.myDsl.type;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,11 +26,12 @@ import org.xtext.example.mydsl.myDsl.expressionlist;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.argumentsImpl#getExpressionlist <em>Expressionlist</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.argumentsImpl#getType <em>Type</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class argumentsImpl extends primaryexprauxImpl implements arguments
+public class argumentsImpl extends MinimalEObjectImpl.Container implements arguments
 {
   /**
    * The cached value of the '{@link #getExpressionlist() <em>Expressionlist</em>}' containment reference.
@@ -39,6 +42,16 @@ public class argumentsImpl extends primaryexprauxImpl implements arguments
    * @ordered
    */
   protected expressionlist expressionlist;
+
+  /**
+   * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getType()
+   * @generated
+   * @ordered
+   */
+  protected type type;
 
   /**
    * <!-- begin-user-doc -->
@@ -114,6 +127,54 @@ public class argumentsImpl extends primaryexprauxImpl implements arguments
    * <!-- end-user-doc -->
    * @generated
    */
+  public type getType()
+  {
+    return type;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetType(type newType, NotificationChain msgs)
+  {
+    type oldType = type;
+    type = newType;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.ARGUMENTS__TYPE, oldType, newType);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setType(type newType)
+  {
+    if (newType != type)
+    {
+      NotificationChain msgs = null;
+      if (type != null)
+        msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.ARGUMENTS__TYPE, null, msgs);
+      if (newType != null)
+        msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.ARGUMENTS__TYPE, null, msgs);
+      msgs = basicSetType(newType, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.ARGUMENTS__TYPE, newType, newType));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -121,6 +182,8 @@ public class argumentsImpl extends primaryexprauxImpl implements arguments
     {
       case MyDslPackage.ARGUMENTS__EXPRESSIONLIST:
         return basicSetExpressionlist(null, msgs);
+      case MyDslPackage.ARGUMENTS__TYPE:
+        return basicSetType(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -137,6 +200,8 @@ public class argumentsImpl extends primaryexprauxImpl implements arguments
     {
       case MyDslPackage.ARGUMENTS__EXPRESSIONLIST:
         return getExpressionlist();
+      case MyDslPackage.ARGUMENTS__TYPE:
+        return getType();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -153,6 +218,9 @@ public class argumentsImpl extends primaryexprauxImpl implements arguments
     {
       case MyDslPackage.ARGUMENTS__EXPRESSIONLIST:
         setExpressionlist((expressionlist)newValue);
+        return;
+      case MyDslPackage.ARGUMENTS__TYPE:
+        setType((type)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -171,6 +239,9 @@ public class argumentsImpl extends primaryexprauxImpl implements arguments
       case MyDslPackage.ARGUMENTS__EXPRESSIONLIST:
         setExpressionlist((expressionlist)null);
         return;
+      case MyDslPackage.ARGUMENTS__TYPE:
+        setType((type)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -187,6 +258,8 @@ public class argumentsImpl extends primaryexprauxImpl implements arguments
     {
       case MyDslPackage.ARGUMENTS__EXPRESSIONLIST:
         return expressionlist != null;
+      case MyDslPackage.ARGUMENTS__TYPE:
+        return type != null;
     }
     return super.eIsSet(featureID);
   }

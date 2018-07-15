@@ -1,40 +1,56 @@
 grammar org.xtext.example.mydsl.MyDsl with org.eclipse.xtext.common.Terminals
 
 generate myDsl "http://www.xtext.org/example/mydsl/MyDsl"
-    
+
 Model:
-	(elements+=expression)*;
-	
+	elements+=result*
+;
+
+sourcefile:
+	packageclause+=packageclause ";" (importdecl+=importdecl ";")* (topleveldecl+=topleveldecl ";")*
+;
+
+importdecl:
+	"import" (importspec | "(" (importspec ";")* "}")
+;
+
+importspec:
+	("." | packagename)? importpath
+;
+
+importpath:
+	string_lit
+;
+
+packageclause:
+	"package" packagename
+;
+
 expression: 
 	unaryexpr expressionaux+=expressionaux
 ;
 
 expressionaux:
-	// verificar como é vazio
-	BINARY_OP expression expressionaux+=expressionaux |
-	// pq precisa definir tipo?
-	{experssionaux} ANY_OTHER
+	expression+=expression BINARY_OP=BINARY_OP expression+=expression
 ;
 
 unaryexpr:
-	primaryexpr=primaryexpr | UNARY_OP unaryexpr
+	primaryexpr=primaryexpr | UNARY_OP=UNARY_OP unaryexpr=unaryexpr
 ;
 
 primaryexpr:
-	operand primaryexpraux=primaryexpraux | 
-	conversion primaryexpraux=primaryexpraux |
-	methodexpr primaryexpraux 
+	operand=operand primaryexpraux=primaryexpraux | 
+	conversion=conversion primaryexpraux=primaryexpraux |
+	methodexpr=methodexpr primaryexpraux=primaryexpraux 
 ;
 
 primaryexpraux:
-	// TODO: pq precisa desse = e como é vazio???
-	selector primaryexpraux | 
-	index primaryexpraux=primaryexpraux | 
-	slice primaryexpraux=primaryexpraux | 
-	typeassertion primaryexpraux | 
-	arguments primaryexpraux=primaryexpraux |
-	// pq precisa definir tipo?
-	{primaryexpraux} ANY_OTHER
+	selector=selector primaryexpraux=primaryexpraux | 
+	index=index primaryexpraux=primaryexpraux | 
+	slice=slice primaryexpraux=primaryexpraux | 
+	typeassertion=typeassertion primaryexpraux = primaryexpraux |
+	arguments=arguments primaryexpraux=primaryexpraux |
+	{primaryexpraux} WS=WS
 ;
 
 index:
@@ -42,12 +58,11 @@ index:
 ;
 
 slice:
-	{slice} "[" expression+=expression? ":" expression+=expression? "]" |
-	"[" expression? ":" expression+=expression ":" expression+=expression "]"
+	{slice} "[" expression+=expression? ":" (=>(expression+=expression ":" expression+=expression) | expression+=expression?) "]"
 ;
 
 methodexpr:
-	receivertype "." methodname
+	receivertype=receivertype "." methodname=methodname
 ;
 
 receivertype:
@@ -55,20 +70,19 @@ receivertype:
 ;
 
 conversion:
-	type "(" expression ","? ")"
+	type=type "(" expression=expression ","? ")"
 ;
 
 operand:
-	{operand} literal | {operand} operandname | "(" expression ")"
+	=> ("(" expression=expression ")") | literal=literal | operandname=operandname 
 ;
 
 compositelit:
-	literaltype literalvalue
+	literaltype=literaltype literalvalue=literalvalue
 ;
 
 literaltype:
-	//TODO: adicionar arraytype
-	structtype | "[" "..." "]" elementtype | slicetype | maptype | typename
+	structtype=structtype | "[" "..." "]" elementtype=elementtype | slicetype=slicetype | maptype=maptype | typename=typename
 ;
 
 literalvalue:
@@ -84,7 +98,7 @@ keyedelement:
 ;
 
 key:
-	{key} fieldname | expression | literalvalue
+	{key} fieldname=fieldname | expression=expression | literalvalue=literalvalue
 ;
 
 element:
@@ -92,12 +106,231 @@ element:
 ;
 	
 functionlit:
-	"func" signature functionbody
+	"func" signature=signature functionbody=functionbody
 ;
 
 statement:
-	// TODO:
-	"FRANKLIN"
+	declaration=declaration | labeledstmt=labeledstmt | simplestmt=simplestmt |
+	gotstmt=gotstmt | returnstmt=returnstmt | breakstmt=breakstmt |
+	continuestmt=continuestmt |	gotostmt=gotostmt | fallthroughstmt=fallthroughstmt |
+	block=block | ifstmt=ifstmt | switchstmt=switchstmt | 
+	selectstmt=selectstmt |	forstmt=forstmt | deferstmt=deferstmt
+;
+
+declaration:
+	constdecl=constdecl | 
+	typedecl=typedecl |
+	vardecl=vardecl
+;
+
+vardecl:
+	{vardecl} "var" ( varspec+=varspec | "(" (varspec+=varspec ";")* ")")
+;
+
+varspec:
+	identifierlist=identifierlist ( type=type ("=" expressionlist=expressionlist) | "=" expressionlist=expressionlist)
+;
+
+typedecl:
+	{typedecl} "type" (typespec+=typespec | "(" (typespec+=typespec ";")* ")")
+;
+
+typespec:
+	IDENTIFIER=IDENTIFIER typespecaux=typespecaux
+;
+
+typespecaux:
+	typedef | aliasdecl
+;
+
+typedef:
+	type=type
+;
+
+aliasdecl:
+	"=" type=type
+;
+
+topleveldecl:
+	declaration | functiondecl=functiondecl | methoddecl=methoddecl
+;
+
+methoddecl:
+	"func" receiver=receiver methodname=methodname signature=signature functionbody=functionbody?
+;
+
+receiver:
+	parameters
+;
+
+functiondecl:
+	"func" functionname=functionname signature=signature functionbody=functionbody?
+;
+
+functionname:
+	IDENTIFIER
+;
+
+constdecl:
+	{constdecl} "const" (constspec+=constspec | "(" (constspec+=constspec ";")* ")")
+;
+
+constspec:
+	identifierlist=identifierlist (type=type? "=" expressionlist=expressionlist)?
+;
+
+
+simplestmt:
+	emptystmt=emptystmt | expressionstmt=expressionstmt | sendstmt=sendstmt | 
+	incdecstmt=incdecstmt | assignment=assignment | shortvardecl=shortvardecl
+;
+
+shortvardecl:
+	identifierlist=identifierlist ":=" expressionlist=expressionlist
+;
+
+deferstmt:
+	"defer" expression
+;
+
+gotostmt:
+	"goto" label
+;
+
+continuestmt:
+	"continue" label?
+;
+
+breakstmt:
+	"break" label?
+;
+
+returnstmt:
+	{returnstmt} "return" expressionlist=expressionlist?
+;
+
+selectstmt:
+	{selectstmt} "select" "{" commclause+=commclause* "}"
+;
+
+commclause:
+	commcase ":" statementlist=statementlist
+;
+
+commcase:
+	"case" ( sendstmt=sendstmt | recvstmt=recvstmt ) | {commcase} "default"
+;
+
+recvstmt:
+	(expressionlist "=" | identifierlist=identifierlist ":=") recvexpr=recvexpr
+;
+
+recvexpr:
+	expression
+;
+
+gotstmt:
+	"go" expression
+;
+
+forstmt:
+	"for" (condition | forclause | rangeclause)? block=block
+;
+
+rangeclause:
+	(expressionlist=expressionlist "=" | identifierlist=identifierlist ":=")? "range" expression=expression
+;
+
+forclause:
+	{forclause} initstmt+=initstmt* ";" condition=condition? ";" poststmt=poststmt?
+;
+
+initstmt:
+	simplestmt
+;
+
+poststmt:
+	simplestmt
+;
+
+condition:
+	expression
+;
+
+switchstmt:
+	exprswitchstmt=exprswitchstmt | typeswitchstmt=typeswitchstmt
+;
+
+exprswitchstmt:
+	{exprswitchstmt} "switch" (simplestmt=simplestmt ";")? expression=expression? "{" exprcaseclause+=exprcaseclause* "}"
+;
+
+exprcaseclause:
+	exprswitchcase=exprswitchcase ":" statementlist=statementlist
+;
+
+exprswitchcase:
+	"case" expressionlist=expressionlist | {exprswitchcase} "default"
+	;
+
+typeswitchstmt:
+	"switch" (simplestmt ";")? typeswitchguard=typeswitchguard "{" typecaseclause+=typecaseclause* "}"
+;
+
+typeswitchguard:
+	(IDENTIFIER=IDENTIFIER ":=")? primaryexpr=primaryexpr "." "(" "type" ")"
+;
+
+typecaseclause:
+	typeswitchcase=typeswitchcase ":" statementlist=statementlist
+;
+
+typeswitchcase:
+	"case" typelist=typelist | {typeswitchcase} "default"
+;
+
+typelist:
+	{typelist} "type" ("," type+=type)*
+;
+
+ifstmt: 
+	"if" (simplestmt=simplestmt ";")? expression=expression block+=block ("else" (ifstmt=ifstmt | block+=block))?
+;
+
+assignment:
+	expressionlist+=expressionlist ASSIGN_OP=ASSIGN_OP expressionlist+=expressionlist
+;
+
+incdecstmt:
+	expression ("++" | "--")
+;
+
+sendstmt:
+	channel=channel "<-" expression=expression
+;
+
+channel:
+	expression
+;
+
+labeledstmt:
+	label=label "." statement=statement
+;
+
+label:
+	IDENTIFIER
+;
+
+expressionstmt:
+	expression
+;
+
+emptystmt:
+	";"
+;
+
+fallthroughstmt:
+	"fallthrough"
 ;
 
 block:
@@ -105,7 +338,7 @@ block:
 ;
 
 statementlist:
-	(statement ";")*
+	{statementlist} (statement+=statement ";")*
 ;
 
 functionbody:
@@ -117,7 +350,7 @@ typeassertion:
 ;
 
 arguments:
-	{arguments} "(" ((expressionlist=expressionlist | type ("," expressionlist=expressionlist)?) "..."? ","?)? ")"
+	{arguments} "(" ((expressionlist=expressionlist | type=type ("," expressionlist=expressionlist)?) "..."? ","?)? ")"
 ;
 
 expressionlist:
@@ -133,7 +366,7 @@ fieldname:
 ;
 
 literal:
-	basiclit
+	basiclit=basiclit| compositelit=compositelit | functionlit=functionlit
 ;
 
 basiclit:
@@ -141,7 +374,11 @@ basiclit:
 ;
 
 operandname:
-	IDENTIFIER | qualified_ident
+	=>(IDENTIFIER qualified_ident) | IDENTIFIER
+;
+
+qualified_ident:
+	"." IDENTIFIER
 ;
 	
 slicetype: 
@@ -161,7 +398,7 @@ channeltype:
 ;
 
 maptype:
-	"map" "[" keytype "]" elementtype
+	"map" "[" keytype "]" elementtype=elementtype
 ;
 	
 keytype:
@@ -173,11 +410,11 @@ elementtype:
 ;
 
 interfacetype:
-	"interface" "{" (methodspec ";")* "}"
+	{interfacetype} "interface" "{" (methodspec+=methodspec ";")* "}"
 ;
 
 methodspec:
-	methodname signature | interfacetypename
+	methodname=methodname signature=signature | interfacetypename=interfacetypename
 ;
 
 methodname:
@@ -193,56 +430,67 @@ functiontype:
 ;
 
 signature:
-	parameters result?
+	parameters=parameters result=result?
 ;
 
 result:
-	parameters | type
+	=> parameters | type
 ;
 
 parameters:
-	"(" (parameterlist ","?)? ")"
+	{parameters} "(" (parameterlist=parameterlist (",")?)? ")"
 ;
 
 parameterlist:
-	parameterdecl ("," parameterdecl)*
+	parameterdecl+=parameterdecl ("," parameterdecl+=parameterdecl)*
 ;
 
 parameterdecl:
-	identifierlist? "..."? type
-;
-
-structtype:
-	"struct" "{" (fielddecl ";")* "}"
-;
-
-fielddecl:
-	(identifierlist type | embeddedfield) tag?
-;
-
-embeddedfield:
-	"*"? typename
-;
-
-type:
-	// TODO: completar
-	typename
+	identifierlist=identifierlist? ("...")? type=type
 ;
 
 identifierlist:
-	IDENTIFIER ( "," IDENTIFIER)*
+	IDENTIFIER ("," IDENTIFIER)*
 ;
+
+structtype:
+	{structtype} "struct" "{" (fielddecl+=fielddecl ";")* "}"
+;
+
+fielddecl:
+	(identifierlist=identifierlist type=type | embeddedfield=embeddedfield) tag=tag?
+;
+
+embeddedfield:
+	("*")? typename
+;
+
+type:
+	typename=typename | typelit=typelit | "(" type=type ")"
+;
+
+typelit:
+	arraytype=arraytype | structtype=structtype | pointertype=pointertype |
+	functiontype=functiontype | interfacetype=interfacetype | slicetype=slicetype |
+	maptype=maptype | channeltype=channeltype
+;
+
+arraytype:
+	=> ("[" expression=expression "]") elementtype=elementtype
+;
+
+/*
+arraylength:
+	expression
+;
+ */
 
 tag:
 	string_lit
 ;
 
 typename:
-	IDENTIFIER | qualified_ident
-;
-
-qualified_ident:
-	packagename "." IDENTIFIER
+	=>(packagename qualified_ident) | packagename
 ;
 
 packagename:
@@ -269,11 +517,9 @@ int_lit:
 	(DECIMAL_DIGIT | hex_lit)*
 ;
 
-
 hex_lit:
 	"0" ("x" | "X") HEX_DIGIT+
 ;
-
 
 imaginary_lit:
 	(decimals | float_lit) "i"
@@ -361,3 +607,7 @@ terminal MUL_OP:
 terminal UNARY_OP:
 	"+" | "-" | "!" | "^" | "*" | "&" | "<-"
 ;	
+
+terminal ASSIGN_OP:
+	(ADD_OP | MUL_OP)? "="
+;

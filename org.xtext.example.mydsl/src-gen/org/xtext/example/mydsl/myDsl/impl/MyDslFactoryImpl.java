@@ -66,6 +66,7 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
     switch (eClass.getClassifierID())
     {
       case MyDslPackage.MODEL: return createModel();
+      case MyDslPackage.SOURCEFILE: return createsourcefile();
       case MyDslPackage.EXPRESSION: return createexpression();
       case MyDslPackage.EXPRESSIONAUX: return createexpressionaux();
       case MyDslPackage.UNARYEXPR: return createunaryexpr();
@@ -73,17 +74,92 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
       case MyDslPackage.PRIMARYEXPRAUX: return createprimaryexpraux();
       case MyDslPackage.INDEX: return createindex();
       case MyDslPackage.SLICE: return createslice();
+      case MyDslPackage.METHODEXPR: return createmethodexpr();
+      case MyDslPackage.RECEIVERTYPE: return createreceivertype();
       case MyDslPackage.CONVERSION: return createconversion();
       case MyDslPackage.OPERAND: return createoperand();
       case MyDslPackage.COMPOSITELIT: return createcompositelit();
+      case MyDslPackage.LITERALTYPE: return createliteraltype();
       case MyDslPackage.LITERALVALUE: return createliteralvalue();
       case MyDslPackage.ELEMENTLIST: return createelementlist();
       case MyDslPackage.KEYEDELEMENT: return createkeyedelement();
       case MyDslPackage.KEY: return createkey();
       case MyDslPackage.ELEMENT: return createelement();
+      case MyDslPackage.FUNCTIONLIT: return createfunctionlit();
+      case MyDslPackage.STATEMENT: return createstatement();
+      case MyDslPackage.DECLARATION: return createdeclaration();
+      case MyDslPackage.VARDECL: return createvardecl();
+      case MyDslPackage.VARSPEC: return createvarspec();
+      case MyDslPackage.TYPEDECL: return createtypedecl();
+      case MyDslPackage.TYPESPEC: return createtypespec();
+      case MyDslPackage.TYPESPECAUX: return createtypespecaux();
+      case MyDslPackage.TYPEDEF: return createtypedef();
+      case MyDslPackage.ALIASDECL: return createaliasdecl();
+      case MyDslPackage.TOPLEVELDECL: return createtopleveldecl();
+      case MyDslPackage.METHODDECL: return createmethoddecl();
+      case MyDslPackage.RECEIVER: return createreceiver();
+      case MyDslPackage.FUNCTIONDECL: return createfunctiondecl();
+      case MyDslPackage.CONSTDECL: return createconstdecl();
+      case MyDslPackage.CONSTSPEC: return createconstspec();
+      case MyDslPackage.SIMPLESTMT: return createsimplestmt();
+      case MyDslPackage.SHORTVARDECL: return createshortvardecl();
+      case MyDslPackage.DEFERSTMT: return createdeferstmt();
+      case MyDslPackage.RETURNSTMT: return createreturnstmt();
+      case MyDslPackage.SELECTSTMT: return createselectstmt();
+      case MyDslPackage.COMMCLAUSE: return createcommclause();
+      case MyDslPackage.COMMCASE: return createcommcase();
+      case MyDslPackage.RECVSTMT: return createrecvstmt();
+      case MyDslPackage.RECVEXPR: return createrecvexpr();
+      case MyDslPackage.GOTSTMT: return creategotstmt();
+      case MyDslPackage.FORSTMT: return createforstmt();
+      case MyDslPackage.RANGECLAUSE: return createrangeclause();
+      case MyDslPackage.FORCLAUSE: return createforclause();
+      case MyDslPackage.INITSTMT: return createinitstmt();
+      case MyDslPackage.POSTSTMT: return createpoststmt();
+      case MyDslPackage.CONDITION: return createcondition();
+      case MyDslPackage.SWITCHSTMT: return createswitchstmt();
+      case MyDslPackage.EXPRSWITCHSTMT: return createexprswitchstmt();
+      case MyDslPackage.EXPRCASECLAUSE: return createexprcaseclause();
+      case MyDslPackage.EXPRSWITCHCASE: return createexprswitchcase();
+      case MyDslPackage.TYPESWITCHSTMT: return createtypeswitchstmt();
+      case MyDslPackage.TYPESWITCHGUARD: return createtypeswitchguard();
+      case MyDslPackage.TYPECASECLAUSE: return createtypecaseclause();
+      case MyDslPackage.TYPESWITCHCASE: return createtypeswitchcase();
+      case MyDslPackage.TYPELIST: return createtypelist();
+      case MyDslPackage.IFSTMT: return createifstmt();
+      case MyDslPackage.ASSIGNMENT: return createassignment();
+      case MyDslPackage.INCDECSTMT: return createincdecstmt();
+      case MyDslPackage.SENDSTMT: return createsendstmt();
+      case MyDslPackage.CHANNEL: return createchannel();
+      case MyDslPackage.LABELEDSTMT: return createlabeledstmt();
+      case MyDslPackage.EXPRESSIONSTMT: return createexpressionstmt();
+      case MyDslPackage.BLOCK: return createblock();
+      case MyDslPackage.STATEMENTLIST: return createstatementlist();
+      case MyDslPackage.FUNCTIONBODY: return createfunctionbody();
+      case MyDslPackage.TYPEASSERTION: return createtypeassertion();
       case MyDslPackage.ARGUMENTS: return createarguments();
       case MyDslPackage.EXPRESSIONLIST: return createexpressionlist();
-      case MyDslPackage.EXPERSSIONAUX: return createexperssionaux();
+      case MyDslPackage.LITERAL: return createliteral();
+      case MyDslPackage.SLICETYPE: return createslicetype();
+      case MyDslPackage.POINTERTYPE: return createpointertype();
+      case MyDslPackage.BASETYPE: return createbasetype();
+      case MyDslPackage.CHANNELTYPE: return createchanneltype();
+      case MyDslPackage.MAPTYPE: return createmaptype();
+      case MyDslPackage.KEYTYPE: return createkeytype();
+      case MyDslPackage.ELEMENTTYPE: return createelementtype();
+      case MyDslPackage.INTERFACETYPE: return createinterfacetype();
+      case MyDslPackage.METHODSPEC: return createmethodspec();
+      case MyDslPackage.FUNCTIONTYPE: return createfunctiontype();
+      case MyDslPackage.SIGNATURE: return createsignature();
+      case MyDslPackage.RESULT: return createresult();
+      case MyDslPackage.PARAMETERS: return createparameters();
+      case MyDslPackage.PARAMETERLIST: return createparameterlist();
+      case MyDslPackage.PARAMETERDECL: return createparameterdecl();
+      case MyDslPackage.STRUCTTYPE: return createstructtype();
+      case MyDslPackage.FIELDDECL: return createfielddecl();
+      case MyDslPackage.TYPE: return createtype();
+      case MyDslPackage.TYPELIT: return createtypelit();
+      case MyDslPackage.ARRAYTYPE: return createarraytype();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -98,6 +174,17 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
   {
     ModelImpl model = new ModelImpl();
     return model;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public sourcefile createsourcefile()
+  {
+    sourcefileImpl sourcefile = new sourcefileImpl();
+    return sourcefile;
   }
 
   /**
@@ -182,6 +269,28 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public methodexpr createmethodexpr()
+  {
+    methodexprImpl methodexpr = new methodexprImpl();
+    return methodexpr;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public receivertype createreceivertype()
+  {
+    receivertypeImpl receivertype = new receivertypeImpl();
+    return receivertype;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public conversion createconversion()
   {
     conversionImpl conversion = new conversionImpl();
@@ -208,6 +317,17 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
   {
     compositelitImpl compositelit = new compositelitImpl();
     return compositelit;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public literaltype createliteraltype()
+  {
+    literaltypeImpl literaltype = new literaltypeImpl();
+    return literaltype;
   }
 
   /**
@@ -270,6 +390,578 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public functionlit createfunctionlit()
+  {
+    functionlitImpl functionlit = new functionlitImpl();
+    return functionlit;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public statement createstatement()
+  {
+    statementImpl statement = new statementImpl();
+    return statement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public declaration createdeclaration()
+  {
+    declarationImpl declaration = new declarationImpl();
+    return declaration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public vardecl createvardecl()
+  {
+    vardeclImpl vardecl = new vardeclImpl();
+    return vardecl;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public varspec createvarspec()
+  {
+    varspecImpl varspec = new varspecImpl();
+    return varspec;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public typedecl createtypedecl()
+  {
+    typedeclImpl typedecl = new typedeclImpl();
+    return typedecl;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public typespec createtypespec()
+  {
+    typespecImpl typespec = new typespecImpl();
+    return typespec;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public typespecaux createtypespecaux()
+  {
+    typespecauxImpl typespecaux = new typespecauxImpl();
+    return typespecaux;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public typedef createtypedef()
+  {
+    typedefImpl typedef = new typedefImpl();
+    return typedef;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public aliasdecl createaliasdecl()
+  {
+    aliasdeclImpl aliasdecl = new aliasdeclImpl();
+    return aliasdecl;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public topleveldecl createtopleveldecl()
+  {
+    topleveldeclImpl topleveldecl = new topleveldeclImpl();
+    return topleveldecl;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public methoddecl createmethoddecl()
+  {
+    methoddeclImpl methoddecl = new methoddeclImpl();
+    return methoddecl;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public receiver createreceiver()
+  {
+    receiverImpl receiver = new receiverImpl();
+    return receiver;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public functiondecl createfunctiondecl()
+  {
+    functiondeclImpl functiondecl = new functiondeclImpl();
+    return functiondecl;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public constdecl createconstdecl()
+  {
+    constdeclImpl constdecl = new constdeclImpl();
+    return constdecl;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public constspec createconstspec()
+  {
+    constspecImpl constspec = new constspecImpl();
+    return constspec;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public simplestmt createsimplestmt()
+  {
+    simplestmtImpl simplestmt = new simplestmtImpl();
+    return simplestmt;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public shortvardecl createshortvardecl()
+  {
+    shortvardeclImpl shortvardecl = new shortvardeclImpl();
+    return shortvardecl;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public deferstmt createdeferstmt()
+  {
+    deferstmtImpl deferstmt = new deferstmtImpl();
+    return deferstmt;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public returnstmt createreturnstmt()
+  {
+    returnstmtImpl returnstmt = new returnstmtImpl();
+    return returnstmt;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public selectstmt createselectstmt()
+  {
+    selectstmtImpl selectstmt = new selectstmtImpl();
+    return selectstmt;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public commclause createcommclause()
+  {
+    commclauseImpl commclause = new commclauseImpl();
+    return commclause;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public commcase createcommcase()
+  {
+    commcaseImpl commcase = new commcaseImpl();
+    return commcase;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public recvstmt createrecvstmt()
+  {
+    recvstmtImpl recvstmt = new recvstmtImpl();
+    return recvstmt;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public recvexpr createrecvexpr()
+  {
+    recvexprImpl recvexpr = new recvexprImpl();
+    return recvexpr;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public gotstmt creategotstmt()
+  {
+    gotstmtImpl gotstmt = new gotstmtImpl();
+    return gotstmt;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public forstmt createforstmt()
+  {
+    forstmtImpl forstmt = new forstmtImpl();
+    return forstmt;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public rangeclause createrangeclause()
+  {
+    rangeclauseImpl rangeclause = new rangeclauseImpl();
+    return rangeclause;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public forclause createforclause()
+  {
+    forclauseImpl forclause = new forclauseImpl();
+    return forclause;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public initstmt createinitstmt()
+  {
+    initstmtImpl initstmt = new initstmtImpl();
+    return initstmt;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public poststmt createpoststmt()
+  {
+    poststmtImpl poststmt = new poststmtImpl();
+    return poststmt;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public condition createcondition()
+  {
+    conditionImpl condition = new conditionImpl();
+    return condition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public switchstmt createswitchstmt()
+  {
+    switchstmtImpl switchstmt = new switchstmtImpl();
+    return switchstmt;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public exprswitchstmt createexprswitchstmt()
+  {
+    exprswitchstmtImpl exprswitchstmt = new exprswitchstmtImpl();
+    return exprswitchstmt;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public exprcaseclause createexprcaseclause()
+  {
+    exprcaseclauseImpl exprcaseclause = new exprcaseclauseImpl();
+    return exprcaseclause;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public exprswitchcase createexprswitchcase()
+  {
+    exprswitchcaseImpl exprswitchcase = new exprswitchcaseImpl();
+    return exprswitchcase;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public typeswitchstmt createtypeswitchstmt()
+  {
+    typeswitchstmtImpl typeswitchstmt = new typeswitchstmtImpl();
+    return typeswitchstmt;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public typeswitchguard createtypeswitchguard()
+  {
+    typeswitchguardImpl typeswitchguard = new typeswitchguardImpl();
+    return typeswitchguard;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public typecaseclause createtypecaseclause()
+  {
+    typecaseclauseImpl typecaseclause = new typecaseclauseImpl();
+    return typecaseclause;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public typeswitchcase createtypeswitchcase()
+  {
+    typeswitchcaseImpl typeswitchcase = new typeswitchcaseImpl();
+    return typeswitchcase;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public typelist createtypelist()
+  {
+    typelistImpl typelist = new typelistImpl();
+    return typelist;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ifstmt createifstmt()
+  {
+    ifstmtImpl ifstmt = new ifstmtImpl();
+    return ifstmt;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public assignment createassignment()
+  {
+    assignmentImpl assignment = new assignmentImpl();
+    return assignment;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public incdecstmt createincdecstmt()
+  {
+    incdecstmtImpl incdecstmt = new incdecstmtImpl();
+    return incdecstmt;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public sendstmt createsendstmt()
+  {
+    sendstmtImpl sendstmt = new sendstmtImpl();
+    return sendstmt;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public channel createchannel()
+  {
+    channelImpl channel = new channelImpl();
+    return channel;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public labeledstmt createlabeledstmt()
+  {
+    labeledstmtImpl labeledstmt = new labeledstmtImpl();
+    return labeledstmt;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public expressionstmt createexpressionstmt()
+  {
+    expressionstmtImpl expressionstmt = new expressionstmtImpl();
+    return expressionstmt;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public block createblock()
+  {
+    blockImpl block = new blockImpl();
+    return block;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public statementlist createstatementlist()
+  {
+    statementlistImpl statementlist = new statementlistImpl();
+    return statementlist;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public functionbody createfunctionbody()
+  {
+    functionbodyImpl functionbody = new functionbodyImpl();
+    return functionbody;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public typeassertion createtypeassertion()
+  {
+    typeassertionImpl typeassertion = new typeassertionImpl();
+    return typeassertion;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public arguments createarguments()
   {
     argumentsImpl arguments = new argumentsImpl();
@@ -292,10 +984,230 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public experssionaux createexperssionaux()
+  public literal createliteral()
   {
-    experssionauxImpl experssionaux = new experssionauxImpl();
-    return experssionaux;
+    literalImpl literal = new literalImpl();
+    return literal;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public slicetype createslicetype()
+  {
+    slicetypeImpl slicetype = new slicetypeImpl();
+    return slicetype;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public pointertype createpointertype()
+  {
+    pointertypeImpl pointertype = new pointertypeImpl();
+    return pointertype;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public basetype createbasetype()
+  {
+    basetypeImpl basetype = new basetypeImpl();
+    return basetype;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public channeltype createchanneltype()
+  {
+    channeltypeImpl channeltype = new channeltypeImpl();
+    return channeltype;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public maptype createmaptype()
+  {
+    maptypeImpl maptype = new maptypeImpl();
+    return maptype;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public keytype createkeytype()
+  {
+    keytypeImpl keytype = new keytypeImpl();
+    return keytype;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public elementtype createelementtype()
+  {
+    elementtypeImpl elementtype = new elementtypeImpl();
+    return elementtype;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public interfacetype createinterfacetype()
+  {
+    interfacetypeImpl interfacetype = new interfacetypeImpl();
+    return interfacetype;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public methodspec createmethodspec()
+  {
+    methodspecImpl methodspec = new methodspecImpl();
+    return methodspec;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public functiontype createfunctiontype()
+  {
+    functiontypeImpl functiontype = new functiontypeImpl();
+    return functiontype;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public signature createsignature()
+  {
+    signatureImpl signature = new signatureImpl();
+    return signature;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public result createresult()
+  {
+    resultImpl result = new resultImpl();
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public parameters createparameters()
+  {
+    parametersImpl parameters = new parametersImpl();
+    return parameters;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public parameterlist createparameterlist()
+  {
+    parameterlistImpl parameterlist = new parameterlistImpl();
+    return parameterlist;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public parameterdecl createparameterdecl()
+  {
+    parameterdeclImpl parameterdecl = new parameterdeclImpl();
+    return parameterdecl;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public structtype createstructtype()
+  {
+    structtypeImpl structtype = new structtypeImpl();
+    return structtype;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public fielddecl createfielddecl()
+  {
+    fielddeclImpl fielddecl = new fielddeclImpl();
+    return fielddecl;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public type createtype()
+  {
+    typeImpl type = new typeImpl();
+    return type;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public typelit createtypelit()
+  {
+    typelitImpl typelit = new typelitImpl();
+    return typelit;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public arraytype createarraytype()
+  {
+    arraytypeImpl arraytype = new arraytypeImpl();
+    return arraytype;
   }
 
   /**
