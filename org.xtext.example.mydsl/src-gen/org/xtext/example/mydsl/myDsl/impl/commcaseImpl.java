@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
 import org.xtext.example.mydsl.myDsl.commcase;
+import org.xtext.example.mydsl.myDsl.expression;
 import org.xtext.example.mydsl.myDsl.recvstmt;
 import org.xtext.example.mydsl.myDsl.sendstmt;
 import org.xtext.example.mydsl.myDsl.statementlist;
@@ -26,6 +27,7 @@ import org.xtext.example.mydsl.myDsl.statementlist;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.commcaseImpl#getStatementlist <em>Statementlist</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.commcaseImpl#getExpression <em>Expression</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.commcaseImpl#getSendstmt <em>Sendstmt</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.commcaseImpl#getRecvstmt <em>Recvstmt</em>}</li>
  * </ul>
@@ -43,6 +45,16 @@ public class commcaseImpl extends commclauseImpl implements commcase
    * @ordered
    */
   protected statementlist statementlist;
+
+  /**
+   * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getExpression()
+   * @generated
+   * @ordered
+   */
+  protected expression expression;
 
   /**
    * The cached value of the '{@link #getSendstmt() <em>Sendstmt</em>}' containment reference.
@@ -131,6 +143,54 @@ public class commcaseImpl extends commclauseImpl implements commcase
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.COMMCASE__STATEMENTLIST, newStatementlist, newStatementlist));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public expression getExpression()
+  {
+    return expression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetExpression(expression newExpression, NotificationChain msgs)
+  {
+    expression oldExpression = expression;
+    expression = newExpression;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.COMMCASE__EXPRESSION, oldExpression, newExpression);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setExpression(expression newExpression)
+  {
+    if (newExpression != expression)
+    {
+      NotificationChain msgs = null;
+      if (expression != null)
+        msgs = ((InternalEObject)expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.COMMCASE__EXPRESSION, null, msgs);
+      if (newExpression != null)
+        msgs = ((InternalEObject)newExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.COMMCASE__EXPRESSION, null, msgs);
+      msgs = basicSetExpression(newExpression, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.COMMCASE__EXPRESSION, newExpression, newExpression));
   }
 
   /**
@@ -241,6 +301,8 @@ public class commcaseImpl extends commclauseImpl implements commcase
     {
       case MyDslPackage.COMMCASE__STATEMENTLIST:
         return basicSetStatementlist(null, msgs);
+      case MyDslPackage.COMMCASE__EXPRESSION:
+        return basicSetExpression(null, msgs);
       case MyDslPackage.COMMCASE__SENDSTMT:
         return basicSetSendstmt(null, msgs);
       case MyDslPackage.COMMCASE__RECVSTMT:
@@ -261,6 +323,8 @@ public class commcaseImpl extends commclauseImpl implements commcase
     {
       case MyDslPackage.COMMCASE__STATEMENTLIST:
         return getStatementlist();
+      case MyDslPackage.COMMCASE__EXPRESSION:
+        return getExpression();
       case MyDslPackage.COMMCASE__SENDSTMT:
         return getSendstmt();
       case MyDslPackage.COMMCASE__RECVSTMT:
@@ -281,6 +345,9 @@ public class commcaseImpl extends commclauseImpl implements commcase
     {
       case MyDslPackage.COMMCASE__STATEMENTLIST:
         setStatementlist((statementlist)newValue);
+        return;
+      case MyDslPackage.COMMCASE__EXPRESSION:
+        setExpression((expression)newValue);
         return;
       case MyDslPackage.COMMCASE__SENDSTMT:
         setSendstmt((sendstmt)newValue);
@@ -305,6 +372,9 @@ public class commcaseImpl extends commclauseImpl implements commcase
       case MyDslPackage.COMMCASE__STATEMENTLIST:
         setStatementlist((statementlist)null);
         return;
+      case MyDslPackage.COMMCASE__EXPRESSION:
+        setExpression((expression)null);
+        return;
       case MyDslPackage.COMMCASE__SENDSTMT:
         setSendstmt((sendstmt)null);
         return;
@@ -327,6 +397,8 @@ public class commcaseImpl extends commclauseImpl implements commcase
     {
       case MyDslPackage.COMMCASE__STATEMENTLIST:
         return statementlist != null;
+      case MyDslPackage.COMMCASE__EXPRESSION:
+        return expression != null;
       case MyDslPackage.COMMCASE__SENDSTMT:
         return sendstmt != null;
       case MyDslPackage.COMMCASE__RECVSTMT:

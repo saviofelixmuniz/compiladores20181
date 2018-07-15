@@ -20,8 +20,8 @@ import org.xtext.example.mydsl.myDsl.maptype;
 import org.xtext.example.mydsl.myDsl.pointertype;
 import org.xtext.example.mydsl.myDsl.result;
 import org.xtext.example.mydsl.myDsl.slicetype;
+import org.xtext.example.mydsl.myDsl.slicetypeaux;
 import org.xtext.example.mydsl.myDsl.type;
-import org.xtext.example.mydsl.myDsl.typeassertion;
 import org.xtext.example.mydsl.myDsl.typelit;
 
 /**
@@ -40,7 +40,7 @@ import org.xtext.example.mydsl.myDsl.typelit;
  *
  * @generated
  */
-public class typeImpl extends receivertypeImpl implements type
+public class typeImpl extends typeassertionImpl implements type
 {
   /**
    * The cached value of the '{@link #getElementtype() <em>Elementtype</em>}' containment reference.
@@ -404,13 +404,6 @@ public class typeImpl extends receivertypeImpl implements type
   @Override
   public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
   {
-    if (baseClass == typeassertion.class)
-    {
-      switch (derivedFeatureID)
-      {
-        default: return -1;
-      }
-    }
     if (baseClass == pointertype.class)
     {
       switch (derivedFeatureID)
@@ -441,6 +434,13 @@ public class typeImpl extends receivertypeImpl implements type
       }
     }
     if (baseClass == slicetype.class)
+    {
+      switch (derivedFeatureID)
+      {
+        default: return -1;
+      }
+    }
+    if (baseClass == slicetypeaux.class)
     {
       switch (derivedFeatureID)
       {
@@ -479,13 +479,6 @@ public class typeImpl extends receivertypeImpl implements type
   @Override
   public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
   {
-    if (baseClass == typeassertion.class)
-    {
-      switch (baseFeatureID)
-      {
-        default: return -1;
-      }
-    }
     if (baseClass == pointertype.class)
     {
       switch (baseFeatureID)
@@ -516,6 +509,13 @@ public class typeImpl extends receivertypeImpl implements type
       }
     }
     if (baseClass == slicetype.class)
+    {
+      switch (baseFeatureID)
+      {
+        default: return -1;
+      }
+    }
+    if (baseClass == slicetypeaux.class)
     {
       switch (baseFeatureID)
       {

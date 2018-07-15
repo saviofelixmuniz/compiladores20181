@@ -16,7 +16,8 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.myDsl.literaltype#getStructtype <em>Structtype</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.literaltype#getElementtype <em>Elementtype</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.literaltype#getSlicetype <em>Slicetype</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.literaltype#getArraytypeaux <em>Arraytypeaux</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.literaltype#getSlicetypeaux <em>Slicetypeaux</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.literaltype#getMaptype <em>Maptype</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.literaltype#getTypename <em>Typename</em>}</li>
  * </ul>
@@ -80,30 +81,56 @@ public interface literaltype extends EObject
   void setElementtype(elementtype value);
 
   /**
-   * Returns the value of the '<em><b>Slicetype</b></em>' containment reference.
+   * Returns the value of the '<em><b>Arraytypeaux</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Slicetype</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Arraytypeaux</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Slicetype</em>' containment reference.
-   * @see #setSlicetype(slicetype)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getliteraltype_Slicetype()
+   * @return the value of the '<em>Arraytypeaux</em>' containment reference.
+   * @see #setArraytypeaux(arraytypeaux)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getliteraltype_Arraytypeaux()
    * @model containment="true"
    * @generated
    */
-  slicetype getSlicetype();
+  arraytypeaux getArraytypeaux();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.literaltype#getSlicetype <em>Slicetype</em>}' containment reference.
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.literaltype#getArraytypeaux <em>Arraytypeaux</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Slicetype</em>' containment reference.
-   * @see #getSlicetype()
+   * @param value the new value of the '<em>Arraytypeaux</em>' containment reference.
+   * @see #getArraytypeaux()
    * @generated
    */
-  void setSlicetype(slicetype value);
+  void setArraytypeaux(arraytypeaux value);
+
+  /**
+   * Returns the value of the '<em><b>Slicetypeaux</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Slicetypeaux</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Slicetypeaux</em>' containment reference.
+   * @see #setSlicetypeaux(slicetypeaux)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getliteraltype_Slicetypeaux()
+   * @model containment="true"
+   * @generated
+   */
+  slicetypeaux getSlicetypeaux();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.literaltype#getSlicetypeaux <em>Slicetypeaux</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Slicetypeaux</em>' containment reference.
+   * @see #getSlicetypeaux()
+   * @generated
+   */
+  void setSlicetypeaux(slicetypeaux value);
 
   /**
    * Returns the value of the '<em><b>Maptype</b></em>' containment reference.

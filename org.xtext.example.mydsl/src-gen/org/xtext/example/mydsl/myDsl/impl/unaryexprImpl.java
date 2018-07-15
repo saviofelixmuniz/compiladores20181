@@ -3,20 +3,13 @@
  */
 package org.xtext.example.mydsl.myDsl.impl;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
 import org.xtext.example.mydsl.myDsl.expressionaux;
@@ -42,14 +35,14 @@ import org.xtext.example.mydsl.myDsl.unaryexpr;
 public class unaryexprImpl extends expressionImpl implements unaryexpr
 {
   /**
-   * The cached value of the '{@link #getExpressionaux() <em>Expressionaux</em>}' containment reference list.
+   * The cached value of the '{@link #getExpressionaux() <em>Expressionaux</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getExpressionaux()
    * @generated
    * @ordered
    */
-  protected EList<expressionaux> expressionaux;
+  protected expressionaux expressionaux;
 
   /**
    * The cached value of the '{@link #getPrimaryexpr() <em>Primaryexpr</em>}' containment reference.
@@ -117,13 +110,47 @@ public class unaryexprImpl extends expressionImpl implements unaryexpr
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<expressionaux> getExpressionaux()
+  public expressionaux getExpressionaux()
   {
-    if (expressionaux == null)
-    {
-      expressionaux = new EObjectContainmentEList<expressionaux>(expressionaux.class, this, MyDslPackage.UNARYEXPR__EXPRESSIONAUX);
-    }
     return expressionaux;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetExpressionaux(expressionaux newExpressionaux, NotificationChain msgs)
+  {
+    expressionaux oldExpressionaux = expressionaux;
+    expressionaux = newExpressionaux;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.UNARYEXPR__EXPRESSIONAUX, oldExpressionaux, newExpressionaux);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setExpressionaux(expressionaux newExpressionaux)
+  {
+    if (newExpressionaux != expressionaux)
+    {
+      NotificationChain msgs = null;
+      if (expressionaux != null)
+        msgs = ((InternalEObject)expressionaux).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.UNARYEXPR__EXPRESSIONAUX, null, msgs);
+      if (newExpressionaux != null)
+        msgs = ((InternalEObject)newExpressionaux).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.UNARYEXPR__EXPRESSIONAUX, null, msgs);
+      msgs = basicSetExpressionaux(newExpressionaux, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.UNARYEXPR__EXPRESSIONAUX, newExpressionaux, newExpressionaux));
   }
 
   /**
@@ -256,7 +283,7 @@ public class unaryexprImpl extends expressionImpl implements unaryexpr
     switch (featureID)
     {
       case MyDslPackage.UNARYEXPR__EXPRESSIONAUX:
-        return ((InternalEList<?>)getExpressionaux()).basicRemove(otherEnd, msgs);
+        return basicSetExpressionaux(null, msgs);
       case MyDslPackage.UNARYEXPR__PRIMARYEXPR:
         return basicSetPrimaryexpr(null, msgs);
       case MyDslPackage.UNARYEXPR__UNARYEXPR:
@@ -292,15 +319,13 @@ public class unaryexprImpl extends expressionImpl implements unaryexpr
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
       case MyDslPackage.UNARYEXPR__EXPRESSIONAUX:
-        getExpressionaux().clear();
-        getExpressionaux().addAll((Collection<? extends expressionaux>)newValue);
+        setExpressionaux((expressionaux)newValue);
         return;
       case MyDslPackage.UNARYEXPR__PRIMARYEXPR:
         setPrimaryexpr((primaryexpr)newValue);
@@ -326,7 +351,7 @@ public class unaryexprImpl extends expressionImpl implements unaryexpr
     switch (featureID)
     {
       case MyDslPackage.UNARYEXPR__EXPRESSIONAUX:
-        getExpressionaux().clear();
+        setExpressionaux((expressionaux)null);
         return;
       case MyDslPackage.UNARYEXPR__PRIMARYEXPR:
         setPrimaryexpr((primaryexpr)null);
@@ -352,7 +377,7 @@ public class unaryexprImpl extends expressionImpl implements unaryexpr
     switch (featureID)
     {
       case MyDslPackage.UNARYEXPR__EXPRESSIONAUX:
-        return expressionaux != null && !expressionaux.isEmpty();
+        return expressionaux != null;
       case MyDslPackage.UNARYEXPR__PRIMARYEXPR:
         return primaryexpr != null;
       case MyDslPackage.UNARYEXPR__UNARY_OP:

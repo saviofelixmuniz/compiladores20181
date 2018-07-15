@@ -13,10 +13,11 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
+import org.xtext.example.mydsl.myDsl.arraytypeaux;
 import org.xtext.example.mydsl.myDsl.elementtype;
 import org.xtext.example.mydsl.myDsl.literaltype;
 import org.xtext.example.mydsl.myDsl.maptype;
-import org.xtext.example.mydsl.myDsl.slicetype;
+import org.xtext.example.mydsl.myDsl.slicetypeaux;
 import org.xtext.example.mydsl.myDsl.structtype;
 
 /**
@@ -29,7 +30,8 @@ import org.xtext.example.mydsl.myDsl.structtype;
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.literaltypeImpl#getStructtype <em>Structtype</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.literaltypeImpl#getElementtype <em>Elementtype</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.literaltypeImpl#getSlicetype <em>Slicetype</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.literaltypeImpl#getArraytypeaux <em>Arraytypeaux</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.literaltypeImpl#getSlicetypeaux <em>Slicetypeaux</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.literaltypeImpl#getMaptype <em>Maptype</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.literaltypeImpl#getTypename <em>Typename</em>}</li>
  * </ul>
@@ -59,14 +61,24 @@ public class literaltypeImpl extends MinimalEObjectImpl.Container implements lit
   protected elementtype elementtype;
 
   /**
-   * The cached value of the '{@link #getSlicetype() <em>Slicetype</em>}' containment reference.
+   * The cached value of the '{@link #getArraytypeaux() <em>Arraytypeaux</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getSlicetype()
+   * @see #getArraytypeaux()
    * @generated
    * @ordered
    */
-  protected slicetype slicetype;
+  protected arraytypeaux arraytypeaux;
+
+  /**
+   * The cached value of the '{@link #getSlicetypeaux() <em>Slicetypeaux</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSlicetypeaux()
+   * @generated
+   * @ordered
+   */
+  protected slicetypeaux slicetypeaux;
 
   /**
    * The cached value of the '{@link #getMaptype() <em>Maptype</em>}' containment reference.
@@ -220,9 +232,9 @@ public class literaltypeImpl extends MinimalEObjectImpl.Container implements lit
    * <!-- end-user-doc -->
    * @generated
    */
-  public slicetype getSlicetype()
+  public arraytypeaux getArraytypeaux()
   {
-    return slicetype;
+    return arraytypeaux;
   }
 
   /**
@@ -230,13 +242,13 @@ public class literaltypeImpl extends MinimalEObjectImpl.Container implements lit
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetSlicetype(slicetype newSlicetype, NotificationChain msgs)
+  public NotificationChain basicSetArraytypeaux(arraytypeaux newArraytypeaux, NotificationChain msgs)
   {
-    slicetype oldSlicetype = slicetype;
-    slicetype = newSlicetype;
+    arraytypeaux oldArraytypeaux = arraytypeaux;
+    arraytypeaux = newArraytypeaux;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.LITERALTYPE__SLICETYPE, oldSlicetype, newSlicetype);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.LITERALTYPE__ARRAYTYPEAUX, oldArraytypeaux, newArraytypeaux);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -247,20 +259,68 @@ public class literaltypeImpl extends MinimalEObjectImpl.Container implements lit
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setSlicetype(slicetype newSlicetype)
+  public void setArraytypeaux(arraytypeaux newArraytypeaux)
   {
-    if (newSlicetype != slicetype)
+    if (newArraytypeaux != arraytypeaux)
     {
       NotificationChain msgs = null;
-      if (slicetype != null)
-        msgs = ((InternalEObject)slicetype).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.LITERALTYPE__SLICETYPE, null, msgs);
-      if (newSlicetype != null)
-        msgs = ((InternalEObject)newSlicetype).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.LITERALTYPE__SLICETYPE, null, msgs);
-      msgs = basicSetSlicetype(newSlicetype, msgs);
+      if (arraytypeaux != null)
+        msgs = ((InternalEObject)arraytypeaux).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.LITERALTYPE__ARRAYTYPEAUX, null, msgs);
+      if (newArraytypeaux != null)
+        msgs = ((InternalEObject)newArraytypeaux).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.LITERALTYPE__ARRAYTYPEAUX, null, msgs);
+      msgs = basicSetArraytypeaux(newArraytypeaux, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.LITERALTYPE__SLICETYPE, newSlicetype, newSlicetype));
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.LITERALTYPE__ARRAYTYPEAUX, newArraytypeaux, newArraytypeaux));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public slicetypeaux getSlicetypeaux()
+  {
+    return slicetypeaux;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetSlicetypeaux(slicetypeaux newSlicetypeaux, NotificationChain msgs)
+  {
+    slicetypeaux oldSlicetypeaux = slicetypeaux;
+    slicetypeaux = newSlicetypeaux;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.LITERALTYPE__SLICETYPEAUX, oldSlicetypeaux, newSlicetypeaux);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setSlicetypeaux(slicetypeaux newSlicetypeaux)
+  {
+    if (newSlicetypeaux != slicetypeaux)
+    {
+      NotificationChain msgs = null;
+      if (slicetypeaux != null)
+        msgs = ((InternalEObject)slicetypeaux).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.LITERALTYPE__SLICETYPEAUX, null, msgs);
+      if (newSlicetypeaux != null)
+        msgs = ((InternalEObject)newSlicetypeaux).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.LITERALTYPE__SLICETYPEAUX, null, msgs);
+      msgs = basicSetSlicetypeaux(newSlicetypeaux, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.LITERALTYPE__SLICETYPEAUX, newSlicetypeaux, newSlicetypeaux));
   }
 
   /**
@@ -348,8 +408,10 @@ public class literaltypeImpl extends MinimalEObjectImpl.Container implements lit
         return basicSetStructtype(null, msgs);
       case MyDslPackage.LITERALTYPE__ELEMENTTYPE:
         return basicSetElementtype(null, msgs);
-      case MyDslPackage.LITERALTYPE__SLICETYPE:
-        return basicSetSlicetype(null, msgs);
+      case MyDslPackage.LITERALTYPE__ARRAYTYPEAUX:
+        return basicSetArraytypeaux(null, msgs);
+      case MyDslPackage.LITERALTYPE__SLICETYPEAUX:
+        return basicSetSlicetypeaux(null, msgs);
       case MyDslPackage.LITERALTYPE__MAPTYPE:
         return basicSetMaptype(null, msgs);
     }
@@ -370,8 +432,10 @@ public class literaltypeImpl extends MinimalEObjectImpl.Container implements lit
         return getStructtype();
       case MyDslPackage.LITERALTYPE__ELEMENTTYPE:
         return getElementtype();
-      case MyDslPackage.LITERALTYPE__SLICETYPE:
-        return getSlicetype();
+      case MyDslPackage.LITERALTYPE__ARRAYTYPEAUX:
+        return getArraytypeaux();
+      case MyDslPackage.LITERALTYPE__SLICETYPEAUX:
+        return getSlicetypeaux();
       case MyDslPackage.LITERALTYPE__MAPTYPE:
         return getMaptype();
       case MyDslPackage.LITERALTYPE__TYPENAME:
@@ -396,8 +460,11 @@ public class literaltypeImpl extends MinimalEObjectImpl.Container implements lit
       case MyDslPackage.LITERALTYPE__ELEMENTTYPE:
         setElementtype((elementtype)newValue);
         return;
-      case MyDslPackage.LITERALTYPE__SLICETYPE:
-        setSlicetype((slicetype)newValue);
+      case MyDslPackage.LITERALTYPE__ARRAYTYPEAUX:
+        setArraytypeaux((arraytypeaux)newValue);
+        return;
+      case MyDslPackage.LITERALTYPE__SLICETYPEAUX:
+        setSlicetypeaux((slicetypeaux)newValue);
         return;
       case MyDslPackage.LITERALTYPE__MAPTYPE:
         setMaptype((maptype)newValue);
@@ -425,8 +492,11 @@ public class literaltypeImpl extends MinimalEObjectImpl.Container implements lit
       case MyDslPackage.LITERALTYPE__ELEMENTTYPE:
         setElementtype((elementtype)null);
         return;
-      case MyDslPackage.LITERALTYPE__SLICETYPE:
-        setSlicetype((slicetype)null);
+      case MyDslPackage.LITERALTYPE__ARRAYTYPEAUX:
+        setArraytypeaux((arraytypeaux)null);
+        return;
+      case MyDslPackage.LITERALTYPE__SLICETYPEAUX:
+        setSlicetypeaux((slicetypeaux)null);
         return;
       case MyDslPackage.LITERALTYPE__MAPTYPE:
         setMaptype((maptype)null);
@@ -452,8 +522,10 @@ public class literaltypeImpl extends MinimalEObjectImpl.Container implements lit
         return structtype != null;
       case MyDslPackage.LITERALTYPE__ELEMENTTYPE:
         return elementtype != null;
-      case MyDslPackage.LITERALTYPE__SLICETYPE:
-        return slicetype != null;
+      case MyDslPackage.LITERALTYPE__ARRAYTYPEAUX:
+        return arraytypeaux != null;
+      case MyDslPackage.LITERALTYPE__SLICETYPEAUX:
+        return slicetypeaux != null;
       case MyDslPackage.LITERALTYPE__MAPTYPE:
         return maptype != null;
       case MyDslPackage.LITERALTYPE__TYPENAME:

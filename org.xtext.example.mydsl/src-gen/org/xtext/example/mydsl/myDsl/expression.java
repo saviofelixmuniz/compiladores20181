@@ -14,6 +14,9 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.expression#getSendstmt <em>Sendstmt</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.expression#getIncdecstmt <em>Incdecstmt</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.expression#getAssignment <em>Assignment</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.expression#getExpression <em>Expression</em>}</li>
  * </ul>
  *
@@ -21,8 +24,86 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface expression extends index, element, deferstmt, recvexpr, gotstmt, condition, incdecstmt, channel, expressionstmt, expressionlist
+public interface expression extends primaryexpraux, element, simplestmt, deferstmt, expressionlist, recvexpr, gotstmt, condition
 {
+  /**
+   * Returns the value of the '<em><b>Sendstmt</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Sendstmt</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Sendstmt</em>' containment reference.
+   * @see #setSendstmt(sendstmt)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getexpression_Sendstmt()
+   * @model containment="true"
+   * @generated
+   */
+  sendstmt getSendstmt();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.expression#getSendstmt <em>Sendstmt</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Sendstmt</em>' containment reference.
+   * @see #getSendstmt()
+   * @generated
+   */
+  void setSendstmt(sendstmt value);
+
+  /**
+   * Returns the value of the '<em><b>Incdecstmt</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Incdecstmt</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Incdecstmt</em>' attribute.
+   * @see #setIncdecstmt(String)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getexpression_Incdecstmt()
+   * @model
+   * @generated
+   */
+  String getIncdecstmt();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.expression#getIncdecstmt <em>Incdecstmt</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Incdecstmt</em>' attribute.
+   * @see #getIncdecstmt()
+   * @generated
+   */
+  void setIncdecstmt(String value);
+
+  /**
+   * Returns the value of the '<em><b>Assignment</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Assignment</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Assignment</em>' containment reference.
+   * @see #setAssignment(assignment)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getexpression_Assignment()
+   * @model containment="true"
+   * @generated
+   */
+  assignment getAssignment();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.expression#getAssignment <em>Assignment</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Assignment</em>' containment reference.
+   * @see #getAssignment()
+   * @generated
+   */
+  void setAssignment(assignment value);
+
   /**
    * Returns the value of the '<em><b>Expression</b></em>' containment reference list.
    * The list contents are of type {@link org.xtext.example.mydsl.myDsl.expression}.

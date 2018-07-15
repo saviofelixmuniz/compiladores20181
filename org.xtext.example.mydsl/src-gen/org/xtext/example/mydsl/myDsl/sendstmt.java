@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.sendstmt#getChannel <em>Channel</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.sendstmt#getExpression <em>Expression</em>}</li>
  * </ul>
  *
@@ -24,32 +23,6 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface sendstmt extends EObject
 {
-  /**
-   * Returns the value of the '<em><b>Channel</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Channel</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Channel</em>' containment reference.
-   * @see #setChannel(channel)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getsendstmt_Channel()
-   * @model containment="true"
-   * @generated
-   */
-  channel getChannel();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.sendstmt#getChannel <em>Channel</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Channel</em>' containment reference.
-   * @see #getChannel()
-   * @generated
-   */
-  void setChannel(channel value);
-
   /**
    * Returns the value of the '<em><b>Expression</b></em>' containment reference.
    * <!-- begin-user-doc -->

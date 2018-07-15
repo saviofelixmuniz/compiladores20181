@@ -19,11 +19,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
-import org.xtext.example.mydsl.myDsl.assignment;
-import org.xtext.example.mydsl.myDsl.expressionstmt;
-import org.xtext.example.mydsl.myDsl.incdecstmt;
 import org.xtext.example.mydsl.myDsl.poststmt;
-import org.xtext.example.mydsl.myDsl.sendstmt;
 import org.xtext.example.mydsl.myDsl.shortvardecl;
 import org.xtext.example.mydsl.myDsl.simplestmt;
 import org.xtext.example.mydsl.myDsl.typecaseclause;
@@ -40,11 +36,6 @@ import org.xtext.example.mydsl.myDsl.typeswitchstmt;
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.simplestmtImpl#getTypeswitchguard <em>Typeswitchguard</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.simplestmtImpl#getTypecaseclause <em>Typecaseclause</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.simplestmtImpl#getEmptystmt <em>Emptystmt</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.simplestmtImpl#getExpressionstmt <em>Expressionstmt</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.simplestmtImpl#getSendstmt <em>Sendstmt</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.simplestmtImpl#getIncdecstmt <em>Incdecstmt</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.simplestmtImpl#getAssignment <em>Assignment</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.simplestmtImpl#getShortvardecl <em>Shortvardecl</em>}</li>
  * </ul>
  *
@@ -71,66 +62,6 @@ public class simplestmtImpl extends initstmtImpl implements simplestmt
    * @ordered
    */
   protected EList<typecaseclause> typecaseclause;
-
-  /**
-   * The default value of the '{@link #getEmptystmt() <em>Emptystmt</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getEmptystmt()
-   * @generated
-   * @ordered
-   */
-  protected static final String EMPTYSTMT_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getEmptystmt() <em>Emptystmt</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getEmptystmt()
-   * @generated
-   * @ordered
-   */
-  protected String emptystmt = EMPTYSTMT_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getExpressionstmt() <em>Expressionstmt</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getExpressionstmt()
-   * @generated
-   * @ordered
-   */
-  protected expressionstmt expressionstmt;
-
-  /**
-   * The cached value of the '{@link #getSendstmt() <em>Sendstmt</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getSendstmt()
-   * @generated
-   * @ordered
-   */
-  protected sendstmt sendstmt;
-
-  /**
-   * The cached value of the '{@link #getIncdecstmt() <em>Incdecstmt</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getIncdecstmt()
-   * @generated
-   * @ordered
-   */
-  protected incdecstmt incdecstmt;
-
-  /**
-   * The cached value of the '{@link #getAssignment() <em>Assignment</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getAssignment()
-   * @generated
-   * @ordered
-   */
-  protected assignment assignment;
 
   /**
    * The cached value of the '{@link #getShortvardecl() <em>Shortvardecl</em>}' containment reference.
@@ -230,221 +161,6 @@ public class simplestmtImpl extends initstmtImpl implements simplestmt
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getEmptystmt()
-  {
-    return emptystmt;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setEmptystmt(String newEmptystmt)
-  {
-    String oldEmptystmt = emptystmt;
-    emptystmt = newEmptystmt;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.SIMPLESTMT__EMPTYSTMT, oldEmptystmt, emptystmt));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public expressionstmt getExpressionstmt()
-  {
-    return expressionstmt;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetExpressionstmt(expressionstmt newExpressionstmt, NotificationChain msgs)
-  {
-    expressionstmt oldExpressionstmt = expressionstmt;
-    expressionstmt = newExpressionstmt;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.SIMPLESTMT__EXPRESSIONSTMT, oldExpressionstmt, newExpressionstmt);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setExpressionstmt(expressionstmt newExpressionstmt)
-  {
-    if (newExpressionstmt != expressionstmt)
-    {
-      NotificationChain msgs = null;
-      if (expressionstmt != null)
-        msgs = ((InternalEObject)expressionstmt).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.SIMPLESTMT__EXPRESSIONSTMT, null, msgs);
-      if (newExpressionstmt != null)
-        msgs = ((InternalEObject)newExpressionstmt).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.SIMPLESTMT__EXPRESSIONSTMT, null, msgs);
-      msgs = basicSetExpressionstmt(newExpressionstmt, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.SIMPLESTMT__EXPRESSIONSTMT, newExpressionstmt, newExpressionstmt));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public sendstmt getSendstmt()
-  {
-    return sendstmt;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetSendstmt(sendstmt newSendstmt, NotificationChain msgs)
-  {
-    sendstmt oldSendstmt = sendstmt;
-    sendstmt = newSendstmt;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.SIMPLESTMT__SENDSTMT, oldSendstmt, newSendstmt);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setSendstmt(sendstmt newSendstmt)
-  {
-    if (newSendstmt != sendstmt)
-    {
-      NotificationChain msgs = null;
-      if (sendstmt != null)
-        msgs = ((InternalEObject)sendstmt).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.SIMPLESTMT__SENDSTMT, null, msgs);
-      if (newSendstmt != null)
-        msgs = ((InternalEObject)newSendstmt).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.SIMPLESTMT__SENDSTMT, null, msgs);
-      msgs = basicSetSendstmt(newSendstmt, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.SIMPLESTMT__SENDSTMT, newSendstmt, newSendstmt));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public incdecstmt getIncdecstmt()
-  {
-    return incdecstmt;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetIncdecstmt(incdecstmt newIncdecstmt, NotificationChain msgs)
-  {
-    incdecstmt oldIncdecstmt = incdecstmt;
-    incdecstmt = newIncdecstmt;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.SIMPLESTMT__INCDECSTMT, oldIncdecstmt, newIncdecstmt);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setIncdecstmt(incdecstmt newIncdecstmt)
-  {
-    if (newIncdecstmt != incdecstmt)
-    {
-      NotificationChain msgs = null;
-      if (incdecstmt != null)
-        msgs = ((InternalEObject)incdecstmt).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.SIMPLESTMT__INCDECSTMT, null, msgs);
-      if (newIncdecstmt != null)
-        msgs = ((InternalEObject)newIncdecstmt).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.SIMPLESTMT__INCDECSTMT, null, msgs);
-      msgs = basicSetIncdecstmt(newIncdecstmt, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.SIMPLESTMT__INCDECSTMT, newIncdecstmt, newIncdecstmt));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public assignment getAssignment()
-  {
-    return assignment;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetAssignment(assignment newAssignment, NotificationChain msgs)
-  {
-    assignment oldAssignment = assignment;
-    assignment = newAssignment;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.SIMPLESTMT__ASSIGNMENT, oldAssignment, newAssignment);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setAssignment(assignment newAssignment)
-  {
-    if (newAssignment != assignment)
-    {
-      NotificationChain msgs = null;
-      if (assignment != null)
-        msgs = ((InternalEObject)assignment).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.SIMPLESTMT__ASSIGNMENT, null, msgs);
-      if (newAssignment != null)
-        msgs = ((InternalEObject)newAssignment).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.SIMPLESTMT__ASSIGNMENT, null, msgs);
-      msgs = basicSetAssignment(newAssignment, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.SIMPLESTMT__ASSIGNMENT, newAssignment, newAssignment));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public shortvardecl getShortvardecl()
   {
     return shortvardecl;
@@ -502,14 +218,6 @@ public class simplestmtImpl extends initstmtImpl implements simplestmt
         return basicSetTypeswitchguard(null, msgs);
       case MyDslPackage.SIMPLESTMT__TYPECASECLAUSE:
         return ((InternalEList<?>)getTypecaseclause()).basicRemove(otherEnd, msgs);
-      case MyDslPackage.SIMPLESTMT__EXPRESSIONSTMT:
-        return basicSetExpressionstmt(null, msgs);
-      case MyDslPackage.SIMPLESTMT__SENDSTMT:
-        return basicSetSendstmt(null, msgs);
-      case MyDslPackage.SIMPLESTMT__INCDECSTMT:
-        return basicSetIncdecstmt(null, msgs);
-      case MyDslPackage.SIMPLESTMT__ASSIGNMENT:
-        return basicSetAssignment(null, msgs);
       case MyDslPackage.SIMPLESTMT__SHORTVARDECL:
         return basicSetShortvardecl(null, msgs);
     }
@@ -530,16 +238,6 @@ public class simplestmtImpl extends initstmtImpl implements simplestmt
         return getTypeswitchguard();
       case MyDslPackage.SIMPLESTMT__TYPECASECLAUSE:
         return getTypecaseclause();
-      case MyDslPackage.SIMPLESTMT__EMPTYSTMT:
-        return getEmptystmt();
-      case MyDslPackage.SIMPLESTMT__EXPRESSIONSTMT:
-        return getExpressionstmt();
-      case MyDslPackage.SIMPLESTMT__SENDSTMT:
-        return getSendstmt();
-      case MyDslPackage.SIMPLESTMT__INCDECSTMT:
-        return getIncdecstmt();
-      case MyDslPackage.SIMPLESTMT__ASSIGNMENT:
-        return getAssignment();
       case MyDslPackage.SIMPLESTMT__SHORTVARDECL:
         return getShortvardecl();
     }
@@ -564,21 +262,6 @@ public class simplestmtImpl extends initstmtImpl implements simplestmt
         getTypecaseclause().clear();
         getTypecaseclause().addAll((Collection<? extends typecaseclause>)newValue);
         return;
-      case MyDslPackage.SIMPLESTMT__EMPTYSTMT:
-        setEmptystmt((String)newValue);
-        return;
-      case MyDslPackage.SIMPLESTMT__EXPRESSIONSTMT:
-        setExpressionstmt((expressionstmt)newValue);
-        return;
-      case MyDslPackage.SIMPLESTMT__SENDSTMT:
-        setSendstmt((sendstmt)newValue);
-        return;
-      case MyDslPackage.SIMPLESTMT__INCDECSTMT:
-        setIncdecstmt((incdecstmt)newValue);
-        return;
-      case MyDslPackage.SIMPLESTMT__ASSIGNMENT:
-        setAssignment((assignment)newValue);
-        return;
       case MyDslPackage.SIMPLESTMT__SHORTVARDECL:
         setShortvardecl((shortvardecl)newValue);
         return;
@@ -602,21 +285,6 @@ public class simplestmtImpl extends initstmtImpl implements simplestmt
       case MyDslPackage.SIMPLESTMT__TYPECASECLAUSE:
         getTypecaseclause().clear();
         return;
-      case MyDslPackage.SIMPLESTMT__EMPTYSTMT:
-        setEmptystmt(EMPTYSTMT_EDEFAULT);
-        return;
-      case MyDslPackage.SIMPLESTMT__EXPRESSIONSTMT:
-        setExpressionstmt((expressionstmt)null);
-        return;
-      case MyDslPackage.SIMPLESTMT__SENDSTMT:
-        setSendstmt((sendstmt)null);
-        return;
-      case MyDslPackage.SIMPLESTMT__INCDECSTMT:
-        setIncdecstmt((incdecstmt)null);
-        return;
-      case MyDslPackage.SIMPLESTMT__ASSIGNMENT:
-        setAssignment((assignment)null);
-        return;
       case MyDslPackage.SIMPLESTMT__SHORTVARDECL:
         setShortvardecl((shortvardecl)null);
         return;
@@ -638,16 +306,6 @@ public class simplestmtImpl extends initstmtImpl implements simplestmt
         return typeswitchguard != null;
       case MyDslPackage.SIMPLESTMT__TYPECASECLAUSE:
         return typecaseclause != null && !typecaseclause.isEmpty();
-      case MyDslPackage.SIMPLESTMT__EMPTYSTMT:
-        return EMPTYSTMT_EDEFAULT == null ? emptystmt != null : !EMPTYSTMT_EDEFAULT.equals(emptystmt);
-      case MyDslPackage.SIMPLESTMT__EXPRESSIONSTMT:
-        return expressionstmt != null;
-      case MyDslPackage.SIMPLESTMT__SENDSTMT:
-        return sendstmt != null;
-      case MyDslPackage.SIMPLESTMT__INCDECSTMT:
-        return incdecstmt != null;
-      case MyDslPackage.SIMPLESTMT__ASSIGNMENT:
-        return assignment != null;
       case MyDslPackage.SIMPLESTMT__SHORTVARDECL:
         return shortvardecl != null;
     }
@@ -706,23 +364,6 @@ public class simplestmtImpl extends initstmtImpl implements simplestmt
       }
     }
     return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (emptystmt: ");
-    result.append(emptystmt);
-    result.append(')');
-    return result.toString();
   }
 
 } //simplestmtImpl

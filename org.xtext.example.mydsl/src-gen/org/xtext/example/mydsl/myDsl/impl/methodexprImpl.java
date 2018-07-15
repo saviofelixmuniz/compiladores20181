@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
 import org.xtext.example.mydsl.myDsl.methodexpr;
-import org.xtext.example.mydsl.myDsl.receivertype;
+import org.xtext.example.mydsl.myDsl.type;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,7 +24,7 @@ import org.xtext.example.mydsl.myDsl.receivertype;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.methodexprImpl#getReceivertype <em>Receivertype</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.methodexprImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.methodexprImpl#getMethodname <em>Methodname</em>}</li>
  * </ul>
  *
@@ -33,14 +33,14 @@ import org.xtext.example.mydsl.myDsl.receivertype;
 public class methodexprImpl extends MinimalEObjectImpl.Container implements methodexpr
 {
   /**
-   * The cached value of the '{@link #getReceivertype() <em>Receivertype</em>}' containment reference.
+   * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getReceivertype()
+   * @see #getType()
    * @generated
    * @ordered
    */
-  protected receivertype receivertype;
+  protected type type;
 
   /**
    * The default value of the '{@link #getMethodname() <em>Methodname</em>}' attribute.
@@ -88,9 +88,9 @@ public class methodexprImpl extends MinimalEObjectImpl.Container implements meth
    * <!-- end-user-doc -->
    * @generated
    */
-  public receivertype getReceivertype()
+  public type getType()
   {
-    return receivertype;
+    return type;
   }
 
   /**
@@ -98,13 +98,13 @@ public class methodexprImpl extends MinimalEObjectImpl.Container implements meth
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetReceivertype(receivertype newReceivertype, NotificationChain msgs)
+  public NotificationChain basicSetType(type newType, NotificationChain msgs)
   {
-    receivertype oldReceivertype = receivertype;
-    receivertype = newReceivertype;
+    type oldType = type;
+    type = newType;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.METHODEXPR__RECEIVERTYPE, oldReceivertype, newReceivertype);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.METHODEXPR__TYPE, oldType, newType);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -115,20 +115,20 @@ public class methodexprImpl extends MinimalEObjectImpl.Container implements meth
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setReceivertype(receivertype newReceivertype)
+  public void setType(type newType)
   {
-    if (newReceivertype != receivertype)
+    if (newType != type)
     {
       NotificationChain msgs = null;
-      if (receivertype != null)
-        msgs = ((InternalEObject)receivertype).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.METHODEXPR__RECEIVERTYPE, null, msgs);
-      if (newReceivertype != null)
-        msgs = ((InternalEObject)newReceivertype).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.METHODEXPR__RECEIVERTYPE, null, msgs);
-      msgs = basicSetReceivertype(newReceivertype, msgs);
+      if (type != null)
+        msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.METHODEXPR__TYPE, null, msgs);
+      if (newType != null)
+        msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.METHODEXPR__TYPE, null, msgs);
+      msgs = basicSetType(newType, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.METHODEXPR__RECEIVERTYPE, newReceivertype, newReceivertype));
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.METHODEXPR__TYPE, newType, newType));
   }
 
   /**
@@ -164,8 +164,8 @@ public class methodexprImpl extends MinimalEObjectImpl.Container implements meth
   {
     switch (featureID)
     {
-      case MyDslPackage.METHODEXPR__RECEIVERTYPE:
-        return basicSetReceivertype(null, msgs);
+      case MyDslPackage.METHODEXPR__TYPE:
+        return basicSetType(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -180,8 +180,8 @@ public class methodexprImpl extends MinimalEObjectImpl.Container implements meth
   {
     switch (featureID)
     {
-      case MyDslPackage.METHODEXPR__RECEIVERTYPE:
-        return getReceivertype();
+      case MyDslPackage.METHODEXPR__TYPE:
+        return getType();
       case MyDslPackage.METHODEXPR__METHODNAME:
         return getMethodname();
     }
@@ -198,8 +198,8 @@ public class methodexprImpl extends MinimalEObjectImpl.Container implements meth
   {
     switch (featureID)
     {
-      case MyDslPackage.METHODEXPR__RECEIVERTYPE:
-        setReceivertype((receivertype)newValue);
+      case MyDslPackage.METHODEXPR__TYPE:
+        setType((type)newValue);
         return;
       case MyDslPackage.METHODEXPR__METHODNAME:
         setMethodname((String)newValue);
@@ -218,8 +218,8 @@ public class methodexprImpl extends MinimalEObjectImpl.Container implements meth
   {
     switch (featureID)
     {
-      case MyDslPackage.METHODEXPR__RECEIVERTYPE:
-        setReceivertype((receivertype)null);
+      case MyDslPackage.METHODEXPR__TYPE:
+        setType((type)null);
         return;
       case MyDslPackage.METHODEXPR__METHODNAME:
         setMethodname(METHODNAME_EDEFAULT);
@@ -238,8 +238,8 @@ public class methodexprImpl extends MinimalEObjectImpl.Container implements meth
   {
     switch (featureID)
     {
-      case MyDslPackage.METHODEXPR__RECEIVERTYPE:
-        return receivertype != null;
+      case MyDslPackage.METHODEXPR__TYPE:
+        return type != null;
       case MyDslPackage.METHODEXPR__METHODNAME:
         return METHODNAME_EDEFAULT == null ? methodname != null : !METHODNAME_EDEFAULT.equals(methodname);
     }

@@ -3,6 +3,7 @@
  */
 package org.xtext.example.mydsl.myDsl;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,7 +15,7 @@ package org.xtext.example.mydsl.myDsl;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.myDsl.signature#getParameters <em>Parameters</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.signature#getResult <em>Result</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.signature#getType <em>Type</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getsignature()
@@ -24,55 +25,45 @@ package org.xtext.example.mydsl.myDsl;
 public interface signature extends functiontype
 {
   /**
-   * Returns the value of the '<em><b>Parameters</b></em>' containment reference.
+   * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.
+   * The list contents are of type {@link org.xtext.example.mydsl.myDsl.parameters}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Parameters</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Parameters</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Parameters</em>' containment reference.
-   * @see #setParameters(parameters)
+   * @return the value of the '<em>Parameters</em>' containment reference list.
    * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getsignature_Parameters()
    * @model containment="true"
    * @generated
    */
-  parameters getParameters();
+  EList<parameters> getParameters();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.signature#getParameters <em>Parameters</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Parameters</em>' containment reference.
-   * @see #getParameters()
-   * @generated
-   */
-  void setParameters(parameters value);
-
-  /**
-   * Returns the value of the '<em><b>Result</b></em>' containment reference.
+   * Returns the value of the '<em><b>Type</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Result</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Type</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Result</em>' containment reference.
-   * @see #setResult(result)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getsignature_Result()
+   * @return the value of the '<em>Type</em>' containment reference.
+   * @see #setType(type)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getsignature_Type()
    * @model containment="true"
    * @generated
    */
-  result getResult();
+  type getType();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.signature#getResult <em>Result</em>}' containment reference.
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.signature#getType <em>Type</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Result</em>' containment reference.
-   * @see #getResult()
+   * @param value the new value of the '<em>Type</em>' containment reference.
+   * @see #getType()
    * @generated
    */
-  void setResult(result value);
+  void setType(type value);
 
 } // signature

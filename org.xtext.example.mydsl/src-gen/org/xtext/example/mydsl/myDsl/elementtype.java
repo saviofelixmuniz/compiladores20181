@@ -14,6 +14,6 @@ package org.xtext.example.mydsl.myDsl;
  * @model
  * @generated
  */
-public interface elementtype extends slicetype, channeltype
+public interface elementtype extends slicetype, slicetypeaux, channeltype
 {
 } // elementtype

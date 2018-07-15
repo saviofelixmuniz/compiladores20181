@@ -3,6 +3,7 @@
  */
 package org.xtext.example.mydsl.myDsl;
 
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,6 +15,6 @@ package org.xtext.example.mydsl.myDsl;
  * @model
  * @generated
  */
-public interface expressionlist extends recvstmt
+public interface expressionlist extends EObject
 {
 } // expressionlist

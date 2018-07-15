@@ -13,7 +13,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
-import org.xtext.example.mydsl.myDsl.channel;
 import org.xtext.example.mydsl.myDsl.expression;
 import org.xtext.example.mydsl.myDsl.sendstmt;
 
@@ -25,7 +24,6 @@ import org.xtext.example.mydsl.myDsl.sendstmt;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.sendstmtImpl#getChannel <em>Channel</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.sendstmtImpl#getExpression <em>Expression</em>}</li>
  * </ul>
  *
@@ -33,16 +31,6 @@ import org.xtext.example.mydsl.myDsl.sendstmt;
  */
 public class sendstmtImpl extends MinimalEObjectImpl.Container implements sendstmt
 {
-  /**
-   * The cached value of the '{@link #getChannel() <em>Channel</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getChannel()
-   * @generated
-   * @ordered
-   */
-  protected channel channel;
-
   /**
    * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -72,54 +60,6 @@ public class sendstmtImpl extends MinimalEObjectImpl.Container implements sendst
   protected EClass eStaticClass()
   {
     return MyDslPackage.Literals.SENDSTMT;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public channel getChannel()
-  {
-    return channel;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetChannel(channel newChannel, NotificationChain msgs)
-  {
-    channel oldChannel = channel;
-    channel = newChannel;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.SENDSTMT__CHANNEL, oldChannel, newChannel);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setChannel(channel newChannel)
-  {
-    if (newChannel != channel)
-    {
-      NotificationChain msgs = null;
-      if (channel != null)
-        msgs = ((InternalEObject)channel).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.SENDSTMT__CHANNEL, null, msgs);
-      if (newChannel != null)
-        msgs = ((InternalEObject)newChannel).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.SENDSTMT__CHANNEL, null, msgs);
-      msgs = basicSetChannel(newChannel, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.SENDSTMT__CHANNEL, newChannel, newChannel));
   }
 
   /**
@@ -180,8 +120,6 @@ public class sendstmtImpl extends MinimalEObjectImpl.Container implements sendst
   {
     switch (featureID)
     {
-      case MyDslPackage.SENDSTMT__CHANNEL:
-        return basicSetChannel(null, msgs);
       case MyDslPackage.SENDSTMT__EXPRESSION:
         return basicSetExpression(null, msgs);
     }
@@ -198,8 +136,6 @@ public class sendstmtImpl extends MinimalEObjectImpl.Container implements sendst
   {
     switch (featureID)
     {
-      case MyDslPackage.SENDSTMT__CHANNEL:
-        return getChannel();
       case MyDslPackage.SENDSTMT__EXPRESSION:
         return getExpression();
     }
@@ -216,9 +152,6 @@ public class sendstmtImpl extends MinimalEObjectImpl.Container implements sendst
   {
     switch (featureID)
     {
-      case MyDslPackage.SENDSTMT__CHANNEL:
-        setChannel((channel)newValue);
-        return;
       case MyDslPackage.SENDSTMT__EXPRESSION:
         setExpression((expression)newValue);
         return;
@@ -236,9 +169,6 @@ public class sendstmtImpl extends MinimalEObjectImpl.Container implements sendst
   {
     switch (featureID)
     {
-      case MyDslPackage.SENDSTMT__CHANNEL:
-        setChannel((channel)null);
-        return;
       case MyDslPackage.SENDSTMT__EXPRESSION:
         setExpression((expression)null);
         return;
@@ -256,8 +186,6 @@ public class sendstmtImpl extends MinimalEObjectImpl.Container implements sendst
   {
     switch (featureID)
     {
-      case MyDslPackage.SENDSTMT__CHANNEL:
-        return channel != null;
       case MyDslPackage.SENDSTMT__EXPRESSION:
         return expression != null;
     }

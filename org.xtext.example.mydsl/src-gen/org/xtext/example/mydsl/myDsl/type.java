@@ -22,7 +22,7 @@ package org.xtext.example.mydsl.myDsl;
  * @model
  * @generated
  */
-public interface type extends receivertype, typeassertion, basetype, keytype, elementtype, result
+public interface type extends typeassertion, basetype, keytype, elementtype, result
 {
   /**
    * Returns the value of the '<em><b>Typename</b></em>' attribute.

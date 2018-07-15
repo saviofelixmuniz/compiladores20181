@@ -71,13 +71,11 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
       case MyDslPackage.EXPRESSIONAUX: return createexpressionaux();
       case MyDslPackage.UNARYEXPR: return createunaryexpr();
       case MyDslPackage.PRIMARYEXPR: return createprimaryexpr();
-      case MyDslPackage.PRIMARYEXPRAUX: return createprimaryexpraux();
-      case MyDslPackage.INDEX: return createindex();
-      case MyDslPackage.SLICE: return createslice();
-      case MyDslPackage.METHODEXPR: return createmethodexpr();
-      case MyDslPackage.RECEIVERTYPE: return createreceivertype();
-      case MyDslPackage.CONVERSION: return createconversion();
       case MyDslPackage.OPERAND: return createoperand();
+      case MyDslPackage.CONVERSION: return createconversion();
+      case MyDslPackage.METHODEXPR: return createmethodexpr();
+      case MyDslPackage.PRIMARYEXPRAUX: return createprimaryexpraux();
+      case MyDslPackage.SLICE: return createslice();
       case MyDslPackage.COMPOSITELIT: return createcompositelit();
       case MyDslPackage.LITERALTYPE: return createliteraltype();
       case MyDslPackage.LITERALVALUE: return createliteralvalue();
@@ -109,6 +107,8 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
       case MyDslPackage.COMMCLAUSE: return createcommclause();
       case MyDslPackage.COMMCASE: return createcommcase();
       case MyDslPackage.RECVSTMT: return createrecvstmt();
+      case MyDslPackage.POSTEXPRESSIONLIST: return createpostexpressionlist();
+      case MyDslPackage.EXPRESSIONLIST: return createexpressionlist();
       case MyDslPackage.RECVEXPR: return createrecvexpr();
       case MyDslPackage.GOTSTMT: return creategotstmt();
       case MyDslPackage.FORSTMT: return createforstmt();
@@ -128,19 +128,16 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
       case MyDslPackage.TYPELIST: return createtypelist();
       case MyDslPackage.IFSTMT: return createifstmt();
       case MyDslPackage.ASSIGNMENT: return createassignment();
-      case MyDslPackage.INCDECSTMT: return createincdecstmt();
       case MyDslPackage.SENDSTMT: return createsendstmt();
-      case MyDslPackage.CHANNEL: return createchannel();
       case MyDslPackage.LABELEDSTMT: return createlabeledstmt();
-      case MyDslPackage.EXPRESSIONSTMT: return createexpressionstmt();
       case MyDslPackage.BLOCK: return createblock();
       case MyDslPackage.STATEMENTLIST: return createstatementlist();
       case MyDslPackage.FUNCTIONBODY: return createfunctionbody();
       case MyDslPackage.TYPEASSERTION: return createtypeassertion();
       case MyDslPackage.ARGUMENTS: return createarguments();
-      case MyDslPackage.EXPRESSIONLIST: return createexpressionlist();
       case MyDslPackage.LITERAL: return createliteral();
       case MyDslPackage.SLICETYPE: return createslicetype();
+      case MyDslPackage.SLICETYPEAUX: return createslicetypeaux();
       case MyDslPackage.POINTERTYPE: return createpointertype();
       case MyDslPackage.BASETYPE: return createbasetype();
       case MyDslPackage.CHANNELTYPE: return createchanneltype();
@@ -151,15 +148,16 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
       case MyDslPackage.METHODSPEC: return createmethodspec();
       case MyDslPackage.FUNCTIONTYPE: return createfunctiontype();
       case MyDslPackage.SIGNATURE: return createsignature();
+      case MyDslPackage.TYPE: return createtype();
       case MyDslPackage.RESULT: return createresult();
       case MyDslPackage.PARAMETERS: return createparameters();
       case MyDslPackage.PARAMETERLIST: return createparameterlist();
       case MyDslPackage.PARAMETERDECL: return createparameterdecl();
       case MyDslPackage.STRUCTTYPE: return createstructtype();
       case MyDslPackage.FIELDDECL: return createfielddecl();
-      case MyDslPackage.TYPE: return createtype();
       case MyDslPackage.TYPELIT: return createtypelit();
       case MyDslPackage.ARRAYTYPE: return createarraytype();
+      case MyDslPackage.ARRAYTYPEAUX: return createarraytypeaux();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -236,54 +234,10 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public primaryexpraux createprimaryexpraux()
+  public operand createoperand()
   {
-    primaryexprauxImpl primaryexpraux = new primaryexprauxImpl();
-    return primaryexpraux;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public index createindex()
-  {
-    indexImpl index = new indexImpl();
-    return index;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public slice createslice()
-  {
-    sliceImpl slice = new sliceImpl();
-    return slice;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public methodexpr createmethodexpr()
-  {
-    methodexprImpl methodexpr = new methodexprImpl();
-    return methodexpr;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public receivertype createreceivertype()
-  {
-    receivertypeImpl receivertype = new receivertypeImpl();
-    return receivertype;
+    operandImpl operand = new operandImpl();
+    return operand;
   }
 
   /**
@@ -302,10 +256,32 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public operand createoperand()
+  public methodexpr createmethodexpr()
   {
-    operandImpl operand = new operandImpl();
-    return operand;
+    methodexprImpl methodexpr = new methodexprImpl();
+    return methodexpr;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public primaryexpraux createprimaryexpraux()
+  {
+    primaryexprauxImpl primaryexpraux = new primaryexprauxImpl();
+    return primaryexpraux;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public slice createslice()
+  {
+    sliceImpl slice = new sliceImpl();
+    return slice;
   }
 
   /**
@@ -654,6 +630,28 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public postexpressionlist createpostexpressionlist()
+  {
+    postexpressionlistImpl postexpressionlist = new postexpressionlistImpl();
+    return postexpressionlist;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public expressionlist createexpressionlist()
+  {
+    expressionlistImpl expressionlist = new expressionlistImpl();
+    return expressionlist;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public recvexpr createrecvexpr()
   {
     recvexprImpl recvexpr = new recvexprImpl();
@@ -863,17 +861,6 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public incdecstmt createincdecstmt()
-  {
-    incdecstmtImpl incdecstmt = new incdecstmtImpl();
-    return incdecstmt;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public sendstmt createsendstmt()
   {
     sendstmtImpl sendstmt = new sendstmtImpl();
@@ -885,32 +872,10 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public channel createchannel()
-  {
-    channelImpl channel = new channelImpl();
-    return channel;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public labeledstmt createlabeledstmt()
   {
     labeledstmtImpl labeledstmt = new labeledstmtImpl();
     return labeledstmt;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public expressionstmt createexpressionstmt()
-  {
-    expressionstmtImpl expressionstmt = new expressionstmtImpl();
-    return expressionstmt;
   }
 
   /**
@@ -973,17 +938,6 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public expressionlist createexpressionlist()
-  {
-    expressionlistImpl expressionlist = new expressionlistImpl();
-    return expressionlist;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public literal createliteral()
   {
     literalImpl literal = new literalImpl();
@@ -999,6 +953,17 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
   {
     slicetypeImpl slicetype = new slicetypeImpl();
     return slicetype;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public slicetypeaux createslicetypeaux()
+  {
+    slicetypeauxImpl slicetypeaux = new slicetypeauxImpl();
+    return slicetypeaux;
   }
 
   /**
@@ -1116,6 +1081,17 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public type createtype()
+  {
+    typeImpl type = new typeImpl();
+    return type;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public result createresult()
   {
     resultImpl result = new resultImpl();
@@ -1182,17 +1158,6 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public type createtype()
-  {
-    typeImpl type = new typeImpl();
-    return type;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public typelit createtypelit()
   {
     typelitImpl typelit = new typelitImpl();
@@ -1208,6 +1173,17 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
   {
     arraytypeImpl arraytype = new arraytypeImpl();
     return arraytype;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public arraytypeaux createarraytypeaux()
+  {
+    arraytypeauxImpl arraytypeaux = new arraytypeauxImpl();
+    return arraytypeaux;
   }
 
   /**

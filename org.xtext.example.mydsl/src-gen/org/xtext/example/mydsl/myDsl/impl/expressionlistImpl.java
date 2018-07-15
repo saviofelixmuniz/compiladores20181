@@ -5,6 +5,8 @@ package org.xtext.example.mydsl.myDsl.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
 import org.xtext.example.mydsl.myDsl.expressionlist;
 
@@ -15,7 +17,7 @@ import org.xtext.example.mydsl.myDsl.expressionlist;
  *
  * @generated
  */
-public class expressionlistImpl extends recvstmtImpl implements expressionlist
+public class expressionlistImpl extends MinimalEObjectImpl.Container implements expressionlist
 {
   /**
    * <!-- begin-user-doc -->

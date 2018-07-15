@@ -14,10 +14,9 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.primaryexpraux#getSelector <em>Selector</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.primaryexpraux#getPrimaryexpraux <em>Primaryexpraux</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.primaryexpraux#getIndex <em>Index</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.primaryexpraux#getSlice <em>Slice</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.primaryexpraux#getPrimaryexpraux <em>Primaryexpraux</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.primaryexpraux#getSelector <em>Selector</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.primaryexpraux#getTypeassertion <em>Typeassertion</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.primaryexpraux#getArguments <em>Arguments</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.primaryexpraux#getWS <em>WS</em>}</li>
@@ -30,30 +29,30 @@ import org.eclipse.emf.ecore.EObject;
 public interface primaryexpraux extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Selector</b></em>' attribute.
+   * Returns the value of the '<em><b>Slice</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Selector</em>' attribute isn't clear,
+   * If the meaning of the '<em>Slice</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Selector</em>' attribute.
-   * @see #setSelector(String)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getprimaryexpraux_Selector()
-   * @model
+   * @return the value of the '<em>Slice</em>' containment reference.
+   * @see #setSlice(slice)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getprimaryexpraux_Slice()
+   * @model containment="true"
    * @generated
    */
-  String getSelector();
+  slice getSlice();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.primaryexpraux#getSelector <em>Selector</em>}' attribute.
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.primaryexpraux#getSlice <em>Slice</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Selector</em>' attribute.
-   * @see #getSelector()
+   * @param value the new value of the '<em>Slice</em>' containment reference.
+   * @see #getSlice()
    * @generated
    */
-  void setSelector(String value);
+  void setSlice(slice value);
 
   /**
    * Returns the value of the '<em><b>Primaryexpraux</b></em>' containment reference.
@@ -82,56 +81,30 @@ public interface primaryexpraux extends EObject
   void setPrimaryexpraux(primaryexpraux value);
 
   /**
-   * Returns the value of the '<em><b>Index</b></em>' containment reference.
+   * Returns the value of the '<em><b>Selector</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Index</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Selector</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Index</em>' containment reference.
-   * @see #setIndex(index)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getprimaryexpraux_Index()
-   * @model containment="true"
+   * @return the value of the '<em>Selector</em>' attribute.
+   * @see #setSelector(String)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getprimaryexpraux_Selector()
+   * @model
    * @generated
    */
-  index getIndex();
+  String getSelector();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.primaryexpraux#getIndex <em>Index</em>}' containment reference.
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.primaryexpraux#getSelector <em>Selector</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Index</em>' containment reference.
-   * @see #getIndex()
+   * @param value the new value of the '<em>Selector</em>' attribute.
+   * @see #getSelector()
    * @generated
    */
-  void setIndex(index value);
-
-  /**
-   * Returns the value of the '<em><b>Slice</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Slice</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Slice</em>' containment reference.
-   * @see #setSlice(slice)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getprimaryexpraux_Slice()
-   * @model containment="true"
-   * @generated
-   */
-  slice getSlice();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.primaryexpraux#getSlice <em>Slice</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Slice</em>' containment reference.
-   * @see #getSlice()
-   * @generated
-   */
-  void setSlice(slice value);
+  void setSelector(String value);
 
   /**
    * Returns the value of the '<em><b>Typeassertion</b></em>' containment reference.

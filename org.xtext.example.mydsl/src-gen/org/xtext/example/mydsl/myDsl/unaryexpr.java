@@ -3,7 +3,6 @@
  */
 package org.xtext.example.mydsl.myDsl;
 
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,20 +26,30 @@ import org.eclipse.emf.common.util.EList;
 public interface unaryexpr extends expression
 {
   /**
-   * Returns the value of the '<em><b>Expressionaux</b></em>' containment reference list.
-   * The list contents are of type {@link org.xtext.example.mydsl.myDsl.expressionaux}.
+   * Returns the value of the '<em><b>Expressionaux</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Expressionaux</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Expressionaux</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Expressionaux</em>' containment reference list.
+   * @return the value of the '<em>Expressionaux</em>' containment reference.
+   * @see #setExpressionaux(expressionaux)
    * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getunaryexpr_Expressionaux()
    * @model containment="true"
    * @generated
    */
-  EList<expressionaux> getExpressionaux();
+  expressionaux getExpressionaux();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.unaryexpr#getExpressionaux <em>Expressionaux</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Expressionaux</em>' containment reference.
+   * @see #getExpressionaux()
+   * @generated
+   */
+  void setExpressionaux(expressionaux value);
 
   /**
    * Returns the value of the '<em><b>Primaryexpr</b></em>' containment reference.

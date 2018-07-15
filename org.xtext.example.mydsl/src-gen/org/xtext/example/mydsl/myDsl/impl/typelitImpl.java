@@ -13,13 +13,13 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
-import org.xtext.example.mydsl.myDsl.arraytype;
+import org.xtext.example.mydsl.myDsl.arraytypeaux;
 import org.xtext.example.mydsl.myDsl.channeltype;
 import org.xtext.example.mydsl.myDsl.functiontype;
 import org.xtext.example.mydsl.myDsl.interfacetype;
 import org.xtext.example.mydsl.myDsl.maptype;
 import org.xtext.example.mydsl.myDsl.pointertype;
-import org.xtext.example.mydsl.myDsl.slicetype;
+import org.xtext.example.mydsl.myDsl.slicetypeaux;
 import org.xtext.example.mydsl.myDsl.structtype;
 import org.xtext.example.mydsl.myDsl.typelit;
 
@@ -31,12 +31,12 @@ import org.xtext.example.mydsl.myDsl.typelit;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.typelitImpl#getArraytype <em>Arraytype</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.typelitImpl#getArraytypeaux <em>Arraytypeaux</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.typelitImpl#getSlicetypeaux <em>Slicetypeaux</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.typelitImpl#getStructtype <em>Structtype</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.typelitImpl#getPointertype <em>Pointertype</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.typelitImpl#getFunctiontype <em>Functiontype</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.typelitImpl#getInterfacetype <em>Interfacetype</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.typelitImpl#getSlicetype <em>Slicetype</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.typelitImpl#getMaptype <em>Maptype</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.typelitImpl#getChanneltype <em>Channeltype</em>}</li>
  * </ul>
@@ -46,14 +46,24 @@ import org.xtext.example.mydsl.myDsl.typelit;
 public class typelitImpl extends MinimalEObjectImpl.Container implements typelit
 {
   /**
-   * The cached value of the '{@link #getArraytype() <em>Arraytype</em>}' containment reference.
+   * The cached value of the '{@link #getArraytypeaux() <em>Arraytypeaux</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getArraytype()
+   * @see #getArraytypeaux()
    * @generated
    * @ordered
    */
-  protected arraytype arraytype;
+  protected arraytypeaux arraytypeaux;
+
+  /**
+   * The cached value of the '{@link #getSlicetypeaux() <em>Slicetypeaux</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSlicetypeaux()
+   * @generated
+   * @ordered
+   */
+  protected slicetypeaux slicetypeaux;
 
   /**
    * The cached value of the '{@link #getStructtype() <em>Structtype</em>}' containment reference.
@@ -94,16 +104,6 @@ public class typelitImpl extends MinimalEObjectImpl.Container implements typelit
    * @ordered
    */
   protected interfacetype interfacetype;
-
-  /**
-   * The cached value of the '{@link #getSlicetype() <em>Slicetype</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getSlicetype()
-   * @generated
-   * @ordered
-   */
-  protected slicetype slicetype;
 
   /**
    * The cached value of the '{@link #getMaptype() <em>Maptype</em>}' containment reference.
@@ -151,9 +151,9 @@ public class typelitImpl extends MinimalEObjectImpl.Container implements typelit
    * <!-- end-user-doc -->
    * @generated
    */
-  public arraytype getArraytype()
+  public arraytypeaux getArraytypeaux()
   {
-    return arraytype;
+    return arraytypeaux;
   }
 
   /**
@@ -161,13 +161,13 @@ public class typelitImpl extends MinimalEObjectImpl.Container implements typelit
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetArraytype(arraytype newArraytype, NotificationChain msgs)
+  public NotificationChain basicSetArraytypeaux(arraytypeaux newArraytypeaux, NotificationChain msgs)
   {
-    arraytype oldArraytype = arraytype;
-    arraytype = newArraytype;
+    arraytypeaux oldArraytypeaux = arraytypeaux;
+    arraytypeaux = newArraytypeaux;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.TYPELIT__ARRAYTYPE, oldArraytype, newArraytype);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.TYPELIT__ARRAYTYPEAUX, oldArraytypeaux, newArraytypeaux);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -178,20 +178,68 @@ public class typelitImpl extends MinimalEObjectImpl.Container implements typelit
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setArraytype(arraytype newArraytype)
+  public void setArraytypeaux(arraytypeaux newArraytypeaux)
   {
-    if (newArraytype != arraytype)
+    if (newArraytypeaux != arraytypeaux)
     {
       NotificationChain msgs = null;
-      if (arraytype != null)
-        msgs = ((InternalEObject)arraytype).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.TYPELIT__ARRAYTYPE, null, msgs);
-      if (newArraytype != null)
-        msgs = ((InternalEObject)newArraytype).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.TYPELIT__ARRAYTYPE, null, msgs);
-      msgs = basicSetArraytype(newArraytype, msgs);
+      if (arraytypeaux != null)
+        msgs = ((InternalEObject)arraytypeaux).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.TYPELIT__ARRAYTYPEAUX, null, msgs);
+      if (newArraytypeaux != null)
+        msgs = ((InternalEObject)newArraytypeaux).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.TYPELIT__ARRAYTYPEAUX, null, msgs);
+      msgs = basicSetArraytypeaux(newArraytypeaux, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.TYPELIT__ARRAYTYPE, newArraytype, newArraytype));
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.TYPELIT__ARRAYTYPEAUX, newArraytypeaux, newArraytypeaux));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public slicetypeaux getSlicetypeaux()
+  {
+    return slicetypeaux;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetSlicetypeaux(slicetypeaux newSlicetypeaux, NotificationChain msgs)
+  {
+    slicetypeaux oldSlicetypeaux = slicetypeaux;
+    slicetypeaux = newSlicetypeaux;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.TYPELIT__SLICETYPEAUX, oldSlicetypeaux, newSlicetypeaux);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setSlicetypeaux(slicetypeaux newSlicetypeaux)
+  {
+    if (newSlicetypeaux != slicetypeaux)
+    {
+      NotificationChain msgs = null;
+      if (slicetypeaux != null)
+        msgs = ((InternalEObject)slicetypeaux).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.TYPELIT__SLICETYPEAUX, null, msgs);
+      if (newSlicetypeaux != null)
+        msgs = ((InternalEObject)newSlicetypeaux).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.TYPELIT__SLICETYPEAUX, null, msgs);
+      msgs = basicSetSlicetypeaux(newSlicetypeaux, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.TYPELIT__SLICETYPEAUX, newSlicetypeaux, newSlicetypeaux));
   }
 
   /**
@@ -391,54 +439,6 @@ public class typelitImpl extends MinimalEObjectImpl.Container implements typelit
    * <!-- end-user-doc -->
    * @generated
    */
-  public slicetype getSlicetype()
-  {
-    return slicetype;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetSlicetype(slicetype newSlicetype, NotificationChain msgs)
-  {
-    slicetype oldSlicetype = slicetype;
-    slicetype = newSlicetype;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.TYPELIT__SLICETYPE, oldSlicetype, newSlicetype);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setSlicetype(slicetype newSlicetype)
-  {
-    if (newSlicetype != slicetype)
-    {
-      NotificationChain msgs = null;
-      if (slicetype != null)
-        msgs = ((InternalEObject)slicetype).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.TYPELIT__SLICETYPE, null, msgs);
-      if (newSlicetype != null)
-        msgs = ((InternalEObject)newSlicetype).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.TYPELIT__SLICETYPE, null, msgs);
-      msgs = basicSetSlicetype(newSlicetype, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.TYPELIT__SLICETYPE, newSlicetype, newSlicetype));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public maptype getMaptype()
   {
     return maptype;
@@ -540,8 +540,10 @@ public class typelitImpl extends MinimalEObjectImpl.Container implements typelit
   {
     switch (featureID)
     {
-      case MyDslPackage.TYPELIT__ARRAYTYPE:
-        return basicSetArraytype(null, msgs);
+      case MyDslPackage.TYPELIT__ARRAYTYPEAUX:
+        return basicSetArraytypeaux(null, msgs);
+      case MyDslPackage.TYPELIT__SLICETYPEAUX:
+        return basicSetSlicetypeaux(null, msgs);
       case MyDslPackage.TYPELIT__STRUCTTYPE:
         return basicSetStructtype(null, msgs);
       case MyDslPackage.TYPELIT__POINTERTYPE:
@@ -550,8 +552,6 @@ public class typelitImpl extends MinimalEObjectImpl.Container implements typelit
         return basicSetFunctiontype(null, msgs);
       case MyDslPackage.TYPELIT__INTERFACETYPE:
         return basicSetInterfacetype(null, msgs);
-      case MyDslPackage.TYPELIT__SLICETYPE:
-        return basicSetSlicetype(null, msgs);
       case MyDslPackage.TYPELIT__MAPTYPE:
         return basicSetMaptype(null, msgs);
       case MyDslPackage.TYPELIT__CHANNELTYPE:
@@ -570,8 +570,10 @@ public class typelitImpl extends MinimalEObjectImpl.Container implements typelit
   {
     switch (featureID)
     {
-      case MyDslPackage.TYPELIT__ARRAYTYPE:
-        return getArraytype();
+      case MyDslPackage.TYPELIT__ARRAYTYPEAUX:
+        return getArraytypeaux();
+      case MyDslPackage.TYPELIT__SLICETYPEAUX:
+        return getSlicetypeaux();
       case MyDslPackage.TYPELIT__STRUCTTYPE:
         return getStructtype();
       case MyDslPackage.TYPELIT__POINTERTYPE:
@@ -580,8 +582,6 @@ public class typelitImpl extends MinimalEObjectImpl.Container implements typelit
         return getFunctiontype();
       case MyDslPackage.TYPELIT__INTERFACETYPE:
         return getInterfacetype();
-      case MyDslPackage.TYPELIT__SLICETYPE:
-        return getSlicetype();
       case MyDslPackage.TYPELIT__MAPTYPE:
         return getMaptype();
       case MyDslPackage.TYPELIT__CHANNELTYPE:
@@ -600,8 +600,11 @@ public class typelitImpl extends MinimalEObjectImpl.Container implements typelit
   {
     switch (featureID)
     {
-      case MyDslPackage.TYPELIT__ARRAYTYPE:
-        setArraytype((arraytype)newValue);
+      case MyDslPackage.TYPELIT__ARRAYTYPEAUX:
+        setArraytypeaux((arraytypeaux)newValue);
+        return;
+      case MyDslPackage.TYPELIT__SLICETYPEAUX:
+        setSlicetypeaux((slicetypeaux)newValue);
         return;
       case MyDslPackage.TYPELIT__STRUCTTYPE:
         setStructtype((structtype)newValue);
@@ -614,9 +617,6 @@ public class typelitImpl extends MinimalEObjectImpl.Container implements typelit
         return;
       case MyDslPackage.TYPELIT__INTERFACETYPE:
         setInterfacetype((interfacetype)newValue);
-        return;
-      case MyDslPackage.TYPELIT__SLICETYPE:
-        setSlicetype((slicetype)newValue);
         return;
       case MyDslPackage.TYPELIT__MAPTYPE:
         setMaptype((maptype)newValue);
@@ -638,8 +638,11 @@ public class typelitImpl extends MinimalEObjectImpl.Container implements typelit
   {
     switch (featureID)
     {
-      case MyDslPackage.TYPELIT__ARRAYTYPE:
-        setArraytype((arraytype)null);
+      case MyDslPackage.TYPELIT__ARRAYTYPEAUX:
+        setArraytypeaux((arraytypeaux)null);
+        return;
+      case MyDslPackage.TYPELIT__SLICETYPEAUX:
+        setSlicetypeaux((slicetypeaux)null);
         return;
       case MyDslPackage.TYPELIT__STRUCTTYPE:
         setStructtype((structtype)null);
@@ -652,9 +655,6 @@ public class typelitImpl extends MinimalEObjectImpl.Container implements typelit
         return;
       case MyDslPackage.TYPELIT__INTERFACETYPE:
         setInterfacetype((interfacetype)null);
-        return;
-      case MyDslPackage.TYPELIT__SLICETYPE:
-        setSlicetype((slicetype)null);
         return;
       case MyDslPackage.TYPELIT__MAPTYPE:
         setMaptype((maptype)null);
@@ -676,8 +676,10 @@ public class typelitImpl extends MinimalEObjectImpl.Container implements typelit
   {
     switch (featureID)
     {
-      case MyDslPackage.TYPELIT__ARRAYTYPE:
-        return arraytype != null;
+      case MyDslPackage.TYPELIT__ARRAYTYPEAUX:
+        return arraytypeaux != null;
+      case MyDslPackage.TYPELIT__SLICETYPEAUX:
+        return slicetypeaux != null;
       case MyDslPackage.TYPELIT__STRUCTTYPE:
         return structtype != null;
       case MyDslPackage.TYPELIT__POINTERTYPE:
@@ -686,8 +688,6 @@ public class typelitImpl extends MinimalEObjectImpl.Container implements typelit
         return functiontype != null;
       case MyDslPackage.TYPELIT__INTERFACETYPE:
         return interfacetype != null;
-      case MyDslPackage.TYPELIT__SLICETYPE:
-        return slicetype != null;
       case MyDslPackage.TYPELIT__MAPTYPE:
         return maptype != null;
       case MyDslPackage.TYPELIT__CHANNELTYPE:

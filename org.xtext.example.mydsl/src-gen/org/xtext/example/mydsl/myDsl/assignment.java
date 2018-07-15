@@ -16,8 +16,9 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.assignment#getExpressionlist <em>Expressionlist</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.assignment#getPostexpressionlist <em>Postexpressionlist</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.assignment#getASSIGN_OP <em>ASSIGN OP</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.assignment#getExpressionlist <em>Expressionlist</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getassignment()
@@ -27,20 +28,20 @@ import org.eclipse.emf.ecore.EObject;
 public interface assignment extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Expressionlist</b></em>' containment reference list.
-   * The list contents are of type {@link org.xtext.example.mydsl.myDsl.expressionlist}.
+   * Returns the value of the '<em><b>Postexpressionlist</b></em>' containment reference list.
+   * The list contents are of type {@link org.xtext.example.mydsl.myDsl.postexpressionlist}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Expressionlist</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Postexpressionlist</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Expressionlist</em>' containment reference list.
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getassignment_Expressionlist()
+   * @return the value of the '<em>Postexpressionlist</em>' containment reference list.
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getassignment_Postexpressionlist()
    * @model containment="true"
    * @generated
    */
-  EList<expressionlist> getExpressionlist();
+  EList<postexpressionlist> getPostexpressionlist();
 
   /**
    * Returns the value of the '<em><b>ASSIGN OP</b></em>' attribute.
@@ -67,5 +68,21 @@ public interface assignment extends EObject
    * @generated
    */
   void setASSIGN_OP(String value);
+
+  /**
+   * Returns the value of the '<em><b>Expressionlist</b></em>' containment reference list.
+   * The list contents are of type {@link org.xtext.example.mydsl.myDsl.expressionlist}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Expressionlist</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Expressionlist</em>' containment reference list.
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getassignment_Expressionlist()
+   * @model containment="true"
+   * @generated
+   */
+  EList<expressionlist> getExpressionlist();
 
 } // assignment

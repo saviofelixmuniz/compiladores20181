@@ -3,7 +3,7 @@ grammar org.xtext.example.mydsl.MyDsl with org.eclipse.xtext.common.Terminals
 generate myDsl "http://www.xtext.org/example/mydsl/MyDsl"
 
 Model:
-	elements+=result*
+	elements+=sourcefile*
 ;
 
 sourcefile:
@@ -27,11 +27,11 @@ packageclause:
 ;
 
 expression: 
-	unaryexpr expressionaux+=expressionaux
+	unaryexpr expressionaux=expressionaux
 ;
 
 expressionaux:
-	expression+=expression BINARY_OP=BINARY_OP expression+=expression
+	BINARY_OP=BINARY_OP expression+=expression expressionaux=expressionaux | {expressionaux} ";"
 ;
 
 unaryexpr:
@@ -44,37 +44,28 @@ primaryexpr:
 	methodexpr=methodexpr primaryexpraux=primaryexpraux 
 ;
 
-primaryexpraux:
-	selector=selector primaryexpraux=primaryexpraux | 
-	index=index primaryexpraux=primaryexpraux | 
-	slice=slice primaryexpraux=primaryexpraux | 
-	typeassertion=typeassertion primaryexpraux = primaryexpraux |
-	arguments=arguments primaryexpraux=primaryexpraux |
-	{primaryexpraux} WS=WS
-;
-
-index:
-	"[" expression "]"
-;
-
-slice:
-	{slice} "[" expression+=expression? ":" (=>(expression+=expression ":" expression+=expression) | expression+=expression?) "]"
-;
-
-methodexpr:
-	receivertype=receivertype "." methodname=methodname
-;
-
-receivertype:
-	type
+operand:
+	//warning
+	=> ("(" expression=expression ")") | literal=literal | operandname=operandname 
 ;
 
 conversion:
 	type=type "(" expression=expression ","? ")"
 ;
 
-operand:
-	=> ("(" expression=expression ")") | literal=literal | operandname=operandname 
+methodexpr:
+	type=type "." methodname=methodname
+;
+
+primaryexpraux:
+	("[" (( => (expression? slice=slice) | (expression)) "]" primaryexpraux=primaryexpraux)) | 
+	"." ((selector=selector | typeassertion=typeassertion) primaryexpraux = primaryexpraux)| 
+	arguments=arguments primaryexpraux=primaryexpraux |
+	{primaryexpraux} WS=WS
+;
+
+slice:
+	{slice} ":" (=>(expression+=expression ":" expression+=expression) | expression+=expression?)
 ;
 
 compositelit:
@@ -82,7 +73,7 @@ compositelit:
 ;
 
 literaltype:
-	structtype=structtype | "[" "..." "]" elementtype=elementtype | slicetype=slicetype | maptype=maptype | typename=typename
+	structtype=structtype | ("[" (("..." "]" elementtype=elementtype) | arraytypeaux=arraytypeaux | slicetypeaux=slicetypeaux)) | maptype=maptype | typename=typename
 ;
 
 literalvalue:
@@ -110,7 +101,7 @@ functionlit:
 ;
 
 statement:
-	declaration=declaration | labeledstmt=labeledstmt | simplestmt=simplestmt |
+	declaration=declaration | labeledstmt=labeledstmt | {statement} simplestmt=simplestmt? |
 	gotstmt=gotstmt | returnstmt=returnstmt | breakstmt=breakstmt |
 	continuestmt=continuestmt |	gotostmt=gotostmt | fallthroughstmt=fallthroughstmt |
 	block=block | ifstmt=ifstmt | switchstmt=switchstmt | 
@@ -179,10 +170,9 @@ constspec:
 	identifierlist=identifierlist (type=type? "=" expressionlist=expressionlist)?
 ;
 
-
 simplestmt:
-	emptystmt=emptystmt | expressionstmt=expressionstmt | sendstmt=sendstmt | 
-	incdecstmt=incdecstmt | assignment=assignment | shortvardecl=shortvardecl
+	//emptystmt = ";"
+	(expression ( sendstmt=sendstmt | incdecstmt=incdecstmt | assignment=assignment)?) | shortvardecl=shortvardecl
 ;
 
 shortvardecl:
@@ -218,11 +208,19 @@ commclause:
 ;
 
 commcase:
-	"case" ( sendstmt=sendstmt | recvstmt=recvstmt ) | {commcase} "default"
+	"case" ( expression=expression (sendstmt=sendstmt | recvstmt=recvstmt) ) | {commcase} "default"
 ;
 
 recvstmt:
-	(expressionlist "=" | identifierlist=identifierlist ":=") recvexpr=recvexpr
+	(postexpressionlist "=" | identifierlist=identifierlist ":=") recvexpr=recvexpr
+;
+
+postexpressionlist:
+	{postexpressionlist} ("," expression+=expression)*
+;
+
+expressionlist:
+	expression ("," expression+=expression)*
 ;
 
 recvexpr:
@@ -298,19 +296,15 @@ ifstmt:
 ;
 
 assignment:
-	expressionlist+=expressionlist ASSIGN_OP=ASSIGN_OP expressionlist+=expressionlist
+	postexpressionlist+=postexpressionlist ASSIGN_OP=ASSIGN_OP expressionlist+=expressionlist
 ;
 
 incdecstmt:
-	expression ("++" | "--")
+	("++" | "--")
 ;
 
 sendstmt:
-	channel=channel "<-" expression=expression
-;
-
-channel:
-	expression
+	"<-" expression=expression
 ;
 
 labeledstmt:
@@ -319,14 +313,6 @@ labeledstmt:
 
 label:
 	IDENTIFIER
-;
-
-expressionstmt:
-	expression
-;
-
-emptystmt:
-	";"
 ;
 
 fallthroughstmt:
@@ -346,19 +332,16 @@ functionbody:
 ;	
 
 typeassertion:
-	"." "(" type ")"
+	"(" type ")"
 ;
 
 arguments:
 	{arguments} "(" ((expressionlist=expressionlist | type=type ("," expressionlist=expressionlist)?) "..."? ","?)? ")"
 ;
 
-expressionlist:
-	expression ("," expression+=expression)*
-;
 
 selector:
-	"." IDENTIFIER
+	IDENTIFIER
 ;
 
 fieldname:
@@ -367,10 +350,6 @@ fieldname:
 
 literal:
 	basiclit=basiclit| compositelit=compositelit | functionlit=functionlit
-;
-
-basiclit:
-	int_lit | float_lit | imaginary_lit | rune_lit | string_lit
 ;
 
 operandname:
@@ -385,6 +364,10 @@ slicetype:
 	"[" "]" elementtype
 ;
 
+slicetypeaux: 
+	"]" elementtype
+;
+
 pointertype:
 	"*" basetype
 ;
@@ -394,7 +377,7 @@ basetype:
 ;
 
 channeltype:
-	( "chan" | "chan" "<-" | "<-" "chan" ) elementtype
+	( => "chan" "<-" | "chan" | "<-" "chan" ) elementtype
 ;
 
 maptype:
@@ -430,11 +413,15 @@ functiontype:
 ;
 
 signature:
-	parameters=parameters result=result?
+	parameters+=parameters (parameters+=parameters | type=type)?
+;
+
+type:
+	typename=typename | typelit=typelit | "(" type=type ")"
 ;
 
 result:
-	=> parameters | type
+	=> type | parameters
 ;
 
 parameters:
@@ -465,18 +452,18 @@ embeddedfield:
 	("*")? typename
 ;
 
-type:
-	typename=typename | typelit=typelit | "(" type=type ")"
-;
-
 typelit:
-	arraytype=arraytype | structtype=structtype | pointertype=pointertype |
-	functiontype=functiontype | interfacetype=interfacetype | slicetype=slicetype |
+	("[" (arraytypeaux=arraytypeaux | slicetypeaux=slicetypeaux)) | structtype=structtype | pointertype=pointertype |
+	functiontype=functiontype | interfacetype=interfacetype |
 	maptype=maptype | channeltype=channeltype
 ;
 
 arraytype:
 	=> ("[" expression=expression "]") elementtype=elementtype
+;
+
+arraytypeaux:
+	=> (expression=expression "]") elementtype=elementtype
 ;
 
 /*
@@ -497,9 +484,6 @@ packagename:
 	IDENTIFIER
 ;
 
-string_lit:
-	raw_string_lit | interpreted_string_lit
-;
 
 raw_string_lit:
 	"`" (LETTER | DECIMAL_DIGIT | "\\n")* "`"
@@ -509,12 +493,20 @@ interpreted_string_lit:
 	"\"" (unicode_value | byte_value)* "\""
 ;
 
-rune_lit:
-	"'" (unicode_value | byte_value) "'"
+basiclit:
+	int_lit | float_lit | imaginary_lit | rune_lit | string_lit
 ;
 
 int_lit:
 	(DECIMAL_DIGIT | hex_lit)*
+;
+
+rune_lit:
+	"'" (unicode_value | byte_value) "'"
+;
+
+string_lit:
+	raw_string_lit | interpreted_string_lit
 ;
 
 hex_lit:
@@ -526,7 +518,7 @@ imaginary_lit:
 ;
 
 float_lit:
-	(decimals "." decimals? exponent?) | (decimals exponent) | "." decimals exponent?
+	(decimals ("." (decimals? exponent?)) | exponent)
 ;
 
 exponent:

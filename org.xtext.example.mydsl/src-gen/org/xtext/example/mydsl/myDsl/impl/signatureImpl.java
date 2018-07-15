@@ -3,18 +3,25 @@
  */
 package org.xtext.example.mydsl.myDsl.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
 import org.xtext.example.mydsl.myDsl.parameters;
-import org.xtext.example.mydsl.myDsl.result;
 import org.xtext.example.mydsl.myDsl.signature;
+import org.xtext.example.mydsl.myDsl.type;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,7 +32,7 @@ import org.xtext.example.mydsl.myDsl.signature;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.signatureImpl#getParameters <em>Parameters</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.signatureImpl#getResult <em>Result</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.signatureImpl#getType <em>Type</em>}</li>
  * </ul>
  *
  * @generated
@@ -33,24 +40,24 @@ import org.xtext.example.mydsl.myDsl.signature;
 public class signatureImpl extends functiontypeImpl implements signature
 {
   /**
-   * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference.
+   * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getParameters()
    * @generated
    * @ordered
    */
-  protected parameters parameters;
+  protected EList<parameters> parameters;
 
   /**
-   * The cached value of the '{@link #getResult() <em>Result</em>}' containment reference.
+   * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getResult()
+   * @see #getType()
    * @generated
    * @ordered
    */
-  protected result result;
+  protected type type;
 
   /**
    * <!-- begin-user-doc -->
@@ -78,8 +85,12 @@ public class signatureImpl extends functiontypeImpl implements signature
    * <!-- end-user-doc -->
    * @generated
    */
-  public parameters getParameters()
+  public EList<parameters> getParameters()
   {
+    if (parameters == null)
+    {
+      parameters = new EObjectContainmentEList<parameters>(parameters.class, this, MyDslPackage.SIGNATURE__PARAMETERS);
+    }
     return parameters;
   }
 
@@ -88,13 +99,23 @@ public class signatureImpl extends functiontypeImpl implements signature
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetParameters(parameters newParameters, NotificationChain msgs)
+  public type getType()
   {
-    parameters oldParameters = parameters;
-    parameters = newParameters;
+    return type;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetType(type newType, NotificationChain msgs)
+  {
+    type oldType = type;
+    type = newType;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.SIGNATURE__PARAMETERS, oldParameters, newParameters);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.SIGNATURE__TYPE, oldType, newType);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -105,68 +126,20 @@ public class signatureImpl extends functiontypeImpl implements signature
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setParameters(parameters newParameters)
+  public void setType(type newType)
   {
-    if (newParameters != parameters)
+    if (newType != type)
     {
       NotificationChain msgs = null;
-      if (parameters != null)
-        msgs = ((InternalEObject)parameters).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.SIGNATURE__PARAMETERS, null, msgs);
-      if (newParameters != null)
-        msgs = ((InternalEObject)newParameters).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.SIGNATURE__PARAMETERS, null, msgs);
-      msgs = basicSetParameters(newParameters, msgs);
+      if (type != null)
+        msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.SIGNATURE__TYPE, null, msgs);
+      if (newType != null)
+        msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.SIGNATURE__TYPE, null, msgs);
+      msgs = basicSetType(newType, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.SIGNATURE__PARAMETERS, newParameters, newParameters));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public result getResult()
-  {
-    return result;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetResult(result newResult, NotificationChain msgs)
-  {
-    result oldResult = result;
-    result = newResult;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.SIGNATURE__RESULT, oldResult, newResult);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setResult(result newResult)
-  {
-    if (newResult != result)
-    {
-      NotificationChain msgs = null;
-      if (result != null)
-        msgs = ((InternalEObject)result).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.SIGNATURE__RESULT, null, msgs);
-      if (newResult != null)
-        msgs = ((InternalEObject)newResult).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.SIGNATURE__RESULT, null, msgs);
-      msgs = basicSetResult(newResult, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.SIGNATURE__RESULT, newResult, newResult));
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.SIGNATURE__TYPE, newType, newType));
   }
 
   /**
@@ -180,9 +153,9 @@ public class signatureImpl extends functiontypeImpl implements signature
     switch (featureID)
     {
       case MyDslPackage.SIGNATURE__PARAMETERS:
-        return basicSetParameters(null, msgs);
-      case MyDslPackage.SIGNATURE__RESULT:
-        return basicSetResult(null, msgs);
+        return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
+      case MyDslPackage.SIGNATURE__TYPE:
+        return basicSetType(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -199,8 +172,8 @@ public class signatureImpl extends functiontypeImpl implements signature
     {
       case MyDslPackage.SIGNATURE__PARAMETERS:
         return getParameters();
-      case MyDslPackage.SIGNATURE__RESULT:
-        return getResult();
+      case MyDslPackage.SIGNATURE__TYPE:
+        return getType();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -210,16 +183,18 @@ public class signatureImpl extends functiontypeImpl implements signature
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
       case MyDslPackage.SIGNATURE__PARAMETERS:
-        setParameters((parameters)newValue);
+        getParameters().clear();
+        getParameters().addAll((Collection<? extends parameters>)newValue);
         return;
-      case MyDslPackage.SIGNATURE__RESULT:
-        setResult((result)newValue);
+      case MyDslPackage.SIGNATURE__TYPE:
+        setType((type)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -236,10 +211,10 @@ public class signatureImpl extends functiontypeImpl implements signature
     switch (featureID)
     {
       case MyDslPackage.SIGNATURE__PARAMETERS:
-        setParameters((parameters)null);
+        getParameters().clear();
         return;
-      case MyDslPackage.SIGNATURE__RESULT:
-        setResult((result)null);
+      case MyDslPackage.SIGNATURE__TYPE:
+        setType((type)null);
         return;
     }
     super.eUnset(featureID);
@@ -256,9 +231,9 @@ public class signatureImpl extends functiontypeImpl implements signature
     switch (featureID)
     {
       case MyDslPackage.SIGNATURE__PARAMETERS:
-        return parameters != null;
-      case MyDslPackage.SIGNATURE__RESULT:
-        return result != null;
+        return parameters != null && !parameters.isEmpty();
+      case MyDslPackage.SIGNATURE__TYPE:
+        return type != null;
     }
     return super.eIsSet(featureID);
   }

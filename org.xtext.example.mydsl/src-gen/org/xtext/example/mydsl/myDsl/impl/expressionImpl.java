@@ -19,19 +19,24 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
+import org.xtext.example.mydsl.myDsl.assignment;
 import org.xtext.example.mydsl.myDsl.block;
-import org.xtext.example.mydsl.myDsl.channel;
 import org.xtext.example.mydsl.myDsl.condition;
 import org.xtext.example.mydsl.myDsl.deferstmt;
 import org.xtext.example.mydsl.myDsl.element;
 import org.xtext.example.mydsl.myDsl.expression;
 import org.xtext.example.mydsl.myDsl.expressionlist;
-import org.xtext.example.mydsl.myDsl.expressionstmt;
 import org.xtext.example.mydsl.myDsl.forstmt;
 import org.xtext.example.mydsl.myDsl.gotstmt;
-import org.xtext.example.mydsl.myDsl.incdecstmt;
+import org.xtext.example.mydsl.myDsl.initstmt;
+import org.xtext.example.mydsl.myDsl.poststmt;
 import org.xtext.example.mydsl.myDsl.recvexpr;
-import org.xtext.example.mydsl.myDsl.recvstmt;
+import org.xtext.example.mydsl.myDsl.sendstmt;
+import org.xtext.example.mydsl.myDsl.shortvardecl;
+import org.xtext.example.mydsl.myDsl.simplestmt;
+import org.xtext.example.mydsl.myDsl.typecaseclause;
+import org.xtext.example.mydsl.myDsl.typeswitchguard;
+import org.xtext.example.mydsl.myDsl.typeswitchstmt;
 
 /**
  * <!-- begin-user-doc -->
@@ -41,16 +46,50 @@ import org.xtext.example.mydsl.myDsl.recvstmt;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.expressionImpl#getTypeswitchguard <em>Typeswitchguard</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.expressionImpl#getTypecaseclause <em>Typecaseclause</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.expressionImpl#getShortvardecl <em>Shortvardecl</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.expressionImpl#getBlock <em>Block</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.expressionImpl#getIdentifierlist <em>Identifierlist</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.expressionImpl#getRecvexpr <em>Recvexpr</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.expressionImpl#getSendstmt <em>Sendstmt</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.expressionImpl#getIncdecstmt <em>Incdecstmt</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.expressionImpl#getAssignment <em>Assignment</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.expressionImpl#getExpression <em>Expression</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class expressionImpl extends indexImpl implements expression
+public class expressionImpl extends primaryexprauxImpl implements expression
 {
+  /**
+   * The cached value of the '{@link #getTypeswitchguard() <em>Typeswitchguard</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTypeswitchguard()
+   * @generated
+   * @ordered
+   */
+  protected typeswitchguard typeswitchguard;
+
+  /**
+   * The cached value of the '{@link #getTypecaseclause() <em>Typecaseclause</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTypecaseclause()
+   * @generated
+   * @ordered
+   */
+  protected EList<typecaseclause> typecaseclause;
+
+  /**
+   * The cached value of the '{@link #getShortvardecl() <em>Shortvardecl</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getShortvardecl()
+   * @generated
+   * @ordered
+   */
+  protected shortvardecl shortvardecl;
+
   /**
    * The cached value of the '{@link #getBlock() <em>Block</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -62,34 +101,44 @@ public class expressionImpl extends indexImpl implements expression
   protected block block;
 
   /**
-   * The default value of the '{@link #getIdentifierlist() <em>Identifierlist</em>}' attribute.
+   * The cached value of the '{@link #getSendstmt() <em>Sendstmt</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getIdentifierlist()
+   * @see #getSendstmt()
    * @generated
    * @ordered
    */
-  protected static final String IDENTIFIERLIST_EDEFAULT = null;
+  protected sendstmt sendstmt;
 
   /**
-   * The cached value of the '{@link #getIdentifierlist() <em>Identifierlist</em>}' attribute.
+   * The default value of the '{@link #getIncdecstmt() <em>Incdecstmt</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getIdentifierlist()
+   * @see #getIncdecstmt()
    * @generated
    * @ordered
    */
-  protected String identifierlist = IDENTIFIERLIST_EDEFAULT;
+  protected static final String INCDECSTMT_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getRecvexpr() <em>Recvexpr</em>}' containment reference.
+   * The cached value of the '{@link #getIncdecstmt() <em>Incdecstmt</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRecvexpr()
+   * @see #getIncdecstmt()
    * @generated
    * @ordered
    */
-  protected recvexpr recvexpr;
+  protected String incdecstmt = INCDECSTMT_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getAssignment() <em>Assignment</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getAssignment()
+   * @generated
+   * @ordered
+   */
+  protected assignment assignment;
 
   /**
    * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference list.
@@ -120,6 +169,116 @@ public class expressionImpl extends indexImpl implements expression
   protected EClass eStaticClass()
   {
     return MyDslPackage.Literals.EXPRESSION;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public typeswitchguard getTypeswitchguard()
+  {
+    return typeswitchguard;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetTypeswitchguard(typeswitchguard newTypeswitchguard, NotificationChain msgs)
+  {
+    typeswitchguard oldTypeswitchguard = typeswitchguard;
+    typeswitchguard = newTypeswitchguard;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.EXPRESSION__TYPESWITCHGUARD, oldTypeswitchguard, newTypeswitchguard);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setTypeswitchguard(typeswitchguard newTypeswitchguard)
+  {
+    if (newTypeswitchguard != typeswitchguard)
+    {
+      NotificationChain msgs = null;
+      if (typeswitchguard != null)
+        msgs = ((InternalEObject)typeswitchguard).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.EXPRESSION__TYPESWITCHGUARD, null, msgs);
+      if (newTypeswitchguard != null)
+        msgs = ((InternalEObject)newTypeswitchguard).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.EXPRESSION__TYPESWITCHGUARD, null, msgs);
+      msgs = basicSetTypeswitchguard(newTypeswitchguard, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.EXPRESSION__TYPESWITCHGUARD, newTypeswitchguard, newTypeswitchguard));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<typecaseclause> getTypecaseclause()
+  {
+    if (typecaseclause == null)
+    {
+      typecaseclause = new EObjectContainmentEList<typecaseclause>(typecaseclause.class, this, MyDslPackage.EXPRESSION__TYPECASECLAUSE);
+    }
+    return typecaseclause;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public shortvardecl getShortvardecl()
+  {
+    return shortvardecl;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetShortvardecl(shortvardecl newShortvardecl, NotificationChain msgs)
+  {
+    shortvardecl oldShortvardecl = shortvardecl;
+    shortvardecl = newShortvardecl;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.EXPRESSION__SHORTVARDECL, oldShortvardecl, newShortvardecl);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setShortvardecl(shortvardecl newShortvardecl)
+  {
+    if (newShortvardecl != shortvardecl)
+    {
+      NotificationChain msgs = null;
+      if (shortvardecl != null)
+        msgs = ((InternalEObject)shortvardecl).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.EXPRESSION__SHORTVARDECL, null, msgs);
+      if (newShortvardecl != null)
+        msgs = ((InternalEObject)newShortvardecl).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.EXPRESSION__SHORTVARDECL, null, msgs);
+      msgs = basicSetShortvardecl(newShortvardecl, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.EXPRESSION__SHORTVARDECL, newShortvardecl, newShortvardecl));
   }
 
   /**
@@ -175,9 +334,9 @@ public class expressionImpl extends indexImpl implements expression
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getIdentifierlist()
+  public sendstmt getSendstmt()
   {
-    return identifierlist;
+    return sendstmt;
   }
 
   /**
@@ -185,36 +344,13 @@ public class expressionImpl extends indexImpl implements expression
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setIdentifierlist(String newIdentifierlist)
+  public NotificationChain basicSetSendstmt(sendstmt newSendstmt, NotificationChain msgs)
   {
-    String oldIdentifierlist = identifierlist;
-    identifierlist = newIdentifierlist;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.EXPRESSION__IDENTIFIERLIST, oldIdentifierlist, identifierlist));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public recvexpr getRecvexpr()
-  {
-    return recvexpr;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetRecvexpr(recvexpr newRecvexpr, NotificationChain msgs)
-  {
-    recvexpr oldRecvexpr = recvexpr;
-    recvexpr = newRecvexpr;
+    sendstmt oldSendstmt = sendstmt;
+    sendstmt = newSendstmt;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.EXPRESSION__RECVEXPR, oldRecvexpr, newRecvexpr);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.EXPRESSION__SENDSTMT, oldSendstmt, newSendstmt);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -225,20 +361,91 @@ public class expressionImpl extends indexImpl implements expression
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRecvexpr(recvexpr newRecvexpr)
+  public void setSendstmt(sendstmt newSendstmt)
   {
-    if (newRecvexpr != recvexpr)
+    if (newSendstmt != sendstmt)
     {
       NotificationChain msgs = null;
-      if (recvexpr != null)
-        msgs = ((InternalEObject)recvexpr).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.EXPRESSION__RECVEXPR, null, msgs);
-      if (newRecvexpr != null)
-        msgs = ((InternalEObject)newRecvexpr).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.EXPRESSION__RECVEXPR, null, msgs);
-      msgs = basicSetRecvexpr(newRecvexpr, msgs);
+      if (sendstmt != null)
+        msgs = ((InternalEObject)sendstmt).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.EXPRESSION__SENDSTMT, null, msgs);
+      if (newSendstmt != null)
+        msgs = ((InternalEObject)newSendstmt).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.EXPRESSION__SENDSTMT, null, msgs);
+      msgs = basicSetSendstmt(newSendstmt, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.EXPRESSION__RECVEXPR, newRecvexpr, newRecvexpr));
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.EXPRESSION__SENDSTMT, newSendstmt, newSendstmt));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getIncdecstmt()
+  {
+    return incdecstmt;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setIncdecstmt(String newIncdecstmt)
+  {
+    String oldIncdecstmt = incdecstmt;
+    incdecstmt = newIncdecstmt;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.EXPRESSION__INCDECSTMT, oldIncdecstmt, incdecstmt));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public assignment getAssignment()
+  {
+    return assignment;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetAssignment(assignment newAssignment, NotificationChain msgs)
+  {
+    assignment oldAssignment = assignment;
+    assignment = newAssignment;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.EXPRESSION__ASSIGNMENT, oldAssignment, newAssignment);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setAssignment(assignment newAssignment)
+  {
+    if (newAssignment != assignment)
+    {
+      NotificationChain msgs = null;
+      if (assignment != null)
+        msgs = ((InternalEObject)assignment).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.EXPRESSION__ASSIGNMENT, null, msgs);
+      if (newAssignment != null)
+        msgs = ((InternalEObject)newAssignment).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.EXPRESSION__ASSIGNMENT, null, msgs);
+      msgs = basicSetAssignment(newAssignment, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.EXPRESSION__ASSIGNMENT, newAssignment, newAssignment));
   }
 
   /**
@@ -265,10 +472,18 @@ public class expressionImpl extends indexImpl implements expression
   {
     switch (featureID)
     {
+      case MyDslPackage.EXPRESSION__TYPESWITCHGUARD:
+        return basicSetTypeswitchguard(null, msgs);
+      case MyDslPackage.EXPRESSION__TYPECASECLAUSE:
+        return ((InternalEList<?>)getTypecaseclause()).basicRemove(otherEnd, msgs);
+      case MyDslPackage.EXPRESSION__SHORTVARDECL:
+        return basicSetShortvardecl(null, msgs);
       case MyDslPackage.EXPRESSION__BLOCK:
         return basicSetBlock(null, msgs);
-      case MyDslPackage.EXPRESSION__RECVEXPR:
-        return basicSetRecvexpr(null, msgs);
+      case MyDslPackage.EXPRESSION__SENDSTMT:
+        return basicSetSendstmt(null, msgs);
+      case MyDslPackage.EXPRESSION__ASSIGNMENT:
+        return basicSetAssignment(null, msgs);
       case MyDslPackage.EXPRESSION__EXPRESSION:
         return ((InternalEList<?>)getExpression()).basicRemove(otherEnd, msgs);
     }
@@ -285,12 +500,20 @@ public class expressionImpl extends indexImpl implements expression
   {
     switch (featureID)
     {
+      case MyDslPackage.EXPRESSION__TYPESWITCHGUARD:
+        return getTypeswitchguard();
+      case MyDslPackage.EXPRESSION__TYPECASECLAUSE:
+        return getTypecaseclause();
+      case MyDslPackage.EXPRESSION__SHORTVARDECL:
+        return getShortvardecl();
       case MyDslPackage.EXPRESSION__BLOCK:
         return getBlock();
-      case MyDslPackage.EXPRESSION__IDENTIFIERLIST:
-        return getIdentifierlist();
-      case MyDslPackage.EXPRESSION__RECVEXPR:
-        return getRecvexpr();
+      case MyDslPackage.EXPRESSION__SENDSTMT:
+        return getSendstmt();
+      case MyDslPackage.EXPRESSION__INCDECSTMT:
+        return getIncdecstmt();
+      case MyDslPackage.EXPRESSION__ASSIGNMENT:
+        return getAssignment();
       case MyDslPackage.EXPRESSION__EXPRESSION:
         return getExpression();
     }
@@ -308,14 +531,27 @@ public class expressionImpl extends indexImpl implements expression
   {
     switch (featureID)
     {
+      case MyDslPackage.EXPRESSION__TYPESWITCHGUARD:
+        setTypeswitchguard((typeswitchguard)newValue);
+        return;
+      case MyDslPackage.EXPRESSION__TYPECASECLAUSE:
+        getTypecaseclause().clear();
+        getTypecaseclause().addAll((Collection<? extends typecaseclause>)newValue);
+        return;
+      case MyDslPackage.EXPRESSION__SHORTVARDECL:
+        setShortvardecl((shortvardecl)newValue);
+        return;
       case MyDslPackage.EXPRESSION__BLOCK:
         setBlock((block)newValue);
         return;
-      case MyDslPackage.EXPRESSION__IDENTIFIERLIST:
-        setIdentifierlist((String)newValue);
+      case MyDslPackage.EXPRESSION__SENDSTMT:
+        setSendstmt((sendstmt)newValue);
         return;
-      case MyDslPackage.EXPRESSION__RECVEXPR:
-        setRecvexpr((recvexpr)newValue);
+      case MyDslPackage.EXPRESSION__INCDECSTMT:
+        setIncdecstmt((String)newValue);
+        return;
+      case MyDslPackage.EXPRESSION__ASSIGNMENT:
+        setAssignment((assignment)newValue);
         return;
       case MyDslPackage.EXPRESSION__EXPRESSION:
         getExpression().clear();
@@ -335,14 +571,26 @@ public class expressionImpl extends indexImpl implements expression
   {
     switch (featureID)
     {
+      case MyDslPackage.EXPRESSION__TYPESWITCHGUARD:
+        setTypeswitchguard((typeswitchguard)null);
+        return;
+      case MyDslPackage.EXPRESSION__TYPECASECLAUSE:
+        getTypecaseclause().clear();
+        return;
+      case MyDslPackage.EXPRESSION__SHORTVARDECL:
+        setShortvardecl((shortvardecl)null);
+        return;
       case MyDslPackage.EXPRESSION__BLOCK:
         setBlock((block)null);
         return;
-      case MyDslPackage.EXPRESSION__IDENTIFIERLIST:
-        setIdentifierlist(IDENTIFIERLIST_EDEFAULT);
+      case MyDslPackage.EXPRESSION__SENDSTMT:
+        setSendstmt((sendstmt)null);
         return;
-      case MyDslPackage.EXPRESSION__RECVEXPR:
-        setRecvexpr((recvexpr)null);
+      case MyDslPackage.EXPRESSION__INCDECSTMT:
+        setIncdecstmt(INCDECSTMT_EDEFAULT);
+        return;
+      case MyDslPackage.EXPRESSION__ASSIGNMENT:
+        setAssignment((assignment)null);
         return;
       case MyDslPackage.EXPRESSION__EXPRESSION:
         getExpression().clear();
@@ -361,12 +609,20 @@ public class expressionImpl extends indexImpl implements expression
   {
     switch (featureID)
     {
+      case MyDslPackage.EXPRESSION__TYPESWITCHGUARD:
+        return typeswitchguard != null;
+      case MyDslPackage.EXPRESSION__TYPECASECLAUSE:
+        return typecaseclause != null && !typecaseclause.isEmpty();
+      case MyDslPackage.EXPRESSION__SHORTVARDECL:
+        return shortvardecl != null;
       case MyDslPackage.EXPRESSION__BLOCK:
         return block != null;
-      case MyDslPackage.EXPRESSION__IDENTIFIERLIST:
-        return IDENTIFIERLIST_EDEFAULT == null ? identifierlist != null : !IDENTIFIERLIST_EDEFAULT.equals(identifierlist);
-      case MyDslPackage.EXPRESSION__RECVEXPR:
-        return recvexpr != null;
+      case MyDslPackage.EXPRESSION__SENDSTMT:
+        return sendstmt != null;
+      case MyDslPackage.EXPRESSION__INCDECSTMT:
+        return INCDECSTMT_EDEFAULT == null ? incdecstmt != null : !INCDECSTMT_EDEFAULT.equals(incdecstmt);
+      case MyDslPackage.EXPRESSION__ASSIGNMENT:
+        return assignment != null;
       case MyDslPackage.EXPRESSION__EXPRESSION:
         return expression != null && !expression.isEmpty();
     }
@@ -388,7 +644,45 @@ public class expressionImpl extends indexImpl implements expression
         default: return -1;
       }
     }
+    if (baseClass == initstmt.class)
+    {
+      switch (derivedFeatureID)
+      {
+        default: return -1;
+      }
+    }
+    if (baseClass == poststmt.class)
+    {
+      switch (derivedFeatureID)
+      {
+        default: return -1;
+      }
+    }
+    if (baseClass == typeswitchstmt.class)
+    {
+      switch (derivedFeatureID)
+      {
+        case MyDslPackage.EXPRESSION__TYPESWITCHGUARD: return MyDslPackage.TYPESWITCHSTMT__TYPESWITCHGUARD;
+        case MyDslPackage.EXPRESSION__TYPECASECLAUSE: return MyDslPackage.TYPESWITCHSTMT__TYPECASECLAUSE;
+        default: return -1;
+      }
+    }
+    if (baseClass == simplestmt.class)
+    {
+      switch (derivedFeatureID)
+      {
+        case MyDslPackage.EXPRESSION__SHORTVARDECL: return MyDslPackage.SIMPLESTMT__SHORTVARDECL;
+        default: return -1;
+      }
+    }
     if (baseClass == deferstmt.class)
+    {
+      switch (derivedFeatureID)
+      {
+        default: return -1;
+      }
+    }
+    if (baseClass == expressionlist.class)
     {
       switch (derivedFeatureID)
       {
@@ -424,43 +718,6 @@ public class expressionImpl extends indexImpl implements expression
         default: return -1;
       }
     }
-    if (baseClass == incdecstmt.class)
-    {
-      switch (derivedFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == channel.class)
-    {
-      switch (derivedFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == expressionstmt.class)
-    {
-      switch (derivedFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == recvstmt.class)
-    {
-      switch (derivedFeatureID)
-      {
-        case MyDslPackage.EXPRESSION__IDENTIFIERLIST: return MyDslPackage.RECVSTMT__IDENTIFIERLIST;
-        case MyDslPackage.EXPRESSION__RECVEXPR: return MyDslPackage.RECVSTMT__RECVEXPR;
-        default: return -1;
-      }
-    }
-    if (baseClass == expressionlist.class)
-    {
-      switch (derivedFeatureID)
-      {
-        default: return -1;
-      }
-    }
     return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
   }
 
@@ -479,7 +736,45 @@ public class expressionImpl extends indexImpl implements expression
         default: return -1;
       }
     }
+    if (baseClass == initstmt.class)
+    {
+      switch (baseFeatureID)
+      {
+        default: return -1;
+      }
+    }
+    if (baseClass == poststmt.class)
+    {
+      switch (baseFeatureID)
+      {
+        default: return -1;
+      }
+    }
+    if (baseClass == typeswitchstmt.class)
+    {
+      switch (baseFeatureID)
+      {
+        case MyDslPackage.TYPESWITCHSTMT__TYPESWITCHGUARD: return MyDslPackage.EXPRESSION__TYPESWITCHGUARD;
+        case MyDslPackage.TYPESWITCHSTMT__TYPECASECLAUSE: return MyDslPackage.EXPRESSION__TYPECASECLAUSE;
+        default: return -1;
+      }
+    }
+    if (baseClass == simplestmt.class)
+    {
+      switch (baseFeatureID)
+      {
+        case MyDslPackage.SIMPLESTMT__SHORTVARDECL: return MyDslPackage.EXPRESSION__SHORTVARDECL;
+        default: return -1;
+      }
+    }
     if (baseClass == deferstmt.class)
+    {
+      switch (baseFeatureID)
+      {
+        default: return -1;
+      }
+    }
+    if (baseClass == expressionlist.class)
     {
       switch (baseFeatureID)
       {
@@ -515,43 +810,6 @@ public class expressionImpl extends indexImpl implements expression
         default: return -1;
       }
     }
-    if (baseClass == incdecstmt.class)
-    {
-      switch (baseFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == channel.class)
-    {
-      switch (baseFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == expressionstmt.class)
-    {
-      switch (baseFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == recvstmt.class)
-    {
-      switch (baseFeatureID)
-      {
-        case MyDslPackage.RECVSTMT__IDENTIFIERLIST: return MyDslPackage.EXPRESSION__IDENTIFIERLIST;
-        case MyDslPackage.RECVSTMT__RECVEXPR: return MyDslPackage.EXPRESSION__RECVEXPR;
-        default: return -1;
-      }
-    }
-    if (baseClass == expressionlist.class)
-    {
-      switch (baseFeatureID)
-      {
-        default: return -1;
-      }
-    }
     return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
   }
 
@@ -566,8 +824,8 @@ public class expressionImpl extends indexImpl implements expression
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (identifierlist: ");
-    result.append(identifierlist);
+    result.append(" (incdecstmt: ");
+    result.append(incdecstmt);
     result.append(')');
     return result.toString();
   }

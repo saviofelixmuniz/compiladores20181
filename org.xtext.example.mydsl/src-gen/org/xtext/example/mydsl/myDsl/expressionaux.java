@@ -16,8 +16,9 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.expressionaux#getExpression <em>Expression</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.expressionaux#getBINARY_OP <em>BINARY OP</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.expressionaux#getExpression <em>Expression</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.expressionaux#getExpressionaux <em>Expressionaux</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getexpressionaux()
@@ -26,22 +27,6 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface expressionaux extends EObject
 {
-  /**
-   * Returns the value of the '<em><b>Expression</b></em>' containment reference list.
-   * The list contents are of type {@link org.xtext.example.mydsl.myDsl.expression}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Expression</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Expression</em>' containment reference list.
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getexpressionaux_Expression()
-   * @model containment="true"
-   * @generated
-   */
-  EList<expression> getExpression();
-
   /**
    * Returns the value of the '<em><b>BINARY OP</b></em>' attribute.
    * <!-- begin-user-doc -->
@@ -67,5 +52,47 @@ public interface expressionaux extends EObject
    * @generated
    */
   void setBINARY_OP(String value);
+
+  /**
+   * Returns the value of the '<em><b>Expression</b></em>' containment reference list.
+   * The list contents are of type {@link org.xtext.example.mydsl.myDsl.expression}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Expression</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Expression</em>' containment reference list.
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getexpressionaux_Expression()
+   * @model containment="true"
+   * @generated
+   */
+  EList<expression> getExpression();
+
+  /**
+   * Returns the value of the '<em><b>Expressionaux</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Expressionaux</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Expressionaux</em>' containment reference.
+   * @see #setExpressionaux(expressionaux)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getexpressionaux_Expressionaux()
+   * @model containment="true"
+   * @generated
+   */
+  expressionaux getExpressionaux();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.expressionaux#getExpressionaux <em>Expressionaux</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Expressionaux</em>' containment reference.
+   * @see #getExpressionaux()
+   * @generated
+   */
+  void setExpressionaux(expressionaux value);
 
 } // expressionaux

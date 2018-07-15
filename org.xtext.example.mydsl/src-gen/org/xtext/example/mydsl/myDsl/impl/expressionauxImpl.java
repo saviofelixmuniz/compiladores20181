@@ -31,24 +31,15 @@ import org.xtext.example.mydsl.myDsl.expressionaux;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.expressionauxImpl#getExpression <em>Expression</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.expressionauxImpl#getBINARY_OP <em>BINARY OP</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.expressionauxImpl#getExpression <em>Expression</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.expressionauxImpl#getExpressionaux <em>Expressionaux</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class expressionauxImpl extends MinimalEObjectImpl.Container implements expressionaux
 {
-  /**
-   * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getExpression()
-   * @generated
-   * @ordered
-   */
-  protected EList<expression> expression;
-
   /**
    * The default value of the '{@link #getBINARY_OP() <em>BINARY OP</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -70,6 +61,26 @@ public class expressionauxImpl extends MinimalEObjectImpl.Container implements e
   protected String binarY_OP = BINARY_OP_EDEFAULT;
 
   /**
+   * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getExpression()
+   * @generated
+   * @ordered
+   */
+  protected EList<expression> expression;
+
+  /**
+   * The cached value of the '{@link #getExpressionaux() <em>Expressionaux</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getExpressionaux()
+   * @generated
+   * @ordered
+   */
+  protected expressionaux expressionaux;
+
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -88,20 +99,6 @@ public class expressionauxImpl extends MinimalEObjectImpl.Container implements e
   protected EClass eStaticClass()
   {
     return MyDslPackage.Literals.EXPRESSIONAUX;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<expression> getExpression()
-  {
-    if (expression == null)
-    {
-      expression = new EObjectContainmentEList<expression>(expression.class, this, MyDslPackage.EXPRESSIONAUX__EXPRESSION);
-    }
-    return expression;
   }
 
   /**
@@ -132,6 +129,68 @@ public class expressionauxImpl extends MinimalEObjectImpl.Container implements e
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<expression> getExpression()
+  {
+    if (expression == null)
+    {
+      expression = new EObjectContainmentEList<expression>(expression.class, this, MyDslPackage.EXPRESSIONAUX__EXPRESSION);
+    }
+    return expression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public expressionaux getExpressionaux()
+  {
+    return expressionaux;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetExpressionaux(expressionaux newExpressionaux, NotificationChain msgs)
+  {
+    expressionaux oldExpressionaux = expressionaux;
+    expressionaux = newExpressionaux;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.EXPRESSIONAUX__EXPRESSIONAUX, oldExpressionaux, newExpressionaux);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setExpressionaux(expressionaux newExpressionaux)
+  {
+    if (newExpressionaux != expressionaux)
+    {
+      NotificationChain msgs = null;
+      if (expressionaux != null)
+        msgs = ((InternalEObject)expressionaux).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.EXPRESSIONAUX__EXPRESSIONAUX, null, msgs);
+      if (newExpressionaux != null)
+        msgs = ((InternalEObject)newExpressionaux).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.EXPRESSIONAUX__EXPRESSIONAUX, null, msgs);
+      msgs = basicSetExpressionaux(newExpressionaux, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.EXPRESSIONAUX__EXPRESSIONAUX, newExpressionaux, newExpressionaux));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -139,6 +198,8 @@ public class expressionauxImpl extends MinimalEObjectImpl.Container implements e
     {
       case MyDslPackage.EXPRESSIONAUX__EXPRESSION:
         return ((InternalEList<?>)getExpression()).basicRemove(otherEnd, msgs);
+      case MyDslPackage.EXPRESSIONAUX__EXPRESSIONAUX:
+        return basicSetExpressionaux(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -153,10 +214,12 @@ public class expressionauxImpl extends MinimalEObjectImpl.Container implements e
   {
     switch (featureID)
     {
-      case MyDslPackage.EXPRESSIONAUX__EXPRESSION:
-        return getExpression();
       case MyDslPackage.EXPRESSIONAUX__BINARY_OP:
         return getBINARY_OP();
+      case MyDslPackage.EXPRESSIONAUX__EXPRESSION:
+        return getExpression();
+      case MyDslPackage.EXPRESSIONAUX__EXPRESSIONAUX:
+        return getExpressionaux();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -172,12 +235,15 @@ public class expressionauxImpl extends MinimalEObjectImpl.Container implements e
   {
     switch (featureID)
     {
+      case MyDslPackage.EXPRESSIONAUX__BINARY_OP:
+        setBINARY_OP((String)newValue);
+        return;
       case MyDslPackage.EXPRESSIONAUX__EXPRESSION:
         getExpression().clear();
         getExpression().addAll((Collection<? extends expression>)newValue);
         return;
-      case MyDslPackage.EXPRESSIONAUX__BINARY_OP:
-        setBINARY_OP((String)newValue);
+      case MyDslPackage.EXPRESSIONAUX__EXPRESSIONAUX:
+        setExpressionaux((expressionaux)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -193,11 +259,14 @@ public class expressionauxImpl extends MinimalEObjectImpl.Container implements e
   {
     switch (featureID)
     {
+      case MyDslPackage.EXPRESSIONAUX__BINARY_OP:
+        setBINARY_OP(BINARY_OP_EDEFAULT);
+        return;
       case MyDslPackage.EXPRESSIONAUX__EXPRESSION:
         getExpression().clear();
         return;
-      case MyDslPackage.EXPRESSIONAUX__BINARY_OP:
-        setBINARY_OP(BINARY_OP_EDEFAULT);
+      case MyDslPackage.EXPRESSIONAUX__EXPRESSIONAUX:
+        setExpressionaux((expressionaux)null);
         return;
     }
     super.eUnset(featureID);
@@ -213,10 +282,12 @@ public class expressionauxImpl extends MinimalEObjectImpl.Container implements e
   {
     switch (featureID)
     {
-      case MyDslPackage.EXPRESSIONAUX__EXPRESSION:
-        return expression != null && !expression.isEmpty();
       case MyDslPackage.EXPRESSIONAUX__BINARY_OP:
         return BINARY_OP_EDEFAULT == null ? binarY_OP != null : !BINARY_OP_EDEFAULT.equals(binarY_OP);
+      case MyDslPackage.EXPRESSIONAUX__EXPRESSION:
+        return expression != null && !expression.isEmpty();
+      case MyDslPackage.EXPRESSIONAUX__EXPRESSIONAUX:
+        return expressionaux != null;
     }
     return super.eIsSet(featureID);
   }
