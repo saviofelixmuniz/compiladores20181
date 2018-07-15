@@ -3157,16 +3157,16 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cString_litParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
 		
 		//basiclit:
-		//	int_lit | float_lit | imaginary_lit | rune_lit | string_lit;
+		//	=> int_lit | => float_lit | imaginary_lit | rune_lit | string_lit;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//int_lit | float_lit | imaginary_lit | rune_lit | string_lit
+		//=> int_lit | => float_lit | imaginary_lit | rune_lit | string_lit
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//int_lit
+		//=> int_lit
 		public RuleCall getInt_litParserRuleCall_0() { return cInt_litParserRuleCall_0; }
 		
-		//float_lit
+		//=> float_lit
 		public RuleCall getFloat_litParserRuleCall_1() { return cFloat_litParserRuleCall_1; }
 		
 		//imaginary_lit
@@ -3542,16 +3542,16 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cTypeParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//result:
-		//	=> parameters | type;
+		//	parameters | => type;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//=> parameters | type
+		//parameters | => type
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//=> parameters
+		//parameters
 		public RuleCall getParametersParserRuleCall_0() { return cParametersParserRuleCall_0; }
 		
-		//type
+		//=> type
 		public RuleCall getTypeParserRuleCall_1() { return cTypeParserRuleCall_1; }
 	}
 	public class ParametersElements extends AbstractParserRuleElementFinder {
@@ -5743,7 +5743,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//basiclit:
-	//	int_lit | float_lit | imaginary_lit | rune_lit | string_lit;
+	//	=> int_lit | => float_lit | imaginary_lit | rune_lit | string_lit;
 	public BasiclitElements getBasiclitAccess() {
 		return pBasiclit;
 	}
@@ -5903,7 +5903,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//result:
-	//	=> parameters | type;
+	//	parameters | => type;
 	public ResultElements getResultAccess() {
 		return pResult;
 	}

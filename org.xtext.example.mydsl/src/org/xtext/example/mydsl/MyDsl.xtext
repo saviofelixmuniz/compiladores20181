@@ -370,7 +370,7 @@ literal:
 ;
 
 basiclit:
-	int_lit | float_lit | imaginary_lit | rune_lit | string_lit
+	=> int_lit | => float_lit | imaginary_lit | rune_lit | string_lit
 ;
 
 operandname:
@@ -434,7 +434,7 @@ signature:
 ;
 
 result:
-	=> parameters | type
+	parameters | => type
 ;
 
 parameters:

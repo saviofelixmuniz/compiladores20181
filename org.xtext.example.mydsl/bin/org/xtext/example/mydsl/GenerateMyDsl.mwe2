@@ -37,7 +37,7 @@ Workflow {
 
 			parserGenerator = {
  				options = {
-   					backtrack = true
+   					backtrack = false
 				}
 			}
 
