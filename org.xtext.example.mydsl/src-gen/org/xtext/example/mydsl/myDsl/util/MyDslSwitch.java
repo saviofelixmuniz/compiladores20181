@@ -73,13 +73,6 @@ public class MyDslSwitch<T> extends Switch<T>
   {
     switch (classifierID)
     {
-      case MyDslPackage.MODEL:
-      {
-        Model model = (Model)theEObject;
-        T result = caseModel(model);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case MyDslPackage.SOURCEFILE:
       {
         sourcefile sourcefile = (sourcefile)theEObject;
@@ -94,13 +87,9 @@ public class MyDslSwitch<T> extends Switch<T>
         if (result == null) result = caseindex(expression);
         if (result == null) result = caseelement(expression);
         if (result == null) result = casedeferstmt(expression);
+        if (result == null) result = caseexpressionlist(expression);
         if (result == null) result = caserecvexpr(expression);
         if (result == null) result = casegotstmt(expression);
-        if (result == null) result = casecondition(expression);
-        if (result == null) result = caseincdecstmt(expression);
-        if (result == null) result = casechannel(expression);
-        if (result == null) result = caseexpressionstmt(expression);
-        if (result == null) result = caseexpressionlist(expression);
         if (result == null) result = caseforstmt(expression);
         if (result == null) result = caserecvstmt(expression);
         if (result == null) result = defaultCase(theEObject);
@@ -121,13 +110,9 @@ public class MyDslSwitch<T> extends Switch<T>
         if (result == null) result = caseindex(unaryexpr);
         if (result == null) result = caseelement(unaryexpr);
         if (result == null) result = casedeferstmt(unaryexpr);
+        if (result == null) result = caseexpressionlist(unaryexpr);
         if (result == null) result = caserecvexpr(unaryexpr);
         if (result == null) result = casegotstmt(unaryexpr);
-        if (result == null) result = casecondition(unaryexpr);
-        if (result == null) result = caseincdecstmt(unaryexpr);
-        if (result == null) result = casechannel(unaryexpr);
-        if (result == null) result = caseexpressionstmt(unaryexpr);
-        if (result == null) result = caseexpressionlist(unaryexpr);
         if (result == null) result = caseforstmt(unaryexpr);
         if (result == null) result = caserecvstmt(unaryexpr);
         if (result == null) result = defaultCase(theEObject);
@@ -140,10 +125,61 @@ public class MyDslSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case MyDslPackage.OPERAND:
+      {
+        operand operand = (operand)theEObject;
+        T result = caseoperand(operand);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case MyDslPackage.TYPE:
+      {
+        type type = (type)theEObject;
+        T result = casetype(type);
+        if (result == null) result = casetypeassertion(type);
+        if (result == null) result = casebasetype(type);
+        if (result == null) result = casekeytype(type);
+        if (result == null) result = caseelementtype(type);
+        if (result == null) result = caseresult(type);
+        if (result == null) result = casepointertype(type);
+        if (result == null) result = casemaptype(type);
+        if (result == null) result = caseslicetype(type);
+        if (result == null) result = casechanneltype(type);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case MyDslPackage.TYPEAUX:
+      {
+        typeaux typeaux = (typeaux)theEObject;
+        T result = casetypeaux(typeaux);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case MyDslPackage.METHODEXPR:
+      {
+        methodexpr methodexpr = (methodexpr)theEObject;
+        T result = casemethodexpr(methodexpr);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case MyDslPackage.CONVERSION:
+      {
+        conversion conversion = (conversion)theEObject;
+        T result = caseconversion(conversion);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case MyDslPackage.PRIMARYEXPRAUX:
       {
         primaryexpraux primaryexpraux = (primaryexpraux)theEObject;
         T result = caseprimaryexpraux(primaryexpraux);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case MyDslPackage.ARGUMENTS:
+      {
+        arguments arguments = (arguments)theEObject;
+        T result = casearguments(arguments);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -161,31 +197,10 @@ public class MyDslSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case MyDslPackage.METHODEXPR:
+      case MyDslPackage.TYPEASSERTION:
       {
-        methodexpr methodexpr = (methodexpr)theEObject;
-        T result = casemethodexpr(methodexpr);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case MyDslPackage.RECEIVERTYPE:
-      {
-        receivertype receivertype = (receivertype)theEObject;
-        T result = casereceivertype(receivertype);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case MyDslPackage.CONVERSION:
-      {
-        conversion conversion = (conversion)theEObject;
-        T result = caseconversion(conversion);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case MyDslPackage.OPERAND:
-      {
-        operand operand = (operand)theEObject;
-        T result = caseoperand(operand);
+        typeassertion typeassertion = (typeassertion)theEObject;
+        T result = casetypeassertion(typeassertion);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -361,8 +376,6 @@ public class MyDslSwitch<T> extends Switch<T>
       {
         simplestmt simplestmt = (simplestmt)theEObject;
         T result = casesimplestmt(simplestmt);
-        if (result == null) result = caseinitstmt(simplestmt);
-        if (result == null) result = casepoststmt(simplestmt);
         if (result == null) result = casetypeswitchstmt(simplestmt);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -410,10 +423,39 @@ public class MyDslSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case MyDslPackage.SENDSTMT:
+      {
+        sendstmt sendstmt = (sendstmt)theEObject;
+        T result = casesendstmt(sendstmt);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case MyDslPackage.SENDSTMTAUX:
+      {
+        sendstmtaux sendstmtaux = (sendstmtaux)theEObject;
+        T result = casesendstmtaux(sendstmtaux);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case MyDslPackage.RECVSTMT:
       {
         recvstmt recvstmt = (recvstmt)theEObject;
         T result = caserecvstmt(recvstmt);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case MyDslPackage.EXPRESSIONLIST:
+      {
+        expressionlist expressionlist = (expressionlist)theEObject;
+        T result = caseexpressionlist(expressionlist);
+        if (result == null) result = caserecvstmt(expressionlist);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case MyDslPackage.POSTEXPRESSIONLIST:
+      {
+        postexpressionlist postexpressionlist = (postexpressionlist)theEObject;
+        T result = casepostexpressionlist(postexpressionlist);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -442,7 +484,6 @@ public class MyDslSwitch<T> extends Switch<T>
       {
         rangeclause rangeclause = (rangeclause)theEObject;
         T result = caserangeclause(rangeclause);
-        if (result == null) result = caseforstmt(rangeclause);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -451,28 +492,6 @@ public class MyDslSwitch<T> extends Switch<T>
         forclause forclause = (forclause)theEObject;
         T result = caseforclause(forclause);
         if (result == null) result = caseforstmt(forclause);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case MyDslPackage.INITSTMT:
-      {
-        initstmt initstmt = (initstmt)theEObject;
-        T result = caseinitstmt(initstmt);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case MyDslPackage.POSTSTMT:
-      {
-        poststmt poststmt = (poststmt)theEObject;
-        T result = casepoststmt(poststmt);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case MyDslPackage.CONDITION:
-      {
-        condition condition = (condition)theEObject;
-        T result = casecondition(condition);
-        if (result == null) result = caseforstmt(condition);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -546,31 +565,10 @@ public class MyDslSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case MyDslPackage.ASSIGNMENT:
+      case MyDslPackage.ASSIGNMENTAUX:
       {
-        assignment assignment = (assignment)theEObject;
-        T result = caseassignment(assignment);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case MyDslPackage.INCDECSTMT:
-      {
-        incdecstmt incdecstmt = (incdecstmt)theEObject;
-        T result = caseincdecstmt(incdecstmt);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case MyDslPackage.SENDSTMT:
-      {
-        sendstmt sendstmt = (sendstmt)theEObject;
-        T result = casesendstmt(sendstmt);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case MyDslPackage.CHANNEL:
-      {
-        channel channel = (channel)theEObject;
-        T result = casechannel(channel);
+        assignmentaux assignmentaux = (assignmentaux)theEObject;
+        T result = caseassignmentaux(assignmentaux);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -578,13 +576,6 @@ public class MyDslSwitch<T> extends Switch<T>
       {
         labeledstmt labeledstmt = (labeledstmt)theEObject;
         T result = caselabeledstmt(labeledstmt);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case MyDslPackage.EXPRESSIONSTMT:
-      {
-        expressionstmt expressionstmt = (expressionstmt)theEObject;
-        T result = caseexpressionstmt(expressionstmt);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -609,28 +600,6 @@ public class MyDslSwitch<T> extends Switch<T>
       {
         functionbody functionbody = (functionbody)theEObject;
         T result = casefunctionbody(functionbody);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case MyDslPackage.TYPEASSERTION:
-      {
-        typeassertion typeassertion = (typeassertion)theEObject;
-        T result = casetypeassertion(typeassertion);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case MyDslPackage.ARGUMENTS:
-      {
-        arguments arguments = (arguments)theEObject;
-        T result = casearguments(arguments);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case MyDslPackage.EXPRESSIONLIST:
-      {
-        expressionlist expressionlist = (expressionlist)theEObject;
-        T result = caseexpressionlist(expressionlist);
-        if (result == null) result = caserecvstmt(expressionlist);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -767,23 +736,6 @@ public class MyDslSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case MyDslPackage.TYPE:
-      {
-        type type = (type)theEObject;
-        T result = casetype(type);
-        if (result == null) result = casereceivertype(type);
-        if (result == null) result = casetypeassertion(type);
-        if (result == null) result = casebasetype(type);
-        if (result == null) result = casekeytype(type);
-        if (result == null) result = caseelementtype(type);
-        if (result == null) result = caseresult(type);
-        if (result == null) result = casepointertype(type);
-        if (result == null) result = casemaptype(type);
-        if (result == null) result = caseslicetype(type);
-        if (result == null) result = casechanneltype(type);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case MyDslPackage.TYPELIT:
       {
         typelit typelit = (typelit)theEObject;
@@ -800,22 +752,6 @@ public class MyDslSwitch<T> extends Switch<T>
       }
       default: return defaultCase(theEObject);
     }
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Model</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Model</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseModel(Model object)
-  {
-    return null;
   }
 
   /**
@@ -899,6 +835,86 @@ public class MyDslSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>operand</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>operand</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseoperand(operand object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>type</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>type</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casetype(type object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>typeaux</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>typeaux</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casetypeaux(typeaux object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>methodexpr</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>methodexpr</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casemethodexpr(methodexpr object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>conversion</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>conversion</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseconversion(conversion object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>primaryexpraux</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -910,6 +926,22 @@ public class MyDslSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseprimaryexpraux(primaryexpraux object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>arguments</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>arguments</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casearguments(arguments object)
   {
     return null;
   }
@@ -947,65 +979,17 @@ public class MyDslSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>methodexpr</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>typeassertion</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>methodexpr</em>'.
+   * @return the result of interpreting the object as an instance of '<em>typeassertion</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T casemethodexpr(methodexpr object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>receivertype</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>receivertype</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T casereceivertype(receivertype object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>conversion</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>conversion</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseconversion(conversion object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>operand</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>operand</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseoperand(operand object)
+  public T casetypeassertion(typeassertion object)
   {
     return null;
   }
@@ -1491,6 +1475,38 @@ public class MyDslSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>sendstmt</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>sendstmt</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casesendstmt(sendstmt object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>sendstmtaux</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>sendstmtaux</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casesendstmtaux(sendstmtaux object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>recvstmt</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -1502,6 +1518,38 @@ public class MyDslSwitch<T> extends Switch<T>
    * @generated
    */
   public T caserecvstmt(recvstmt object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>expressionlist</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>expressionlist</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseexpressionlist(expressionlist object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>postexpressionlist</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>postexpressionlist</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casepostexpressionlist(postexpressionlist object)
   {
     return null;
   }
@@ -1582,54 +1630,6 @@ public class MyDslSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseforclause(forclause object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>initstmt</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>initstmt</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseinitstmt(initstmt object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>poststmt</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>poststmt</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T casepoststmt(poststmt object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>condition</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>condition</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T casecondition(condition object)
   {
     return null;
   }
@@ -1795,65 +1795,17 @@ public class MyDslSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>assignment</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>assignmentaux</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>assignment</em>'.
+   * @return the result of interpreting the object as an instance of '<em>assignmentaux</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseassignment(assignment object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>incdecstmt</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>incdecstmt</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseincdecstmt(incdecstmt object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>sendstmt</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>sendstmt</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T casesendstmt(sendstmt object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>channel</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>channel</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T casechannel(channel object)
+  public T caseassignmentaux(assignmentaux object)
   {
     return null;
   }
@@ -1870,22 +1822,6 @@ public class MyDslSwitch<T> extends Switch<T>
    * @generated
    */
   public T caselabeledstmt(labeledstmt object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>expressionstmt</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>expressionstmt</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseexpressionstmt(expressionstmt object)
   {
     return null;
   }
@@ -1934,54 +1870,6 @@ public class MyDslSwitch<T> extends Switch<T>
    * @generated
    */
   public T casefunctionbody(functionbody object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>typeassertion</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>typeassertion</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T casetypeassertion(typeassertion object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>arguments</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>arguments</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T casearguments(arguments object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>expressionlist</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>expressionlist</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseexpressionlist(expressionlist object)
   {
     return null;
   }
@@ -2270,22 +2158,6 @@ public class MyDslSwitch<T> extends Switch<T>
    * @generated
    */
   public T casefielddecl(fielddecl object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>type</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>type</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T casetype(type object)
   {
     return null;
   }

@@ -14,12 +14,11 @@ import org.eclipse.xtext.serializer.ISerializationContext;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
-import org.xtext.example.mydsl.myDsl.Model;
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
 import org.xtext.example.mydsl.myDsl.aliasdecl;
 import org.xtext.example.mydsl.myDsl.arguments;
 import org.xtext.example.mydsl.myDsl.arraytype;
-import org.xtext.example.mydsl.myDsl.assignment;
+import org.xtext.example.mydsl.myDsl.assignmentaux;
 import org.xtext.example.mydsl.myDsl.commcase;
 import org.xtext.example.mydsl.myDsl.compositelit;
 import org.xtext.example.mydsl.myDsl.constdecl;
@@ -50,6 +49,7 @@ import org.xtext.example.mydsl.myDsl.operand;
 import org.xtext.example.mydsl.myDsl.parameterdecl;
 import org.xtext.example.mydsl.myDsl.parameterlist;
 import org.xtext.example.mydsl.myDsl.parameters;
+import org.xtext.example.mydsl.myDsl.postexpressionlist;
 import org.xtext.example.mydsl.myDsl.primaryexpr;
 import org.xtext.example.mydsl.myDsl.primaryexpraux;
 import org.xtext.example.mydsl.myDsl.rangeclause;
@@ -57,6 +57,7 @@ import org.xtext.example.mydsl.myDsl.recvstmt;
 import org.xtext.example.mydsl.myDsl.returnstmt;
 import org.xtext.example.mydsl.myDsl.selectstmt;
 import org.xtext.example.mydsl.myDsl.sendstmt;
+import org.xtext.example.mydsl.myDsl.sendstmtaux;
 import org.xtext.example.mydsl.myDsl.shortvardecl;
 import org.xtext.example.mydsl.myDsl.signature;
 import org.xtext.example.mydsl.myDsl.simplestmt;
@@ -68,6 +69,7 @@ import org.xtext.example.mydsl.myDsl.structtype;
 import org.xtext.example.mydsl.myDsl.switchstmt;
 import org.xtext.example.mydsl.myDsl.topleveldecl;
 import org.xtext.example.mydsl.myDsl.type;
+import org.xtext.example.mydsl.myDsl.typeaux;
 import org.xtext.example.mydsl.myDsl.typecaseclause;
 import org.xtext.example.mydsl.myDsl.typedecl;
 import org.xtext.example.mydsl.myDsl.typedef;
@@ -96,9 +98,6 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == MyDslPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
-			case MyDslPackage.MODEL:
-				sequence_Model(context, (Model) semanticObject); 
-				return; 
 			case MyDslPackage.ALIASDECL:
 				sequence_aliasdecl(context, (aliasdecl) semanticObject); 
 				return; 
@@ -108,8 +107,8 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 			case MyDslPackage.ARRAYTYPE:
 				sequence_arraytype(context, (arraytype) semanticObject); 
 				return; 
-			case MyDslPackage.ASSIGNMENT:
-				sequence_assignment(context, (assignment) semanticObject); 
+			case MyDslPackage.ASSIGNMENTAUX:
+				sequence_assignmentaux(context, (assignmentaux) semanticObject); 
 				return; 
 			case MyDslPackage.COMMCASE:
 				if (rule == grammarAccess.getCommcaseRule()) {
@@ -233,6 +232,9 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 			case MyDslPackage.PARAMETERS:
 				sequence_parameters(context, (parameters) semanticObject); 
 				return; 
+			case MyDslPackage.POSTEXPRESSIONLIST:
+				sequence_postexpressionlist(context, (postexpressionlist) semanticObject); 
+				return; 
 			case MyDslPackage.PRIMARYEXPR:
 				sequence_primaryexpr(context, (primaryexpr) semanticObject); 
 				return; 
@@ -240,15 +242,8 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 				sequence_primaryexpraux(context, (primaryexpraux) semanticObject); 
 				return; 
 			case MyDslPackage.RANGECLAUSE:
-				if (rule == grammarAccess.getForstmtRule()) {
-					sequence_forstmt_rangeclause(context, (rangeclause) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getRangeclauseRule()) {
-					sequence_rangeclause(context, (rangeclause) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_rangeclause(context, (rangeclause) semanticObject); 
+				return; 
 			case MyDslPackage.RECVSTMT:
 				sequence_recvstmt(context, (recvstmt) semanticObject); 
 				return; 
@@ -261,6 +256,9 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 			case MyDslPackage.SENDSTMT:
 				sequence_sendstmt(context, (sendstmt) semanticObject); 
 				return; 
+			case MyDslPackage.SENDSTMTAUX:
+				sequence_sendstmtaux(context, (sendstmtaux) semanticObject); 
+				return; 
 			case MyDslPackage.SHORTVARDECL:
 				sequence_shortvardecl(context, (shortvardecl) semanticObject); 
 				return; 
@@ -268,9 +266,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 				sequence_signature(context, (signature) semanticObject); 
 				return; 
 			case MyDslPackage.SIMPLESTMT:
-				if (rule == grammarAccess.getSimplestmtRule()
-						|| rule == grammarAccess.getInitstmtRule()
-						|| rule == grammarAccess.getPoststmtRule()) {
+				if (rule == grammarAccess.getSimplestmtRule()) {
 					sequence_simplestmt(context, (simplestmt) semanticObject); 
 					return; 
 				}
@@ -305,7 +301,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 					sequence_maptype_type(context, (type) semanticObject); 
 					return; 
 				}
-				else if (rule == grammarAccess.getReceivertypeRule()
+				else if (rule == grammarAccess.getTypeRule()
 						|| rule == grammarAccess.getTypeassertionRule()
 						|| rule == grammarAccess.getSlicetypeRule()
 						|| rule == grammarAccess.getPointertypeRule()
@@ -313,12 +309,14 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 						|| rule == grammarAccess.getChanneltypeRule()
 						|| rule == grammarAccess.getKeytypeRule()
 						|| rule == grammarAccess.getElementtypeRule()
-						|| rule == grammarAccess.getResultRule()
-						|| rule == grammarAccess.getTypeRule()) {
+						|| rule == grammarAccess.getResultRule()) {
 					sequence_type(context, (type) semanticObject); 
 					return; 
 				}
 				else break;
+			case MyDslPackage.TYPEAUX:
+				sequence_typeaux(context, (typeaux) semanticObject); 
+				return; 
 			case MyDslPackage.TYPECASECLAUSE:
 				sequence_typecaseclause(context, (typecaseclause) semanticObject); 
 				return; 
@@ -364,11 +362,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 						|| rule == grammarAccess.getElementRule()
 						|| rule == grammarAccess.getDeferstmtRule()
 						|| rule == grammarAccess.getRecvexprRule()
-						|| rule == grammarAccess.getGotstmtRule()
-						|| rule == grammarAccess.getConditionRule()
-						|| rule == grammarAccess.getIncdecstmtRule()
-						|| rule == grammarAccess.getChannelRule()
-						|| rule == grammarAccess.getExpressionstmtRule()) {
+						|| rule == grammarAccess.getGotstmtRule()) {
 					sequence_expression_unaryexpr(context, (unaryexpr) semanticObject); 
 					return; 
 				}
@@ -387,18 +381,6 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 		if (errorAcceptor != null)
 			errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
 	}
-	
-	/**
-	 * Contexts:
-	 *     Model returns Model
-	 *
-	 * Constraint:
-	 *     elements+=result+
-	 */
-	protected void sequence_Model(ISerializationContext context, Model semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
 	
 	/**
 	 * Contexts:
@@ -454,12 +436,12 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
-	 *     assignment returns assignment
+	 *     assignmentaux returns assignmentaux
 	 *
 	 * Constraint:
-	 *     (expressionlist+=expressionlist ASSIGN_OP=ASSIGN_OP expressionlist+=expressionlist)
+	 *     (postexpressionlist+=postexpressionlist ASSIGN_OP=ASSIGN_OP expressionlist+=expressionlist)
 	 */
-	protected void sequence_assignment(ISerializationContext context, assignment semanticObject) {
+	protected void sequence_assignmentaux(ISerializationContext context, assignmentaux semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -538,18 +520,15 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     conversion returns conversion
 	 *
 	 * Constraint:
-	 *     (type=type expression=expression)
+	 *     expression=expression
 	 */
 	protected void sequence_conversion(ISerializationContext context, conversion semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.CONVERSION__TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.CONVERSION__TYPE));
 			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.CONVERSION__EXPRESSION) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.CONVERSION__EXPRESSION));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getConversionAccess().getTypeTypeParserRuleCall_0_0(), semanticObject.getType());
-		feeder.accept(grammarAccess.getConversionAccess().getExpressionExpressionParserRuleCall_2_0(), semanticObject.getExpression());
+		feeder.accept(grammarAccess.getConversionAccess().getExpressionExpressionParserRuleCall_1_0(), semanticObject.getExpression());
 		feeder.finish();
 	}
 	
@@ -572,7 +551,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     elementlist returns key
 	 *
 	 * Constraint:
-	 *     ((fieldname=fieldname | expression=expression | literalvalue=literalvalue) element=element keyedelement+=keyedelement*)
+	 *     ((expression=expression | IDENTIFIER=IDENTIFIER | literalvalue=literalvalue) element=element keyedelement+=keyedelement*)
 	 */
 	protected void sequence_elementlist_key_keyedelement(ISerializationContext context, key semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -641,7 +620,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     forstmt returns unaryexpr
 	 *
 	 * Constraint:
-	 *     ((primaryexpr=primaryexpr | (UNARY_OP=UNARY_OP unaryexpr=unaryexpr)) expressionaux+=expressionaux block=block)
+	 *     ((primaryexpr=primaryexpr | (UNARY_OP=UNARY_OP unaryexpr=unaryexpr)) expressionaux+=expressionaux rangeclause=rangeclause? block=block)
 	 */
 	protected void sequence_expression_forstmt_unaryexpr(ISerializationContext context, unaryexpr semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -656,10 +635,6 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     deferstmt returns unaryexpr
 	 *     recvexpr returns unaryexpr
 	 *     gotstmt returns unaryexpr
-	 *     condition returns unaryexpr
-	 *     incdecstmt returns unaryexpr
-	 *     channel returns unaryexpr
-	 *     expressionstmt returns unaryexpr
 	 *
 	 * Constraint:
 	 *     ((primaryexpr=primaryexpr | (UNARY_OP=UNARY_OP unaryexpr=unaryexpr)) expressionaux+=expressionaux)
@@ -722,7 +697,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     forclause returns forclause
 	 *
 	 * Constraint:
-	 *     (initstmt+=initstmt* condition=condition? poststmt=poststmt?)
+	 *     (simplestmt+=simplestmt* expression=expression? simplestmt+=simplestmt?)
 	 */
 	protected void sequence_forclause(ISerializationContext context, forclause semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -734,7 +709,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     forstmt returns forclause
 	 *
 	 * Constraint:
-	 *     (initstmt+=initstmt* condition=condition? poststmt=poststmt? block=block)
+	 *     (simplestmt+=simplestmt* expression=expression? simplestmt+=simplestmt? block=block)
 	 */
 	protected void sequence_forclause_forstmt(ISerializationContext context, forclause semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -756,18 +731,6 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getForstmtAccess().getBlockBlockParserRuleCall_2_0(), semanticObject.getBlock());
 		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     forstmt returns rangeclause
-	 *
-	 * Constraint:
-	 *     ((expressionlist=expressionlist | identifierlist=identifierlist)? expression=expression block=block)
-	 */
-	protected void sequence_forstmt_rangeclause(ISerializationContext context, rangeclause semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -833,7 +796,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     key returns key
 	 *
 	 * Constraint:
-	 *     (fieldname=fieldname | expression=expression | literalvalue=literalvalue)
+	 *     (expression=expression | IDENTIFIER=IDENTIFIER | literalvalue=literalvalue)
 	 */
 	protected void sequence_key(ISerializationContext context, key semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -845,7 +808,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     keyedelement returns key
 	 *
 	 * Constraint:
-	 *     ((fieldname=fieldname | expression=expression | literalvalue=literalvalue) element=element)
+	 *     ((expression=expression | IDENTIFIER=IDENTIFIER | literalvalue=literalvalue) element=element)
 	 */
 	protected void sequence_key_keyedelement(ISerializationContext context, key semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -933,7 +896,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     maptype returns type
 	 *
 	 * Constraint:
-	 *     ((typename=typename | typelit=typelit | type=type) elementtype=elementtype)
+	 *     ((type=type | typename=typename | typelit=typelit) elementtype=elementtype)
 	 */
 	protected void sequence_maptype_type(ISerializationContext context, type semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -957,18 +920,15 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     methodexpr returns methodexpr
 	 *
 	 * Constraint:
-	 *     (receivertype=receivertype methodname=methodname)
+	 *     methodname=methodname
 	 */
 	protected void sequence_methodexpr(ISerializationContext context, methodexpr semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.METHODEXPR__RECEIVERTYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.METHODEXPR__RECEIVERTYPE));
 			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.METHODEXPR__METHODNAME) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.METHODEXPR__METHODNAME));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getMethodexprAccess().getReceivertypeReceivertypeParserRuleCall_0_0(), semanticObject.getReceivertype());
-		feeder.accept(grammarAccess.getMethodexprAccess().getMethodnameMethodnameParserRuleCall_2_0(), semanticObject.getMethodname());
+		feeder.accept(grammarAccess.getMethodexprAccess().getMethodnameMethodnameParserRuleCall_1_0(), semanticObject.getMethodname());
 		feeder.finish();
 	}
 	
@@ -990,7 +950,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     operand returns operand
 	 *
 	 * Constraint:
-	 *     (expression=expression | literal=literal | operandname=operandname)
+	 *     (expression=expression | literal=literal)
 	 */
 	protected void sequence_operand(ISerializationContext context, operand semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1037,13 +997,25 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
+	 *     postexpressionlist returns postexpressionlist
+	 *
+	 * Constraint:
+	 *     expression+=expression*
+	 */
+	protected void sequence_postexpressionlist(ISerializationContext context, postexpressionlist semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     primaryexpr returns primaryexpr
 	 *
 	 * Constraint:
 	 *     (
 	 *         (operand=operand primaryexpraux=primaryexpraux) | 
-	 *         (conversion=conversion primaryexpraux=primaryexpraux) | 
-	 *         (methodexpr=methodexpr primaryexpraux=primaryexpraux)
+	 *         (type=typeaux (conversion=conversion | methodexpr=methodexpr) primaryexpraux=primaryexpraux) | 
+	 *         (typename=typename primaryexpraux=primaryexpraux)
 	 *     )
 	 */
 	protected void sequence_primaryexpr(ISerializationContext context, primaryexpr semanticObject) {
@@ -1057,13 +1029,10 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *
 	 * Constraint:
 	 *     (
-	 *         (selector=selector primaryexpraux=primaryexpraux) | 
-	 *         (index=index primaryexpraux=primaryexpraux) | 
-	 *         (slice=slice primaryexpraux=primaryexpraux) | 
-	 *         (typeassertion=typeassertion primaryexpraux=primaryexpraux) | 
-	 *         (arguments=arguments primaryexpraux=primaryexpraux) | 
-	 *         WS=WS
-	 *     )
+	 *         ((selector=selector | typeassertion=typeassertion) primaryexpraux=primaryexpraux) | 
+	 *         ((slice=slice | index=index) primaryexpraux=primaryexpraux) | 
+	 *         (arguments=arguments primaryexpraux=primaryexpraux)
+	 *     )?
 	 */
 	protected void sequence_primaryexpraux(ISerializationContext context, primaryexpraux semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1075,7 +1044,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     rangeclause returns rangeclause
 	 *
 	 * Constraint:
-	 *     ((expressionlist=expressionlist | identifierlist=identifierlist)? expression=expression)
+	 *     ((expressionlist=postexpressionlist | identifierlist=identifierlist)? expression=expression)
 	 */
 	protected void sequence_rangeclause(ISerializationContext context, rangeclause semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1132,19 +1101,22 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     sendstmt returns sendstmt
 	 *
 	 * Constraint:
-	 *     (channel=channel expression=expression)
+	 *     (expression+=expression expression+=expression)
 	 */
 	protected void sequence_sendstmt(ISerializationContext context, sendstmt semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.SENDSTMT__CHANNEL) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.SENDSTMT__CHANNEL));
-			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.SENDSTMT__EXPRESSION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.SENDSTMT__EXPRESSION));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getSendstmtAccess().getChannelChannelParserRuleCall_0_0(), semanticObject.getChannel());
-		feeder.accept(grammarAccess.getSendstmtAccess().getExpressionExpressionParserRuleCall_2_0(), semanticObject.getExpression());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     sendstmtaux returns sendstmtaux
+	 *
+	 * Constraint:
+	 *     expression+=expression
+	 */
+	protected void sequence_sendstmtaux(ISerializationContext context, sendstmtaux semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -1185,18 +1157,9 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	/**
 	 * Contexts:
 	 *     simplestmt returns simplestmt
-	 *     initstmt returns simplestmt
-	 *     poststmt returns simplestmt
 	 *
 	 * Constraint:
-	 *     (
-	 *         emptystmt=emptystmt | 
-	 *         expressionstmt=expressionstmt | 
-	 *         sendstmt=sendstmt | 
-	 *         incdecstmt=incdecstmt | 
-	 *         assignment=assignment | 
-	 *         shortvardecl=shortvardecl
-	 *     )
+	 *     ((expression=expression (sendstmt=sendstmtaux | incdecstmt=incdecstmtaux | assignment=assignmentaux)?) | shortvardecl=shortvardecl)
 	 */
 	protected void sequence_simplestmt(ISerializationContext context, simplestmt semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1209,14 +1172,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *
 	 * Constraint:
 	 *     (
-	 *         (
-	 *             emptystmt=emptystmt | 
-	 *             expressionstmt=expressionstmt | 
-	 *             sendstmt=sendstmt | 
-	 *             incdecstmt=incdecstmt | 
-	 *             assignment=assignment | 
-	 *             shortvardecl=shortvardecl
-	 *         ) 
+	 *         ((expression=expression (sendstmt=sendstmtaux | incdecstmt=incdecstmtaux | assignment=assignmentaux)?) | shortvardecl=shortvardecl) 
 	 *         typeswitchguard=typeswitchguard 
 	 *         typecaseclause+=typecaseclause*
 	 *     )
@@ -1256,9 +1212,9 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *
 	 * Constraint:
 	 *     (
+	 *         simplestmt=simplestmt | 
 	 *         declaration=declaration | 
 	 *         labeledstmt=labeledstmt | 
-	 *         simplestmt=simplestmt | 
 	 *         gotstmt=gotstmt | 
 	 *         returnstmt=returnstmt | 
 	 *         breakstmt=breakstmt | 
@@ -1330,7 +1286,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
-	 *     receivertype returns type
+	 *     type returns type
 	 *     typeassertion returns type
 	 *     slicetype returns type
 	 *     pointertype returns type
@@ -1339,12 +1295,23 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     keytype returns type
 	 *     elementtype returns type
 	 *     result returns type
-	 *     type returns type
 	 *
 	 * Constraint:
-	 *     (typename=typename | typelit=typelit | type=type)
+	 *     (type=type | typename=typename | typelit=typelit)
 	 */
 	protected void sequence_type(ISerializationContext context, type semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     typeaux returns typeaux
+	 *
+	 * Constraint:
+	 *     (type=type | typelit=typelit)
+	 */
+	protected void sequence_typeaux(ISerializationContext context, typeaux semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

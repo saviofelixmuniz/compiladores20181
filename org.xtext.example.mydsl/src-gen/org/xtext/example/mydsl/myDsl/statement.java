@@ -14,9 +14,9 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.statement#getSimplestmt <em>Simplestmt</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.statement#getDeclaration <em>Declaration</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.statement#getLabeledstmt <em>Labeledstmt</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.statement#getSimplestmt <em>Simplestmt</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.statement#getGotstmt <em>Gotstmt</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.statement#getReturnstmt <em>Returnstmt</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.statement#getBreakstmt <em>Breakstmt</em>}</li>
@@ -37,6 +37,32 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface statement extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Simplestmt</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Simplestmt</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Simplestmt</em>' containment reference.
+   * @see #setSimplestmt(simplestmt)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getstatement_Simplestmt()
+   * @model containment="true"
+   * @generated
+   */
+  simplestmt getSimplestmt();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.statement#getSimplestmt <em>Simplestmt</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Simplestmt</em>' containment reference.
+   * @see #getSimplestmt()
+   * @generated
+   */
+  void setSimplestmt(simplestmt value);
+
   /**
    * Returns the value of the '<em><b>Declaration</b></em>' containment reference.
    * <!-- begin-user-doc -->
@@ -88,32 +114,6 @@ public interface statement extends EObject
    * @generated
    */
   void setLabeledstmt(labeledstmt value);
-
-  /**
-   * Returns the value of the '<em><b>Simplestmt</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Simplestmt</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Simplestmt</em>' containment reference.
-   * @see #setSimplestmt(simplestmt)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getstatement_Simplestmt()
-   * @model containment="true"
-   * @generated
-   */
-  simplestmt getSimplestmt();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.statement#getSimplestmt <em>Simplestmt</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Simplestmt</em>' containment reference.
-   * @see #getSimplestmt()
-   * @generated
-   */
-  void setSimplestmt(simplestmt value);
 
   /**
    * Returns the value of the '<em><b>Gotstmt</b></em>' containment reference.

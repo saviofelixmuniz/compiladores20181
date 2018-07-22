@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
 import org.xtext.example.mydsl.myDsl.conversion;
 import org.xtext.example.mydsl.myDsl.expression;
-import org.xtext.example.mydsl.myDsl.type;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,7 +24,6 @@ import org.xtext.example.mydsl.myDsl.type;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.conversionImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.conversionImpl#getExpression <em>Expression</em>}</li>
  * </ul>
  *
@@ -33,16 +31,6 @@ import org.xtext.example.mydsl.myDsl.type;
  */
 public class conversionImpl extends MinimalEObjectImpl.Container implements conversion
 {
-  /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getType()
-   * @generated
-   * @ordered
-   */
-  protected type type;
-
   /**
    * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -72,54 +60,6 @@ public class conversionImpl extends MinimalEObjectImpl.Container implements conv
   protected EClass eStaticClass()
   {
     return MyDslPackage.Literals.CONVERSION;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public type getType()
-  {
-    return type;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetType(type newType, NotificationChain msgs)
-  {
-    type oldType = type;
-    type = newType;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.CONVERSION__TYPE, oldType, newType);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setType(type newType)
-  {
-    if (newType != type)
-    {
-      NotificationChain msgs = null;
-      if (type != null)
-        msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.CONVERSION__TYPE, null, msgs);
-      if (newType != null)
-        msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.CONVERSION__TYPE, null, msgs);
-      msgs = basicSetType(newType, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.CONVERSION__TYPE, newType, newType));
   }
 
   /**
@@ -180,8 +120,6 @@ public class conversionImpl extends MinimalEObjectImpl.Container implements conv
   {
     switch (featureID)
     {
-      case MyDslPackage.CONVERSION__TYPE:
-        return basicSetType(null, msgs);
       case MyDslPackage.CONVERSION__EXPRESSION:
         return basicSetExpression(null, msgs);
     }
@@ -198,8 +136,6 @@ public class conversionImpl extends MinimalEObjectImpl.Container implements conv
   {
     switch (featureID)
     {
-      case MyDslPackage.CONVERSION__TYPE:
-        return getType();
       case MyDslPackage.CONVERSION__EXPRESSION:
         return getExpression();
     }
@@ -216,9 +152,6 @@ public class conversionImpl extends MinimalEObjectImpl.Container implements conv
   {
     switch (featureID)
     {
-      case MyDslPackage.CONVERSION__TYPE:
-        setType((type)newValue);
-        return;
       case MyDslPackage.CONVERSION__EXPRESSION:
         setExpression((expression)newValue);
         return;
@@ -236,9 +169,6 @@ public class conversionImpl extends MinimalEObjectImpl.Container implements conv
   {
     switch (featureID)
     {
-      case MyDslPackage.CONVERSION__TYPE:
-        setType((type)null);
-        return;
       case MyDslPackage.CONVERSION__EXPRESSION:
         setExpression((expression)null);
         return;
@@ -256,8 +186,6 @@ public class conversionImpl extends MinimalEObjectImpl.Container implements conv
   {
     switch (featureID)
     {
-      case MyDslPackage.CONVERSION__TYPE:
-        return type != null;
       case MyDslPackage.CONVERSION__EXPRESSION:
         return expression != null;
     }

@@ -10,21 +10,18 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.xtext.example.mydsl.myDsl.Model;
 import org.xtext.example.mydsl.myDsl.MyDslFactory;
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
 import org.xtext.example.mydsl.myDsl.aliasdecl;
 import org.xtext.example.mydsl.myDsl.arguments;
 import org.xtext.example.mydsl.myDsl.arraytype;
-import org.xtext.example.mydsl.myDsl.assignment;
+import org.xtext.example.mydsl.myDsl.assignmentaux;
 import org.xtext.example.mydsl.myDsl.basetype;
 import org.xtext.example.mydsl.myDsl.block;
-import org.xtext.example.mydsl.myDsl.channel;
 import org.xtext.example.mydsl.myDsl.channeltype;
 import org.xtext.example.mydsl.myDsl.commcase;
 import org.xtext.example.mydsl.myDsl.commclause;
 import org.xtext.example.mydsl.myDsl.compositelit;
-import org.xtext.example.mydsl.myDsl.condition;
 import org.xtext.example.mydsl.myDsl.constdecl;
 import org.xtext.example.mydsl.myDsl.constspec;
 import org.xtext.example.mydsl.myDsl.conversion;
@@ -37,7 +34,6 @@ import org.xtext.example.mydsl.myDsl.exprcaseclause;
 import org.xtext.example.mydsl.myDsl.expression;
 import org.xtext.example.mydsl.myDsl.expressionaux;
 import org.xtext.example.mydsl.myDsl.expressionlist;
-import org.xtext.example.mydsl.myDsl.expressionstmt;
 import org.xtext.example.mydsl.myDsl.exprswitchcase;
 import org.xtext.example.mydsl.myDsl.exprswitchstmt;
 import org.xtext.example.mydsl.myDsl.fielddecl;
@@ -49,9 +45,7 @@ import org.xtext.example.mydsl.myDsl.functionlit;
 import org.xtext.example.mydsl.myDsl.functiontype;
 import org.xtext.example.mydsl.myDsl.gotstmt;
 import org.xtext.example.mydsl.myDsl.ifstmt;
-import org.xtext.example.mydsl.myDsl.incdecstmt;
 import org.xtext.example.mydsl.myDsl.index;
-import org.xtext.example.mydsl.myDsl.initstmt;
 import org.xtext.example.mydsl.myDsl.interfacetype;
 import org.xtext.example.mydsl.myDsl.key;
 import org.xtext.example.mydsl.myDsl.keyedelement;
@@ -69,18 +63,18 @@ import org.xtext.example.mydsl.myDsl.parameterdecl;
 import org.xtext.example.mydsl.myDsl.parameterlist;
 import org.xtext.example.mydsl.myDsl.parameters;
 import org.xtext.example.mydsl.myDsl.pointertype;
-import org.xtext.example.mydsl.myDsl.poststmt;
+import org.xtext.example.mydsl.myDsl.postexpressionlist;
 import org.xtext.example.mydsl.myDsl.primaryexpr;
 import org.xtext.example.mydsl.myDsl.primaryexpraux;
 import org.xtext.example.mydsl.myDsl.rangeclause;
 import org.xtext.example.mydsl.myDsl.receiver;
-import org.xtext.example.mydsl.myDsl.receivertype;
 import org.xtext.example.mydsl.myDsl.recvexpr;
 import org.xtext.example.mydsl.myDsl.recvstmt;
 import org.xtext.example.mydsl.myDsl.result;
 import org.xtext.example.mydsl.myDsl.returnstmt;
 import org.xtext.example.mydsl.myDsl.selectstmt;
 import org.xtext.example.mydsl.myDsl.sendstmt;
+import org.xtext.example.mydsl.myDsl.sendstmtaux;
 import org.xtext.example.mydsl.myDsl.shortvardecl;
 import org.xtext.example.mydsl.myDsl.signature;
 import org.xtext.example.mydsl.myDsl.simplestmt;
@@ -94,6 +88,7 @@ import org.xtext.example.mydsl.myDsl.switchstmt;
 import org.xtext.example.mydsl.myDsl.topleveldecl;
 import org.xtext.example.mydsl.myDsl.type;
 import org.xtext.example.mydsl.myDsl.typeassertion;
+import org.xtext.example.mydsl.myDsl.typeaux;
 import org.xtext.example.mydsl.myDsl.typecaseclause;
 import org.xtext.example.mydsl.myDsl.typedecl;
 import org.xtext.example.mydsl.myDsl.typedef;
@@ -116,13 +111,6 @@ import org.xtext.example.mydsl.myDsl.varspec;
  */
 public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
 {
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass modelEClass = null;
-
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -163,7 +151,49 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass operandEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass typeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass typeauxEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass methodexprEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass conversionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass primaryexprauxEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass argumentsEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -184,28 +214,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass methodexprEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass receivertypeEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass conversionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass operandEClass = null;
+  private EClass typeassertionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -422,7 +431,35 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass sendstmtEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass sendstmtauxEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass recvstmtEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass expressionlistEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass postexpressionlistEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -458,27 +495,6 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   private EClass forclauseEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass initstmtEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass poststmtEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass conditionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -555,28 +571,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass assignmentEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass incdecstmtEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass sendstmtEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass channelEClass = null;
+  private EClass assignmentauxEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -584,13 +579,6 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   private EClass labeledstmtEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass expressionstmtEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -612,27 +600,6 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   private EClass functionbodyEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass typeassertionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass argumentsEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass expressionlistEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -765,13 +732,6 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass typeEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass typelitEClass = null;
 
   /**
@@ -849,26 +809,6 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getModel()
-  {
-    return modelEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getModel_Elements()
-  {
-    return (EReference)modelEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getsourcefile()
   {
     return sourcefileEClass;
@@ -922,6 +862,16 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
   public EReference getexpression_Expression()
   {
     return (EReference)expressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getexpression_Rangeclause()
+  {
+    return (EReference)expressionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1039,7 +989,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getprimaryexpr_Conversion()
+  public EReference getprimaryexpr_Type()
   {
     return (EReference)primaryexprEClass.getEStructuralFeatures().get(2);
   }
@@ -1049,7 +999,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getprimaryexpr_Methodexpr()
+  public EReference getprimaryexpr_Conversion()
   {
     return (EReference)primaryexprEClass.getEStructuralFeatures().get(3);
   }
@@ -1059,9 +1009,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getprimaryexpraux()
+  public EReference getprimaryexpr_Methodexpr()
   {
-    return primaryexprauxEClass;
+    return (EReference)primaryexprEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -1069,169 +1019,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getprimaryexpraux_Selector()
+  public EAttribute getprimaryexpr_Typename()
   {
-    return (EAttribute)primaryexprauxEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getprimaryexpraux_Primaryexpraux()
-  {
-    return (EReference)primaryexprauxEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getprimaryexpraux_Index()
-  {
-    return (EReference)primaryexprauxEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getprimaryexpraux_Slice()
-  {
-    return (EReference)primaryexprauxEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getprimaryexpraux_Typeassertion()
-  {
-    return (EReference)primaryexprauxEClass.getEStructuralFeatures().get(4);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getprimaryexpraux_Arguments()
-  {
-    return (EReference)primaryexprauxEClass.getEStructuralFeatures().get(5);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getprimaryexpraux_WS()
-  {
-    return (EAttribute)primaryexprauxEClass.getEStructuralFeatures().get(6);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getindex()
-  {
-    return indexEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getslice()
-  {
-    return sliceEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getslice_Expression()
-  {
-    return (EReference)sliceEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getmethodexpr()
-  {
-    return methodexprEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getmethodexpr_Receivertype()
-  {
-    return (EReference)methodexprEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getmethodexpr_Methodname()
-  {
-    return (EAttribute)methodexprEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getreceivertype()
-  {
-    return receivertypeEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getconversion()
-  {
-    return conversionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getconversion_Type()
-  {
-    return (EReference)conversionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getconversion_Expression()
-  {
-    return (EReference)conversionEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)primaryexprEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -1269,9 +1059,249 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getoperand_Operandname()
+  public EClass gettype()
   {
-    return (EAttribute)operandEClass.getEStructuralFeatures().get(2);
+    return typeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference gettype_Type()
+  {
+    return (EReference)typeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute gettype_Typename()
+  {
+    return (EAttribute)typeEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference gettype_Typelit()
+  {
+    return (EReference)typeEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass gettypeaux()
+  {
+    return typeauxEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference gettypeaux_Type()
+  {
+    return (EReference)typeauxEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference gettypeaux_Typelit()
+  {
+    return (EReference)typeauxEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getmethodexpr()
+  {
+    return methodexprEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getmethodexpr_Methodname()
+  {
+    return (EAttribute)methodexprEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getconversion()
+  {
+    return conversionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getconversion_Expression()
+  {
+    return (EReference)conversionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getprimaryexpraux()
+  {
+    return primaryexprauxEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getprimaryexpraux_Selector()
+  {
+    return (EAttribute)primaryexprauxEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getprimaryexpraux_Typeassertion()
+  {
+    return (EReference)primaryexprauxEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getprimaryexpraux_Primaryexpraux()
+  {
+    return (EReference)primaryexprauxEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getprimaryexpraux_Slice()
+  {
+    return (EReference)primaryexprauxEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getprimaryexpraux_Index()
+  {
+    return (EReference)primaryexprauxEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getprimaryexpraux_Arguments()
+  {
+    return (EReference)primaryexprauxEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getarguments()
+  {
+    return argumentsEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getarguments_Expressionlist()
+  {
+    return (EReference)argumentsEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getarguments_Type()
+  {
+    return (EReference)argumentsEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getindex()
+  {
+    return indexEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getslice()
+  {
+    return sliceEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getslice_Expression()
+  {
+    return (EReference)sliceEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass gettypeassertion()
+  {
+    return typeassertionEClass;
   }
 
   /**
@@ -1439,9 +1469,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getkey_Fieldname()
+  public EReference getkey_Expression()
   {
-    return (EAttribute)keyEClass.getEStructuralFeatures().get(0);
+    return (EReference)keyEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1449,9 +1479,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getkey_Expression()
+  public EAttribute getkey_IDENTIFIER()
   {
-    return (EReference)keyEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)keyEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1519,7 +1549,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getstatement_Declaration()
+  public EReference getstatement_Simplestmt()
   {
     return (EReference)statementEClass.getEStructuralFeatures().get(0);
   }
@@ -1529,7 +1559,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getstatement_Labeledstmt()
+  public EReference getstatement_Declaration()
   {
     return (EReference)statementEClass.getEStructuralFeatures().get(1);
   }
@@ -1539,7 +1569,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getstatement_Simplestmt()
+  public EReference getstatement_Labeledstmt()
   {
     return (EReference)statementEClass.getEStructuralFeatures().get(2);
   }
@@ -2059,19 +2089,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getsimplestmt_Emptystmt()
+  public EReference getsimplestmt_Expression()
   {
-    return (EAttribute)simplestmtEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getsimplestmt_Expressionstmt()
-  {
-    return (EReference)simplestmtEClass.getEStructuralFeatures().get(1);
+    return (EReference)simplestmtEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -2081,7 +2101,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    */
   public EReference getsimplestmt_Sendstmt()
   {
-    return (EReference)simplestmtEClass.getEStructuralFeatures().get(2);
+    return (EReference)simplestmtEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -2089,9 +2109,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getsimplestmt_Incdecstmt()
+  public EAttribute getsimplestmt_Incdecstmt()
   {
-    return (EReference)simplestmtEClass.getEStructuralFeatures().get(3);
+    return (EAttribute)simplestmtEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -2101,7 +2121,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    */
   public EReference getsimplestmt_Assignment()
   {
-    return (EReference)simplestmtEClass.getEStructuralFeatures().get(4);
+    return (EReference)simplestmtEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -2111,7 +2131,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    */
   public EReference getsimplestmt_Shortvardecl()
   {
-    return (EReference)simplestmtEClass.getEStructuralFeatures().get(5);
+    return (EReference)simplestmtEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -2249,6 +2269,46 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getsendstmt()
+  {
+    return sendstmtEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getsendstmt_Expression()
+  {
+    return (EReference)sendstmtEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getsendstmtaux()
+  {
+    return sendstmtauxEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getsendstmtaux_Expression()
+  {
+    return (EReference)sendstmtauxEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getrecvstmt()
   {
     return recvstmtEClass;
@@ -2272,6 +2332,36 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
   public EReference getrecvstmt_Recvexpr()
   {
     return (EReference)recvstmtEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getexpressionlist()
+  {
+    return expressionlistEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getpostexpressionlist()
+  {
+    return postexpressionlistEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getpostexpressionlist_Expression()
+  {
+    return (EReference)postexpressionlistEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -2369,7 +2459,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getforclause_Initstmt()
+  public EReference getforclause_Simplestmt()
   {
     return (EReference)forclauseEClass.getEStructuralFeatures().get(0);
   }
@@ -2379,49 +2469,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getforclause_Condition()
+  public EReference getforclause_Expression()
   {
     return (EReference)forclauseEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getforclause_Poststmt()
-  {
-    return (EReference)forclauseEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getinitstmt()
-  {
-    return initstmtEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getpoststmt()
-  {
-    return poststmtEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getcondition()
-  {
-    return conditionEClass;
   }
 
   /**
@@ -2729,9 +2779,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getassignment()
+  public EClass getassignmentaux()
   {
-    return assignmentEClass;
+    return assignmentauxEClass;
   }
 
   /**
@@ -2739,9 +2789,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getassignment_Expressionlist()
+  public EReference getassignmentaux_Postexpressionlist()
   {
-    return (EReference)assignmentEClass.getEStructuralFeatures().get(0);
+    return (EReference)assignmentauxEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -2749,9 +2799,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getassignment_ASSIGN_OP()
+  public EAttribute getassignmentaux_ASSIGN_OP()
   {
-    return (EAttribute)assignmentEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)assignmentauxEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -2759,49 +2809,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getincdecstmt()
+  public EReference getassignmentaux_Expressionlist()
   {
-    return incdecstmtEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getsendstmt()
-  {
-    return sendstmtEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getsendstmt_Channel()
-  {
-    return (EReference)sendstmtEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getsendstmt_Expression()
-  {
-    return (EReference)sendstmtEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getchannel()
-  {
-    return channelEClass;
+    return (EReference)assignmentauxEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -2832,16 +2842,6 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
   public EReference getlabeledstmt_Statement()
   {
     return (EReference)labeledstmtEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getexpressionstmt()
-  {
-    return expressionstmtEClass;
   }
 
   /**
@@ -2882,56 +2882,6 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
   public EClass getfunctionbody()
   {
     return functionbodyEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass gettypeassertion()
-  {
-    return typeassertionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getarguments()
-  {
-    return argumentsEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getarguments_Expressionlist()
-  {
-    return (EReference)argumentsEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getarguments_Type()
-  {
-    return (EReference)argumentsEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getexpressionlist()
-  {
-    return expressionlistEClass;
   }
 
   /**
@@ -3309,46 +3259,6 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass gettype()
-  {
-    return typeEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute gettype_Typename()
-  {
-    return (EAttribute)typeEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference gettype_Typelit()
-  {
-    return (EReference)typeEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference gettype_Type()
-  {
-    return (EReference)typeEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass gettypelit()
   {
     return typelitEClass;
@@ -3494,9 +3404,6 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     isCreated = true;
 
     // Create classes and their features
-    modelEClass = createEClass(MODEL);
-    createEReference(modelEClass, MODEL__ELEMENTS);
-
     sourcefileEClass = createEClass(SOURCEFILE);
     createEAttribute(sourcefileEClass, SOURCEFILE__PACKAGECLAUSE);
     createEAttribute(sourcefileEClass, SOURCEFILE__IMPORTDECL);
@@ -3504,6 +3411,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
 
     expressionEClass = createEClass(EXPRESSION);
     createEReference(expressionEClass, EXPRESSION__EXPRESSION);
+    createEReference(expressionEClass, EXPRESSION__RANGECLAUSE);
 
     expressionauxEClass = createEClass(EXPRESSIONAUX);
     createEReference(expressionauxEClass, EXPRESSIONAUX__EXPRESSION);
@@ -3518,37 +3426,48 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     primaryexprEClass = createEClass(PRIMARYEXPR);
     createEReference(primaryexprEClass, PRIMARYEXPR__OPERAND);
     createEReference(primaryexprEClass, PRIMARYEXPR__PRIMARYEXPRAUX);
+    createEReference(primaryexprEClass, PRIMARYEXPR__TYPE);
     createEReference(primaryexprEClass, PRIMARYEXPR__CONVERSION);
     createEReference(primaryexprEClass, PRIMARYEXPR__METHODEXPR);
+    createEAttribute(primaryexprEClass, PRIMARYEXPR__TYPENAME);
+
+    operandEClass = createEClass(OPERAND);
+    createEReference(operandEClass, OPERAND__EXPRESSION);
+    createEReference(operandEClass, OPERAND__LITERAL);
+
+    typeEClass = createEClass(TYPE);
+    createEReference(typeEClass, TYPE__TYPE);
+    createEAttribute(typeEClass, TYPE__TYPENAME);
+    createEReference(typeEClass, TYPE__TYPELIT);
+
+    typeauxEClass = createEClass(TYPEAUX);
+    createEReference(typeauxEClass, TYPEAUX__TYPE);
+    createEReference(typeauxEClass, TYPEAUX__TYPELIT);
+
+    methodexprEClass = createEClass(METHODEXPR);
+    createEAttribute(methodexprEClass, METHODEXPR__METHODNAME);
+
+    conversionEClass = createEClass(CONVERSION);
+    createEReference(conversionEClass, CONVERSION__EXPRESSION);
 
     primaryexprauxEClass = createEClass(PRIMARYEXPRAUX);
     createEAttribute(primaryexprauxEClass, PRIMARYEXPRAUX__SELECTOR);
-    createEReference(primaryexprauxEClass, PRIMARYEXPRAUX__PRIMARYEXPRAUX);
-    createEReference(primaryexprauxEClass, PRIMARYEXPRAUX__INDEX);
-    createEReference(primaryexprauxEClass, PRIMARYEXPRAUX__SLICE);
     createEReference(primaryexprauxEClass, PRIMARYEXPRAUX__TYPEASSERTION);
+    createEReference(primaryexprauxEClass, PRIMARYEXPRAUX__PRIMARYEXPRAUX);
+    createEReference(primaryexprauxEClass, PRIMARYEXPRAUX__SLICE);
+    createEReference(primaryexprauxEClass, PRIMARYEXPRAUX__INDEX);
     createEReference(primaryexprauxEClass, PRIMARYEXPRAUX__ARGUMENTS);
-    createEAttribute(primaryexprauxEClass, PRIMARYEXPRAUX__WS);
+
+    argumentsEClass = createEClass(ARGUMENTS);
+    createEReference(argumentsEClass, ARGUMENTS__EXPRESSIONLIST);
+    createEReference(argumentsEClass, ARGUMENTS__TYPE);
 
     indexEClass = createEClass(INDEX);
 
     sliceEClass = createEClass(SLICE);
     createEReference(sliceEClass, SLICE__EXPRESSION);
 
-    methodexprEClass = createEClass(METHODEXPR);
-    createEReference(methodexprEClass, METHODEXPR__RECEIVERTYPE);
-    createEAttribute(methodexprEClass, METHODEXPR__METHODNAME);
-
-    receivertypeEClass = createEClass(RECEIVERTYPE);
-
-    conversionEClass = createEClass(CONVERSION);
-    createEReference(conversionEClass, CONVERSION__TYPE);
-    createEReference(conversionEClass, CONVERSION__EXPRESSION);
-
-    operandEClass = createEClass(OPERAND);
-    createEReference(operandEClass, OPERAND__EXPRESSION);
-    createEReference(operandEClass, OPERAND__LITERAL);
-    createEAttribute(operandEClass, OPERAND__OPERANDNAME);
+    typeassertionEClass = createEClass(TYPEASSERTION);
 
     compositelitEClass = createEClass(COMPOSITELIT);
     createEReference(compositelitEClass, COMPOSITELIT__LITERALTYPE);
@@ -3571,8 +3490,8 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     createEReference(keyedelementEClass, KEYEDELEMENT__ELEMENT);
 
     keyEClass = createEClass(KEY);
-    createEAttribute(keyEClass, KEY__FIELDNAME);
     createEReference(keyEClass, KEY__EXPRESSION);
+    createEAttribute(keyEClass, KEY__IDENTIFIER);
     createEReference(keyEClass, KEY__LITERALVALUE);
 
     elementEClass = createEClass(ELEMENT);
@@ -3582,9 +3501,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     createEReference(functionlitEClass, FUNCTIONLIT__FUNCTIONBODY);
 
     statementEClass = createEClass(STATEMENT);
+    createEReference(statementEClass, STATEMENT__SIMPLESTMT);
     createEReference(statementEClass, STATEMENT__DECLARATION);
     createEReference(statementEClass, STATEMENT__LABELEDSTMT);
-    createEReference(statementEClass, STATEMENT__SIMPLESTMT);
     createEReference(statementEClass, STATEMENT__GOTSTMT);
     createEReference(statementEClass, STATEMENT__RETURNSTMT);
     createEAttribute(statementEClass, STATEMENT__BREAKSTMT);
@@ -3651,10 +3570,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     createEReference(constspecEClass, CONSTSPEC__EXPRESSIONLIST);
 
     simplestmtEClass = createEClass(SIMPLESTMT);
-    createEAttribute(simplestmtEClass, SIMPLESTMT__EMPTYSTMT);
-    createEReference(simplestmtEClass, SIMPLESTMT__EXPRESSIONSTMT);
+    createEReference(simplestmtEClass, SIMPLESTMT__EXPRESSION);
     createEReference(simplestmtEClass, SIMPLESTMT__SENDSTMT);
-    createEReference(simplestmtEClass, SIMPLESTMT__INCDECSTMT);
+    createEAttribute(simplestmtEClass, SIMPLESTMT__INCDECSTMT);
     createEReference(simplestmtEClass, SIMPLESTMT__ASSIGNMENT);
     createEReference(simplestmtEClass, SIMPLESTMT__SHORTVARDECL);
 
@@ -3677,9 +3595,20 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     createEReference(commcaseEClass, COMMCASE__SENDSTMT);
     createEReference(commcaseEClass, COMMCASE__RECVSTMT);
 
+    sendstmtEClass = createEClass(SENDSTMT);
+    createEReference(sendstmtEClass, SENDSTMT__EXPRESSION);
+
+    sendstmtauxEClass = createEClass(SENDSTMTAUX);
+    createEReference(sendstmtauxEClass, SENDSTMTAUX__EXPRESSION);
+
     recvstmtEClass = createEClass(RECVSTMT);
     createEAttribute(recvstmtEClass, RECVSTMT__IDENTIFIERLIST);
     createEReference(recvstmtEClass, RECVSTMT__RECVEXPR);
+
+    expressionlistEClass = createEClass(EXPRESSIONLIST);
+
+    postexpressionlistEClass = createEClass(POSTEXPRESSIONLIST);
+    createEReference(postexpressionlistEClass, POSTEXPRESSIONLIST__EXPRESSION);
 
     recvexprEClass = createEClass(RECVEXPR);
 
@@ -3694,15 +3623,8 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     createEReference(rangeclauseEClass, RANGECLAUSE__EXPRESSION);
 
     forclauseEClass = createEClass(FORCLAUSE);
-    createEReference(forclauseEClass, FORCLAUSE__INITSTMT);
-    createEReference(forclauseEClass, FORCLAUSE__CONDITION);
-    createEReference(forclauseEClass, FORCLAUSE__POSTSTMT);
-
-    initstmtEClass = createEClass(INITSTMT);
-
-    poststmtEClass = createEClass(POSTSTMT);
-
-    conditionEClass = createEClass(CONDITION);
+    createEReference(forclauseEClass, FORCLAUSE__SIMPLESTMT);
+    createEReference(forclauseEClass, FORCLAUSE__EXPRESSION);
 
     switchstmtEClass = createEClass(SWITCHSTMT);
     createEReference(switchstmtEClass, SWITCHSTMT__EXPRSWITCHSTMT);
@@ -3744,23 +3666,14 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     createEReference(ifstmtEClass, IFSTMT__BLOCK);
     createEReference(ifstmtEClass, IFSTMT__IFSTMT);
 
-    assignmentEClass = createEClass(ASSIGNMENT);
-    createEReference(assignmentEClass, ASSIGNMENT__EXPRESSIONLIST);
-    createEAttribute(assignmentEClass, ASSIGNMENT__ASSIGN_OP);
-
-    incdecstmtEClass = createEClass(INCDECSTMT);
-
-    sendstmtEClass = createEClass(SENDSTMT);
-    createEReference(sendstmtEClass, SENDSTMT__CHANNEL);
-    createEReference(sendstmtEClass, SENDSTMT__EXPRESSION);
-
-    channelEClass = createEClass(CHANNEL);
+    assignmentauxEClass = createEClass(ASSIGNMENTAUX);
+    createEReference(assignmentauxEClass, ASSIGNMENTAUX__POSTEXPRESSIONLIST);
+    createEAttribute(assignmentauxEClass, ASSIGNMENTAUX__ASSIGN_OP);
+    createEReference(assignmentauxEClass, ASSIGNMENTAUX__EXPRESSIONLIST);
 
     labeledstmtEClass = createEClass(LABELEDSTMT);
     createEAttribute(labeledstmtEClass, LABELEDSTMT__LABEL);
     createEReference(labeledstmtEClass, LABELEDSTMT__STATEMENT);
-
-    expressionstmtEClass = createEClass(EXPRESSIONSTMT);
 
     blockEClass = createEClass(BLOCK);
 
@@ -3768,14 +3681,6 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     createEReference(statementlistEClass, STATEMENTLIST__STATEMENT);
 
     functionbodyEClass = createEClass(FUNCTIONBODY);
-
-    typeassertionEClass = createEClass(TYPEASSERTION);
-
-    argumentsEClass = createEClass(ARGUMENTS);
-    createEReference(argumentsEClass, ARGUMENTS__EXPRESSIONLIST);
-    createEReference(argumentsEClass, ARGUMENTS__TYPE);
-
-    expressionlistEClass = createEClass(EXPRESSIONLIST);
 
     literalEClass = createEClass(LITERAL);
     createEAttribute(literalEClass, LITERAL__BASICLIT);
@@ -3832,11 +3737,6 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     createEAttribute(fielddeclEClass, FIELDDECL__EMBEDDEDFIELD);
     createEAttribute(fielddeclEClass, FIELDDECL__TAG);
 
-    typeEClass = createEClass(TYPE);
-    createEAttribute(typeEClass, TYPE__TYPENAME);
-    createEReference(typeEClass, TYPE__TYPELIT);
-    createEReference(typeEClass, TYPE__TYPE);
-
     typelitEClass = createEClass(TYPELIT);
     createEReference(typelitEClass, TYPELIT__ARRAYTYPE);
     createEReference(typelitEClass, TYPELIT__STRUCTTYPE);
@@ -3884,30 +3784,28 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     expressionEClass.getESuperTypes().add(this.getindex());
     expressionEClass.getESuperTypes().add(this.getelement());
     expressionEClass.getESuperTypes().add(this.getdeferstmt());
+    expressionEClass.getESuperTypes().add(this.getexpressionlist());
     expressionEClass.getESuperTypes().add(this.getrecvexpr());
     expressionEClass.getESuperTypes().add(this.getgotstmt());
-    expressionEClass.getESuperTypes().add(this.getcondition());
-    expressionEClass.getESuperTypes().add(this.getincdecstmt());
-    expressionEClass.getESuperTypes().add(this.getchannel());
-    expressionEClass.getESuperTypes().add(this.getexpressionstmt());
-    expressionEClass.getESuperTypes().add(this.getexpressionlist());
+    expressionEClass.getESuperTypes().add(this.getforstmt());
     unaryexprEClass.getESuperTypes().add(this.getexpression());
+    typeEClass.getESuperTypes().add(this.gettypeassertion());
+    typeEClass.getESuperTypes().add(this.getbasetype());
+    typeEClass.getESuperTypes().add(this.getkeytype());
+    typeEClass.getESuperTypes().add(this.getelementtype());
+    typeEClass.getESuperTypes().add(this.getresult());
     literalvalueEClass.getESuperTypes().add(this.getelement());
     keyedelementEClass.getESuperTypes().add(this.getelementlist());
     keyEClass.getESuperTypes().add(this.getkeyedelement());
     declarationEClass.getESuperTypes().add(this.gettopleveldecl());
     typedefEClass.getESuperTypes().add(this.gettypespecaux());
     aliasdeclEClass.getESuperTypes().add(this.gettypespecaux());
-    simplestmtEClass.getESuperTypes().add(this.getinitstmt());
-    simplestmtEClass.getESuperTypes().add(this.getpoststmt());
     simplestmtEClass.getESuperTypes().add(this.gettypeswitchstmt());
     commcaseEClass.getESuperTypes().add(this.getcommclause());
-    rangeclauseEClass.getESuperTypes().add(this.getforstmt());
+    expressionlistEClass.getESuperTypes().add(this.getrecvstmt());
     forclauseEClass.getESuperTypes().add(this.getforstmt());
-    conditionEClass.getESuperTypes().add(this.getforstmt());
     blockEClass.getESuperTypes().add(this.getfunctionbody());
     statementlistEClass.getESuperTypes().add(this.getblock());
-    expressionlistEClass.getESuperTypes().add(this.getrecvstmt());
     basetypeEClass.getESuperTypes().add(this.getpointertype());
     keytypeEClass.getESuperTypes().add(this.getmaptype());
     elementtypeEClass.getESuperTypes().add(this.getslicetype());
@@ -3915,17 +3813,8 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     signatureEClass.getESuperTypes().add(this.getfunctiontype());
     parametersEClass.getESuperTypes().add(this.getreceiver());
     parametersEClass.getESuperTypes().add(this.getresult());
-    typeEClass.getESuperTypes().add(this.getreceivertype());
-    typeEClass.getESuperTypes().add(this.gettypeassertion());
-    typeEClass.getESuperTypes().add(this.getbasetype());
-    typeEClass.getESuperTypes().add(this.getkeytype());
-    typeEClass.getESuperTypes().add(this.getelementtype());
-    typeEClass.getESuperTypes().add(this.getresult());
 
     // Initialize classes and features; add operations and parameters
-    initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getModel_Elements(), this.getresult(), null, "elements", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     initEClass(sourcefileEClass, sourcefile.class, "sourcefile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getsourcefile_Packageclause(), ecorePackage.getEString(), "packageclause", null, 0, -1, sourcefile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getsourcefile_Importdecl(), ecorePackage.getEString(), "importdecl", null, 0, -1, sourcefile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3933,6 +3822,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
 
     initEClass(expressionEClass, expression.class, "expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getexpression_Expression(), this.getexpression(), null, "expression", null, 0, -1, expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getexpression_Rangeclause(), this.getrangeclause(), null, "rangeclause", null, 0, 1, expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(expressionauxEClass, expressionaux.class, "expressionaux", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getexpressionaux_Expression(), this.getexpression(), null, "expression", null, 0, -1, expressionaux.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3947,37 +3837,48 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     initEClass(primaryexprEClass, primaryexpr.class, "primaryexpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getprimaryexpr_Operand(), this.getoperand(), null, "operand", null, 0, 1, primaryexpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getprimaryexpr_Primaryexpraux(), this.getprimaryexpraux(), null, "primaryexpraux", null, 0, 1, primaryexpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getprimaryexpr_Type(), this.gettypeaux(), null, "type", null, 0, 1, primaryexpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getprimaryexpr_Conversion(), this.getconversion(), null, "conversion", null, 0, 1, primaryexpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getprimaryexpr_Methodexpr(), this.getmethodexpr(), null, "methodexpr", null, 0, 1, primaryexpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getprimaryexpr_Typename(), ecorePackage.getEString(), "typename", null, 0, 1, primaryexpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(operandEClass, operand.class, "operand", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getoperand_Expression(), this.getexpression(), null, "expression", null, 0, 1, operand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getoperand_Literal(), this.getliteral(), null, "literal", null, 0, 1, operand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(typeEClass, type.class, "type", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(gettype_Type(), this.gettype(), null, "type", null, 0, 1, type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(gettype_Typename(), ecorePackage.getEString(), "typename", null, 0, 1, type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(gettype_Typelit(), this.gettypelit(), null, "typelit", null, 0, 1, type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(typeauxEClass, typeaux.class, "typeaux", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(gettypeaux_Type(), this.gettype(), null, "type", null, 0, 1, typeaux.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(gettypeaux_Typelit(), this.gettypelit(), null, "typelit", null, 0, 1, typeaux.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(methodexprEClass, methodexpr.class, "methodexpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getmethodexpr_Methodname(), ecorePackage.getEString(), "methodname", null, 0, 1, methodexpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(conversionEClass, conversion.class, "conversion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getconversion_Expression(), this.getexpression(), null, "expression", null, 0, 1, conversion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(primaryexprauxEClass, primaryexpraux.class, "primaryexpraux", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getprimaryexpraux_Selector(), ecorePackage.getEString(), "selector", null, 0, 1, primaryexpraux.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getprimaryexpraux_Primaryexpraux(), this.getprimaryexpraux(), null, "primaryexpraux", null, 0, 1, primaryexpraux.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getprimaryexpraux_Index(), this.getindex(), null, "index", null, 0, 1, primaryexpraux.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getprimaryexpraux_Slice(), this.getslice(), null, "slice", null, 0, 1, primaryexpraux.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getprimaryexpraux_Typeassertion(), this.gettypeassertion(), null, "typeassertion", null, 0, 1, primaryexpraux.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getprimaryexpraux_Primaryexpraux(), this.getprimaryexpraux(), null, "primaryexpraux", null, 0, 1, primaryexpraux.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getprimaryexpraux_Slice(), this.getslice(), null, "slice", null, 0, 1, primaryexpraux.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getprimaryexpraux_Index(), this.getindex(), null, "index", null, 0, 1, primaryexpraux.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getprimaryexpraux_Arguments(), this.getarguments(), null, "arguments", null, 0, 1, primaryexpraux.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getprimaryexpraux_WS(), ecorePackage.getEString(), "WS", null, 0, 1, primaryexpraux.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(argumentsEClass, arguments.class, "arguments", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getarguments_Expressionlist(), this.getexpressionlist(), null, "expressionlist", null, 0, 1, arguments.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getarguments_Type(), this.gettype(), null, "type", null, 0, 1, arguments.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(indexEClass, index.class, "index", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(sliceEClass, slice.class, "slice", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getslice_Expression(), this.getexpression(), null, "expression", null, 0, -1, slice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(methodexprEClass, methodexpr.class, "methodexpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getmethodexpr_Receivertype(), this.getreceivertype(), null, "receivertype", null, 0, 1, methodexpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getmethodexpr_Methodname(), ecorePackage.getEString(), "methodname", null, 0, 1, methodexpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(receivertypeEClass, receivertype.class, "receivertype", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(conversionEClass, conversion.class, "conversion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getconversion_Type(), this.gettype(), null, "type", null, 0, 1, conversion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getconversion_Expression(), this.getexpression(), null, "expression", null, 0, 1, conversion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(operandEClass, operand.class, "operand", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getoperand_Expression(), this.getexpression(), null, "expression", null, 0, 1, operand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getoperand_Literal(), this.getliteral(), null, "literal", null, 0, 1, operand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getoperand_Operandname(), ecorePackage.getEString(), "operandname", null, 0, 1, operand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(typeassertionEClass, typeassertion.class, "typeassertion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(compositelitEClass, compositelit.class, "compositelit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getcompositelit_Literaltype(), this.getliteraltype(), null, "literaltype", null, 0, 1, compositelit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4000,8 +3901,8 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     initEReference(getkeyedelement_Element(), this.getelement(), null, "element", null, 0, 1, keyedelement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(keyEClass, key.class, "key", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getkey_Fieldname(), ecorePackage.getEString(), "fieldname", null, 0, 1, key.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getkey_Expression(), this.getexpression(), null, "expression", null, 0, 1, key.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getkey_IDENTIFIER(), ecorePackage.getEString(), "IDENTIFIER", null, 0, 1, key.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getkey_Literalvalue(), this.getliteralvalue(), null, "literalvalue", null, 0, 1, key.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(elementEClass, element.class, "element", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -4011,9 +3912,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     initEReference(getfunctionlit_Functionbody(), this.getfunctionbody(), null, "functionbody", null, 0, 1, functionlit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(statementEClass, statement.class, "statement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getstatement_Simplestmt(), this.getsimplestmt(), null, "simplestmt", null, 0, 1, statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getstatement_Declaration(), this.getdeclaration(), null, "declaration", null, 0, 1, statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getstatement_Labeledstmt(), this.getlabeledstmt(), null, "labeledstmt", null, 0, 1, statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getstatement_Simplestmt(), this.getsimplestmt(), null, "simplestmt", null, 0, 1, statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getstatement_Gotstmt(), this.getgotstmt(), null, "gotstmt", null, 0, 1, statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getstatement_Returnstmt(), this.getreturnstmt(), null, "returnstmt", null, 0, 1, statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getstatement_Breakstmt(), ecorePackage.getEString(), "breakstmt", null, 0, 1, statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4080,11 +3981,10 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     initEReference(getconstspec_Expressionlist(), this.getexpressionlist(), null, "expressionlist", null, 0, 1, constspec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(simplestmtEClass, simplestmt.class, "simplestmt", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getsimplestmt_Emptystmt(), ecorePackage.getEString(), "emptystmt", null, 0, 1, simplestmt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getsimplestmt_Expressionstmt(), this.getexpressionstmt(), null, "expressionstmt", null, 0, 1, simplestmt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getsimplestmt_Sendstmt(), this.getsendstmt(), null, "sendstmt", null, 0, 1, simplestmt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getsimplestmt_Incdecstmt(), this.getincdecstmt(), null, "incdecstmt", null, 0, 1, simplestmt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getsimplestmt_Assignment(), this.getassignment(), null, "assignment", null, 0, 1, simplestmt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getsimplestmt_Expression(), this.getexpression(), null, "expression", null, 0, 1, simplestmt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getsimplestmt_Sendstmt(), this.getsendstmtaux(), null, "sendstmt", null, 0, 1, simplestmt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getsimplestmt_Incdecstmt(), ecorePackage.getEString(), "incdecstmt", null, 0, 1, simplestmt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getsimplestmt_Assignment(), this.getassignmentaux(), null, "assignment", null, 0, 1, simplestmt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getsimplestmt_Shortvardecl(), this.getshortvardecl(), null, "shortvardecl", null, 0, 1, simplestmt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(shortvardeclEClass, shortvardecl.class, "shortvardecl", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -4106,9 +4006,20 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     initEReference(getcommcase_Sendstmt(), this.getsendstmt(), null, "sendstmt", null, 0, 1, commcase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getcommcase_Recvstmt(), this.getrecvstmt(), null, "recvstmt", null, 0, 1, commcase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(sendstmtEClass, sendstmt.class, "sendstmt", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getsendstmt_Expression(), this.getexpression(), null, "expression", null, 0, -1, sendstmt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(sendstmtauxEClass, sendstmtaux.class, "sendstmtaux", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getsendstmtaux_Expression(), this.getexpression(), null, "expression", null, 0, -1, sendstmtaux.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(recvstmtEClass, recvstmt.class, "recvstmt", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getrecvstmt_Identifierlist(), ecorePackage.getEString(), "identifierlist", null, 0, 1, recvstmt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getrecvstmt_Recvexpr(), this.getrecvexpr(), null, "recvexpr", null, 0, 1, recvstmt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(expressionlistEClass, expressionlist.class, "expressionlist", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(postexpressionlistEClass, postexpressionlist.class, "postexpressionlist", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getpostexpressionlist_Expression(), this.getexpression(), null, "expression", null, 0, -1, postexpressionlist.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(recvexprEClass, recvexpr.class, "recvexpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -4118,20 +4029,13 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     initEReference(getforstmt_Block(), this.getblock(), null, "block", null, 0, 1, forstmt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(rangeclauseEClass, rangeclause.class, "rangeclause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getrangeclause_Expressionlist(), this.getexpressionlist(), null, "expressionlist", null, 0, 1, rangeclause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getrangeclause_Expressionlist(), this.getpostexpressionlist(), null, "expressionlist", null, 0, 1, rangeclause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getrangeclause_Identifierlist(), ecorePackage.getEString(), "identifierlist", null, 0, 1, rangeclause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getrangeclause_Expression(), this.getexpression(), null, "expression", null, 0, 1, rangeclause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(forclauseEClass, forclause.class, "forclause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getforclause_Initstmt(), this.getinitstmt(), null, "initstmt", null, 0, -1, forclause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getforclause_Condition(), this.getcondition(), null, "condition", null, 0, 1, forclause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getforclause_Poststmt(), this.getpoststmt(), null, "poststmt", null, 0, 1, forclause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(initstmtEClass, initstmt.class, "initstmt", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(poststmtEClass, poststmt.class, "poststmt", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(conditionEClass, condition.class, "condition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getforclause_Simplestmt(), this.getsimplestmt(), null, "simplestmt", null, 0, -1, forclause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getforclause_Expression(), this.getexpression(), null, "expression", null, 0, 1, forclause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(switchstmtEClass, switchstmt.class, "switchstmt", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getswitchstmt_Exprswitchstmt(), this.getexprswitchstmt(), null, "exprswitchstmt", null, 0, 1, switchstmt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4173,23 +4077,14 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     initEReference(getifstmt_Block(), this.getblock(), null, "block", null, 0, -1, ifstmt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getifstmt_Ifstmt(), this.getifstmt(), null, "ifstmt", null, 0, 1, ifstmt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(assignmentEClass, assignment.class, "assignment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getassignment_Expressionlist(), this.getexpressionlist(), null, "expressionlist", null, 0, -1, assignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getassignment_ASSIGN_OP(), ecorePackage.getEString(), "ASSIGN_OP", null, 0, 1, assignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(incdecstmtEClass, incdecstmt.class, "incdecstmt", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(sendstmtEClass, sendstmt.class, "sendstmt", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getsendstmt_Channel(), this.getchannel(), null, "channel", null, 0, 1, sendstmt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getsendstmt_Expression(), this.getexpression(), null, "expression", null, 0, 1, sendstmt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(channelEClass, channel.class, "channel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(assignmentauxEClass, assignmentaux.class, "assignmentaux", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getassignmentaux_Postexpressionlist(), this.getpostexpressionlist(), null, "postexpressionlist", null, 0, -1, assignmentaux.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getassignmentaux_ASSIGN_OP(), ecorePackage.getEString(), "ASSIGN_OP", null, 0, 1, assignmentaux.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getassignmentaux_Expressionlist(), this.getexpressionlist(), null, "expressionlist", null, 0, -1, assignmentaux.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(labeledstmtEClass, labeledstmt.class, "labeledstmt", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getlabeledstmt_Label(), ecorePackage.getEString(), "label", null, 0, 1, labeledstmt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getlabeledstmt_Statement(), this.getstatement(), null, "statement", null, 0, 1, labeledstmt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(expressionstmtEClass, expressionstmt.class, "expressionstmt", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(blockEClass, block.class, "block", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -4197,14 +4092,6 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     initEReference(getstatementlist_Statement(), this.getstatement(), null, "statement", null, 0, -1, statementlist.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(functionbodyEClass, functionbody.class, "functionbody", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(typeassertionEClass, typeassertion.class, "typeassertion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(argumentsEClass, arguments.class, "arguments", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getarguments_Expressionlist(), this.getexpressionlist(), null, "expressionlist", null, 0, 1, arguments.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getarguments_Type(), this.gettype(), null, "type", null, 0, 1, arguments.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(expressionlistEClass, expressionlist.class, "expressionlist", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(literalEClass, literal.class, "literal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getliteral_Basiclit(), ecorePackage.getEString(), "basiclit", null, 0, 1, literal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4260,11 +4147,6 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     initEReference(getfielddecl_Type(), this.gettype(), null, "type", null, 0, 1, fielddecl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getfielddecl_Embeddedfield(), ecorePackage.getEString(), "embeddedfield", null, 0, 1, fielddecl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getfielddecl_Tag(), ecorePackage.getEString(), "tag", null, 0, 1, fielddecl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(typeEClass, type.class, "type", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(gettype_Typename(), ecorePackage.getEString(), "typename", null, 0, 1, type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(gettype_Typelit(), this.gettypelit(), null, "typelit", null, 0, 1, type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(gettype_Type(), this.gettype(), null, "type", null, 0, 1, type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(typelitEClass, typelit.class, "typelit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(gettypelit_Arraytype(), this.getarraytype(), null, "arraytype", null, 0, 1, typelit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

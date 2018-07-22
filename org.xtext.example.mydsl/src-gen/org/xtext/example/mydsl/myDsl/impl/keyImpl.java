@@ -24,8 +24,8 @@ import org.xtext.example.mydsl.myDsl.literalvalue;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.keyImpl#getFieldname <em>Fieldname</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.keyImpl#getExpression <em>Expression</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.keyImpl#getIDENTIFIER <em>IDENTIFIER</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.keyImpl#getLiteralvalue <em>Literalvalue</em>}</li>
  * </ul>
  *
@@ -33,26 +33,6 @@ import org.xtext.example.mydsl.myDsl.literalvalue;
  */
 public class keyImpl extends keyedelementImpl implements key
 {
-  /**
-   * The default value of the '{@link #getFieldname() <em>Fieldname</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getFieldname()
-   * @generated
-   * @ordered
-   */
-  protected static final String FIELDNAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getFieldname() <em>Fieldname</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getFieldname()
-   * @generated
-   * @ordered
-   */
-  protected String fieldname = FIELDNAME_EDEFAULT;
-
   /**
    * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -62,6 +42,26 @@ public class keyImpl extends keyedelementImpl implements key
    * @ordered
    */
   protected expression expression;
+
+  /**
+   * The default value of the '{@link #getIDENTIFIER() <em>IDENTIFIER</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getIDENTIFIER()
+   * @generated
+   * @ordered
+   */
+  protected static final String IDENTIFIER_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getIDENTIFIER() <em>IDENTIFIER</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getIDENTIFIER()
+   * @generated
+   * @ordered
+   */
+  protected String identifier = IDENTIFIER_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getLiteralvalue() <em>Literalvalue</em>}' containment reference.
@@ -92,29 +92,6 @@ public class keyImpl extends keyedelementImpl implements key
   protected EClass eStaticClass()
   {
     return MyDslPackage.Literals.KEY;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getFieldname()
-  {
-    return fieldname;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setFieldname(String newFieldname)
-  {
-    String oldFieldname = fieldname;
-    fieldname = newFieldname;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.KEY__FIELDNAME, oldFieldname, fieldname));
   }
 
   /**
@@ -163,6 +140,29 @@ public class keyImpl extends keyedelementImpl implements key
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.KEY__EXPRESSION, newExpression, newExpression));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getIDENTIFIER()
+  {
+    return identifier;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setIDENTIFIER(String newIDENTIFIER)
+  {
+    String oldIDENTIFIER = identifier;
+    identifier = newIDENTIFIER;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.KEY__IDENTIFIER, oldIDENTIFIER, identifier));
   }
 
   /**
@@ -241,10 +241,10 @@ public class keyImpl extends keyedelementImpl implements key
   {
     switch (featureID)
     {
-      case MyDslPackage.KEY__FIELDNAME:
-        return getFieldname();
       case MyDslPackage.KEY__EXPRESSION:
         return getExpression();
+      case MyDslPackage.KEY__IDENTIFIER:
+        return getIDENTIFIER();
       case MyDslPackage.KEY__LITERALVALUE:
         return getLiteralvalue();
     }
@@ -261,11 +261,11 @@ public class keyImpl extends keyedelementImpl implements key
   {
     switch (featureID)
     {
-      case MyDslPackage.KEY__FIELDNAME:
-        setFieldname((String)newValue);
-        return;
       case MyDslPackage.KEY__EXPRESSION:
         setExpression((expression)newValue);
+        return;
+      case MyDslPackage.KEY__IDENTIFIER:
+        setIDENTIFIER((String)newValue);
         return;
       case MyDslPackage.KEY__LITERALVALUE:
         setLiteralvalue((literalvalue)newValue);
@@ -284,11 +284,11 @@ public class keyImpl extends keyedelementImpl implements key
   {
     switch (featureID)
     {
-      case MyDslPackage.KEY__FIELDNAME:
-        setFieldname(FIELDNAME_EDEFAULT);
-        return;
       case MyDslPackage.KEY__EXPRESSION:
         setExpression((expression)null);
+        return;
+      case MyDslPackage.KEY__IDENTIFIER:
+        setIDENTIFIER(IDENTIFIER_EDEFAULT);
         return;
       case MyDslPackage.KEY__LITERALVALUE:
         setLiteralvalue((literalvalue)null);
@@ -307,10 +307,10 @@ public class keyImpl extends keyedelementImpl implements key
   {
     switch (featureID)
     {
-      case MyDslPackage.KEY__FIELDNAME:
-        return FIELDNAME_EDEFAULT == null ? fieldname != null : !FIELDNAME_EDEFAULT.equals(fieldname);
       case MyDslPackage.KEY__EXPRESSION:
         return expression != null;
+      case MyDslPackage.KEY__IDENTIFIER:
+        return IDENTIFIER_EDEFAULT == null ? identifier != null : !IDENTIFIER_EDEFAULT.equals(identifier);
       case MyDslPackage.KEY__LITERALVALUE:
         return literalvalue != null;
     }
@@ -328,8 +328,8 @@ public class keyImpl extends keyedelementImpl implements key
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (fieldname: ");
-    result.append(fieldname);
+    result.append(" (IDENTIFIER: ");
+    result.append(identifier);
     result.append(')');
     return result.toString();
   }

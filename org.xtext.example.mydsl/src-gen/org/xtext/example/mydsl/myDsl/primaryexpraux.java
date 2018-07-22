@@ -15,12 +15,11 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.myDsl.primaryexpraux#getSelector <em>Selector</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.primaryexpraux#getPrimaryexpraux <em>Primaryexpraux</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.primaryexpraux#getIndex <em>Index</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.primaryexpraux#getSlice <em>Slice</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.primaryexpraux#getTypeassertion <em>Typeassertion</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.primaryexpraux#getPrimaryexpraux <em>Primaryexpraux</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.primaryexpraux#getSlice <em>Slice</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.primaryexpraux#getIndex <em>Index</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.primaryexpraux#getArguments <em>Arguments</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.primaryexpraux#getWS <em>WS</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getprimaryexpraux()
@@ -56,6 +55,32 @@ public interface primaryexpraux extends EObject
   void setSelector(String value);
 
   /**
+   * Returns the value of the '<em><b>Typeassertion</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Typeassertion</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Typeassertion</em>' containment reference.
+   * @see #setTypeassertion(typeassertion)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getprimaryexpraux_Typeassertion()
+   * @model containment="true"
+   * @generated
+   */
+  typeassertion getTypeassertion();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.primaryexpraux#getTypeassertion <em>Typeassertion</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Typeassertion</em>' containment reference.
+   * @see #getTypeassertion()
+   * @generated
+   */
+  void setTypeassertion(typeassertion value);
+
+  /**
    * Returns the value of the '<em><b>Primaryexpraux</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
@@ -80,32 +105,6 @@ public interface primaryexpraux extends EObject
    * @generated
    */
   void setPrimaryexpraux(primaryexpraux value);
-
-  /**
-   * Returns the value of the '<em><b>Index</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Index</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Index</em>' containment reference.
-   * @see #setIndex(index)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getprimaryexpraux_Index()
-   * @model containment="true"
-   * @generated
-   */
-  index getIndex();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.primaryexpraux#getIndex <em>Index</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Index</em>' containment reference.
-   * @see #getIndex()
-   * @generated
-   */
-  void setIndex(index value);
 
   /**
    * Returns the value of the '<em><b>Slice</b></em>' containment reference.
@@ -134,30 +133,30 @@ public interface primaryexpraux extends EObject
   void setSlice(slice value);
 
   /**
-   * Returns the value of the '<em><b>Typeassertion</b></em>' containment reference.
+   * Returns the value of the '<em><b>Index</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Typeassertion</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Index</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Typeassertion</em>' containment reference.
-   * @see #setTypeassertion(typeassertion)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getprimaryexpraux_Typeassertion()
+   * @return the value of the '<em>Index</em>' containment reference.
+   * @see #setIndex(index)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getprimaryexpraux_Index()
    * @model containment="true"
    * @generated
    */
-  typeassertion getTypeassertion();
+  index getIndex();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.primaryexpraux#getTypeassertion <em>Typeassertion</em>}' containment reference.
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.primaryexpraux#getIndex <em>Index</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Typeassertion</em>' containment reference.
-   * @see #getTypeassertion()
+   * @param value the new value of the '<em>Index</em>' containment reference.
+   * @see #getIndex()
    * @generated
    */
-  void setTypeassertion(typeassertion value);
+  void setIndex(index value);
 
   /**
    * Returns the value of the '<em><b>Arguments</b></em>' containment reference.
@@ -184,31 +183,5 @@ public interface primaryexpraux extends EObject
    * @generated
    */
   void setArguments(arguments value);
-
-  /**
-   * Returns the value of the '<em><b>WS</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>WS</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>WS</em>' attribute.
-   * @see #setWS(String)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getprimaryexpraux_WS()
-   * @model
-   * @generated
-   */
-  String getWS();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.primaryexpraux#getWS <em>WS</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>WS</em>' attribute.
-   * @see #getWS()
-   * @generated
-   */
-  void setWS(String value);
 
 } // primaryexpraux

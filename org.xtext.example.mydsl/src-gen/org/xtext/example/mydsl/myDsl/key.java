@@ -13,8 +13,8 @@ package org.xtext.example.mydsl.myDsl;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.key#getFieldname <em>Fieldname</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.key#getExpression <em>Expression</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.key#getIDENTIFIER <em>IDENTIFIER</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.key#getLiteralvalue <em>Literalvalue</em>}</li>
  * </ul>
  *
@@ -24,32 +24,6 @@ package org.xtext.example.mydsl.myDsl;
  */
 public interface key extends keyedelement
 {
-  /**
-   * Returns the value of the '<em><b>Fieldname</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Fieldname</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Fieldname</em>' attribute.
-   * @see #setFieldname(String)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getkey_Fieldname()
-   * @model
-   * @generated
-   */
-  String getFieldname();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.key#getFieldname <em>Fieldname</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Fieldname</em>' attribute.
-   * @see #getFieldname()
-   * @generated
-   */
-  void setFieldname(String value);
-
   /**
    * Returns the value of the '<em><b>Expression</b></em>' containment reference.
    * <!-- begin-user-doc -->
@@ -75,6 +49,32 @@ public interface key extends keyedelement
    * @generated
    */
   void setExpression(expression value);
+
+  /**
+   * Returns the value of the '<em><b>IDENTIFIER</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>IDENTIFIER</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>IDENTIFIER</em>' attribute.
+   * @see #setIDENTIFIER(String)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getkey_IDENTIFIER()
+   * @model
+   * @generated
+   */
+  String getIDENTIFIER();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.key#getIDENTIFIER <em>IDENTIFIER</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>IDENTIFIER</em>' attribute.
+   * @see #getIDENTIFIER()
+   * @generated
+   */
+  void setIDENTIFIER(String value);
 
   /**
    * Returns the value of the '<em><b>Literalvalue</b></em>' containment reference.

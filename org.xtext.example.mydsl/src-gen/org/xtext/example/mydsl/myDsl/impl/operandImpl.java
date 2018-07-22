@@ -27,7 +27,6 @@ import org.xtext.example.mydsl.myDsl.operand;
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.operandImpl#getExpression <em>Expression</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.operandImpl#getLiteral <em>Literal</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.operandImpl#getOperandname <em>Operandname</em>}</li>
  * </ul>
  *
  * @generated
@@ -53,26 +52,6 @@ public class operandImpl extends MinimalEObjectImpl.Container implements operand
    * @ordered
    */
   protected literal literal;
-
-  /**
-   * The default value of the '{@link #getOperandname() <em>Operandname</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getOperandname()
-   * @generated
-   * @ordered
-   */
-  protected static final String OPERANDNAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getOperandname() <em>Operandname</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getOperandname()
-   * @generated
-   * @ordered
-   */
-  protected String operandname = OPERANDNAME_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -196,29 +175,6 @@ public class operandImpl extends MinimalEObjectImpl.Container implements operand
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getOperandname()
-  {
-    return operandname;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setOperandname(String newOperandname)
-  {
-    String oldOperandname = operandname;
-    operandname = newOperandname;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.OPERAND__OPERANDNAME, oldOperandname, operandname));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -246,8 +202,6 @@ public class operandImpl extends MinimalEObjectImpl.Container implements operand
         return getExpression();
       case MyDslPackage.OPERAND__LITERAL:
         return getLiteral();
-      case MyDslPackage.OPERAND__OPERANDNAME:
-        return getOperandname();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -267,9 +221,6 @@ public class operandImpl extends MinimalEObjectImpl.Container implements operand
         return;
       case MyDslPackage.OPERAND__LITERAL:
         setLiteral((literal)newValue);
-        return;
-      case MyDslPackage.OPERAND__OPERANDNAME:
-        setOperandname((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -291,9 +242,6 @@ public class operandImpl extends MinimalEObjectImpl.Container implements operand
       case MyDslPackage.OPERAND__LITERAL:
         setLiteral((literal)null);
         return;
-      case MyDslPackage.OPERAND__OPERANDNAME:
-        setOperandname(OPERANDNAME_EDEFAULT);
-        return;
     }
     super.eUnset(featureID);
   }
@@ -312,27 +260,8 @@ public class operandImpl extends MinimalEObjectImpl.Container implements operand
         return expression != null;
       case MyDslPackage.OPERAND__LITERAL:
         return literal != null;
-      case MyDslPackage.OPERAND__OPERANDNAME:
-        return OPERANDNAME_EDEFAULT == null ? operandname != null : !OPERANDNAME_EDEFAULT.equals(operandname);
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (operandname: ");
-    result.append(operandname);
-    result.append(')');
-    return result.toString();
   }
 
 } //operandImpl

@@ -24,15 +24,6 @@ public interface MyDslFactory extends EFactory
   MyDslFactory eINSTANCE = org.xtext.example.mydsl.myDsl.impl.MyDslFactoryImpl.init();
 
   /**
-   * Returns a new object of class '<em>Model</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Model</em>'.
-   * @generated
-   */
-  Model createModel();
-
-  /**
    * Returns a new object of class '<em>sourcefile</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -78,6 +69,51 @@ public interface MyDslFactory extends EFactory
   primaryexpr createprimaryexpr();
 
   /**
+   * Returns a new object of class '<em>operand</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>operand</em>'.
+   * @generated
+   */
+  operand createoperand();
+
+  /**
+   * Returns a new object of class '<em>type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>type</em>'.
+   * @generated
+   */
+  type createtype();
+
+  /**
+   * Returns a new object of class '<em>typeaux</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>typeaux</em>'.
+   * @generated
+   */
+  typeaux createtypeaux();
+
+  /**
+   * Returns a new object of class '<em>methodexpr</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>methodexpr</em>'.
+   * @generated
+   */
+  methodexpr createmethodexpr();
+
+  /**
+   * Returns a new object of class '<em>conversion</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>conversion</em>'.
+   * @generated
+   */
+  conversion createconversion();
+
+  /**
    * Returns a new object of class '<em>primaryexpraux</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -85,6 +121,15 @@ public interface MyDslFactory extends EFactory
    * @generated
    */
   primaryexpraux createprimaryexpraux();
+
+  /**
+   * Returns a new object of class '<em>arguments</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>arguments</em>'.
+   * @generated
+   */
+  arguments createarguments();
 
   /**
    * Returns a new object of class '<em>index</em>'.
@@ -105,40 +150,13 @@ public interface MyDslFactory extends EFactory
   slice createslice();
 
   /**
-   * Returns a new object of class '<em>methodexpr</em>'.
+   * Returns a new object of class '<em>typeassertion</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>methodexpr</em>'.
+   * @return a new object of class '<em>typeassertion</em>'.
    * @generated
    */
-  methodexpr createmethodexpr();
-
-  /**
-   * Returns a new object of class '<em>receivertype</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>receivertype</em>'.
-   * @generated
-   */
-  receivertype createreceivertype();
-
-  /**
-   * Returns a new object of class '<em>conversion</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>conversion</em>'.
-   * @generated
-   */
-  conversion createconversion();
-
-  /**
-   * Returns a new object of class '<em>operand</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>operand</em>'.
-   * @generated
-   */
-  operand createoperand();
+  typeassertion createtypeassertion();
 
   /**
    * Returns a new object of class '<em>compositelit</em>'.
@@ -411,6 +429,24 @@ public interface MyDslFactory extends EFactory
   commcase createcommcase();
 
   /**
+   * Returns a new object of class '<em>sendstmt</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>sendstmt</em>'.
+   * @generated
+   */
+  sendstmt createsendstmt();
+
+  /**
+   * Returns a new object of class '<em>sendstmtaux</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>sendstmtaux</em>'.
+   * @generated
+   */
+  sendstmtaux createsendstmtaux();
+
+  /**
    * Returns a new object of class '<em>recvstmt</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -418,6 +454,24 @@ public interface MyDslFactory extends EFactory
    * @generated
    */
   recvstmt createrecvstmt();
+
+  /**
+   * Returns a new object of class '<em>expressionlist</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>expressionlist</em>'.
+   * @generated
+   */
+  expressionlist createexpressionlist();
+
+  /**
+   * Returns a new object of class '<em>postexpressionlist</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>postexpressionlist</em>'.
+   * @generated
+   */
+  postexpressionlist createpostexpressionlist();
 
   /**
    * Returns a new object of class '<em>recvexpr</em>'.
@@ -463,33 +517,6 @@ public interface MyDslFactory extends EFactory
    * @generated
    */
   forclause createforclause();
-
-  /**
-   * Returns a new object of class '<em>initstmt</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>initstmt</em>'.
-   * @generated
-   */
-  initstmt createinitstmt();
-
-  /**
-   * Returns a new object of class '<em>poststmt</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>poststmt</em>'.
-   * @generated
-   */
-  poststmt createpoststmt();
-
-  /**
-   * Returns a new object of class '<em>condition</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>condition</em>'.
-   * @generated
-   */
-  condition createcondition();
 
   /**
    * Returns a new object of class '<em>switchstmt</em>'.
@@ -582,40 +609,13 @@ public interface MyDslFactory extends EFactory
   ifstmt createifstmt();
 
   /**
-   * Returns a new object of class '<em>assignment</em>'.
+   * Returns a new object of class '<em>assignmentaux</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>assignment</em>'.
+   * @return a new object of class '<em>assignmentaux</em>'.
    * @generated
    */
-  assignment createassignment();
-
-  /**
-   * Returns a new object of class '<em>incdecstmt</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>incdecstmt</em>'.
-   * @generated
-   */
-  incdecstmt createincdecstmt();
-
-  /**
-   * Returns a new object of class '<em>sendstmt</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>sendstmt</em>'.
-   * @generated
-   */
-  sendstmt createsendstmt();
-
-  /**
-   * Returns a new object of class '<em>channel</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>channel</em>'.
-   * @generated
-   */
-  channel createchannel();
+  assignmentaux createassignmentaux();
 
   /**
    * Returns a new object of class '<em>labeledstmt</em>'.
@@ -625,15 +625,6 @@ public interface MyDslFactory extends EFactory
    * @generated
    */
   labeledstmt createlabeledstmt();
-
-  /**
-   * Returns a new object of class '<em>expressionstmt</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>expressionstmt</em>'.
-   * @generated
-   */
-  expressionstmt createexpressionstmt();
 
   /**
    * Returns a new object of class '<em>block</em>'.
@@ -661,33 +652,6 @@ public interface MyDslFactory extends EFactory
    * @generated
    */
   functionbody createfunctionbody();
-
-  /**
-   * Returns a new object of class '<em>typeassertion</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>typeassertion</em>'.
-   * @generated
-   */
-  typeassertion createtypeassertion();
-
-  /**
-   * Returns a new object of class '<em>arguments</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>arguments</em>'.
-   * @generated
-   */
-  arguments createarguments();
-
-  /**
-   * Returns a new object of class '<em>expressionlist</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>expressionlist</em>'.
-   * @generated
-   */
-  expressionlist createexpressionlist();
 
   /**
    * Returns a new object of class '<em>literal</em>'.
@@ -850,15 +814,6 @@ public interface MyDslFactory extends EFactory
    * @generated
    */
   fielddecl createfielddecl();
-
-  /**
-   * Returns a new object of class '<em>type</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>type</em>'.
-   * @generated
-   */
-  type createtype();
 
   /**
    * Returns a new object of class '<em>typelit</em>'.

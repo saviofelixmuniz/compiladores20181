@@ -13,17 +13,43 @@ package org.xtext.example.mydsl.myDsl;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.type#getType <em>Type</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.type#getTypename <em>Typename</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.type#getTypelit <em>Typelit</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.type#getType <em>Type</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.mydsl.myDsl.MyDslPackage#gettype()
  * @model
  * @generated
  */
-public interface type extends receivertype, typeassertion, basetype, keytype, elementtype, result
+public interface type extends typeassertion, basetype, keytype, elementtype, result
 {
+  /**
+   * Returns the value of the '<em><b>Type</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Type</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Type</em>' containment reference.
+   * @see #setType(type)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#gettype_Type()
+   * @model containment="true"
+   * @generated
+   */
+  type getType();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.type#getType <em>Type</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Type</em>' containment reference.
+   * @see #getType()
+   * @generated
+   */
+  void setType(type value);
+
   /**
    * Returns the value of the '<em><b>Typename</b></em>' attribute.
    * <!-- begin-user-doc -->
@@ -75,31 +101,5 @@ public interface type extends receivertype, typeassertion, basetype, keytype, el
    * @generated
    */
   void setTypelit(typelit value);
-
-  /**
-   * Returns the value of the '<em><b>Type</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Type</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Type</em>' containment reference.
-   * @see #setType(type)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#gettype_Type()
-   * @model containment="true"
-   * @generated
-   */
-  type getType();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.type#getType <em>Type</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Type</em>' containment reference.
-   * @see #getType()
-   * @generated
-   */
-  void setType(type value);
 
 } // type

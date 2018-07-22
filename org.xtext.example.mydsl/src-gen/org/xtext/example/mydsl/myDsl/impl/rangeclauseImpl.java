@@ -10,10 +10,11 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
 import org.xtext.example.mydsl.myDsl.expression;
-import org.xtext.example.mydsl.myDsl.expressionlist;
+import org.xtext.example.mydsl.myDsl.postexpressionlist;
 import org.xtext.example.mydsl.myDsl.rangeclause;
 
 /**
@@ -31,7 +32,7 @@ import org.xtext.example.mydsl.myDsl.rangeclause;
  *
  * @generated
  */
-public class rangeclauseImpl extends forstmtImpl implements rangeclause
+public class rangeclauseImpl extends MinimalEObjectImpl.Container implements rangeclause
 {
   /**
    * The cached value of the '{@link #getExpressionlist() <em>Expressionlist</em>}' containment reference.
@@ -41,7 +42,7 @@ public class rangeclauseImpl extends forstmtImpl implements rangeclause
    * @generated
    * @ordered
    */
-  protected expressionlist expressionlist;
+  protected postexpressionlist expressionlist;
 
   /**
    * The default value of the '{@link #getIdentifierlist() <em>Identifierlist</em>}' attribute.
@@ -99,7 +100,7 @@ public class rangeclauseImpl extends forstmtImpl implements rangeclause
    * <!-- end-user-doc -->
    * @generated
    */
-  public expressionlist getExpressionlist()
+  public postexpressionlist getExpressionlist()
   {
     return expressionlist;
   }
@@ -109,9 +110,9 @@ public class rangeclauseImpl extends forstmtImpl implements rangeclause
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetExpressionlist(expressionlist newExpressionlist, NotificationChain msgs)
+  public NotificationChain basicSetExpressionlist(postexpressionlist newExpressionlist, NotificationChain msgs)
   {
-    expressionlist oldExpressionlist = expressionlist;
+    postexpressionlist oldExpressionlist = expressionlist;
     expressionlist = newExpressionlist;
     if (eNotificationRequired())
     {
@@ -126,7 +127,7 @@ public class rangeclauseImpl extends forstmtImpl implements rangeclause
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setExpressionlist(expressionlist newExpressionlist)
+  public void setExpressionlist(postexpressionlist newExpressionlist)
   {
     if (newExpressionlist != expressionlist)
     {
@@ -262,7 +263,7 @@ public class rangeclauseImpl extends forstmtImpl implements rangeclause
     switch (featureID)
     {
       case MyDslPackage.RANGECLAUSE__EXPRESSIONLIST:
-        setExpressionlist((expressionlist)newValue);
+        setExpressionlist((postexpressionlist)newValue);
         return;
       case MyDslPackage.RANGECLAUSE__IDENTIFIERLIST:
         setIdentifierlist((String)newValue);
@@ -285,7 +286,7 @@ public class rangeclauseImpl extends forstmtImpl implements rangeclause
     switch (featureID)
     {
       case MyDslPackage.RANGECLAUSE__EXPRESSIONLIST:
-        setExpressionlist((expressionlist)null);
+        setExpressionlist((postexpressionlist)null);
         return;
       case MyDslPackage.RANGECLAUSE__IDENTIFIERLIST:
         setIdentifierlist(IDENTIFIERLIST_EDEFAULT);

@@ -4,17 +4,14 @@
 package org.xtext.example.mydsl.myDsl.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
 import org.xtext.example.mydsl.myDsl.methodexpr;
-import org.xtext.example.mydsl.myDsl.receivertype;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,7 +21,6 @@ import org.xtext.example.mydsl.myDsl.receivertype;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.methodexprImpl#getReceivertype <em>Receivertype</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.methodexprImpl#getMethodname <em>Methodname</em>}</li>
  * </ul>
  *
@@ -32,16 +28,6 @@ import org.xtext.example.mydsl.myDsl.receivertype;
  */
 public class methodexprImpl extends MinimalEObjectImpl.Container implements methodexpr
 {
-  /**
-   * The cached value of the '{@link #getReceivertype() <em>Receivertype</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getReceivertype()
-   * @generated
-   * @ordered
-   */
-  protected receivertype receivertype;
-
   /**
    * The default value of the '{@link #getMethodname() <em>Methodname</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -88,54 +74,6 @@ public class methodexprImpl extends MinimalEObjectImpl.Container implements meth
    * <!-- end-user-doc -->
    * @generated
    */
-  public receivertype getReceivertype()
-  {
-    return receivertype;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetReceivertype(receivertype newReceivertype, NotificationChain msgs)
-  {
-    receivertype oldReceivertype = receivertype;
-    receivertype = newReceivertype;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.METHODEXPR__RECEIVERTYPE, oldReceivertype, newReceivertype);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setReceivertype(receivertype newReceivertype)
-  {
-    if (newReceivertype != receivertype)
-    {
-      NotificationChain msgs = null;
-      if (receivertype != null)
-        msgs = ((InternalEObject)receivertype).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.METHODEXPR__RECEIVERTYPE, null, msgs);
-      if (newReceivertype != null)
-        msgs = ((InternalEObject)newReceivertype).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.METHODEXPR__RECEIVERTYPE, null, msgs);
-      msgs = basicSetReceivertype(newReceivertype, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.METHODEXPR__RECEIVERTYPE, newReceivertype, newReceivertype));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public String getMethodname()
   {
     return methodname;
@@ -160,28 +98,10 @@ public class methodexprImpl extends MinimalEObjectImpl.Container implements meth
    * @generated
    */
   @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case MyDslPackage.METHODEXPR__RECEIVERTYPE:
-        return basicSetReceivertype(null, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
     {
-      case MyDslPackage.METHODEXPR__RECEIVERTYPE:
-        return getReceivertype();
       case MyDslPackage.METHODEXPR__METHODNAME:
         return getMethodname();
     }
@@ -198,9 +118,6 @@ public class methodexprImpl extends MinimalEObjectImpl.Container implements meth
   {
     switch (featureID)
     {
-      case MyDslPackage.METHODEXPR__RECEIVERTYPE:
-        setReceivertype((receivertype)newValue);
-        return;
       case MyDslPackage.METHODEXPR__METHODNAME:
         setMethodname((String)newValue);
         return;
@@ -218,9 +135,6 @@ public class methodexprImpl extends MinimalEObjectImpl.Container implements meth
   {
     switch (featureID)
     {
-      case MyDslPackage.METHODEXPR__RECEIVERTYPE:
-        setReceivertype((receivertype)null);
-        return;
       case MyDslPackage.METHODEXPR__METHODNAME:
         setMethodname(METHODNAME_EDEFAULT);
         return;
@@ -238,8 +152,6 @@ public class methodexprImpl extends MinimalEObjectImpl.Container implements meth
   {
     switch (featureID)
     {
-      case MyDslPackage.METHODEXPR__RECEIVERTYPE:
-        return receivertype != null;
       case MyDslPackage.METHODEXPR__METHODNAME:
         return METHODNAME_EDEFAULT == null ? methodname != null : !METHODNAME_EDEFAULT.equals(methodname);
     }

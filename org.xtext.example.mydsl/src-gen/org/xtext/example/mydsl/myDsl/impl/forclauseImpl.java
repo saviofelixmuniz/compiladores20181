@@ -19,10 +19,9 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
-import org.xtext.example.mydsl.myDsl.condition;
+import org.xtext.example.mydsl.myDsl.expression;
 import org.xtext.example.mydsl.myDsl.forclause;
-import org.xtext.example.mydsl.myDsl.initstmt;
-import org.xtext.example.mydsl.myDsl.poststmt;
+import org.xtext.example.mydsl.myDsl.simplestmt;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,9 +31,8 @@ import org.xtext.example.mydsl.myDsl.poststmt;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.forclauseImpl#getInitstmt <em>Initstmt</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.forclauseImpl#getCondition <em>Condition</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.forclauseImpl#getPoststmt <em>Poststmt</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.forclauseImpl#getSimplestmt <em>Simplestmt</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.forclauseImpl#getExpression <em>Expression</em>}</li>
  * </ul>
  *
  * @generated
@@ -42,34 +40,24 @@ import org.xtext.example.mydsl.myDsl.poststmt;
 public class forclauseImpl extends forstmtImpl implements forclause
 {
   /**
-   * The cached value of the '{@link #getInitstmt() <em>Initstmt</em>}' containment reference list.
+   * The cached value of the '{@link #getSimplestmt() <em>Simplestmt</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getInitstmt()
+   * @see #getSimplestmt()
    * @generated
    * @ordered
    */
-  protected EList<initstmt> initstmt;
+  protected EList<simplestmt> simplestmt;
 
   /**
-   * The cached value of the '{@link #getCondition() <em>Condition</em>}' containment reference.
+   * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getCondition()
+   * @see #getExpression()
    * @generated
    * @ordered
    */
-  protected condition condition;
-
-  /**
-   * The cached value of the '{@link #getPoststmt() <em>Poststmt</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getPoststmt()
-   * @generated
-   * @ordered
-   */
-  protected poststmt poststmt;
+  protected expression expression;
 
   /**
    * <!-- begin-user-doc -->
@@ -97,13 +85,13 @@ public class forclauseImpl extends forstmtImpl implements forclause
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<initstmt> getInitstmt()
+  public EList<simplestmt> getSimplestmt()
   {
-    if (initstmt == null)
+    if (simplestmt == null)
     {
-      initstmt = new EObjectContainmentEList<initstmt>(initstmt.class, this, MyDslPackage.FORCLAUSE__INITSTMT);
+      simplestmt = new EObjectContainmentEList<simplestmt>(simplestmt.class, this, MyDslPackage.FORCLAUSE__SIMPLESTMT);
     }
-    return initstmt;
+    return simplestmt;
   }
 
   /**
@@ -111,9 +99,9 @@ public class forclauseImpl extends forstmtImpl implements forclause
    * <!-- end-user-doc -->
    * @generated
    */
-  public condition getCondition()
+  public expression getExpression()
   {
-    return condition;
+    return expression;
   }
 
   /**
@@ -121,13 +109,13 @@ public class forclauseImpl extends forstmtImpl implements forclause
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetCondition(condition newCondition, NotificationChain msgs)
+  public NotificationChain basicSetExpression(expression newExpression, NotificationChain msgs)
   {
-    condition oldCondition = condition;
-    condition = newCondition;
+    expression oldExpression = expression;
+    expression = newExpression;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.FORCLAUSE__CONDITION, oldCondition, newCondition);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.FORCLAUSE__EXPRESSION, oldExpression, newExpression);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -138,68 +126,20 @@ public class forclauseImpl extends forstmtImpl implements forclause
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setCondition(condition newCondition)
+  public void setExpression(expression newExpression)
   {
-    if (newCondition != condition)
+    if (newExpression != expression)
     {
       NotificationChain msgs = null;
-      if (condition != null)
-        msgs = ((InternalEObject)condition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.FORCLAUSE__CONDITION, null, msgs);
-      if (newCondition != null)
-        msgs = ((InternalEObject)newCondition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.FORCLAUSE__CONDITION, null, msgs);
-      msgs = basicSetCondition(newCondition, msgs);
+      if (expression != null)
+        msgs = ((InternalEObject)expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.FORCLAUSE__EXPRESSION, null, msgs);
+      if (newExpression != null)
+        msgs = ((InternalEObject)newExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.FORCLAUSE__EXPRESSION, null, msgs);
+      msgs = basicSetExpression(newExpression, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.FORCLAUSE__CONDITION, newCondition, newCondition));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public poststmt getPoststmt()
-  {
-    return poststmt;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetPoststmt(poststmt newPoststmt, NotificationChain msgs)
-  {
-    poststmt oldPoststmt = poststmt;
-    poststmt = newPoststmt;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.FORCLAUSE__POSTSTMT, oldPoststmt, newPoststmt);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setPoststmt(poststmt newPoststmt)
-  {
-    if (newPoststmt != poststmt)
-    {
-      NotificationChain msgs = null;
-      if (poststmt != null)
-        msgs = ((InternalEObject)poststmt).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.FORCLAUSE__POSTSTMT, null, msgs);
-      if (newPoststmt != null)
-        msgs = ((InternalEObject)newPoststmt).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.FORCLAUSE__POSTSTMT, null, msgs);
-      msgs = basicSetPoststmt(newPoststmt, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.FORCLAUSE__POSTSTMT, newPoststmt, newPoststmt));
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.FORCLAUSE__EXPRESSION, newExpression, newExpression));
   }
 
   /**
@@ -212,12 +152,10 @@ public class forclauseImpl extends forstmtImpl implements forclause
   {
     switch (featureID)
     {
-      case MyDslPackage.FORCLAUSE__INITSTMT:
-        return ((InternalEList<?>)getInitstmt()).basicRemove(otherEnd, msgs);
-      case MyDslPackage.FORCLAUSE__CONDITION:
-        return basicSetCondition(null, msgs);
-      case MyDslPackage.FORCLAUSE__POSTSTMT:
-        return basicSetPoststmt(null, msgs);
+      case MyDslPackage.FORCLAUSE__SIMPLESTMT:
+        return ((InternalEList<?>)getSimplestmt()).basicRemove(otherEnd, msgs);
+      case MyDslPackage.FORCLAUSE__EXPRESSION:
+        return basicSetExpression(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -232,12 +170,10 @@ public class forclauseImpl extends forstmtImpl implements forclause
   {
     switch (featureID)
     {
-      case MyDslPackage.FORCLAUSE__INITSTMT:
-        return getInitstmt();
-      case MyDslPackage.FORCLAUSE__CONDITION:
-        return getCondition();
-      case MyDslPackage.FORCLAUSE__POSTSTMT:
-        return getPoststmt();
+      case MyDslPackage.FORCLAUSE__SIMPLESTMT:
+        return getSimplestmt();
+      case MyDslPackage.FORCLAUSE__EXPRESSION:
+        return getExpression();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -253,15 +189,12 @@ public class forclauseImpl extends forstmtImpl implements forclause
   {
     switch (featureID)
     {
-      case MyDslPackage.FORCLAUSE__INITSTMT:
-        getInitstmt().clear();
-        getInitstmt().addAll((Collection<? extends initstmt>)newValue);
+      case MyDslPackage.FORCLAUSE__SIMPLESTMT:
+        getSimplestmt().clear();
+        getSimplestmt().addAll((Collection<? extends simplestmt>)newValue);
         return;
-      case MyDslPackage.FORCLAUSE__CONDITION:
-        setCondition((condition)newValue);
-        return;
-      case MyDslPackage.FORCLAUSE__POSTSTMT:
-        setPoststmt((poststmt)newValue);
+      case MyDslPackage.FORCLAUSE__EXPRESSION:
+        setExpression((expression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -277,14 +210,11 @@ public class forclauseImpl extends forstmtImpl implements forclause
   {
     switch (featureID)
     {
-      case MyDslPackage.FORCLAUSE__INITSTMT:
-        getInitstmt().clear();
+      case MyDslPackage.FORCLAUSE__SIMPLESTMT:
+        getSimplestmt().clear();
         return;
-      case MyDslPackage.FORCLAUSE__CONDITION:
-        setCondition((condition)null);
-        return;
-      case MyDslPackage.FORCLAUSE__POSTSTMT:
-        setPoststmt((poststmt)null);
+      case MyDslPackage.FORCLAUSE__EXPRESSION:
+        setExpression((expression)null);
         return;
     }
     super.eUnset(featureID);
@@ -300,12 +230,10 @@ public class forclauseImpl extends forstmtImpl implements forclause
   {
     switch (featureID)
     {
-      case MyDslPackage.FORCLAUSE__INITSTMT:
-        return initstmt != null && !initstmt.isEmpty();
-      case MyDslPackage.FORCLAUSE__CONDITION:
-        return condition != null;
-      case MyDslPackage.FORCLAUSE__POSTSTMT:
-        return poststmt != null;
+      case MyDslPackage.FORCLAUSE__SIMPLESTMT:
+        return simplestmt != null && !simplestmt.isEmpty();
+      case MyDslPackage.FORCLAUSE__EXPRESSION:
+        return expression != null;
     }
     return super.eIsSet(featureID);
   }

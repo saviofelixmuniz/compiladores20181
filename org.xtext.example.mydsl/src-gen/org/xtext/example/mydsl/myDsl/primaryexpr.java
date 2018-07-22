@@ -16,8 +16,10 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.myDsl.primaryexpr#getOperand <em>Operand</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.primaryexpr#getPrimaryexpraux <em>Primaryexpraux</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.primaryexpr#getType <em>Type</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.primaryexpr#getConversion <em>Conversion</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.primaryexpr#getMethodexpr <em>Methodexpr</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.primaryexpr#getTypename <em>Typename</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getprimaryexpr()
@@ -79,6 +81,32 @@ public interface primaryexpr extends EObject
   void setPrimaryexpraux(primaryexpraux value);
 
   /**
+   * Returns the value of the '<em><b>Type</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Type</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Type</em>' containment reference.
+   * @see #setType(typeaux)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getprimaryexpr_Type()
+   * @model containment="true"
+   * @generated
+   */
+  typeaux getType();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.primaryexpr#getType <em>Type</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Type</em>' containment reference.
+   * @see #getType()
+   * @generated
+   */
+  void setType(typeaux value);
+
+  /**
    * Returns the value of the '<em><b>Conversion</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
@@ -129,5 +157,31 @@ public interface primaryexpr extends EObject
    * @generated
    */
   void setMethodexpr(methodexpr value);
+
+  /**
+   * Returns the value of the '<em><b>Typename</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Typename</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Typename</em>' attribute.
+   * @see #setTypename(String)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getprimaryexpr_Typename()
+   * @model
+   * @generated
+   */
+  String getTypename();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.primaryexpr#getTypename <em>Typename</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Typename</em>' attribute.
+   * @see #getTypename()
+   * @generated
+   */
+  void setTypename(String value);
 
 } // primaryexpr

@@ -28,12 +28,11 @@ import org.xtext.example.mydsl.myDsl.typeassertion;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.primaryexprauxImpl#getSelector <em>Selector</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.primaryexprauxImpl#getPrimaryexpraux <em>Primaryexpraux</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.primaryexprauxImpl#getIndex <em>Index</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.primaryexprauxImpl#getSlice <em>Slice</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.primaryexprauxImpl#getTypeassertion <em>Typeassertion</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.primaryexprauxImpl#getPrimaryexpraux <em>Primaryexpraux</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.primaryexprauxImpl#getSlice <em>Slice</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.primaryexprauxImpl#getIndex <em>Index</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.primaryexprauxImpl#getArguments <em>Arguments</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.primaryexprauxImpl#getWS <em>WS</em>}</li>
  * </ul>
  *
  * @generated
@@ -61,6 +60,16 @@ public class primaryexprauxImpl extends MinimalEObjectImpl.Container implements 
   protected String selector = SELECTOR_EDEFAULT;
 
   /**
+   * The cached value of the '{@link #getTypeassertion() <em>Typeassertion</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTypeassertion()
+   * @generated
+   * @ordered
+   */
+  protected typeassertion typeassertion;
+
+  /**
    * The cached value of the '{@link #getPrimaryexpraux() <em>Primaryexpraux</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -69,16 +78,6 @@ public class primaryexprauxImpl extends MinimalEObjectImpl.Container implements 
    * @ordered
    */
   protected primaryexpraux primaryexpraux;
-
-  /**
-   * The cached value of the '{@link #getIndex() <em>Index</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getIndex()
-   * @generated
-   * @ordered
-   */
-  protected index index;
 
   /**
    * The cached value of the '{@link #getSlice() <em>Slice</em>}' containment reference.
@@ -91,14 +90,14 @@ public class primaryexprauxImpl extends MinimalEObjectImpl.Container implements 
   protected slice slice;
 
   /**
-   * The cached value of the '{@link #getTypeassertion() <em>Typeassertion</em>}' containment reference.
+   * The cached value of the '{@link #getIndex() <em>Index</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTypeassertion()
+   * @see #getIndex()
    * @generated
    * @ordered
    */
-  protected typeassertion typeassertion;
+  protected index index;
 
   /**
    * The cached value of the '{@link #getArguments() <em>Arguments</em>}' containment reference.
@@ -109,26 +108,6 @@ public class primaryexprauxImpl extends MinimalEObjectImpl.Container implements 
    * @ordered
    */
   protected arguments arguments;
-
-  /**
-   * The default value of the '{@link #getWS() <em>WS</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getWS()
-   * @generated
-   * @ordered
-   */
-  protected static final String WS_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getWS() <em>WS</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getWS()
-   * @generated
-   * @ordered
-   */
-  protected String ws = WS_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -172,150 +151,6 @@ public class primaryexprauxImpl extends MinimalEObjectImpl.Container implements 
     selector = newSelector;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.PRIMARYEXPRAUX__SELECTOR, oldSelector, selector));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public primaryexpraux getPrimaryexpraux()
-  {
-    return primaryexpraux;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetPrimaryexpraux(primaryexpraux newPrimaryexpraux, NotificationChain msgs)
-  {
-    primaryexpraux oldPrimaryexpraux = primaryexpraux;
-    primaryexpraux = newPrimaryexpraux;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.PRIMARYEXPRAUX__PRIMARYEXPRAUX, oldPrimaryexpraux, newPrimaryexpraux);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setPrimaryexpraux(primaryexpraux newPrimaryexpraux)
-  {
-    if (newPrimaryexpraux != primaryexpraux)
-    {
-      NotificationChain msgs = null;
-      if (primaryexpraux != null)
-        msgs = ((InternalEObject)primaryexpraux).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.PRIMARYEXPRAUX__PRIMARYEXPRAUX, null, msgs);
-      if (newPrimaryexpraux != null)
-        msgs = ((InternalEObject)newPrimaryexpraux).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.PRIMARYEXPRAUX__PRIMARYEXPRAUX, null, msgs);
-      msgs = basicSetPrimaryexpraux(newPrimaryexpraux, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.PRIMARYEXPRAUX__PRIMARYEXPRAUX, newPrimaryexpraux, newPrimaryexpraux));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public index getIndex()
-  {
-    return index;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetIndex(index newIndex, NotificationChain msgs)
-  {
-    index oldIndex = index;
-    index = newIndex;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.PRIMARYEXPRAUX__INDEX, oldIndex, newIndex);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setIndex(index newIndex)
-  {
-    if (newIndex != index)
-    {
-      NotificationChain msgs = null;
-      if (index != null)
-        msgs = ((InternalEObject)index).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.PRIMARYEXPRAUX__INDEX, null, msgs);
-      if (newIndex != null)
-        msgs = ((InternalEObject)newIndex).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.PRIMARYEXPRAUX__INDEX, null, msgs);
-      msgs = basicSetIndex(newIndex, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.PRIMARYEXPRAUX__INDEX, newIndex, newIndex));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public slice getSlice()
-  {
-    return slice;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetSlice(slice newSlice, NotificationChain msgs)
-  {
-    slice oldSlice = slice;
-    slice = newSlice;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.PRIMARYEXPRAUX__SLICE, oldSlice, newSlice);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setSlice(slice newSlice)
-  {
-    if (newSlice != slice)
-    {
-      NotificationChain msgs = null;
-      if (slice != null)
-        msgs = ((InternalEObject)slice).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.PRIMARYEXPRAUX__SLICE, null, msgs);
-      if (newSlice != null)
-        msgs = ((InternalEObject)newSlice).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.PRIMARYEXPRAUX__SLICE, null, msgs);
-      msgs = basicSetSlice(newSlice, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.PRIMARYEXPRAUX__SLICE, newSlice, newSlice));
   }
 
   /**
@@ -371,6 +206,150 @@ public class primaryexprauxImpl extends MinimalEObjectImpl.Container implements 
    * <!-- end-user-doc -->
    * @generated
    */
+  public primaryexpraux getPrimaryexpraux()
+  {
+    return primaryexpraux;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetPrimaryexpraux(primaryexpraux newPrimaryexpraux, NotificationChain msgs)
+  {
+    primaryexpraux oldPrimaryexpraux = primaryexpraux;
+    primaryexpraux = newPrimaryexpraux;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.PRIMARYEXPRAUX__PRIMARYEXPRAUX, oldPrimaryexpraux, newPrimaryexpraux);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setPrimaryexpraux(primaryexpraux newPrimaryexpraux)
+  {
+    if (newPrimaryexpraux != primaryexpraux)
+    {
+      NotificationChain msgs = null;
+      if (primaryexpraux != null)
+        msgs = ((InternalEObject)primaryexpraux).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.PRIMARYEXPRAUX__PRIMARYEXPRAUX, null, msgs);
+      if (newPrimaryexpraux != null)
+        msgs = ((InternalEObject)newPrimaryexpraux).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.PRIMARYEXPRAUX__PRIMARYEXPRAUX, null, msgs);
+      msgs = basicSetPrimaryexpraux(newPrimaryexpraux, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.PRIMARYEXPRAUX__PRIMARYEXPRAUX, newPrimaryexpraux, newPrimaryexpraux));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public slice getSlice()
+  {
+    return slice;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetSlice(slice newSlice, NotificationChain msgs)
+  {
+    slice oldSlice = slice;
+    slice = newSlice;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.PRIMARYEXPRAUX__SLICE, oldSlice, newSlice);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setSlice(slice newSlice)
+  {
+    if (newSlice != slice)
+    {
+      NotificationChain msgs = null;
+      if (slice != null)
+        msgs = ((InternalEObject)slice).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.PRIMARYEXPRAUX__SLICE, null, msgs);
+      if (newSlice != null)
+        msgs = ((InternalEObject)newSlice).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.PRIMARYEXPRAUX__SLICE, null, msgs);
+      msgs = basicSetSlice(newSlice, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.PRIMARYEXPRAUX__SLICE, newSlice, newSlice));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public index getIndex()
+  {
+    return index;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetIndex(index newIndex, NotificationChain msgs)
+  {
+    index oldIndex = index;
+    index = newIndex;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.PRIMARYEXPRAUX__INDEX, oldIndex, newIndex);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setIndex(index newIndex)
+  {
+    if (newIndex != index)
+    {
+      NotificationChain msgs = null;
+      if (index != null)
+        msgs = ((InternalEObject)index).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.PRIMARYEXPRAUX__INDEX, null, msgs);
+      if (newIndex != null)
+        msgs = ((InternalEObject)newIndex).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.PRIMARYEXPRAUX__INDEX, null, msgs);
+      msgs = basicSetIndex(newIndex, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.PRIMARYEXPRAUX__INDEX, newIndex, newIndex));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public arguments getArguments()
   {
     return arguments;
@@ -419,42 +398,19 @@ public class primaryexprauxImpl extends MinimalEObjectImpl.Container implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getWS()
-  {
-    return ws;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setWS(String newWS)
-  {
-    String oldWS = ws;
-    ws = newWS;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.PRIMARYEXPRAUX__WS, oldWS, ws));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
     switch (featureID)
     {
-      case MyDslPackage.PRIMARYEXPRAUX__PRIMARYEXPRAUX:
-        return basicSetPrimaryexpraux(null, msgs);
-      case MyDslPackage.PRIMARYEXPRAUX__INDEX:
-        return basicSetIndex(null, msgs);
-      case MyDslPackage.PRIMARYEXPRAUX__SLICE:
-        return basicSetSlice(null, msgs);
       case MyDslPackage.PRIMARYEXPRAUX__TYPEASSERTION:
         return basicSetTypeassertion(null, msgs);
+      case MyDslPackage.PRIMARYEXPRAUX__PRIMARYEXPRAUX:
+        return basicSetPrimaryexpraux(null, msgs);
+      case MyDslPackage.PRIMARYEXPRAUX__SLICE:
+        return basicSetSlice(null, msgs);
+      case MyDslPackage.PRIMARYEXPRAUX__INDEX:
+        return basicSetIndex(null, msgs);
       case MyDslPackage.PRIMARYEXPRAUX__ARGUMENTS:
         return basicSetArguments(null, msgs);
     }
@@ -473,18 +429,16 @@ public class primaryexprauxImpl extends MinimalEObjectImpl.Container implements 
     {
       case MyDslPackage.PRIMARYEXPRAUX__SELECTOR:
         return getSelector();
-      case MyDslPackage.PRIMARYEXPRAUX__PRIMARYEXPRAUX:
-        return getPrimaryexpraux();
-      case MyDslPackage.PRIMARYEXPRAUX__INDEX:
-        return getIndex();
-      case MyDslPackage.PRIMARYEXPRAUX__SLICE:
-        return getSlice();
       case MyDslPackage.PRIMARYEXPRAUX__TYPEASSERTION:
         return getTypeassertion();
+      case MyDslPackage.PRIMARYEXPRAUX__PRIMARYEXPRAUX:
+        return getPrimaryexpraux();
+      case MyDslPackage.PRIMARYEXPRAUX__SLICE:
+        return getSlice();
+      case MyDslPackage.PRIMARYEXPRAUX__INDEX:
+        return getIndex();
       case MyDslPackage.PRIMARYEXPRAUX__ARGUMENTS:
         return getArguments();
-      case MyDslPackage.PRIMARYEXPRAUX__WS:
-        return getWS();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -502,23 +456,20 @@ public class primaryexprauxImpl extends MinimalEObjectImpl.Container implements 
       case MyDslPackage.PRIMARYEXPRAUX__SELECTOR:
         setSelector((String)newValue);
         return;
+      case MyDslPackage.PRIMARYEXPRAUX__TYPEASSERTION:
+        setTypeassertion((typeassertion)newValue);
+        return;
       case MyDslPackage.PRIMARYEXPRAUX__PRIMARYEXPRAUX:
         setPrimaryexpraux((primaryexpraux)newValue);
-        return;
-      case MyDslPackage.PRIMARYEXPRAUX__INDEX:
-        setIndex((index)newValue);
         return;
       case MyDslPackage.PRIMARYEXPRAUX__SLICE:
         setSlice((slice)newValue);
         return;
-      case MyDslPackage.PRIMARYEXPRAUX__TYPEASSERTION:
-        setTypeassertion((typeassertion)newValue);
+      case MyDslPackage.PRIMARYEXPRAUX__INDEX:
+        setIndex((index)newValue);
         return;
       case MyDslPackage.PRIMARYEXPRAUX__ARGUMENTS:
         setArguments((arguments)newValue);
-        return;
-      case MyDslPackage.PRIMARYEXPRAUX__WS:
-        setWS((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -537,23 +488,20 @@ public class primaryexprauxImpl extends MinimalEObjectImpl.Container implements 
       case MyDslPackage.PRIMARYEXPRAUX__SELECTOR:
         setSelector(SELECTOR_EDEFAULT);
         return;
+      case MyDslPackage.PRIMARYEXPRAUX__TYPEASSERTION:
+        setTypeassertion((typeassertion)null);
+        return;
       case MyDslPackage.PRIMARYEXPRAUX__PRIMARYEXPRAUX:
         setPrimaryexpraux((primaryexpraux)null);
-        return;
-      case MyDslPackage.PRIMARYEXPRAUX__INDEX:
-        setIndex((index)null);
         return;
       case MyDslPackage.PRIMARYEXPRAUX__SLICE:
         setSlice((slice)null);
         return;
-      case MyDslPackage.PRIMARYEXPRAUX__TYPEASSERTION:
-        setTypeassertion((typeassertion)null);
+      case MyDslPackage.PRIMARYEXPRAUX__INDEX:
+        setIndex((index)null);
         return;
       case MyDslPackage.PRIMARYEXPRAUX__ARGUMENTS:
         setArguments((arguments)null);
-        return;
-      case MyDslPackage.PRIMARYEXPRAUX__WS:
-        setWS(WS_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -571,18 +519,16 @@ public class primaryexprauxImpl extends MinimalEObjectImpl.Container implements 
     {
       case MyDslPackage.PRIMARYEXPRAUX__SELECTOR:
         return SELECTOR_EDEFAULT == null ? selector != null : !SELECTOR_EDEFAULT.equals(selector);
-      case MyDslPackage.PRIMARYEXPRAUX__PRIMARYEXPRAUX:
-        return primaryexpraux != null;
-      case MyDslPackage.PRIMARYEXPRAUX__INDEX:
-        return index != null;
-      case MyDslPackage.PRIMARYEXPRAUX__SLICE:
-        return slice != null;
       case MyDslPackage.PRIMARYEXPRAUX__TYPEASSERTION:
         return typeassertion != null;
+      case MyDslPackage.PRIMARYEXPRAUX__PRIMARYEXPRAUX:
+        return primaryexpraux != null;
+      case MyDslPackage.PRIMARYEXPRAUX__SLICE:
+        return slice != null;
+      case MyDslPackage.PRIMARYEXPRAUX__INDEX:
+        return index != null;
       case MyDslPackage.PRIMARYEXPRAUX__ARGUMENTS:
         return arguments != null;
-      case MyDslPackage.PRIMARYEXPRAUX__WS:
-        return WS_EDEFAULT == null ? ws != null : !WS_EDEFAULT.equals(ws);
     }
     return super.eIsSet(featureID);
   }
@@ -600,8 +546,6 @@ public class primaryexprauxImpl extends MinimalEObjectImpl.Container implements 
     StringBuilder result = new StringBuilder(super.toString());
     result.append(" (selector: ");
     result.append(selector);
-    result.append(", WS: ");
-    result.append(ws);
     result.append(')');
     return result.toString();
   }

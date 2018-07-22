@@ -15,13 +15,14 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.myDsl.expression#getExpression <em>Expression</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.expression#getRangeclause <em>Rangeclause</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getexpression()
  * @model
  * @generated
  */
-public interface expression extends index, element, deferstmt, recvexpr, gotstmt, condition, incdecstmt, channel, expressionstmt, expressionlist
+public interface expression extends index, element, deferstmt, expressionlist, recvexpr, gotstmt, forstmt
 {
   /**
    * Returns the value of the '<em><b>Expression</b></em>' containment reference list.
@@ -38,5 +39,31 @@ public interface expression extends index, element, deferstmt, recvexpr, gotstmt
    * @generated
    */
   EList<expression> getExpression();
+
+  /**
+   * Returns the value of the '<em><b>Rangeclause</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Rangeclause</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Rangeclause</em>' containment reference.
+   * @see #setRangeclause(rangeclause)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getexpression_Rangeclause()
+   * @model containment="true"
+   * @generated
+   */
+  rangeclause getRangeclause();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.expression#getRangeclause <em>Rangeclause</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Rangeclause</em>' containment reference.
+   * @see #getRangeclause()
+   * @generated
+   */
+  void setRangeclause(rangeclause value);
 
 } // expression

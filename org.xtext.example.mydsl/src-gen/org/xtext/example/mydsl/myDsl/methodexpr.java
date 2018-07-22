@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.methodexpr#getReceivertype <em>Receivertype</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.methodexpr#getMethodname <em>Methodname</em>}</li>
  * </ul>
  *
@@ -24,32 +23,6 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface methodexpr extends EObject
 {
-  /**
-   * Returns the value of the '<em><b>Receivertype</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Receivertype</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Receivertype</em>' containment reference.
-   * @see #setReceivertype(receivertype)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getmethodexpr_Receivertype()
-   * @model containment="true"
-   * @generated
-   */
-  receivertype getReceivertype();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.methodexpr#getReceivertype <em>Receivertype</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Receivertype</em>' containment reference.
-   * @see #getReceivertype()
-   * @generated
-   */
-  void setReceivertype(receivertype value);
-
   /**
    * Returns the value of the '<em><b>Methodname</b></em>' attribute.
    * <!-- begin-user-doc -->

@@ -18,6 +18,7 @@ import org.xtext.example.mydsl.myDsl.methodexpr;
 import org.xtext.example.mydsl.myDsl.operand;
 import org.xtext.example.mydsl.myDsl.primaryexpr;
 import org.xtext.example.mydsl.myDsl.primaryexpraux;
+import org.xtext.example.mydsl.myDsl.typeaux;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,8 +30,10 @@ import org.xtext.example.mydsl.myDsl.primaryexpraux;
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.primaryexprImpl#getOperand <em>Operand</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.primaryexprImpl#getPrimaryexpraux <em>Primaryexpraux</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.primaryexprImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.primaryexprImpl#getConversion <em>Conversion</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.primaryexprImpl#getMethodexpr <em>Methodexpr</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.primaryexprImpl#getTypename <em>Typename</em>}</li>
  * </ul>
  *
  * @generated
@@ -58,6 +61,16 @@ public class primaryexprImpl extends MinimalEObjectImpl.Container implements pri
   protected primaryexpraux primaryexpraux;
 
   /**
+   * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getType()
+   * @generated
+   * @ordered
+   */
+  protected typeaux type;
+
+  /**
    * The cached value of the '{@link #getConversion() <em>Conversion</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -76,6 +89,26 @@ public class primaryexprImpl extends MinimalEObjectImpl.Container implements pri
    * @ordered
    */
   protected methodexpr methodexpr;
+
+  /**
+   * The default value of the '{@link #getTypename() <em>Typename</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTypename()
+   * @generated
+   * @ordered
+   */
+  protected static final String TYPENAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getTypename() <em>Typename</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTypename()
+   * @generated
+   * @ordered
+   */
+  protected String typename = TYPENAME_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -199,6 +232,54 @@ public class primaryexprImpl extends MinimalEObjectImpl.Container implements pri
    * <!-- end-user-doc -->
    * @generated
    */
+  public typeaux getType()
+  {
+    return type;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetType(typeaux newType, NotificationChain msgs)
+  {
+    typeaux oldType = type;
+    type = newType;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.PRIMARYEXPR__TYPE, oldType, newType);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setType(typeaux newType)
+  {
+    if (newType != type)
+    {
+      NotificationChain msgs = null;
+      if (type != null)
+        msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.PRIMARYEXPR__TYPE, null, msgs);
+      if (newType != null)
+        msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.PRIMARYEXPR__TYPE, null, msgs);
+      msgs = basicSetType(newType, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.PRIMARYEXPR__TYPE, newType, newType));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public conversion getConversion()
   {
     return conversion;
@@ -295,6 +376,29 @@ public class primaryexprImpl extends MinimalEObjectImpl.Container implements pri
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getTypename()
+  {
+    return typename;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setTypename(String newTypename)
+  {
+    String oldTypename = typename;
+    typename = newTypename;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.PRIMARYEXPR__TYPENAME, oldTypename, typename));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -304,6 +408,8 @@ public class primaryexprImpl extends MinimalEObjectImpl.Container implements pri
         return basicSetOperand(null, msgs);
       case MyDslPackage.PRIMARYEXPR__PRIMARYEXPRAUX:
         return basicSetPrimaryexpraux(null, msgs);
+      case MyDslPackage.PRIMARYEXPR__TYPE:
+        return basicSetType(null, msgs);
       case MyDslPackage.PRIMARYEXPR__CONVERSION:
         return basicSetConversion(null, msgs);
       case MyDslPackage.PRIMARYEXPR__METHODEXPR:
@@ -326,10 +432,14 @@ public class primaryexprImpl extends MinimalEObjectImpl.Container implements pri
         return getOperand();
       case MyDslPackage.PRIMARYEXPR__PRIMARYEXPRAUX:
         return getPrimaryexpraux();
+      case MyDslPackage.PRIMARYEXPR__TYPE:
+        return getType();
       case MyDslPackage.PRIMARYEXPR__CONVERSION:
         return getConversion();
       case MyDslPackage.PRIMARYEXPR__METHODEXPR:
         return getMethodexpr();
+      case MyDslPackage.PRIMARYEXPR__TYPENAME:
+        return getTypename();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -350,11 +460,17 @@ public class primaryexprImpl extends MinimalEObjectImpl.Container implements pri
       case MyDslPackage.PRIMARYEXPR__PRIMARYEXPRAUX:
         setPrimaryexpraux((primaryexpraux)newValue);
         return;
+      case MyDslPackage.PRIMARYEXPR__TYPE:
+        setType((typeaux)newValue);
+        return;
       case MyDslPackage.PRIMARYEXPR__CONVERSION:
         setConversion((conversion)newValue);
         return;
       case MyDslPackage.PRIMARYEXPR__METHODEXPR:
         setMethodexpr((methodexpr)newValue);
+        return;
+      case MyDslPackage.PRIMARYEXPR__TYPENAME:
+        setTypename((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -376,11 +492,17 @@ public class primaryexprImpl extends MinimalEObjectImpl.Container implements pri
       case MyDslPackage.PRIMARYEXPR__PRIMARYEXPRAUX:
         setPrimaryexpraux((primaryexpraux)null);
         return;
+      case MyDslPackage.PRIMARYEXPR__TYPE:
+        setType((typeaux)null);
+        return;
       case MyDslPackage.PRIMARYEXPR__CONVERSION:
         setConversion((conversion)null);
         return;
       case MyDslPackage.PRIMARYEXPR__METHODEXPR:
         setMethodexpr((methodexpr)null);
+        return;
+      case MyDslPackage.PRIMARYEXPR__TYPENAME:
+        setTypename(TYPENAME_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -400,12 +522,33 @@ public class primaryexprImpl extends MinimalEObjectImpl.Container implements pri
         return operand != null;
       case MyDslPackage.PRIMARYEXPR__PRIMARYEXPRAUX:
         return primaryexpraux != null;
+      case MyDslPackage.PRIMARYEXPR__TYPE:
+        return type != null;
       case MyDslPackage.PRIMARYEXPR__CONVERSION:
         return conversion != null;
       case MyDslPackage.PRIMARYEXPR__METHODEXPR:
         return methodexpr != null;
+      case MyDslPackage.PRIMARYEXPR__TYPENAME:
+        return TYPENAME_EDEFAULT == null ? typename != null : !TYPENAME_EDEFAULT.equals(typename);
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (typename: ");
+    result.append(typename);
+    result.append(')');
+    return result.toString();
   }
 
 } //primaryexprImpl

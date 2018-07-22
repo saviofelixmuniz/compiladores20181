@@ -34,9 +34,9 @@ import org.xtext.example.mydsl.myDsl.switchstmt;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.statementImpl#getSimplestmt <em>Simplestmt</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.statementImpl#getDeclaration <em>Declaration</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.statementImpl#getLabeledstmt <em>Labeledstmt</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.statementImpl#getSimplestmt <em>Simplestmt</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.statementImpl#getGotstmt <em>Gotstmt</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.statementImpl#getReturnstmt <em>Returnstmt</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.statementImpl#getBreakstmt <em>Breakstmt</em>}</li>
@@ -56,6 +56,16 @@ import org.xtext.example.mydsl.myDsl.switchstmt;
 public class statementImpl extends MinimalEObjectImpl.Container implements statement
 {
   /**
+   * The cached value of the '{@link #getSimplestmt() <em>Simplestmt</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSimplestmt()
+   * @generated
+   * @ordered
+   */
+  protected simplestmt simplestmt;
+
+  /**
    * The cached value of the '{@link #getDeclaration() <em>Declaration</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -74,16 +84,6 @@ public class statementImpl extends MinimalEObjectImpl.Container implements state
    * @ordered
    */
   protected labeledstmt labeledstmt;
-
-  /**
-   * The cached value of the '{@link #getSimplestmt() <em>Simplestmt</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getSimplestmt()
-   * @generated
-   * @ordered
-   */
-  protected simplestmt simplestmt;
 
   /**
    * The cached value of the '{@link #getGotstmt() <em>Gotstmt</em>}' containment reference.
@@ -271,6 +271,54 @@ public class statementImpl extends MinimalEObjectImpl.Container implements state
    * <!-- end-user-doc -->
    * @generated
    */
+  public simplestmt getSimplestmt()
+  {
+    return simplestmt;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetSimplestmt(simplestmt newSimplestmt, NotificationChain msgs)
+  {
+    simplestmt oldSimplestmt = simplestmt;
+    simplestmt = newSimplestmt;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.STATEMENT__SIMPLESTMT, oldSimplestmt, newSimplestmt);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setSimplestmt(simplestmt newSimplestmt)
+  {
+    if (newSimplestmt != simplestmt)
+    {
+      NotificationChain msgs = null;
+      if (simplestmt != null)
+        msgs = ((InternalEObject)simplestmt).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.STATEMENT__SIMPLESTMT, null, msgs);
+      if (newSimplestmt != null)
+        msgs = ((InternalEObject)newSimplestmt).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.STATEMENT__SIMPLESTMT, null, msgs);
+      msgs = basicSetSimplestmt(newSimplestmt, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.STATEMENT__SIMPLESTMT, newSimplestmt, newSimplestmt));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public declaration getDeclaration()
   {
     return declaration;
@@ -360,54 +408,6 @@ public class statementImpl extends MinimalEObjectImpl.Container implements state
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.STATEMENT__LABELEDSTMT, newLabeledstmt, newLabeledstmt));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public simplestmt getSimplestmt()
-  {
-    return simplestmt;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetSimplestmt(simplestmt newSimplestmt, NotificationChain msgs)
-  {
-    simplestmt oldSimplestmt = simplestmt;
-    simplestmt = newSimplestmt;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.STATEMENT__SIMPLESTMT, oldSimplestmt, newSimplestmt);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setSimplestmt(simplestmt newSimplestmt)
-  {
-    if (newSimplestmt != simplestmt)
-    {
-      NotificationChain msgs = null;
-      if (simplestmt != null)
-        msgs = ((InternalEObject)simplestmt).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.STATEMENT__SIMPLESTMT, null, msgs);
-      if (newSimplestmt != null)
-        msgs = ((InternalEObject)newSimplestmt).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.STATEMENT__SIMPLESTMT, null, msgs);
-      msgs = basicSetSimplestmt(newSimplestmt, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.STATEMENT__SIMPLESTMT, newSimplestmt, newSimplestmt));
   }
 
   /**
@@ -896,12 +896,12 @@ public class statementImpl extends MinimalEObjectImpl.Container implements state
   {
     switch (featureID)
     {
+      case MyDslPackage.STATEMENT__SIMPLESTMT:
+        return basicSetSimplestmt(null, msgs);
       case MyDslPackage.STATEMENT__DECLARATION:
         return basicSetDeclaration(null, msgs);
       case MyDslPackage.STATEMENT__LABELEDSTMT:
         return basicSetLabeledstmt(null, msgs);
-      case MyDslPackage.STATEMENT__SIMPLESTMT:
-        return basicSetSimplestmt(null, msgs);
       case MyDslPackage.STATEMENT__GOTSTMT:
         return basicSetGotstmt(null, msgs);
       case MyDslPackage.STATEMENT__RETURNSTMT:
@@ -932,12 +932,12 @@ public class statementImpl extends MinimalEObjectImpl.Container implements state
   {
     switch (featureID)
     {
+      case MyDslPackage.STATEMENT__SIMPLESTMT:
+        return getSimplestmt();
       case MyDslPackage.STATEMENT__DECLARATION:
         return getDeclaration();
       case MyDslPackage.STATEMENT__LABELEDSTMT:
         return getLabeledstmt();
-      case MyDslPackage.STATEMENT__SIMPLESTMT:
-        return getSimplestmt();
       case MyDslPackage.STATEMENT__GOTSTMT:
         return getGotstmt();
       case MyDslPackage.STATEMENT__RETURNSTMT:
@@ -976,14 +976,14 @@ public class statementImpl extends MinimalEObjectImpl.Container implements state
   {
     switch (featureID)
     {
+      case MyDslPackage.STATEMENT__SIMPLESTMT:
+        setSimplestmt((simplestmt)newValue);
+        return;
       case MyDslPackage.STATEMENT__DECLARATION:
         setDeclaration((declaration)newValue);
         return;
       case MyDslPackage.STATEMENT__LABELEDSTMT:
         setLabeledstmt((labeledstmt)newValue);
-        return;
-      case MyDslPackage.STATEMENT__SIMPLESTMT:
-        setSimplestmt((simplestmt)newValue);
         return;
       case MyDslPackage.STATEMENT__GOTSTMT:
         setGotstmt((gotstmt)newValue);
@@ -1035,14 +1035,14 @@ public class statementImpl extends MinimalEObjectImpl.Container implements state
   {
     switch (featureID)
     {
+      case MyDslPackage.STATEMENT__SIMPLESTMT:
+        setSimplestmt((simplestmt)null);
+        return;
       case MyDslPackage.STATEMENT__DECLARATION:
         setDeclaration((declaration)null);
         return;
       case MyDslPackage.STATEMENT__LABELEDSTMT:
         setLabeledstmt((labeledstmt)null);
-        return;
-      case MyDslPackage.STATEMENT__SIMPLESTMT:
-        setSimplestmt((simplestmt)null);
         return;
       case MyDslPackage.STATEMENT__GOTSTMT:
         setGotstmt((gotstmt)null);
@@ -1094,12 +1094,12 @@ public class statementImpl extends MinimalEObjectImpl.Container implements state
   {
     switch (featureID)
     {
+      case MyDslPackage.STATEMENT__SIMPLESTMT:
+        return simplestmt != null;
       case MyDslPackage.STATEMENT__DECLARATION:
         return declaration != null;
       case MyDslPackage.STATEMENT__LABELEDSTMT:
         return labeledstmt != null;
-      case MyDslPackage.STATEMENT__SIMPLESTMT:
-        return simplestmt != null;
       case MyDslPackage.STATEMENT__GOTSTMT:
         return gotstmt != null;
       case MyDslPackage.STATEMENT__RETURNSTMT:

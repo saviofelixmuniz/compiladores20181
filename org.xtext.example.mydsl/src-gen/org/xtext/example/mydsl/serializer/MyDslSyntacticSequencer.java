@@ -24,9 +24,8 @@ public class MyDslSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected MyDslGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_arguments_CommaKeyword_2_2_q;
 	protected AbstractElementAlias match_arguments_FullStopFullStopFullStopKeyword_2_1_q;
-	protected AbstractElementAlias match_channeltype_ChanKeyword_0_0_or___ChanKeyword_0_1_0_LessThanSignHyphenMinusKeyword_0_1_1___or___LessThanSignHyphenMinusKeyword_0_2_0_ChanKeyword_0_2_1__;
-	protected AbstractElementAlias match_conversion_CommaKeyword_3_q;
-	protected AbstractElementAlias match_incdecstmt_HyphenMinusHyphenMinusKeyword_1_1_or_PlusSignPlusSignKeyword_1_0;
+	protected AbstractElementAlias match_channeltype_ChanKeyword_0_1_or___ChanKeyword_0_0_0_0_LessThanSignHyphenMinusKeyword_0_0_0_1___or___LessThanSignHyphenMinusKeyword_0_2_0_ChanKeyword_0_2_1__;
+	protected AbstractElementAlias match_conversion_CommaKeyword_2_q;
 	protected AbstractElementAlias match_literalvalue_CommaKeyword_2_1_q;
 	protected AbstractElementAlias match_parameterdecl_FullStopFullStopFullStopKeyword_1_q;
 	protected AbstractElementAlias match_parameters_CommaKeyword_2_1_q;
@@ -36,9 +35,8 @@ public class MyDslSyntacticSequencer extends AbstractSyntacticSequencer {
 		grammarAccess = (MyDslGrammarAccess) access;
 		match_arguments_CommaKeyword_2_2_q = new TokenAlias(false, true, grammarAccess.getArgumentsAccess().getCommaKeyword_2_2());
 		match_arguments_FullStopFullStopFullStopKeyword_2_1_q = new TokenAlias(false, true, grammarAccess.getArgumentsAccess().getFullStopFullStopFullStopKeyword_2_1());
-		match_channeltype_ChanKeyword_0_0_or___ChanKeyword_0_1_0_LessThanSignHyphenMinusKeyword_0_1_1___or___LessThanSignHyphenMinusKeyword_0_2_0_ChanKeyword_0_2_1__ = new AlternativeAlias(false, false, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getChanneltypeAccess().getChanKeyword_0_1_0()), new TokenAlias(false, false, grammarAccess.getChanneltypeAccess().getLessThanSignHyphenMinusKeyword_0_1_1())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getChanneltypeAccess().getLessThanSignHyphenMinusKeyword_0_2_0()), new TokenAlias(false, false, grammarAccess.getChanneltypeAccess().getChanKeyword_0_2_1())), new TokenAlias(false, false, grammarAccess.getChanneltypeAccess().getChanKeyword_0_0()));
-		match_conversion_CommaKeyword_3_q = new TokenAlias(false, true, grammarAccess.getConversionAccess().getCommaKeyword_3());
-		match_incdecstmt_HyphenMinusHyphenMinusKeyword_1_1_or_PlusSignPlusSignKeyword_1_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getIncdecstmtAccess().getHyphenMinusHyphenMinusKeyword_1_1()), new TokenAlias(false, false, grammarAccess.getIncdecstmtAccess().getPlusSignPlusSignKeyword_1_0()));
+		match_channeltype_ChanKeyword_0_1_or___ChanKeyword_0_0_0_0_LessThanSignHyphenMinusKeyword_0_0_0_1___or___LessThanSignHyphenMinusKeyword_0_2_0_ChanKeyword_0_2_1__ = new AlternativeAlias(false, false, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getChanneltypeAccess().getChanKeyword_0_0_0_0()), new TokenAlias(false, false, grammarAccess.getChanneltypeAccess().getLessThanSignHyphenMinusKeyword_0_0_0_1())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getChanneltypeAccess().getLessThanSignHyphenMinusKeyword_0_2_0()), new TokenAlias(false, false, grammarAccess.getChanneltypeAccess().getChanKeyword_0_2_1())), new TokenAlias(false, false, grammarAccess.getChanneltypeAccess().getChanKeyword_0_1()));
+		match_conversion_CommaKeyword_2_q = new TokenAlias(false, true, grammarAccess.getConversionAccess().getCommaKeyword_2());
 		match_literalvalue_CommaKeyword_2_1_q = new TokenAlias(false, true, grammarAccess.getLiteralvalueAccess().getCommaKeyword_2_1());
 		match_parameterdecl_FullStopFullStopFullStopKeyword_1_q = new TokenAlias(false, true, grammarAccess.getParameterdeclAccess().getFullStopFullStopFullStopKeyword_1());
 		match_parameters_CommaKeyword_2_1_q = new TokenAlias(false, true, grammarAccess.getParametersAccess().getCommaKeyword_2_1());
@@ -46,9 +44,19 @@ public class MyDslSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	@Override
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (ruleCall.getRule() == grammarAccess.getWSRule())
+			return getWSToken(semanticObject, ruleCall, node);
 		return "";
 	}
 	
+	/**
+	 * terminal WS         : (' '|'\t'|'\r'|'\n')+;
+	 */
+	protected String getWSToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return " ";
+	}
 	
 	@Override
 	protected void emitUnassignedTokens(EObject semanticObject, ISynTransition transition, INode fromNode, INode toNode) {
@@ -60,12 +68,10 @@ public class MyDslSyntacticSequencer extends AbstractSyntacticSequencer {
 				emit_arguments_CommaKeyword_2_2_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_arguments_FullStopFullStopFullStopKeyword_2_1_q.equals(syntax))
 				emit_arguments_FullStopFullStopFullStopKeyword_2_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_channeltype_ChanKeyword_0_0_or___ChanKeyword_0_1_0_LessThanSignHyphenMinusKeyword_0_1_1___or___LessThanSignHyphenMinusKeyword_0_2_0_ChanKeyword_0_2_1__.equals(syntax))
-				emit_channeltype_ChanKeyword_0_0_or___ChanKeyword_0_1_0_LessThanSignHyphenMinusKeyword_0_1_1___or___LessThanSignHyphenMinusKeyword_0_2_0_ChanKeyword_0_2_1__(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_conversion_CommaKeyword_3_q.equals(syntax))
-				emit_conversion_CommaKeyword_3_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_incdecstmt_HyphenMinusHyphenMinusKeyword_1_1_or_PlusSignPlusSignKeyword_1_0.equals(syntax))
-				emit_incdecstmt_HyphenMinusHyphenMinusKeyword_1_1_or_PlusSignPlusSignKeyword_1_0(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_channeltype_ChanKeyword_0_1_or___ChanKeyword_0_0_0_0_LessThanSignHyphenMinusKeyword_0_0_0_1___or___LessThanSignHyphenMinusKeyword_0_2_0_ChanKeyword_0_2_1__.equals(syntax))
+				emit_channeltype_ChanKeyword_0_1_or___ChanKeyword_0_0_0_0_LessThanSignHyphenMinusKeyword_0_0_0_1___or___LessThanSignHyphenMinusKeyword_0_2_0_ChanKeyword_0_2_1__(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_conversion_CommaKeyword_2_q.equals(syntax))
+				emit_conversion_CommaKeyword_2_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_literalvalue_CommaKeyword_2_1_q.equals(syntax))
 				emit_literalvalue_CommaKeyword_2_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_parameterdecl_FullStopFullStopFullStopKeyword_1_q.equals(syntax))
@@ -102,14 +108,14 @@ public class MyDslSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Ambiguous syntax:
-	 *     'chan' | ('chan' '<-') | ('<-' 'chan')
+	 *     ('chan' '<-') | 'chan' | ('<-' 'chan')
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     (rule start) (ambiguity) '(' type=type
 	 *     (rule start) (ambiguity) typelit=typelit
 	 *     (rule start) (ambiguity) typename=typename
 	 */
-	protected void emit_channeltype_ChanKeyword_0_0_or___ChanKeyword_0_1_0_LessThanSignHyphenMinusKeyword_0_1_1___or___LessThanSignHyphenMinusKeyword_0_2_0_ChanKeyword_0_2_1__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_channeltype_ChanKeyword_0_1_or___ChanKeyword_0_0_0_0_LessThanSignHyphenMinusKeyword_0_0_0_1___or___LessThanSignHyphenMinusKeyword_0_2_0_ChanKeyword_0_2_1__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -120,18 +126,7 @@ public class MyDslSyntacticSequencer extends AbstractSyntacticSequencer {
 	 * This ambiguous syntax occurs at:
 	 *     expression=expression (ambiguity) ')' (rule end)
 	 */
-	protected void emit_conversion_CommaKeyword_3_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     '++' | '--'
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     expressionaux+=expressionaux (ambiguity) (rule end)
-	 */
-	protected void emit_incdecstmt_HyphenMinusHyphenMinusKeyword_1_1_or_PlusSignPlusSignKeyword_1_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_conversion_CommaKeyword_2_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

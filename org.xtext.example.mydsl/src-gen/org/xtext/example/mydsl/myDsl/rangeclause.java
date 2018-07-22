@@ -3,6 +3,7 @@
  */
 package org.xtext.example.mydsl.myDsl;
 
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,7 +23,7 @@ package org.xtext.example.mydsl.myDsl;
  * @model
  * @generated
  */
-public interface rangeclause extends forstmt
+public interface rangeclause extends EObject
 {
   /**
    * Returns the value of the '<em><b>Expressionlist</b></em>' containment reference.
@@ -33,12 +34,12 @@ public interface rangeclause extends forstmt
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Expressionlist</em>' containment reference.
-   * @see #setExpressionlist(expressionlist)
+   * @see #setExpressionlist(postexpressionlist)
    * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getrangeclause_Expressionlist()
    * @model containment="true"
    * @generated
    */
-  expressionlist getExpressionlist();
+  postexpressionlist getExpressionlist();
 
   /**
    * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.rangeclause#getExpressionlist <em>Expressionlist</em>}' containment reference.
@@ -48,7 +49,7 @@ public interface rangeclause extends forstmt
    * @see #getExpressionlist()
    * @generated
    */
-  void setExpressionlist(expressionlist value);
+  void setExpressionlist(postexpressionlist value);
 
   /**
    * Returns the value of the '<em><b>Identifierlist</b></em>' attribute.

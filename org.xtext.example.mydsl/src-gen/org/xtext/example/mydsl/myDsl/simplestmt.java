@@ -13,8 +13,7 @@ package org.xtext.example.mydsl.myDsl;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.simplestmt#getEmptystmt <em>Emptystmt</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.simplestmt#getExpressionstmt <em>Expressionstmt</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.simplestmt#getExpression <em>Expression</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.simplestmt#getSendstmt <em>Sendstmt</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.simplestmt#getIncdecstmt <em>Incdecstmt</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.simplestmt#getAssignment <em>Assignment</em>}</li>
@@ -25,59 +24,33 @@ package org.xtext.example.mydsl.myDsl;
  * @model
  * @generated
  */
-public interface simplestmt extends initstmt, poststmt, typeswitchstmt
+public interface simplestmt extends typeswitchstmt
 {
   /**
-   * Returns the value of the '<em><b>Emptystmt</b></em>' attribute.
+   * Returns the value of the '<em><b>Expression</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Emptystmt</em>' attribute isn't clear,
+   * If the meaning of the '<em>Expression</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Emptystmt</em>' attribute.
-   * @see #setEmptystmt(String)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getsimplestmt_Emptystmt()
-   * @model
-   * @generated
-   */
-  String getEmptystmt();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.simplestmt#getEmptystmt <em>Emptystmt</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Emptystmt</em>' attribute.
-   * @see #getEmptystmt()
-   * @generated
-   */
-  void setEmptystmt(String value);
-
-  /**
-   * Returns the value of the '<em><b>Expressionstmt</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Expressionstmt</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Expressionstmt</em>' containment reference.
-   * @see #setExpressionstmt(expressionstmt)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getsimplestmt_Expressionstmt()
+   * @return the value of the '<em>Expression</em>' containment reference.
+   * @see #setExpression(expression)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getsimplestmt_Expression()
    * @model containment="true"
    * @generated
    */
-  expressionstmt getExpressionstmt();
+  expression getExpression();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.simplestmt#getExpressionstmt <em>Expressionstmt</em>}' containment reference.
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.simplestmt#getExpression <em>Expression</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Expressionstmt</em>' containment reference.
-   * @see #getExpressionstmt()
+   * @param value the new value of the '<em>Expression</em>' containment reference.
+   * @see #getExpression()
    * @generated
    */
-  void setExpressionstmt(expressionstmt value);
+  void setExpression(expression value);
 
   /**
    * Returns the value of the '<em><b>Sendstmt</b></em>' containment reference.
@@ -88,12 +61,12 @@ public interface simplestmt extends initstmt, poststmt, typeswitchstmt
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Sendstmt</em>' containment reference.
-   * @see #setSendstmt(sendstmt)
+   * @see #setSendstmt(sendstmtaux)
    * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getsimplestmt_Sendstmt()
    * @model containment="true"
    * @generated
    */
-  sendstmt getSendstmt();
+  sendstmtaux getSendstmt();
 
   /**
    * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.simplestmt#getSendstmt <em>Sendstmt</em>}' containment reference.
@@ -103,33 +76,33 @@ public interface simplestmt extends initstmt, poststmt, typeswitchstmt
    * @see #getSendstmt()
    * @generated
    */
-  void setSendstmt(sendstmt value);
+  void setSendstmt(sendstmtaux value);
 
   /**
-   * Returns the value of the '<em><b>Incdecstmt</b></em>' containment reference.
+   * Returns the value of the '<em><b>Incdecstmt</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Incdecstmt</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Incdecstmt</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Incdecstmt</em>' containment reference.
-   * @see #setIncdecstmt(incdecstmt)
+   * @return the value of the '<em>Incdecstmt</em>' attribute.
+   * @see #setIncdecstmt(String)
    * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getsimplestmt_Incdecstmt()
-   * @model containment="true"
+   * @model
    * @generated
    */
-  incdecstmt getIncdecstmt();
+  String getIncdecstmt();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.simplestmt#getIncdecstmt <em>Incdecstmt</em>}' containment reference.
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.simplestmt#getIncdecstmt <em>Incdecstmt</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Incdecstmt</em>' containment reference.
+   * @param value the new value of the '<em>Incdecstmt</em>' attribute.
    * @see #getIncdecstmt()
    * @generated
    */
-  void setIncdecstmt(incdecstmt value);
+  void setIncdecstmt(String value);
 
   /**
    * Returns the value of the '<em><b>Assignment</b></em>' containment reference.
@@ -140,12 +113,12 @@ public interface simplestmt extends initstmt, poststmt, typeswitchstmt
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Assignment</em>' containment reference.
-   * @see #setAssignment(assignment)
+   * @see #setAssignment(assignmentaux)
    * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getsimplestmt_Assignment()
    * @model containment="true"
    * @generated
    */
-  assignment getAssignment();
+  assignmentaux getAssignment();
 
   /**
    * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.simplestmt#getAssignment <em>Assignment</em>}' containment reference.
@@ -155,7 +128,7 @@ public interface simplestmt extends initstmt, poststmt, typeswitchstmt
    * @see #getAssignment()
    * @generated
    */
-  void setAssignment(assignment value);
+  void setAssignment(assignmentaux value);
 
   /**
    * Returns the value of the '<em><b>Shortvardecl</b></em>' containment reference.

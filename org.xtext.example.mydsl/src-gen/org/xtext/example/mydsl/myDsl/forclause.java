@@ -14,9 +14,8 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.forclause#getInitstmt <em>Initstmt</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.forclause#getCondition <em>Condition</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.forclause#getPoststmt <em>Poststmt</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.forclause#getSimplestmt <em>Simplestmt</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.forclause#getExpression <em>Expression</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getforclause()
@@ -26,71 +25,45 @@ import org.eclipse.emf.common.util.EList;
 public interface forclause extends forstmt
 {
   /**
-   * Returns the value of the '<em><b>Initstmt</b></em>' containment reference list.
-   * The list contents are of type {@link org.xtext.example.mydsl.myDsl.initstmt}.
+   * Returns the value of the '<em><b>Simplestmt</b></em>' containment reference list.
+   * The list contents are of type {@link org.xtext.example.mydsl.myDsl.simplestmt}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Initstmt</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Simplestmt</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Initstmt</em>' containment reference list.
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getforclause_Initstmt()
+   * @return the value of the '<em>Simplestmt</em>' containment reference list.
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getforclause_Simplestmt()
    * @model containment="true"
    * @generated
    */
-  EList<initstmt> getInitstmt();
+  EList<simplestmt> getSimplestmt();
 
   /**
-   * Returns the value of the '<em><b>Condition</b></em>' containment reference.
+   * Returns the value of the '<em><b>Expression</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Condition</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Expression</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Condition</em>' containment reference.
-   * @see #setCondition(condition)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getforclause_Condition()
+   * @return the value of the '<em>Expression</em>' containment reference.
+   * @see #setExpression(expression)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getforclause_Expression()
    * @model containment="true"
    * @generated
    */
-  condition getCondition();
+  expression getExpression();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.forclause#getCondition <em>Condition</em>}' containment reference.
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.forclause#getExpression <em>Expression</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Condition</em>' containment reference.
-   * @see #getCondition()
+   * @param value the new value of the '<em>Expression</em>' containment reference.
+   * @see #getExpression()
    * @generated
    */
-  void setCondition(condition value);
-
-  /**
-   * Returns the value of the '<em><b>Poststmt</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Poststmt</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Poststmt</em>' containment reference.
-   * @see #setPoststmt(poststmt)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getforclause_Poststmt()
-   * @model containment="true"
-   * @generated
-   */
-  poststmt getPoststmt();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.forclause#getPoststmt <em>Poststmt</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Poststmt</em>' containment reference.
-   * @see #getPoststmt()
-   * @generated
-   */
-  void setPoststmt(poststmt value);
+  void setExpression(expression value);
 
 } // forclause

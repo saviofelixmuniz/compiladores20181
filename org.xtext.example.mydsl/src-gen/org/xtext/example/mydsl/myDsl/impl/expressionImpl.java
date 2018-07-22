@@ -20,16 +20,13 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
 import org.xtext.example.mydsl.myDsl.block;
-import org.xtext.example.mydsl.myDsl.channel;
-import org.xtext.example.mydsl.myDsl.condition;
 import org.xtext.example.mydsl.myDsl.deferstmt;
 import org.xtext.example.mydsl.myDsl.element;
 import org.xtext.example.mydsl.myDsl.expression;
 import org.xtext.example.mydsl.myDsl.expressionlist;
-import org.xtext.example.mydsl.myDsl.expressionstmt;
 import org.xtext.example.mydsl.myDsl.forstmt;
 import org.xtext.example.mydsl.myDsl.gotstmt;
-import org.xtext.example.mydsl.myDsl.incdecstmt;
+import org.xtext.example.mydsl.myDsl.rangeclause;
 import org.xtext.example.mydsl.myDsl.recvexpr;
 import org.xtext.example.mydsl.myDsl.recvstmt;
 
@@ -41,26 +38,17 @@ import org.xtext.example.mydsl.myDsl.recvstmt;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.expressionImpl#getBlock <em>Block</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.expressionImpl#getIdentifierlist <em>Identifierlist</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.expressionImpl#getRecvexpr <em>Recvexpr</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.expressionImpl#getBlock <em>Block</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.expressionImpl#getExpression <em>Expression</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.expressionImpl#getRangeclause <em>Rangeclause</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class expressionImpl extends indexImpl implements expression
 {
-  /**
-   * The cached value of the '{@link #getBlock() <em>Block</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getBlock()
-   * @generated
-   * @ordered
-   */
-  protected block block;
-
   /**
    * The default value of the '{@link #getIdentifierlist() <em>Identifierlist</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -92,6 +80,16 @@ public class expressionImpl extends indexImpl implements expression
   protected recvexpr recvexpr;
 
   /**
+   * The cached value of the '{@link #getBlock() <em>Block</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getBlock()
+   * @generated
+   * @ordered
+   */
+  protected block block;
+
+  /**
    * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -100,6 +98,16 @@ public class expressionImpl extends indexImpl implements expression
    * @ordered
    */
   protected EList<expression> expression;
+
+  /**
+   * The cached value of the '{@link #getRangeclause() <em>Rangeclause</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRangeclause()
+   * @generated
+   * @ordered
+   */
+  protected rangeclause rangeclause;
 
   /**
    * <!-- begin-user-doc -->
@@ -120,54 +128,6 @@ public class expressionImpl extends indexImpl implements expression
   protected EClass eStaticClass()
   {
     return MyDslPackage.Literals.EXPRESSION;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public block getBlock()
-  {
-    return block;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetBlock(block newBlock, NotificationChain msgs)
-  {
-    block oldBlock = block;
-    block = newBlock;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.EXPRESSION__BLOCK, oldBlock, newBlock);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setBlock(block newBlock)
-  {
-    if (newBlock != block)
-    {
-      NotificationChain msgs = null;
-      if (block != null)
-        msgs = ((InternalEObject)block).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.EXPRESSION__BLOCK, null, msgs);
-      if (newBlock != null)
-        msgs = ((InternalEObject)newBlock).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.EXPRESSION__BLOCK, null, msgs);
-      msgs = basicSetBlock(newBlock, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.EXPRESSION__BLOCK, newBlock, newBlock));
   }
 
   /**
@@ -246,6 +206,54 @@ public class expressionImpl extends indexImpl implements expression
    * <!-- end-user-doc -->
    * @generated
    */
+  public block getBlock()
+  {
+    return block;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetBlock(block newBlock, NotificationChain msgs)
+  {
+    block oldBlock = block;
+    block = newBlock;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.EXPRESSION__BLOCK, oldBlock, newBlock);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setBlock(block newBlock)
+  {
+    if (newBlock != block)
+    {
+      NotificationChain msgs = null;
+      if (block != null)
+        msgs = ((InternalEObject)block).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.EXPRESSION__BLOCK, null, msgs);
+      if (newBlock != null)
+        msgs = ((InternalEObject)newBlock).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.EXPRESSION__BLOCK, null, msgs);
+      msgs = basicSetBlock(newBlock, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.EXPRESSION__BLOCK, newBlock, newBlock));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<expression> getExpression()
   {
     if (expression == null)
@@ -260,17 +268,67 @@ public class expressionImpl extends indexImpl implements expression
    * <!-- end-user-doc -->
    * @generated
    */
+  public rangeclause getRangeclause()
+  {
+    return rangeclause;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetRangeclause(rangeclause newRangeclause, NotificationChain msgs)
+  {
+    rangeclause oldRangeclause = rangeclause;
+    rangeclause = newRangeclause;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.EXPRESSION__RANGECLAUSE, oldRangeclause, newRangeclause);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setRangeclause(rangeclause newRangeclause)
+  {
+    if (newRangeclause != rangeclause)
+    {
+      NotificationChain msgs = null;
+      if (rangeclause != null)
+        msgs = ((InternalEObject)rangeclause).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.EXPRESSION__RANGECLAUSE, null, msgs);
+      if (newRangeclause != null)
+        msgs = ((InternalEObject)newRangeclause).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.EXPRESSION__RANGECLAUSE, null, msgs);
+      msgs = basicSetRangeclause(newRangeclause, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.EXPRESSION__RANGECLAUSE, newRangeclause, newRangeclause));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
     switch (featureID)
     {
-      case MyDslPackage.EXPRESSION__BLOCK:
-        return basicSetBlock(null, msgs);
       case MyDslPackage.EXPRESSION__RECVEXPR:
         return basicSetRecvexpr(null, msgs);
+      case MyDslPackage.EXPRESSION__BLOCK:
+        return basicSetBlock(null, msgs);
       case MyDslPackage.EXPRESSION__EXPRESSION:
         return ((InternalEList<?>)getExpression()).basicRemove(otherEnd, msgs);
+      case MyDslPackage.EXPRESSION__RANGECLAUSE:
+        return basicSetRangeclause(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -285,14 +343,16 @@ public class expressionImpl extends indexImpl implements expression
   {
     switch (featureID)
     {
-      case MyDslPackage.EXPRESSION__BLOCK:
-        return getBlock();
       case MyDslPackage.EXPRESSION__IDENTIFIERLIST:
         return getIdentifierlist();
       case MyDslPackage.EXPRESSION__RECVEXPR:
         return getRecvexpr();
+      case MyDslPackage.EXPRESSION__BLOCK:
+        return getBlock();
       case MyDslPackage.EXPRESSION__EXPRESSION:
         return getExpression();
+      case MyDslPackage.EXPRESSION__RANGECLAUSE:
+        return getRangeclause();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -308,18 +368,21 @@ public class expressionImpl extends indexImpl implements expression
   {
     switch (featureID)
     {
-      case MyDslPackage.EXPRESSION__BLOCK:
-        setBlock((block)newValue);
-        return;
       case MyDslPackage.EXPRESSION__IDENTIFIERLIST:
         setIdentifierlist((String)newValue);
         return;
       case MyDslPackage.EXPRESSION__RECVEXPR:
         setRecvexpr((recvexpr)newValue);
         return;
+      case MyDslPackage.EXPRESSION__BLOCK:
+        setBlock((block)newValue);
+        return;
       case MyDslPackage.EXPRESSION__EXPRESSION:
         getExpression().clear();
         getExpression().addAll((Collection<? extends expression>)newValue);
+        return;
+      case MyDslPackage.EXPRESSION__RANGECLAUSE:
+        setRangeclause((rangeclause)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -335,17 +398,20 @@ public class expressionImpl extends indexImpl implements expression
   {
     switch (featureID)
     {
-      case MyDslPackage.EXPRESSION__BLOCK:
-        setBlock((block)null);
-        return;
       case MyDslPackage.EXPRESSION__IDENTIFIERLIST:
         setIdentifierlist(IDENTIFIERLIST_EDEFAULT);
         return;
       case MyDslPackage.EXPRESSION__RECVEXPR:
         setRecvexpr((recvexpr)null);
         return;
+      case MyDslPackage.EXPRESSION__BLOCK:
+        setBlock((block)null);
+        return;
       case MyDslPackage.EXPRESSION__EXPRESSION:
         getExpression().clear();
+        return;
+      case MyDslPackage.EXPRESSION__RANGECLAUSE:
+        setRangeclause((rangeclause)null);
         return;
     }
     super.eUnset(featureID);
@@ -361,14 +427,16 @@ public class expressionImpl extends indexImpl implements expression
   {
     switch (featureID)
     {
-      case MyDslPackage.EXPRESSION__BLOCK:
-        return block != null;
       case MyDslPackage.EXPRESSION__IDENTIFIERLIST:
         return IDENTIFIERLIST_EDEFAULT == null ? identifierlist != null : !IDENTIFIERLIST_EDEFAULT.equals(identifierlist);
       case MyDslPackage.EXPRESSION__RECVEXPR:
         return recvexpr != null;
+      case MyDslPackage.EXPRESSION__BLOCK:
+        return block != null;
       case MyDslPackage.EXPRESSION__EXPRESSION:
         return expression != null && !expression.isEmpty();
+      case MyDslPackage.EXPRESSION__RANGECLAUSE:
+        return rangeclause != null;
     }
     return super.eIsSet(featureID);
   }
@@ -389,6 +457,22 @@ public class expressionImpl extends indexImpl implements expression
       }
     }
     if (baseClass == deferstmt.class)
+    {
+      switch (derivedFeatureID)
+      {
+        default: return -1;
+      }
+    }
+    if (baseClass == recvstmt.class)
+    {
+      switch (derivedFeatureID)
+      {
+        case MyDslPackage.EXPRESSION__IDENTIFIERLIST: return MyDslPackage.RECVSTMT__IDENTIFIERLIST;
+        case MyDslPackage.EXPRESSION__RECVEXPR: return MyDslPackage.RECVSTMT__RECVEXPR;
+        default: return -1;
+      }
+    }
+    if (baseClass == expressionlist.class)
     {
       switch (derivedFeatureID)
       {
@@ -417,50 +501,6 @@ public class expressionImpl extends indexImpl implements expression
         default: return -1;
       }
     }
-    if (baseClass == condition.class)
-    {
-      switch (derivedFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == incdecstmt.class)
-    {
-      switch (derivedFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == channel.class)
-    {
-      switch (derivedFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == expressionstmt.class)
-    {
-      switch (derivedFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == recvstmt.class)
-    {
-      switch (derivedFeatureID)
-      {
-        case MyDslPackage.EXPRESSION__IDENTIFIERLIST: return MyDslPackage.RECVSTMT__IDENTIFIERLIST;
-        case MyDslPackage.EXPRESSION__RECVEXPR: return MyDslPackage.RECVSTMT__RECVEXPR;
-        default: return -1;
-      }
-    }
-    if (baseClass == expressionlist.class)
-    {
-      switch (derivedFeatureID)
-      {
-        default: return -1;
-      }
-    }
     return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
   }
 
@@ -486,6 +526,22 @@ public class expressionImpl extends indexImpl implements expression
         default: return -1;
       }
     }
+    if (baseClass == recvstmt.class)
+    {
+      switch (baseFeatureID)
+      {
+        case MyDslPackage.RECVSTMT__IDENTIFIERLIST: return MyDslPackage.EXPRESSION__IDENTIFIERLIST;
+        case MyDslPackage.RECVSTMT__RECVEXPR: return MyDslPackage.EXPRESSION__RECVEXPR;
+        default: return -1;
+      }
+    }
+    if (baseClass == expressionlist.class)
+    {
+      switch (baseFeatureID)
+      {
+        default: return -1;
+      }
+    }
     if (baseClass == recvexpr.class)
     {
       switch (baseFeatureID)
@@ -505,50 +561,6 @@ public class expressionImpl extends indexImpl implements expression
       switch (baseFeatureID)
       {
         case MyDslPackage.FORSTMT__BLOCK: return MyDslPackage.EXPRESSION__BLOCK;
-        default: return -1;
-      }
-    }
-    if (baseClass == condition.class)
-    {
-      switch (baseFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == incdecstmt.class)
-    {
-      switch (baseFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == channel.class)
-    {
-      switch (baseFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == expressionstmt.class)
-    {
-      switch (baseFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == recvstmt.class)
-    {
-      switch (baseFeatureID)
-      {
-        case MyDslPackage.RECVSTMT__IDENTIFIERLIST: return MyDslPackage.EXPRESSION__IDENTIFIERLIST;
-        case MyDslPackage.RECVSTMT__RECVEXPR: return MyDslPackage.EXPRESSION__RECVEXPR;
-        default: return -1;
-      }
-    }
-    if (baseClass == expressionlist.class)
-    {
-      switch (baseFeatureID)
-      {
         default: return -1;
       }
     }

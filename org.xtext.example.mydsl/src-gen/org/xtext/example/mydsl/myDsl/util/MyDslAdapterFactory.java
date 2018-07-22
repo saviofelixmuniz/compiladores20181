@@ -76,11 +76,6 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
     new MyDslSwitch<Adapter>()
     {
       @Override
-      public Adapter caseModel(Model object)
-      {
-        return createModelAdapter();
-      }
-      @Override
       public Adapter casesourcefile(sourcefile object)
       {
         return createsourcefileAdapter();
@@ -106,9 +101,39 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
         return createprimaryexprAdapter();
       }
       @Override
+      public Adapter caseoperand(operand object)
+      {
+        return createoperandAdapter();
+      }
+      @Override
+      public Adapter casetype(type object)
+      {
+        return createtypeAdapter();
+      }
+      @Override
+      public Adapter casetypeaux(typeaux object)
+      {
+        return createtypeauxAdapter();
+      }
+      @Override
+      public Adapter casemethodexpr(methodexpr object)
+      {
+        return createmethodexprAdapter();
+      }
+      @Override
+      public Adapter caseconversion(conversion object)
+      {
+        return createconversionAdapter();
+      }
+      @Override
       public Adapter caseprimaryexpraux(primaryexpraux object)
       {
         return createprimaryexprauxAdapter();
+      }
+      @Override
+      public Adapter casearguments(arguments object)
+      {
+        return createargumentsAdapter();
       }
       @Override
       public Adapter caseindex(index object)
@@ -121,24 +146,9 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
         return createsliceAdapter();
       }
       @Override
-      public Adapter casemethodexpr(methodexpr object)
+      public Adapter casetypeassertion(typeassertion object)
       {
-        return createmethodexprAdapter();
-      }
-      @Override
-      public Adapter casereceivertype(receivertype object)
-      {
-        return createreceivertypeAdapter();
-      }
-      @Override
-      public Adapter caseconversion(conversion object)
-      {
-        return createconversionAdapter();
-      }
-      @Override
-      public Adapter caseoperand(operand object)
-      {
-        return createoperandAdapter();
+        return createtypeassertionAdapter();
       }
       @Override
       public Adapter casecompositelit(compositelit object)
@@ -291,9 +301,29 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
         return createcommcaseAdapter();
       }
       @Override
+      public Adapter casesendstmt(sendstmt object)
+      {
+        return createsendstmtAdapter();
+      }
+      @Override
+      public Adapter casesendstmtaux(sendstmtaux object)
+      {
+        return createsendstmtauxAdapter();
+      }
+      @Override
       public Adapter caserecvstmt(recvstmt object)
       {
         return createrecvstmtAdapter();
+      }
+      @Override
+      public Adapter caseexpressionlist(expressionlist object)
+      {
+        return createexpressionlistAdapter();
+      }
+      @Override
+      public Adapter casepostexpressionlist(postexpressionlist object)
+      {
+        return createpostexpressionlistAdapter();
       }
       @Override
       public Adapter caserecvexpr(recvexpr object)
@@ -319,21 +349,6 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
       public Adapter caseforclause(forclause object)
       {
         return createforclauseAdapter();
-      }
-      @Override
-      public Adapter caseinitstmt(initstmt object)
-      {
-        return createinitstmtAdapter();
-      }
-      @Override
-      public Adapter casepoststmt(poststmt object)
-      {
-        return createpoststmtAdapter();
-      }
-      @Override
-      public Adapter casecondition(condition object)
-      {
-        return createconditionAdapter();
       }
       @Override
       public Adapter caseswitchstmt(switchstmt object)
@@ -386,34 +401,14 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
         return createifstmtAdapter();
       }
       @Override
-      public Adapter caseassignment(assignment object)
+      public Adapter caseassignmentaux(assignmentaux object)
       {
-        return createassignmentAdapter();
-      }
-      @Override
-      public Adapter caseincdecstmt(incdecstmt object)
-      {
-        return createincdecstmtAdapter();
-      }
-      @Override
-      public Adapter casesendstmt(sendstmt object)
-      {
-        return createsendstmtAdapter();
-      }
-      @Override
-      public Adapter casechannel(channel object)
-      {
-        return createchannelAdapter();
+        return createassignmentauxAdapter();
       }
       @Override
       public Adapter caselabeledstmt(labeledstmt object)
       {
         return createlabeledstmtAdapter();
-      }
-      @Override
-      public Adapter caseexpressionstmt(expressionstmt object)
-      {
-        return createexpressionstmtAdapter();
       }
       @Override
       public Adapter caseblock(block object)
@@ -429,21 +424,6 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
       public Adapter casefunctionbody(functionbody object)
       {
         return createfunctionbodyAdapter();
-      }
-      @Override
-      public Adapter casetypeassertion(typeassertion object)
-      {
-        return createtypeassertionAdapter();
-      }
-      @Override
-      public Adapter casearguments(arguments object)
-      {
-        return createargumentsAdapter();
-      }
-      @Override
-      public Adapter caseexpressionlist(expressionlist object)
-      {
-        return createexpressionlistAdapter();
       }
       @Override
       public Adapter caseliteral(literal object)
@@ -536,11 +516,6 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
         return createfielddeclAdapter();
       }
       @Override
-      public Adapter casetype(type object)
-      {
-        return createtypeAdapter();
-      }
-      @Override
       public Adapter casetypelit(typelit object)
       {
         return createtypelitAdapter();
@@ -571,21 +546,6 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
     return modelSwitch.doSwitch((EObject)target);
   }
 
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.Model <em>Model</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.example.mydsl.myDsl.Model
-   * @generated
-   */
-  public Adapter createModelAdapter()
-  {
-    return null;
-  }
 
   /**
    * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.sourcefile <em>sourcefile</em>}'.
@@ -663,6 +623,81 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.operand <em>operand</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mydsl.myDsl.operand
+   * @generated
+   */
+  public Adapter createoperandAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.type <em>type</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mydsl.myDsl.type
+   * @generated
+   */
+  public Adapter createtypeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.typeaux <em>typeaux</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mydsl.myDsl.typeaux
+   * @generated
+   */
+  public Adapter createtypeauxAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.methodexpr <em>methodexpr</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mydsl.myDsl.methodexpr
+   * @generated
+   */
+  public Adapter createmethodexprAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.conversion <em>conversion</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mydsl.myDsl.conversion
+   * @generated
+   */
+  public Adapter createconversionAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.primaryexpraux <em>primaryexpraux</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -673,6 +708,21 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createprimaryexprauxAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.arguments <em>arguments</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mydsl.myDsl.arguments
+   * @generated
+   */
+  public Adapter createargumentsAdapter()
   {
     return null;
   }
@@ -708,61 +758,16 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.methodexpr <em>methodexpr</em>}'.
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.typeassertion <em>typeassertion</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.xtext.example.mydsl.myDsl.methodexpr
+   * @see org.xtext.example.mydsl.myDsl.typeassertion
    * @generated
    */
-  public Adapter createmethodexprAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.receivertype <em>receivertype</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.example.mydsl.myDsl.receivertype
-   * @generated
-   */
-  public Adapter createreceivertypeAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.conversion <em>conversion</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.example.mydsl.myDsl.conversion
-   * @generated
-   */
-  public Adapter createconversionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.operand <em>operand</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.example.mydsl.myDsl.operand
-   * @generated
-   */
-  public Adapter createoperandAdapter()
+  public Adapter createtypeassertionAdapter()
   {
     return null;
   }
@@ -1218,6 +1223,36 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.sendstmt <em>sendstmt</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mydsl.myDsl.sendstmt
+   * @generated
+   */
+  public Adapter createsendstmtAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.sendstmtaux <em>sendstmtaux</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mydsl.myDsl.sendstmtaux
+   * @generated
+   */
+  public Adapter createsendstmtauxAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.recvstmt <em>recvstmt</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -1228,6 +1263,36 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createrecvstmtAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.expressionlist <em>expressionlist</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mydsl.myDsl.expressionlist
+   * @generated
+   */
+  public Adapter createexpressionlistAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.postexpressionlist <em>postexpressionlist</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mydsl.myDsl.postexpressionlist
+   * @generated
+   */
+  public Adapter createpostexpressionlistAdapter()
   {
     return null;
   }
@@ -1303,51 +1368,6 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createforclauseAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.initstmt <em>initstmt</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.example.mydsl.myDsl.initstmt
-   * @generated
-   */
-  public Adapter createinitstmtAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.poststmt <em>poststmt</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.example.mydsl.myDsl.poststmt
-   * @generated
-   */
-  public Adapter createpoststmtAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.condition <em>condition</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.example.mydsl.myDsl.condition
-   * @generated
-   */
-  public Adapter createconditionAdapter()
   {
     return null;
   }
@@ -1503,61 +1523,16 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.assignment <em>assignment</em>}'.
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.assignmentaux <em>assignmentaux</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.xtext.example.mydsl.myDsl.assignment
+   * @see org.xtext.example.mydsl.myDsl.assignmentaux
    * @generated
    */
-  public Adapter createassignmentAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.incdecstmt <em>incdecstmt</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.example.mydsl.myDsl.incdecstmt
-   * @generated
-   */
-  public Adapter createincdecstmtAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.sendstmt <em>sendstmt</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.example.mydsl.myDsl.sendstmt
-   * @generated
-   */
-  public Adapter createsendstmtAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.channel <em>channel</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.example.mydsl.myDsl.channel
-   * @generated
-   */
-  public Adapter createchannelAdapter()
+  public Adapter createassignmentauxAdapter()
   {
     return null;
   }
@@ -1573,21 +1548,6 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createlabeledstmtAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.expressionstmt <em>expressionstmt</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.example.mydsl.myDsl.expressionstmt
-   * @generated
-   */
-  public Adapter createexpressionstmtAdapter()
   {
     return null;
   }
@@ -1633,51 +1593,6 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createfunctionbodyAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.typeassertion <em>typeassertion</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.example.mydsl.myDsl.typeassertion
-   * @generated
-   */
-  public Adapter createtypeassertionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.arguments <em>arguments</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.example.mydsl.myDsl.arguments
-   * @generated
-   */
-  public Adapter createargumentsAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.expressionlist <em>expressionlist</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.example.mydsl.myDsl.expressionlist
-   * @generated
-   */
-  public Adapter createexpressionlistAdapter()
   {
     return null;
   }
@@ -1948,21 +1863,6 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createfielddeclAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.type <em>type</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.example.mydsl.myDsl.type
-   * @generated
-   */
-  public Adapter createtypeAdapter()
   {
     return null;
   }

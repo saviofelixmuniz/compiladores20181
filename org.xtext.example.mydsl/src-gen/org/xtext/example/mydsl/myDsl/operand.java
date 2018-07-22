@@ -16,7 +16,6 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.myDsl.operand#getExpression <em>Expression</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.operand#getLiteral <em>Literal</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.operand#getOperandname <em>Operandname</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getoperand()
@@ -76,31 +75,5 @@ public interface operand extends EObject
    * @generated
    */
   void setLiteral(literal value);
-
-  /**
-   * Returns the value of the '<em><b>Operandname</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Operandname</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Operandname</em>' attribute.
-   * @see #setOperandname(String)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getoperand_Operandname()
-   * @model
-   * @generated
-   */
-  String getOperandname();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.operand#getOperandname <em>Operandname</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Operandname</em>' attribute.
-   * @see #getOperandname()
-   * @generated
-   */
-  void setOperandname(String value);
 
 } // operand
